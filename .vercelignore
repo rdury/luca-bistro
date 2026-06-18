@@ -1,0 +1,15 @@
+# Files kept in the repo but NOT published to the live site.
+# (Site files — index.html, photos/, favicons, rose-all-day.pdf — are NOT listed, so they deploy.)
+
+# Local dev / utility scripts
+serve.js
+scrape.js
+scrape_toast.js
+
+# Project notes and config
+website-review-todo.md
+.env.example
+.claude/
+
+# Stray backups
+*.bak
