@@ -8,9 +8,9 @@
   <link rel="canonical" href="https://www.lucabistro.com/" />
 
   <!-- Favicon -->
-  <link rel="icon" href="/favicon.ico" sizes="any" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
 
   <!-- Open Graph / social sharing -->
   <meta property="og:type" content="website" />
@@ -25,12 +25,48 @@
   <meta name="twitter:description" content="A classic French bistro in historic Mount Adams — steak frites, moules marinière, brunch, and an all-French wine list." />
   <meta name="twitter:image" content="https://www.lucabistro.com/photos/south-of-france.webp" />
 
+  <meta name="theme-color" content="#1a1209" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <!-- Structured data: helps Google show the restaurant with hours, location, cuisine -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Restaurant",
+    "name": "Luca Bistro",
+    "description": "A classic French bistro in historic Mount Adams, Cincinnati — steak frites, moules marinière, weekend brunch, and an all-French wine list.",
+    "servesCuisine": "French",
+    "priceRange": "$$",
+    "url": "https://www.lucabistro.com/",
+    "image": "https://www.lucabistro.com/photos/south-of-france.webp",
+    "email": "lucabistro84@gmail.com",
+    "telephone": "+1-513-621-5822",
+    "acceptsReservations": false,
+    "sameAs": ["https://www.instagram.com/lucabistro84"],
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "934 Hatch St",
+      "addressLocality": "Cincinnati",
+      "addressRegion": "OH",
+      "postalCode": "45202",
+      "addressCountry": "US"
+    },
+    "hasMenu": "https://www.lucabistro.com/#menu",
+    "openingHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "opens": "10:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "17:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "10:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
+    ]
+  }
+  </script>
+
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --gold: #8B6F47;
+      --gold: #806240;
       --gold-light: #c2a882;
       --dark: #1a1209;
       --darker: #0e0b05;
@@ -38,10 +74,19 @@
       --cream: #f5ede0;
       --serif: 'Cormorant Garamond', Georgia, serif;
       --sans: 'Jost', system-ui, sans-serif;
+      --pad-x: 3rem;   /* shared horizontal padding for every section */
+      --pad-y: 5rem;   /* shared vertical padding for content sections */
     }
     html { scroll-behavior: smooth; }
     body { font-family: var(--sans); background: #faf8f4; color: #2c2018; }
     a { text-decoration: none; color: inherit; }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important; scroll-behavior: auto !important;
+      }
+    }
 
     /* NAV */
     nav {
@@ -49,12 +94,12 @@
       background: rgba(250,248,244,0.96); backdrop-filter: blur(8px);
       border-bottom: 1px solid #e8e0d4;
       display: flex; align-items: center; justify-content: space-between;
-      padding: 0 3rem; height: 88px;
+      padding: 0 var(--pad-x); height: 88px;
     }
     .logo { display: flex; align-items: center; }
     .logo img { height: 72px; width: auto; display: block; }
     nav ul { list-style: none; display: flex; gap: 2.5rem; }
-    nav ul a { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #6b5a47; transition: color 0.2s; }
+    nav ul a { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #463829; transition: color 0.2s; }
     nav ul a:hover { color: var(--gold); }
 
     /* HERO */
@@ -66,7 +111,7 @@
     }
     .hero-text {
       display: flex; flex-direction: column; align-items: center;
-      justify-content: center; padding: 6rem 3rem; gap: 1.5rem; text-align: center;
+      justify-content: center; padding: 6rem var(--pad-x); gap: 1.5rem; text-align: center;
     }
     .hero-img { overflow: hidden; }
     .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
@@ -83,7 +128,7 @@
     .btn:hover { background: var(--gold); }
 
     /* SECTIONS */
-    .section { padding: 5rem 3rem; }
+    .section { padding: var(--pad-y) var(--pad-x); }
     .inner { max-width: 1000px; margin: 0 auto; }
     .eyebrow-dark { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
     h2 { font-family: var(--serif); font-size: 46px; font-weight: 500; margin-bottom: 0.5rem; }
@@ -106,23 +151,23 @@
     .about-panel.active { display: block; }
 
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-text p { color: #6b5a47; line-height: 1.9; margin-bottom: 1rem; font-weight: 400; }
+    .about-text p { color: #463829; line-height: 1.9; margin-bottom: 1rem; font-weight: 400; }
     .about-img img { width: 100%; height: 380px; object-fit: cover; }
 
     /* HOURS */
     .hours-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .hours-address { font-size: 15px; color: #6b5a47; line-height: 1.9; margin-bottom: 1.5rem; }
+    .hours-address { font-size: 15px; color: #463829; line-height: 1.9; margin-bottom: 1.5rem; }
     .hours-address a { color: var(--gold); text-decoration: underline; }
     .hours-table { width: 100%; border-collapse: collapse; }
     .hours-table th { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding: 0.5rem 0.75rem 0.5rem 0; text-align: left; border-bottom: 1px solid #e0d8cc; }
     .hours-table td { font-size: 15px; color: #4a3a28; padding: 0.65rem 0.75rem 0.65rem 0; border-bottom: 1px solid #ede8e0; }
     .hours-table td:first-child { font-weight: 600; width: 36%; }
     .hours-table td.closed { color: #b0a090; }
-    .hours-note { margin-top: 2rem; font-size: 14px; color: #6b5a47; line-height: 1.8; }
+    .hours-note { margin-top: 2rem; font-size: 14px; color: #463829; line-height: 1.8; }
     .hours-note strong { color: #c0392b; font-weight: 600; display: block; margin: 1rem 0 0.5rem; font-size: 15px; letter-spacing: 0.04em; }
 
     /* CONTACT & JOBS FORMS */
-    .form-intro { font-size: 15px; color: #6b5a47; line-height: 1.8; margin-bottom: 2rem; }
+    .form-intro { font-size: 15px; color: #463829; line-height: 1.8; margin-bottom: 2rem; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
     .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
     .form-field.full { grid-column: 1 / -1; }
@@ -135,7 +180,7 @@
     }
     .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); }
     .form-field textarea { resize: vertical; min-height: 120px; }
-    .form-field input[type="file"] { border: none; padding: 0; font-size: 14px; color: #6b5a47; }
+    .form-field input[type="file"] { border: none; padding: 0; font-size: 14px; color: #463829; }
     .form-submit {
       margin-top: 1.5rem; background: none; border: 1px solid var(--gold);
       color: var(--gold); padding: 0.8rem 2.5rem; cursor: pointer;
@@ -150,7 +195,7 @@
     .job-listing { border-bottom: 1px solid #e0d8cc; padding: 1.5rem 0; }
     .job-listing:last-of-type { border-bottom: none; margin-bottom: 2rem; }
     .job-listing h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; }
-    .job-listing p { font-size: 14px; color: #6b5a47; line-height: 1.8; font-weight: 400; }
+    .job-listing p { font-size: 14px; color: #463829; line-height: 1.8; font-weight: 400; }
     .job-listing .job-meta { font-size: 13px; color: var(--gold); margin-top: 0.6rem; }
 
     /* MENU */
@@ -172,13 +217,27 @@
     .menu-item:last-child { border-bottom: none; }
     .menu-item-info { flex: 1; }
     .menu-item-info h3 { font-family: var(--serif); font-size: 18px; font-weight: 500; color: #1a1209; margin-bottom: 0.2rem; }
-    .menu-item-info p { font-size: 13px; color: #8a7460; line-height: 1.6; font-weight: 400; }
+    .menu-item-info p { font-size: 13px; color: #5c4a39; line-height: 1.6; font-weight: 400; }
     .menu-price { font-size: 15px; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
     .menu-note { font-size: 12px; color: #9a8470; margin-top: 2.5rem; text-align: center; letter-spacing: 0.04em; }
     .wine-price-legend { display: flex; justify-content: flex-end; gap: 1.5rem; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9a8470; margin-bottom: 0.5rem; padding-right: 0.25rem; }
     .wine-prices { display: flex; gap: 1.5rem; flex-shrink: 0; white-space: nowrap; }
     .wine-prices span { font-size: 15px; color: var(--gold); min-width: 2.5rem; text-align: right; }
     .wine-prices span.no-glass { color: transparent; }
+    /* WINE PAIRING HINT — small, subtly tinted line within the same gold palette */
+    .wine-pair {
+      display: inline-block; margin-top: 0.2rem;
+      font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.2;
+      color: #9a8470;
+      background: rgba(128, 98, 64, 0.05);
+      border-left: 2px solid rgba(194, 168, 130, 0.6);
+      padding: 0.02rem 0.35rem; border-radius: 2px;
+    }
+    .wine-pair .wine-pair-label {
+      font-family: var(--sans); font-style: normal; font-size: 8px;
+      letter-spacing: 0.08em; text-transform: uppercase; color: #b0a090;
+      margin-right: 0.3rem;
+    }
     .menu-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
     .menu-tab-btn {
       background: none; border: none; cursor: pointer; padding: 0.75rem 2rem;
@@ -195,7 +254,7 @@
     .event-card { border: 1px solid #d4a0b0; background: #fff; padding: 1.5rem; }
     .event-card h3 { font-family: var(--sans); font-size: 20px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
     .event-card p { font-size: 17px; color: #4a3a28; line-height: 1.8; font-weight: 400; }
-    .event-sub { color: #8a7460 !important; font-size: 16px !important; margin-top: 6px; }
+    .event-sub { color: #5c4a39 !important; font-size: 16px !important; margin-top: 6px; }
     .event-date { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
     .event-tag { display: inline-block; margin-top: 1rem; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border: 1px solid var(--gold); color: var(--gold); }
 
@@ -210,7 +269,7 @@
     .news-card-body { padding: 1.5rem; }
     .news-source { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
     .news-card h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; line-height: 1.3; margin-bottom: 0.75rem; color: #1a1209; }
-    .news-card p { font-size: 14px; color: #6b5c4c; line-height: 1.75; font-weight: 400; }
+    .news-card p { font-size: 14px; color: #463a2d; line-height: 1.75; font-weight: 400; }
     .news-card-footer { padding: 0.9rem 1.5rem; border-top: 1px solid #e8e0d4; display: flex; justify-content: space-between; align-items: center; }
     .news-date { font-size: 12px; color: #9a8470; letter-spacing: 0.06em; }
     .news-read-more { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
@@ -236,24 +295,25 @@
     .photo-panel img:first-child { grid-column: span 2; grid-row: span 2; aspect-ratio: 1; height: auto; }
 
     /* FOOTER */
-    footer { background: var(--darker); color: #a89880; padding: 4rem 3rem 2rem; }
+    footer { background: var(--darker); color: #a89880; padding: 4rem var(--pad-x) 2rem; }
     .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
     footer h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--gold-light); margin-bottom: 1rem; }
     footer p { font-size: 14px; line-height: 2.2; font-weight: 400; color: #a89880; }
     .footer-hours { border-collapse: collapse; font-size: 14px; font-weight: 400; }
     .footer-hours td { padding: 0.18rem 0; vertical-align: top; line-height: 1.7; color: #a89880; }
     .footer-hours td:first-child { padding-right: 1.5rem; white-space: nowrap; color: var(--gold-light); }
-    .footer-hours .closed { color: #6b5a47; }
+    .footer-hours .closed { color: #8a755c; }
     footer a { color: #a89880 !important; }
     footer a:hover { color: var(--gold-light) !important; }
     .footer-logo { font-family: var(--serif); font-size: 26px; color: var(--gold-light); margin-bottom: 0.75rem; letter-spacing: 0.08em; }
     .footer-logo span { color: var(--gold); }
-    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid #2a1f10; padding-top: 1.5rem; color: #6b5a47; }
+    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid #2a1f10; padding-top: 1.5rem; color: #8a755c; }
 
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
+      :root { --pad-x: 1.25rem; --pad-y: 3rem; }   /* uniform gutters shrink together on mobile */
       /* NAV — stack logo over wrapped links */
-      nav { flex-direction: column; height: auto; padding: 0.6rem 1rem 0.75rem; gap: 0.5rem; }
+      nav { flex-direction: column; height: auto; padding: 0.6rem var(--pad-x) 0.75rem; gap: 0.5rem; }
       .logo img { height: 56px; }
       nav ul { gap: 1.1rem; flex-wrap: wrap; justify-content: center; }
       nav ul a { font-size: 13px; }
@@ -261,13 +321,13 @@
       /* HERO — single column, image on top */
       .hero { grid-template-columns: 1fr; height: auto; min-height: 0; max-height: none; }
       .hero-img { height: 240px; order: -1; }
-      .hero-text { padding: 2.75rem 1.5rem; }
+      .hero-text { padding: 2.75rem var(--pad-x); }
       .hero h1 { font-size: 40px; white-space: normal; }
       .hero p { font-size: 17px; max-width: none; }
       .cigale { width: 130px; }
 
       /* SECTIONS */
-      .section { padding: 3rem 1.25rem; }
+      .section { padding: var(--pad-y) var(--pad-x); }
       h2 { font-size: 34px; }
 
       /* Stack all two/three-column grids */
@@ -349,7 +409,8 @@
       <div class="hours-layout">
         <div>
           <p class="hours-address">
-            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener">934 Hatch St,<br>Cincinnati, OH 45202</a>
+            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener">934 Hatch St,<br>Cincinnati, OH 45202</a><br>
+            <a href="tel:+15136215822">(513) 621-5822</a>
           </p>
           <table class="hours-table">
             <thead>
@@ -643,6 +704,7 @@
           <div class="menu-item-info">
             <h3>Short Rib Bœuf Bourguignon</h3>
             <p>Over mashed potatoes with french baby carrots</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Faoule Pinot Noir · glass $11</p>
           </div>
           <span class="menu-price">$28</span>
         </div>
@@ -650,6 +712,7 @@
           <div class="menu-item-info">
             <h3>Moules Marinière</h3>
             <p>Celery, shallot &amp; white wine broth, with frites</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
           </div>
           <span class="menu-price">$22</span>
         </div>
@@ -657,6 +720,7 @@
           <div class="menu-item-info">
             <h3>Half Roasted Chicken</h3>
             <p>With aioli and fingerling potatoes</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
           </div>
           <span class="menu-price">$24</span>
         </div>
@@ -664,6 +728,7 @@
           <div class="menu-item-info">
             <h3>Steak Frite</h3>
             <p>Au poivre add $2</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
           </div>
           <span class="menu-price">$26</span>
         </div>
@@ -671,6 +736,7 @@
           <div class="menu-item-info">
             <h3>Bouillabaisse</h3>
             <p>Prawn, scallops, mussels, catch of the day, in seafood broth</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
           </div>
           <span class="menu-price">$34</span>
         </div>
@@ -678,6 +744,7 @@
           <div class="menu-item-info">
             <h3>84 Burger</h3>
             <p>Harissa sauce, lettuce, tomato, gruyère</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Port d'Orange Côtes du Rhône · glass $12</p>
           </div>
           <span class="menu-price">$16</span>
         </div>
@@ -685,6 +752,7 @@
           <div class="menu-item-info">
             <h3>Roasted Salmon</h3>
             <p>Roasted salmon over cauliflower purée with herb sauce</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
           </div>
           <span class="menu-price">$23</span>
         </div>
@@ -692,6 +760,7 @@
           <div class="menu-item-info">
             <h3>Chicken Ballotine</h3>
             <p>With Dauphinoise potatoes and Provençal salsa verte</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Reserve de Marande Rosé · glass $12</p>
           </div>
           <span class="menu-price">$21</span>
         </div>
@@ -699,6 +768,7 @@
           <div class="menu-item-info">
             <h3>Pan-Seared Scallops</h3>
             <p>With creamy leek &amp; pea rice and roasted pancetta</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Chardonnay · glass $12</p>
           </div>
           <span class="menu-price">$37</span>
         </div>
@@ -706,6 +776,7 @@
           <div class="menu-item-info">
             <h3>Sole Meunière</h3>
             <p>In lemon butter herb sauce with fondant potatoes &amp; green beans</p>
+            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Chateau Valmer Vouvray · glass $11</p>
           </div>
           <span class="menu-price">$23</span>
         </div>
@@ -846,6 +917,7 @@
             <div class="menu-item-info">
               <h3>Steak Frite</h3>
               <p>With frites and salad</p>
+              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
             </div>
             <span class="menu-price">$26</span>
           </div>
@@ -853,6 +925,7 @@
             <div class="menu-item-info">
               <h3>Moules Marinière</h3>
               <p>Celery, shallot &amp; white wine broth with frites</p>
+              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
             </div>
             <span class="menu-price">$22</span>
           </div>
@@ -860,6 +933,7 @@
             <div class="menu-item-info">
               <h3>Quiche Lorraine</h3>
               <p>Ham and cheese quiche with salad</p>
+              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
             </div>
             <span class="menu-price">$14</span>
           </div>
@@ -867,6 +941,7 @@
             <div class="menu-item-info">
               <h3>Spinach and Goat Cheese Quiche</h3>
               <p>Served with salad</p>
+              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
             </div>
             <span class="menu-price">$14</span>
           </div>
@@ -874,6 +949,7 @@
             <div class="menu-item-info">
               <h3>Dijon Crusted Chicken</h3>
               <p>With salad</p>
+              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
             </div>
             <span class="menu-price">$17</span>
           </div>
@@ -881,6 +957,7 @@
             <div class="menu-item-info">
               <h3>Cod à la Provençal</h3>
               <p>Roasted cod with tomato compote</p>
+              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
             </div>
             <span class="menu-price">$20</span>
           </div>
@@ -1171,7 +1248,7 @@
             <div class="wine-prices"><span class="no-glass">—</span><span>$74</span></div>
           </div>
           <div class="menu-item">
-            <div class="menu-item-info"><h3>Port d'Orange Cotes du Rhône</h3><p>Rhône</p></div>
+            <div class="menu-item-info"><h3>Port d'Orange Côtes du Rhône</h3><p>Rhône</p></div>
             <div class="wine-prices"><span>$12</span><span>$42</span></div>
           </div>
           <div class="menu-item">
@@ -1190,42 +1267,39 @@
 <div id="events" class="section bg-warm">
   <div class="inner">
     <p class="eyebrow-dark">What's on</p>
-    <h2>Rosé All Day 2025</h2>
+    <h2>Rosé All Day 2026</h2>
     <div class="rule"></div>
     <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
-      <p style="color:#6b5a47;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">All rosé by the glass · 10:00 AM – 9:00 PM · Luca Bistro, Mt. Adams. Live music and featured artists all season long.</p>
-      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Summer Series 2025</span>
+      <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">All rosé by the glass · 10:00 AM – 9:00 PM · Luca Bistro, Mt. Adams. Live music and featured artists all season long.</p>
+      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--gold);color:var(--gold);font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Summer Series 2026</span>
     </div>
-    <p style="margin-bottom:2.5rem;">
-      <a href="rose-all-day.pdf" target="_blank" rel="noopener" style="display:inline-block;padding:0.7rem 2rem;border:1px solid var(--gold);color:var(--gold);font-size:13px;letter-spacing:0.1em;text-transform:uppercase;transition:background 0.2s,color 0.2s;" onmouseover="this.style.background='var(--gold)';this.style.color='#fff';" onmouseout="this.style.background='none';this.style.color='var(--gold)';">View the full schedule (PDF)</a>
-    </p>
     <div class="events-grid">
       <div class="event-card">
-        <p class="event-date">June 28th · 10:00 AM – 9:00 PM</p>
+        <p class="event-date">May 30th · 10:00 AM – 9:00 PM</p>
+        <h3>Rosé All Day — May</h3>
+        <p>Featured: Dahlia Baer · Perfect Pour Jewelry</p>
+        <p class="event-sub">Live music by Nick Tuttle</p>
+        <span class="event-tag">Live music</span>
+      </div>
+      <div class="event-card">
+        <p class="event-date">June 27th · 10:00 AM – 9:00 PM</p>
         <h3>Rosé All Day — June</h3>
-        <p>Featured artist: Jim Conroy &amp; Kim Popil Moon</p>
+        <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
         <p class="event-sub">Live music by Nick Tuttle</p>
         <span class="event-tag">Live music</span>
       </div>
       <div class="event-card">
-        <p class="event-date">July 26th · 10:00 AM – 9:00 PM</p>
+        <p class="event-date">July 30th · 10:00 AM – 9:00 PM</p>
         <h3>Rosé All Day — July</h3>
-        <p>Featured artists: Loud Looks</p>
-        <p class="event-sub">Live music all day</p>
-        <span class="event-tag">Live music</span>
-      </div>
-      <div class="event-card">
-        <p class="event-date">August 23rd · 10:00 AM – 9:00 PM</p>
-        <h3>Rosé All Day — August</h3>
-        <p>Featured artists: Loud Looks, Jim Conroy &amp; Kim Popil Moon</p>
+        <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
         <p class="event-sub">Live music by Nick Tuttle</p>
         <span class="event-tag">Live music</span>
       </div>
       <div class="event-card">
-        <p class="event-date">September 20th · 10:00 AM – 9:00 PM</p>
-        <h3>Rosé All Day — September</h3>
-        <p>Featured artist: Jim Conroy &amp; Kim Popil Moon</p>
-        <p class="event-sub">Live music all day</p>
+        <p class="event-date">August 29th · 10:00 AM – 9:00 PM</p>
+        <h3>Rosé All Day — August</h3>
+        <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
+        <p class="event-sub">Live music by Nick Tuttle</p>
         <span class="event-tag">Live music</span>
       </div>
     </div>
@@ -1303,7 +1377,7 @@
         <div class="news-card-body">
           <p class="news-source">Cincinnati Enquirer</p>
           <h3>Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</h3>
-          <p>Chef Frederic Maniet helms a classic French bistro in Mt. Adams — Cincinnati's prettiest neighborhood — serving timeless dishes like steak frites and cod Provençal in a warm, unhurried atmosphere.</p>
+          <p>Chef Frédéric Maniet helms a classic French bistro in Mt. Adams — Cincinnati's prettiest neighborhood — serving timeless dishes like steak frites and cod Provençal in a warm, unhurried atmosphere.</p>
         </div>
         <div class="news-card-footer">
           <span class="news-date">May 20, 2024</span>
@@ -1381,7 +1455,9 @@
     </div>
     <div>
       <h3>Contact</h3>
+      <p><a href="tel:+15136215822" style="color:#5a4a36;">(513) 621-5822</a></p>
       <p><a href="mailto:lucabistro84@gmail.com" style="color:#5a4a36;">lucabistro84@gmail.com</a></p>
+      <p><a href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener" style="color:#5a4a36;">@lucabistro84</a></p>
       <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">We do not take reservations.<br>For events of 10+, please contact us.</p>
     </div>
   </div>
