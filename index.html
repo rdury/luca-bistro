@@ -211,32 +211,30 @@
     }
     .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
     .menu-item {
-      display: flex; justify-content: space-between; align-items: baseline;
-      gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid #ede8e0;
+      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
+      gap: 0.45rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid #ede8e0;
     }
     .menu-item:last-child { border-bottom: none; }
     .menu-item-info { flex: 1; }
-    .menu-item-info h3 { font-family: var(--serif); font-size: 18px; font-weight: 500; color: #1a1209; margin-bottom: 0.2rem; }
-    .menu-item-info p { font-size: 13px; color: #5c4a39; line-height: 1.6; font-weight: 400; }
+    .menu-item-info h3 { font-family: var(--serif); font-size: 21px; font-weight: 500; color: #1a1209; margin-bottom: 0.25rem; }
+    .menu-item-info p { font-size: 15px; color: #5c4a39; line-height: 1.6; font-weight: 400; }
     .menu-price { font-size: 15px; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
     .menu-note { font-size: 12px; color: #9a8470; margin-top: 2.5rem; text-align: center; letter-spacing: 0.04em; }
     .wine-price-legend { display: flex; justify-content: flex-end; gap: 1.5rem; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9a8470; margin-bottom: 0.5rem; padding-right: 0.25rem; }
     .wine-prices { display: flex; gap: 1.5rem; flex-shrink: 0; white-space: nowrap; }
     .wine-prices span { font-size: 15px; color: var(--gold); min-width: 2.5rem; text-align: right; }
     .wine-prices span.no-glass { color: transparent; }
-    /* WINE PAIRING HINT — small, subtly tinted line within the same gold palette */
+    /* WINE PAIRING HINT — quiet secondary line below the entry (no bar, no fill) */
     .wine-pair {
-      display: inline-block; margin-top: 0.2rem;
-      font-family: var(--serif); font-style: italic; font-size: 10.5px; line-height: 1.2;
+      flex-basis: 100%; width: 100%; margin: 0;
+      font-family: var(--serif); font-style: italic; font-size: 11px; line-height: 1.35;
       color: #9a8470;
-      background: rgba(128, 98, 64, 0.05);
-      border-left: 2px solid rgba(194, 168, 130, 0.6);
-      padding: 0.02rem 0.35rem; border-radius: 2px;
     }
     .wine-pair .wine-pair-label {
-      font-family: var(--sans); font-style: normal; font-size: 8px;
-      letter-spacing: 0.08em; text-transform: uppercase; color: #b0a090;
-      margin-right: 0.3rem;
+      display: inline-block;
+      font-family: var(--sans); font-style: normal; font-size: 8.5px;
+      letter-spacing: 0.1em; text-transform: uppercase; color: #b0a090;
+      margin-right: 0.45rem;
     }
     .menu-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
     .menu-tab-btn {
@@ -715,81 +713,81 @@
           <div class="menu-item-info">
             <h3>Short Rib Bœuf Bourguignon</h3>
             <p>Over mashed potatoes with french baby carrots</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Faoule Pinot Noir · glass $11</p>
           </div>
           <span class="menu-price">$28</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Faoule Pinot Noir · glass $11</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Moules Marinière</h3>
             <p>Celery, shallot &amp; white wine broth, with frites</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
           </div>
           <span class="menu-price">$22</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Half Roasted Chicken</h3>
             <p>With aioli and fingerling potatoes</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
           </div>
           <span class="menu-price">$24</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Steak Frite</h3>
             <p>Au poivre add $2</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
           </div>
           <span class="menu-price">$26</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Bouillabaisse</h3>
             <p>Prawn, scallops, mussels, catch of the day, in seafood broth</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
           </div>
           <span class="menu-price">$34</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>84 Burger</h3>
             <p>Harissa sauce, lettuce, tomato, gruyère</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Port d'Orange Côtes du Rhône · glass $12</p>
           </div>
           <span class="menu-price">$16</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Port d'Orange Côtes du Rhône · glass $12</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Roasted Salmon</h3>
             <p>Roasted salmon over cauliflower purée with herb sauce</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
           </div>
           <span class="menu-price">$23</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Chicken Ballotine</h3>
             <p>With Dauphinoise potatoes and Provençal salsa verte</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Reserve de Marande Rosé · glass $12</p>
           </div>
           <span class="menu-price">$21</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Reserve de Marande Rosé · glass $12</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Pan-Seared Scallops</h3>
             <p>With creamy leek &amp; pea rice and roasted pancetta</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Chardonnay · glass $12</p>
           </div>
           <span class="menu-price">$37</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Chardonnay · glass $12</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Sole Meunière</h3>
             <p>In lemon butter herb sauce with fondant potatoes &amp; green beans</p>
-            <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Chateau Valmer Vouvray · glass $11</p>
           </div>
           <span class="menu-price">$23</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Chateau Valmer Vouvray · glass $11</p>
         </div>
       </div>
     </div>
@@ -928,49 +926,49 @@
             <div class="menu-item-info">
               <h3>Steak Frite</h3>
               <p>With frites and salad</p>
-              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
             </div>
             <span class="menu-price">$26</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
               <h3>Moules Marinière</h3>
               <p>Celery, shallot &amp; white wine broth with frites</p>
-              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
             </div>
             <span class="menu-price">$22</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
               <h3>Quiche Lorraine</h3>
               <p>Ham and cheese quiche with salad</p>
-              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
             </div>
             <span class="menu-price">$14</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
               <h3>Spinach and Goat Cheese Quiche</h3>
               <p>Served with salad</p>
-              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
             </div>
             <span class="menu-price">$14</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
               <h3>Dijon Crusted Chicken</h3>
               <p>With salad</p>
-              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
             </div>
             <span class="menu-price">$17</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
           </div>
           <div class="menu-item">
             <div class="menu-item-info">
               <h3>Cod à la Provençal</h3>
               <p>Roasted cod with tomato compote</p>
-              <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
             </div>
             <span class="menu-price">$20</span>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
           </div>
         </div>
       </div>
