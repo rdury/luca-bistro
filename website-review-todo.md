@@ -2,7 +2,7 @@
 
 Action items from the review, ordered by priority. Top two directly serve the "fast + thoughtful" goal.
 
-_Last updated: June 18, 2026._
+_Last updated: June 23, 2026._
 
 ## Critical
 - [x] **Optimize photos** — ✅ Done. All 28 JPEGs converted to WebP (~1600px, originals kept). Total photo weight 267 MB → 6.2 MB; first-paint image weight now ~552 KB.
@@ -11,7 +11,7 @@ _Last updated: June 18, 2026._
 
 ## High
 - [x] **Replace the `mailto:` forms** (contact + jobs) — ✅ Done. Both now post to Web3Forms with an in-page success/error message, spam honeypot, and résumé upload preserved. Access key is in place. _Test once hosted: confirm a message + a job application (with résumé) arrive._
-- [x] **Fix the hero image** — ✅ Done. Re-cropped from the original to a 3:2 landscape (1600×1066, 408 KB) composed around the fountain, café tables, and storefront. Replaces the portrait that was being cropped by `object-fit: cover`.
+- [x] **Fix the hero image** — ✅ Done. Hero is now the back-patio photo (`photos/back-patio.webp`, 1600×1067, 418 KB), also used as the large image in the Photos → Back Patio panel. (Superseded the earlier south-of-france crop, which has been deleted.)
 - [x] **Delete the orphaned `app/src/` React folder** — ✅ Done. Removed from the working tree (still in git history; commit the deletion).
 
 ## Medium / SEO
@@ -19,7 +19,7 @@ _Last updated: June 18, 2026._
 - [x] Add Open Graph + Twitter card tags — ✅ Done (7 OG + 4 Twitter tags, image = hero).
 - [x] Add a favicon — ✅ Done. Generated `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png` from the cicada emblem on the brand-dark background.
 - [x] Improve `<title>` — ✅ Done: "Luca Bistro — French Bistro in Mt. Adams, Cincinnati".
-- [x] Link `rose-all-day.pdf` from the Events section — ✅ Done ("View the full schedule (PDF)" button).
+- [n/a] Link `rose-all-day.pdf` from the Events section — dropped. The PDF was removed; events are listed inline in the Events section instead.
 
 ## Polish
 - [x] Rewrite the duplicated news copy — ✅ Done. Both blurbs now distinct; dropped the awkward "no loops thrown"; crème brûlée now appears once.
