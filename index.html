@@ -68,10 +68,12 @@
     :root {
       --gold: #806240;
       --gold-light: #c2a882;
+      --gold-deep: #6e5230;   /* darker gold — passes AA contrast on the warm-ochre sections */
+      --olive: #6f6f43;       /* muted Provençal olive accent */
       --red: #8c312f;
       --frame: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><path d='M28 6 H72 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28 V72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94 H28 A14 14 0 0 0 17 83 A14 14 0 0 1 6 72 V28 A14 14 0 0 1 17 17 A14 14 0 0 0 28 6 Z' fill='%23E6D4A2'/><g fill='none' stroke='%239c6a1e' stroke-width='4' stroke-linecap='round'><path d='M28 6 A14 14 0 0 1 17 17 A14 14 0 0 0 6 28'/><path d='M72 6 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28'/><path d='M94 72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94'/><path d='M6 72 A14 14 0 0 0 17 83 A14 14 0 0 1 28 94'/><path d='M28 6 H72'/><path d='M28 94 H72'/><path d='M6 28 V72'/><path d='M94 28 V72'/></g></svg>");
-      --dark: #1a1209;
-      --darker: #0e0b05;
+      --dark: #271a0e;
+      --darker: #1b120a;
       --dark-mid: #2a1f10;
       --cream: #f5ede0;
       --serif: 'Cormorant Garamond', Georgia, serif;
@@ -80,7 +82,8 @@
       --pad-y: 5rem;   /* shared vertical padding for content sections */
     }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); background: #F7EFD0; color: #2c2018; }
+    body { font-family: var(--sans); color: #2c2018; background-color: #F7EFD0;
+      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>"); }
     a { text-decoration: none; color: inherit; }
     .wc-banner { display: block; background: #F7EFD0; text-align: center; padding: 1.25rem 0; }
     .wc-banner img { display: inline-block; width: 60%; height: auto; vertical-align: top; }
@@ -109,7 +112,7 @@
     /* HERO */
     .hero {
       background: var(--dark); color: var(--cream);
-      min-height: 340px; height: calc(75vh - 110px); max-height: 480px;
+      min-height: 340px;
       display: grid; grid-template-columns: 1.7fr 1fr;
       align-items: stretch;
     }
@@ -118,7 +121,7 @@
       justify-content: center; padding: 3rem var(--pad-x); gap: 1.5rem; text-align: center;
     }
     .hero-img { overflow: hidden; }
-    .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .hero-img img { width: 100%; height: 100%; object-fit: cover; display: block; filter: sepia(0.16) saturate(1.08) brightness(1.01); }
     .cigale { width: 170px; opacity: 0.9; }
     .eyebrow { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); }
     .hero h1 { font-family: var(--serif); font-size: 56px; font-weight: 500; font-style: italic; color: var(--cream); line-height: 1.1; white-space: nowrap; }
@@ -130,13 +133,26 @@
       transition: background 0.25s;
     }
     .btn:hover { background: var(--gold); }
+    .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
+    .btn-call { border-color: var(--gold-light); color: var(--cream); }
+    .btn-call:hover { background: var(--gold-light); color: var(--dark); }
+    /* Editorial drop-cap on the opening About paragraph */
+    .about-text p.lead::first-letter {
+      float: left; font-family: var(--serif); font-style: italic;
+      font-size: 3.6rem; line-height: 0.78; padding: 0.15rem 0.5rem 0 0; color: var(--gold-deep);
+    }
+    /* Gentle reveal-on-scroll (added by JS so no-JS users always see content) */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; } }
 
     /* SECTIONS */
     .section { padding: var(--pad-y) var(--pad-x); }
     .inner { max-width: 1000px; margin: 0 auto; }
     .eyebrow-dark { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
     h2 { font-family: var(--serif); font-size: 46px; font-weight: 500; margin-bottom: 0.5rem; }
-    .rule { width: 48px; height: 1px; background: var(--red); margin: 1.2rem 0 2rem; }
+    .rule { width: 72px; height: 12px; margin: 1.2rem 0 2rem;
+      background: no-repeat left center url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='12' viewBox='0 0 72 12'><line x1='0' y1='6' x2='44' y2='6' stroke='%238c312f' stroke-width='1.4'/><path d='M53 6 l5 -5 l5 5 l-5 5 z' fill='%236f6f43'/><circle cx='68' cy='6' r='1.6' fill='%238c312f'/></svg>"); }
     .bg-warm { background: #EDDFB4; }
     .bg-dark { background: var(--dark); color: var(--cream); }
     .bg-dark .eyebrow-dark { color: var(--gold-light); }
@@ -156,7 +172,7 @@
 
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .about-text p { color: #463829; line-height: 1.9; margin-bottom: 1rem; font-weight: 400; }
-    .about-img img { width: 100%; height: 380px; object-fit: cover; }
+    .about-img img { width: 100%; height: 380px; object-fit: cover; filter: sepia(0.16) saturate(1.08) brightness(1.01); }
 
     /* HOURS */
     .hours-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
@@ -202,7 +218,6 @@
     .job-listing p { font-size: 14px; color: #463829; line-height: 1.8; font-weight: 400; }
     .job-listing .job-meta { font-size: 13px; color: var(--gold); margin-top: 0.6rem; }
 
-    /* MENU */
     /* MENU */
     .menu-section { margin-bottom: 3rem; }
     .menu-section-title {
@@ -254,7 +269,12 @@
     /* EVENTS */
     .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
     .event-card { background-color: transparent; padding: 16px 20px; border: 16px solid transparent; border-image: var(--frame) 28 fill stretch; }
-    .bg-warm .event-card, .bg-warm .news-card { background-color: #FBF5E4; }
+    /* Darker gold on the warm-ochre sections so small text meets AA contrast */
+    .bg-warm .eyebrow-dark, .bg-warm .menu-section-title, .bg-warm .menu-price,
+    .bg-warm .wine-prices span:not(.no-glass),
+    .bg-warm .menu-tab-btn.active, .bg-warm .menu-tab-btn:hover,
+    .bg-warm .tab-btn.active, .bg-warm .tab-btn:hover { color: var(--gold-deep); }
+    .bg-warm .menu-tab-btn.active, .bg-warm .tab-btn.active { border-bottom-color: var(--gold-deep); }
     .event-card h3 { font-family: var(--sans); font-size: 20px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
     .event-card p { font-size: 17px; color: #4a3a28; line-height: 1.8; font-weight: 400; }
     .event-sub { color: #5c4a39 !important; font-size: 16px !important; margin-top: 6px; }
@@ -406,9 +426,13 @@
   </div>
   <div class="hero-text">
     <img class="cigale" src="photos/cicada.png" alt="Cicada emblem" />
+    <p class="eyebrow">Luca Bistro · Mt. Adams</p>
     <h1>South of France</h1>
     <p>Experience old world charm at Luca Bistro in historic Mount Adams — where every dish is a celebration.</p>
-    <a href="#menu" class="btn">Explore our menu</a>
+    <div class="hero-cta">
+      <a href="#menu" class="btn">Explore our menu</a>
+      <a href="tel:+15136215822" class="btn btn-call">Call (513) 621-5822</a>
+    </div>
   </div>
 </div>
 
@@ -430,8 +454,9 @@
     <div id="about-story" class="about-panel active">
       <div class="about-grid">
         <div class="about-text">
-          <p>Welcome to Luca Bistro, where classic French culinary traditions meet a warm, modern aesthetic. Founded with a passion for exquisite flavors and fine wine, our chefs meticulously prepare every dish from scratch, honoring the recipes that have defined bistros across France for generations.</p>
-          <p>From our deeply rich Coq au Vin to our delicate pastries, every bite is an invitation to celebrate life's finest moments.</p>
+          <p class="lead">Chef Frédéric Maniet grew up in the south of France, and Luca Bistro is his love letter to it — a small Mt. Adams bistro on a mission to make French cooking feel as warm and unhurried as a long Provençal lunch.</p>
+          <p>The kitchen cooks the classics with care and a southern accent: bouillabaisse and moules marinière, panisse marseillais and ratatouille, a proper salade niçoise, and an all-French wine list that turns proudly all-rosé through the summer.</p>
+          <p>Everything is made from scratch, and every table is an invitation to slow down and savor — a little taste of la joie de vivre in the heart of Mt. Adams.</p>
         </div>
         <div class="about-img">
           <img src="photos/food/_MG_4486.webp" alt="Roasted goat cheese salad at Luca Bistro"  loading="lazy" decoding="async" />
@@ -444,7 +469,7 @@
       <div class="hours-layout">
         <div>
           <p class="hours-address">
-            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener">934 Hatch St,<br>Cincinnati, OH 45202</a><br>
+            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St,<br>Cincinnati, OH 45202</a><br>
             <a href="tel:+15136215822">(513) 621-5822</a>
           </p>
           <table class="hours-table">
@@ -484,24 +509,24 @@
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" />
         <div class="form-grid">
           <div class="form-field">
-            <label>Name <span>Required</span></label>
-            <input type="text" name="name" placeholder="Name" required />
+            <label for="contact-name">Name <span>Required</span></label>
+            <input id="contact-name" type="text" name="name" placeholder="Name" required />
           </div>
           <div class="form-field">
-            <label>Email <span>Required</span></label>
-            <input type="email" name="email" placeholder="Email" required />
+            <label for="contact-email">Email <span>Required</span></label>
+            <input id="contact-email" type="email" name="email" placeholder="Email" required />
           </div>
           <div class="form-field">
-            <label>Phone Number <span>Required</span></label>
-            <input type="tel" name="phone" placeholder="Phone Number" required />
+            <label for="contact-phone">Phone Number <span>Required</span></label>
+            <input id="contact-phone" type="tel" name="phone" placeholder="Phone Number" required />
           </div>
           <div class="form-field">
-            <label>What are you getting in touch about? <span>Optional</span></label>
-            <input type="text" name="topic" placeholder="What are you getting in touch about?" />
+            <label for="contact-topic">What are you getting in touch about? <span>Optional</span></label>
+            <input id="contact-topic" type="text" name="topic" placeholder="What are you getting in touch about?" />
           </div>
           <div class="form-field full">
-            <label>Your Message <span>Required</span></label>
-            <textarea name="message" placeholder="Your Message" required></textarea>
+            <label for="contact-message">Your Message <span>Required</span></label>
+            <textarea id="contact-message" name="message" placeholder="Your Message" required></textarea>
           </div>
         </div>
         <button type="submit" class="form-submit">Send Message</button>
@@ -546,20 +571,20 @@
         <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" />
         <div class="form-grid">
           <div class="form-field">
-            <label>Name <span>Required</span></label>
-            <input type="text" name="name" placeholder="Name" required />
+            <label for="job-name">Name <span>Required</span></label>
+            <input id="job-name" type="text" name="name" placeholder="Name" required />
           </div>
           <div class="form-field">
-            <label>Email <span>Required</span></label>
-            <input type="email" name="email" placeholder="Email" required />
+            <label for="job-email">Email <span>Required</span></label>
+            <input id="job-email" type="email" name="email" placeholder="Email" required />
           </div>
           <div class="form-field">
-            <label>Phone Number <span>Required</span></label>
-            <input type="tel" name="phone" placeholder="Phone Number" required />
+            <label for="job-phone">Phone Number <span>Required</span></label>
+            <input id="job-phone" type="tel" name="phone" placeholder="Phone Number" required />
           </div>
           <div class="form-field">
-            <label>Position <span>Optional</span></label>
-            <select name="position">
+            <label for="job-position">Position <span>Optional</span></label>
+            <select id="job-position" name="position">
               <option value="">Position</option>
               <option>Busser</option>
               <option>Host Position</option>
@@ -569,12 +594,12 @@
             </select>
           </div>
           <div class="form-field full">
-            <label>Cover Letter <span>Required</span></label>
-            <textarea name="cover_letter" placeholder="Cover Letter" required></textarea>
+            <label for="job-cover">Cover Letter <span>Required</span></label>
+            <textarea id="job-cover" name="cover_letter" placeholder="Cover Letter" required></textarea>
           </div>
           <div class="form-field full">
-            <label>Resumé <span>Required</span></label>
-            <input type="file" name="resume" accept=".pdf,.doc,.docx" required />
+            <label for="job-resume">Resumé <span>Required</span></label>
+            <input id="job-resume" type="file" name="resume" accept=".pdf,.doc,.docx" required />
           </div>
         </div>
         <button type="submit" class="form-submit">Submit Application</button>
@@ -616,7 +641,7 @@
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <h3>Pâté en Croute</h3>
+            <h3>Pâté en Croûte</h3>
           </div>
           <span class="menu-price">$13</span>
         </div>
@@ -741,7 +766,7 @@
             <p>Over mashed potatoes with french baby carrots</p>
           </div>
           <span class="menu-price">$28</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Faoule Pinot Noir · glass $11</p>
+          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Pinot Noir · glass $11</p>
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
@@ -761,7 +786,7 @@
         </div>
         <div class="menu-item">
           <div class="menu-item-info">
-            <h3>Steak Frite</h3>
+            <h3>Steak Frites</h3>
             <p>Au poivre add $2</p>
           </div>
           <span class="menu-price">$26</span>
@@ -794,7 +819,7 @@
         <div class="menu-item">
           <div class="menu-item-info">
             <h3>Chicken Ballotine</h3>
-            <p>With Dauphinoise potatoes and Provençal salsa verte</p>
+            <p>With Dauphinoise potatoes and Provençal salsa verde</p>
           </div>
           <span class="menu-price">$21</span>
           <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Reserve de Marande Rosé · glass $12</p>
@@ -950,7 +975,7 @@
         <div class="menu-grid">
           <div class="menu-item">
             <div class="menu-item-info">
-              <h3>Steak Frite</h3>
+              <h3>Steak Frites</h3>
               <p>With frites and salad</p>
             </div>
             <span class="menu-price">$26</span>
@@ -1267,7 +1292,7 @@
             <div class="wine-prices"><span class="no-glass">—</span><span>$58</span></div>
           </div>
           <div class="menu-item">
-            <div class="menu-item-info"><h3>La Faoule Pinot Noir</h3><p>Languedoc</p></div>
+            <div class="menu-item-info"><h3>La Foule Pinot Noir</h3><p>Languedoc</p></div>
             <div class="wine-prices"><span>$11</span><span>$38</span></div>
           </div>
           <div class="menu-item">
@@ -1279,7 +1304,7 @@
             <div class="wine-prices"><span>$11</span><span>$40</span></div>
           </div>
           <div class="menu-item">
-            <div class="menu-item-info"><h3>Chateau St. Georges St. Émillion</h3><p>Bordeaux</p></div>
+            <div class="menu-item-info"><h3>Chateau St. Georges Saint-Émilion</h3><p>Bordeaux</p></div>
             <div class="wine-prices"><span class="no-glass">—</span><span>$74</span></div>
           </div>
           <div class="menu-item">
@@ -1335,13 +1360,6 @@
       <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Summer Series 2026</span>
     </div>
     <div class="events-grid">
-      <div class="event-card">
-        <p class="event-date">May 30th · 10:00 AM – 9:00 PM</p>
-        <h3>Rosé All Day — May</h3>
-        <p>Featured: Dahlia Baer · Perfect Pour Jewelry</p>
-        <p class="event-sub">Live music by Nick Tuttle</p>
-        <span class="event-tag">Live music</span>
-      </div>
       <div class="event-card">
         <p class="event-date">June 27th · 10:00 AM – 9:00 PM</p>
         <h3>Rosé All Day — June</h3>
@@ -1430,7 +1448,7 @@
 
     <div class="news-grid">
 
-      <a class="news-card" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener">
+      <a class="news-card" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener noreferrer">
         <div class="news-card-body">
           <p class="news-source">Cincinnati Enquirer</p>
           <h3>Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</h3>
@@ -1442,7 +1460,7 @@
         </div>
       </a>
 
-      <a class="news-card" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener">
+      <a class="news-card" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer">
         <div class="news-card-body">
           <p class="news-source">Cincinnati Magazine</p>
           <h3>Best New Restaurants No. 9: Luca Bistro</h3>
@@ -1454,7 +1472,7 @@
         </div>
       </a>
 
-      <a class="news-card" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener">
+      <a class="news-card" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer">
         <div class="news-card-body">
           <p class="news-source">Whatever</p>
           <h3>Close To Home: Luca Bistro</h3>
@@ -1466,7 +1484,7 @@
         </div>
       </a>
 
-      <a class="news-card" href="https://www.citybeat.com/food-drink/newly-opened-luca-bistro-showcases-french-cuisine-in-a-new-light-14388198" target="_blank" rel="noopener">
+      <a class="news-card" href="https://www.citybeat.com/food-drink/newly-opened-luca-bistro-showcases-french-cuisine-in-a-new-light-14388198" target="_blank" rel="noopener noreferrer">
         <div class="news-card-body">
           <p class="news-source">Cincinnati CityBeat</p>
           <h3>Newly Opened Luca Bistro Showcases French Cuisine in a New Light</h3>
@@ -1478,7 +1496,7 @@
         </div>
       </a>
 
-      <a class="news-card" href="https://baublestobubbles.com/2022/11/05/luca-bistro-mt-adams/" target="_blank" rel="noopener">
+      <a class="news-card" href="https://baublestobubbles.com/2022/11/05/luca-bistro-mt-adams/" target="_blank" rel="noopener noreferrer">
         <div class="news-card-body">
           <p class="news-source">Baubles to Bubbles</p>
           <h3>Luca Bistro in Mt. Adams</h3>
@@ -1499,7 +1517,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">LUCA <span>BISTRO</span></div>
-      <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener" style="color:#5a4a36;">934 Hatch St<br>Cincinnati, OH 45202</a></p>
+      <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer" style="color:#5a4a36;">934 Hatch St<br>Cincinnati, OH 45202</a></p>
     </div>
     <div>
       <h3>Hours</h3>
@@ -1515,10 +1533,10 @@
       <p><a href="tel:+15136215822" style="color:#5a4a36;">(513) 621-5822</a></p>
       <p><a href="mailto:lucabistro84@gmail.com" style="color:#5a4a36;">lucabistro84@gmail.com</a></p>
       <div class="social-row">
-        <a class="social-btn" href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener" aria-label="Luca Bistro on Instagram">
+        <a class="social-btn" href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener noreferrer" aria-label="Luca Bistro on Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-10.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
         </a>
-        <a class="social-btn" href="https://www.facebook.com/LucaBistroCincy" target="_blank" rel="noopener" aria-label="Luca Bistro on Facebook">
+        <a class="social-btn" href="https://www.facebook.com/LucaBistroCincy" target="_blank" rel="noopener noreferrer" aria-label="Luca Bistro on Facebook">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
         </a>
         <a class="social-btn" href="mailto:lucabistro84@gmail.com" aria-label="Email Luca Bistro">
@@ -1586,6 +1604,19 @@
       });
     });
   });
+
+  // Gentle reveal-on-scroll for cards (respects reduced-motion via CSS; no-JS shows all)
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var els = document.querySelectorAll('.event-card, .news-card');
+    els.forEach(function (el) { el.classList.add('reveal'); });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    els.forEach(function (el) { io.observe(el); });
+  })();
 
   // Web3Forms — submit without leaving the page
   document.querySelectorAll('form.web3form').forEach(form => {
