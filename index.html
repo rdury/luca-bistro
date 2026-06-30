@@ -111,7 +111,7 @@
 
     /* HERO */
     .hero {
-      background: var(--dark); color: var(--cream);
+      background: #1C4B70; color: var(--cream);
       min-height: 380px;
       display: grid; grid-template-columns: 1fr;
       align-items: stretch;
@@ -131,7 +131,7 @@
     .eyebrow { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); }
     .hero .eyebrow { font-family: var(--serif); font-style: italic; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: clamp(26px, 6vw, 56px); line-height: 1.1; color: #F8C325; white-space: nowrap; }
     .hero h1 { font-family: var(--serif); font-size: 45px; font-weight: 500; font-style: italic; color: var(--cream); line-height: 1.1; white-space: nowrap; }
-    .hero p { font-size: 18px; color: var(--gold-light); max-width: 460px; line-height: 1.8; font-weight: 400; }
+    .hero p { font-size: 18px; color: var(--cream); max-width: 460px; line-height: 1.8; font-weight: 400; }
     .btn {
       display: inline-block; padding: 0.8rem 2.2rem;
       border: 1px solid var(--gold); color: var(--cream);
@@ -139,6 +139,8 @@
       transition: background 0.25s;
     }
     .btn:hover { background: var(--gold); }
+    .hero .btn { border-color: #F8C325; color: #F8C325; }
+    .hero .btn:hover { background: #F8C325; color: #1C4B70; }
     .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
     .btn-call { border-color: var(--gold-light); color: var(--cream); }
     .btn-call:hover { background: var(--gold-light); color: var(--dark); }
