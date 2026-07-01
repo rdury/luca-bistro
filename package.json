@@ -1,0 +1,12 @@
+{
+  "name": "luca-bistro",
+  "version": "1.0.0",
+  "description": "Luca Bistro - French Bistro website",
+  "private": true,
+  "scripts": {
+    "start": "node serve.js"
+  },
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
