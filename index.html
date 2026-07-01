@@ -106,8 +106,9 @@
     .logo { display: flex; align-items: center; }
     .logo img { height: 94px; width: auto; display: block; }
     nav ul { list-style: none; display: flex; gap: 2.5rem; }
-    nav ul a { font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: #463829; transition: color 0.2s; }
-    nav ul a:hover { color: var(--gold); }
+    nav ul a { font-size: 15px; letter-spacing: 0.09em; text-transform: uppercase; color: #2c2018; font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    nav ul a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    nav ul a.active { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* HERO */
     .hero {
@@ -134,8 +135,6 @@
     .btn:hover { background: var(--gold); }
     .hero .btn { border: 2px solid #F8C325; color: #F8C325; font-weight: 500; }
     .hero .btn:hover { background: #F8C325; color: #1C4B70; }
-    .hero .btn:not(.btn-call) { background: #F8C325; color: #1C4B70; }
-    .hero .btn:not(.btn-call):hover { background: #ffda4f; border-color: #ffda4f; }
     .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
     .btn-call { border-color: var(--gold-light); color: var(--cream); }
     .btn-call:hover { background: var(--gold-light); color: var(--dark); }
@@ -387,7 +386,7 @@
       nav { flex-direction: column; height: auto; padding: 0.6rem var(--pad-x) 0.75rem; gap: 0.5rem; }
       .logo img { height: 73px; }
       nav ul { gap: 1.1rem; flex-wrap: wrap; justify-content: center; }
-      nav ul a { font-size: 13px; }
+      nav ul a { font-size: 14px; }
 
       /* HERO — single column, image on top */
       .hero { grid-template-columns: 1fr; height: auto; min-height: 0; max-height: none; }
@@ -1654,6 +1653,27 @@
       });
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
     els.forEach(function (el) { io.observe(el); });
+  })();
+
+  // Scrollspy — underline the nav link for the section currently in view
+  (function () {
+    if (!('IntersectionObserver' in window)) return;
+    var links = {};
+    document.querySelectorAll('nav ul a').forEach(function (a) {
+      var h = a.getAttribute('href') || '';
+      if (h.charAt(0) === '#' && h.length > 1) links[h.slice(1)] = a;
+    });
+    var sections = Object.keys(links).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    if (!sections.length) return;
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          Object.keys(links).forEach(function (id) { links[id].classList.remove('active'); });
+          if (links[en.target.id]) links[en.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-120px 0px -70% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
   })();
 
   // Web3Forms — submit without leaving the page
