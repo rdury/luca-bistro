@@ -340,37 +340,37 @@
     #tab-exterior .pm { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 12 / 5; }
 
     /* FOOTER */
-    footer { background: var(--darker); color: #a89880; padding: 4rem var(--pad-x) 2rem; }
+    footer { background: #1C4B70; color: #E4DAC2; padding: 4rem var(--pad-x) 2rem; }
     .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    footer h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: var(--gold-light); margin-bottom: 1rem; }
-    footer p { font-size: 14px; line-height: 2.2; font-weight: 400; color: #a89880; }
+    footer h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: #F8C325; margin-bottom: 1rem; }
+    footer p { font-size: 14px; line-height: 2.2; font-weight: 400; color: #E4DAC2; }
     .footer-hours { border-collapse: collapse; font-size: 14px; font-weight: 400; }
-    .footer-hours td { padding: 0.18rem 0; vertical-align: top; line-height: 1.7; color: #a89880; }
-    .footer-hours td:first-child { padding-right: 1.5rem; white-space: nowrap; color: var(--gold-light); }
-    .footer-hours .closed { color: #8a755c; }
-    footer a { color: #a89880 !important; }
-    footer a:hover { color: var(--gold-light) !important; }
+    .footer-hours td { padding: 0.18rem 0; vertical-align: top; line-height: 1.7; color: #E4DAC2; }
+    .footer-hours td:first-child { padding-right: 1.5rem; white-space: nowrap; color: #F8C325; }
+    .footer-hours .closed { color: #A7B7C8; }
+    footer a { color: #E4DAC2 !important; }
+    footer a:hover { color: #F8C325 !important; }
     /* SOCIAL ICON BUTTONS */
     .social-row { display: flex; gap: 0.65rem; margin: 0.4rem 0 0.25rem; }
     .social-btn {
       display: inline-flex; align-items: center; justify-content: center;
       width: 40px; height: 40px; border-radius: 50%;
-      border: 1px solid rgba(194,168,130,0.45);
-      color: var(--gold-light) !important;
+      border: 1px solid rgba(248,195,37,0.5);
+      color: #F8C325 !important;
       transition: background 0.2s, color 0.2s, border-color 0.2s;
     }
-    .social-btn:hover { background: var(--gold); border-color: var(--gold); color: #fff !important; }
+    .social-btn:hover { background: #F8C325; border-color: #F8C325; color: #1C4B70 !important; }
     .social-btn svg { width: 19px; height: 19px; fill: currentColor; display: block; }
     /* MT. ADAMS BUSINESS GUILD BADGE */
-    .guild-row { max-width: 1000px; margin: 0 auto 2.25rem; display: flex; justify-content: center; }
-    .guild-badge { display: inline-flex; align-items: center; gap: 0.8rem; border: 1px solid rgba(194,168,130,0.5); border-radius: 10px; padding: 0.85rem 1.5rem; color: var(--gold-light) !important; transition: background 0.2s, color 0.2s, border-color 0.2s; }
-    .guild-badge:hover { background: var(--gold); border-color: var(--gold); color: #fff !important; }
+    .guild-row { max-width: 1000px; margin: 0 auto 2.25rem; display: flex; justify-content: flex-end; }
+    .guild-badge { display: inline-flex; align-items: center; gap: 0.8rem; border: 1px solid rgba(248,195,37,0.5); border-radius: 10px; padding: 0.85rem 1.5rem; color: #F8C325 !important; transition: background 0.2s, color 0.2s, border-color 0.2s; }
+    .guild-badge:hover { background: #F8C325; border-color: #F8C325; color: #1C4B70 !important; }
     .guild-badge svg { width: 30px; height: 30px; fill: currentColor; flex-shrink: 0; }
     .guild-badge .gb-sub { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85; }
     .guild-badge .gb-main { display: block; font-size: 15px; font-weight: 500; letter-spacing: 0.02em; line-height: 1.3; }
-    .footer-logo { font-family: var(--serif); font-size: 26px; color: var(--gold-light); margin-bottom: 0.75rem; letter-spacing: 0.08em; }
-    .footer-logo span { color: var(--gold); }
-    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid #2a1f10; padding-top: 1.5rem; color: #8a755c; }
+    .footer-logo { font-family: var(--serif); font-size: 26px; color: #F8C325; margin-bottom: 0.75rem; letter-spacing: 0.08em; }
+    .footer-logo span { color: #E4DAC2; }
+    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 1.5rem; color: #C4B99F; }
 
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
@@ -400,6 +400,7 @@
       .about-grid { gap: 2rem; }
       .about-img img { height: 260px; }
       .footer-grid { gap: 2.25rem; }
+      .guild-row { justify-content: center; }
 
       /* Tab rows — scroll horizontally instead of overflowing */
       .about-tabs, .menu-tabs, .photo-tabs {
@@ -1525,7 +1526,7 @@
   <div class="footer-grid">
     <div>
       <div class="footer-logo">LUCA <span>BISTRO</span></div>
-      <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer" style="color:#5a4a36;">934 Hatch St<br>Cincinnati, OH 45202</a></p>
+      <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St<br>Cincinnati, OH 45202</a></p>
     </div>
     <div>
       <h3>Hours</h3>
@@ -1538,8 +1539,8 @@
     </div>
     <div>
       <h3>Contact</h3>
-      <p><a href="tel:+15136215822" style="color:#5a4a36;">(513) 621-5822</a></p>
-      <p><a href="mailto:lucabistro84@gmail.com" style="color:#5a4a36;">lucabistro84@gmail.com</a></p>
+      <p><a href="tel:+15136215822">(513) 621-5822</a></p>
+      <p><a href="mailto:lucabistro84@gmail.com">lucabistro84@gmail.com</a></p>
       <div class="social-row">
         <a class="social-btn" href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener noreferrer" aria-label="Luca Bistro on Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-10.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>

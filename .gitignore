@@ -6,3 +6,7 @@ dist/
 .vercel
 
 .claude/
+
+# Local deploy helper scripts (kept off the live site)
+deploy-preview.bat
+deploy-production.bat
