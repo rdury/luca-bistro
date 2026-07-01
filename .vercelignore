@@ -3,13 +3,16 @@
 
 # Local dev / utility scripts
 serve.js
-scrape.js
-scrape_toast.js
 
 # Project notes and config
-website-review-todo.md
+site-review-update.md
+website-suggestions.md
+DEPLOY-GUIDE.md
 .env.example
 .claude/
+
+# Stray screenshot (not used by the site)
+2026-04-28-000000-1.png
 
 # Stray backups
 *.bak
