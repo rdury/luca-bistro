@@ -11,8 +11,4 @@ DEPLOY-GUIDE.md
 .env.example
 .claude/
 
-# Stray screenshot (not used by the site)
-2026-04-28-000000-1.png
-
-# Stray backups
-*.bak
+# Stray scre
