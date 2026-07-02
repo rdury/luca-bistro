@@ -4,11 +4,13 @@
 # Local dev / utility scripts
 serve.js
 
-# Project notes and config
-site-review-update.md
-website-suggestions.md
-DEPLOY-GUIDE.md
+# Project notes and config (never publish internal docs)
+*.md
 .env.example
 .claude/
 
-# Stray scre
+# Stray screenshot (not used by the site)
+2026-04-28-000000-1.png
+
+# Stray backups
+*.bak
