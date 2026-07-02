@@ -1686,4 +1686,60 @@
   (function () {
     if (!('IntersectionObserver' in window)) return;
     var links = {};
-    document.querySelectorAll
+    document.querySelectorAll('nav ul a').forEach(function (a) {
+      var h = a.getAttribute('href') || '';
+      if (h.charAt(0) === '#' && h.length > 1) links[h.slice(1)] = a;
+    });
+    var sections = Object.keys(links).map(function (id) { return document.getElementById(id); }).filter(Boolean);
+    if (!sections.length) return;
+    var spy = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          Object.keys(links).forEach(function (id) { links[id].classList.remove('active'); });
+          if (links[en.target.id]) links[en.target.id].classList.add('active');
+        }
+      });
+    }, { rootMargin: '-120px 0px -70% 0px' });
+    sections.forEach(function (s) { spy.observe(s); });
+  })();
+
+  // Web3Forms — submit without leaving the page
+  document.querySelectorAll('form.web3form').forEach(form => {
+    const status = form.querySelector('.form-status');
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('.form-submit');
+      const label = btn.textContent;
+      btn.disabled = true;
+      btn.textContent = 'Sending…';
+      if (status) { status.textContent = ''; status.style.color = ''; }
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+        const data = await res.json().catch(() => ({}));
+        if (res.ok && data.success) {
+          form.reset();
+          if (status) { status.style.color = '#5a7d3a'; status.textContent = 'Thank you — your message has been sent.'; }
+        } else {
+          if (status) { status.style.color = '#c0392b'; status.textContent = (data && data.message) || 'Something went wrong. Please email us at lucabistro84@gmail.com.'; }
+        }
+      } catch (err) {
+        if (status) { status.style.color = '#c0392b'; status.textContent = 'Network error. Please email us directly at lucabistro84@gmail.com.'; }
+      } finally {
+        btn.disabled = false;
+        btn.textContent = label;
+      }
+    });
+  });
+</script>
+
+<!-- Vercel Web Analytics (enable "Web Analytics" in the Vercel dashboard for this to collect data) -->
+<script>
+  window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+</script>
+<script defer src="/_vercel/insights/script.js"></script>
+</body>
+</html>
