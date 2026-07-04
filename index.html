@@ -366,7 +366,7 @@
     .footer-hours { border-collapse: collapse; font-size: 14px; font-weight: 400; }
     .footer-hours td { padding: 0.18rem 0; vertical-align: top; line-height: 1.7; color: #E4DAC2; }
     .footer-hours td:first-child { padding-right: 1.5rem; white-space: nowrap; color: #F8C325; }
-    .footer-hours .closed { color: #A7B7C8; }
+    .footer-hours .closed { color: #BCC9D7; }
     footer a { color: #E4DAC2 !important; }
     footer a:hover { color: #F8C325 !important; }
     /* SOCIAL ICON BUTTONS */
@@ -388,7 +388,7 @@
     .guild-badge .gb-main { display: block; font-size: 13.5px; font-weight: 500; letter-spacing: 0.02em; line-height: 1.3; }
     .footer-logo { font-family: var(--serif); font-size: 26px; color: #F8C325; margin-bottom: 0.75rem; letter-spacing: 0.08em; }
     .footer-logo span { color: #E4DAC2; }
-    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 1.5rem; color: #C4B99F; }
+    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 1.5rem; color: #D5CCB6; }
 
     /* ===== MOBILE ===== */
     @media (max-width: 768px) {
@@ -418,11 +418,15 @@
       .footer-grid { gap: 2.25rem; }
 
       /* Tab rows — scroll horizontally instead of overflowing */
-      .about-tabs, .menu-tabs, .photo-tabs {
+      .about-tabs, .menu-tabs, .photo-tabs, .event-tabs {
         flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
       }
-      .about-tabs::-webkit-scrollbar, .menu-tabs::-webkit-scrollbar, .photo-tabs::-webkit-scrollbar { display: none; }
-      .about-tab-btn, .menu-tab-btn, .tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
+      .about-tabs::-webkit-scrollbar, .menu-tabs::-webkit-scrollbar, .photo-tabs::-webkit-scrollbar, .event-tabs::-webkit-scrollbar { display: none; }
+      .about-tab-btn, .menu-tab-btn, .tab-btn, .event-tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
+
+      /* World Cup fixtures — de-cramp on narrow phones (removed with G4 teardown) */
+      .wc-fx td { font-size: 13px; padding-right: 0.5rem; }
+      .wc-fx td.d { font-size: 11px; }
 
       /* Photo grid — wide hero image then 2-up thumbnails */
       .photo-panel.active { grid-template-columns: 1fr 1fr; }
@@ -434,7 +438,7 @@
 
 <nav>
   <a href="#" class="logo" aria-label="Luca Bistro — Le Petit Français, Mt. Adams">
-    <img src="photos/logo.png" alt="Luca Bistro — Le Petit Français | Mt. Adams" />
+    <img src="photos/logo.png" width="1893" height="969" alt="Luca Bistro — Le Petit Français | Mt. Adams" />
   </a>
   <ul>
     <li><a href="#about">About</a></li>
@@ -447,7 +451,7 @@
 
 <div class="hero">
   <div class="hero-text">
-    <img class="cigale" src="photos/cicada.png" alt="Cicada emblem" />
+    <img class="cigale" src="photos/cicada.png" width="1055" height="628" alt="Cicada emblem" />
     <p class="eyebrow">Luca Bistro · Mt. Adams</p>
     <h1 style="color:#F8C325;">South of France</h1>
     <p>Experience old-world charm at Luca Bistro in historic Mount Adams, where Chef Frédéric brings the sunlit flavors of the south of France to the heart of Cincinnati. From leisurely weekend brunches to candlelit dinners, every plate — and every glass of rosé — is a little celebration of la joie de vivre. Pull up a chair on the patio and stay awhile.</p>
@@ -481,7 +485,7 @@
           <p>Everything is made from scratch, and every table is an invitation to slow down and savor — a little taste of la joie de vivre in the heart of Mt. Adams.</p>
         </div>
         <div class="about-img">
-          <img src="photos/food/_MG_4486.webp" alt="Roasted goat cheese salad at Luca Bistro"  loading="lazy" decoding="async" />
+          <img src="photos/food/_MG_4486.webp" alt="Roasted goat cheese salad at Luca Bistro" width="1067" height="1600" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
@@ -1372,20 +1376,11 @@
         <div class="wc-fixtures">
           <p class="wc-fx-head">Next 10 days — shown during open hours</p>
           <table class="wc-fx">
-            <tr><td class="r" colspan="3">Round of 32</td></tr>
-            <tr><td class="d">Thu Jul 2</td><td class="t">3:00 PM</td><td>Spain v Austria</td></tr>
-            <tr><td class="d">Thu Jul 2</td><td class="t">7:00 PM</td><td>Portugal v Croatia</td></tr>
-            <tr><td class="d">Fri Jul 3</td><td class="t">2:00 PM</td><td>Australia v Egypt</td></tr>
-            <tr><td class="d">Fri Jul 3</td><td class="t">6:00 PM</td><td>Argentina v Cabo Verde</td></tr>
             <tr><td class="r" colspan="3">Round of 16</td></tr>
             <tr><td class="d">Sat Jul 4</td><td class="t">1:00 PM</td><td>Canada v Morocco</td></tr>
             <tr><td class="d">Sat Jul 4</td><td class="t">5:00 PM</td><td>Paraguay v France</td></tr>
             <tr><td class="d">Sun Jul 5</td><td class="t">4:00 PM</td><td>Brazil v Norway</td></tr>
             <tr><td class="d">Sun Jul 5</td><td class="t">8:00 PM</td><td>Mexico v England</td></tr>
-            <tr><td class="d">Mon Jul 6</td><td class="t">3:00 PM</td><td>Winner Portugal/Croatia v Spain</td></tr>
-            <tr><td class="d">Mon Jul 6</td><td class="t">5:00 PM</td><td>Winner USA/Bosnia v Winner Belgium/Senegal</td></tr>
-            <tr><td class="d">Tue Jul 7</td><td class="t">TBD</td><td>Winner Argentina/Cabo Verde v Winner Australia/Egypt</td></tr>
-            <tr><td class="d">Tue Jul 7</td><td class="t">TBD</td><td>Winner Switzerland/Algeria v Winner Colombia/Ghana</td></tr>
             <tr><td class="r" colspan="3">Quarter-finals</td></tr>
             <tr><td class="d">Thu Jul 9</td><td class="t">4:00 PM</td><td>TBD · Boston</td></tr>
             <tr><td class="d">Fri Jul 10</td><td class="t">3:00 PM</td><td>TBD · Los Angeles</td></tr>
@@ -1455,39 +1450,39 @@
     </div>
 
     <div id="tab-food" class="photo-panel active">
-      <span class="pm"><img src="photos/food/_MG_5166.webp?v=5" alt="Moules-frites" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/food/_MG_4428.webp?v=5" alt="Escargots on crostini" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/food/_MG_4494.webp?v=5" alt="Goat cheese salad" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/food/_MG_4360.webp?v=5" alt="Burger and fries" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/food/_MG_5216.webp?v=5" alt="Vol-au-vent pastry" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/food/_MG_5166.webp?v=5" alt="Moules-frites" width="1099" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/food/_MG_4428.webp?v=5" alt="Escargots on crostini" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/food/_MG_4494.webp?v=5" alt="Goat cheese salad" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/food/_MG_4360.webp?v=5" alt="Burger and fries" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/food/_MG_5216.webp?v=5" alt="Vol-au-vent pastry" width="1600" height="1067" loading="lazy" decoding="async" /></span>
     </div>
 
     <div id="tab-drink" class="photo-panel">
-      <span class="pm"><img src="photos/drink/_MG_4564.webp?v=2" alt="Stella Artois bottle and glass" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/drink/_MG_4682.webp?v=2" alt="Kronenbourg 1664 draft" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/drink/_MG_4731.webp?v=2" alt="Draft beer being poured" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/drink/_MG_4795.webp?v=2" alt="Beer lineup at the bar" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/drink/_MG_4770.webp?v=2" alt="Chimay goblet" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/drink/_MG_4564.webp?v=2" alt="Stella Artois bottle and glass" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/drink/_MG_4682.webp?v=2" alt="Kronenbourg 1664 draft" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/drink/_MG_4731.webp?v=2" alt="Draft beer being poured" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/drink/_MG_4795.webp?v=2" alt="Beer lineup at the bar" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/drink/_MG_4770.webp?v=2" alt="Chimay goblet" width="1067" height="1600" loading="lazy" decoding="async" /></span>
     </div>
 
     <div id="tab-interior" class="photo-panel">
-      <span class="pm"><img src="photos/interior/_MG_5260.webp?v=2" alt="Full dining room" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/interior/_MG_5258.webp?v=2" alt="Wide shot of restaurant" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/interior/_MG_5246.webp?v=2" alt="Evening ambience" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/interior/_MG_5030.webp?v=2" alt="Daytime dining" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/interior/_MG_4227.webp?v=2" alt="Long banquette" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/interior/_MG_5260.webp?v=2" alt="Full dining room" width="1600" height="888" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/interior/_MG_5258.webp?v=2" alt="Wide shot of restaurant" width="1600" height="1030" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/interior/_MG_5246.webp?v=2" alt="Evening ambience" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/interior/_MG_5030.webp?v=2" alt="Daytime dining" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/interior/_MG_4227.webp?v=2" alt="Long banquette" width="1067" height="1600" loading="lazy" decoding="async" /></span>
     </div>
 
     <div id="tab-patio" class="photo-panel">
-      <span class="pm"><img src="photos/back-patio.webp" alt="Sunny back patio with striped awning and umbrellas" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_4920.webp?v=4" alt="Sunny patio courtyard" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_5275.webp?v=4" alt="Guests under tree canopy" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_5339.webp?v=4" alt="Server on busy patio" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_5358.webp?v=4" alt="Guests dining outdoors" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/back-patio.webp" alt="Sunny back patio with striped awning and umbrellas" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_4920.webp?v=4" alt="Sunny patio courtyard" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_5275.webp?v=4" alt="Guests under tree canopy" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_5339.webp?v=4" alt="Server on busy patio" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_5358.webp?v=4" alt="Guests dining outdoors" width="1067" height="1600" loading="lazy" decoding="async" /></span>
     </div>
 
     <div id="tab-exterior" class="photo-panel">
-      <span class="pm"><img src="photos/exterior/_MG_5324.webp?v=4" alt="Full building corner view" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/exterior/_MG_5324.webp?v=4" alt="Full building corner view" width="1067" height="1600" loading="lazy" decoding="async" /></span>
     </div>
 
   </div>

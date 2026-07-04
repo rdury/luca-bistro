@@ -31,11 +31,11 @@ Approval gates: any pricing/menu/content change or new section needs explicit ow
 **Now (owner approval needed):**
 - **G1 Menu consistency:** 84 Burger $16 dinner vs $15 lunch (confirm/align) + ingredient order; Avocado Shrimp Salad dinner description → "Grilled shrimp" (price already $20 everywhere).
 - ~~**G2 Wine accents**~~ ✅ done Jul 4 (Réserve de Marande ×2, Réserve de Mauny, Domaine Inès — owner-confirmed, edited, integrity ritual passed; **awaiting commit + deploy**). Two follow-ups from online verification: (a) Réserve de Marande is a Languedoc/Pays d'Oc producer but the list says "Provence" — check the bottle's region; (b) the Crémant producer appears online as "**Château** de Mauny", not "Réserve" — check the label.
-- **G3 World Cup interim hygiene** (only worth it before Jul 19): resolve/remove two "Winner …" fixture rows; owner decision on the Jul 11 9:00 PM Kansas City row (kickoff at closing time). ~~SKILL fixes~~ ✅ done Jul 4 (see status above).
+- ~~**G3 World Cup interim hygiene**~~ ✅ done Jul 4: past Jul 2–3 rows and all four Mon/Tue out-of-hours R16 rows removed (owner chose strict open-hours rule); **owner is staying open for BOTH Sat Jul 11 quarter-finals (5 PM Miami + 9 PM Kansas City)** — the scheduled task has a standing exception to always keep those two rows; task re-enabled (next run Mon Jul 6 ~8 AM). **Awaiting owner commit + deploy.**
 
 **⏰ After July 19 — G4 World Cup teardown:** remove banner, event card, fixtures table + orphaned `wc-` CSS; keep "Rosé All Day 2026" heading (drop its inline margin-top); disable the scheduled task; optional Past Events memorial entry. Verify `grep -c "wc-"` = 0.
 
-**Anytime, no approval:** G5 intrinsic image `width`/`height` (+ fix double-space in About `<img>`; consider re-exporting the 103 KB `logo.png`); G6 footer contrast nudges (`.closed` → ~`#BCC9D7`, `.copy` → ~`#D5CCB6`); G7 add `.event-tabs` to the mobile horizontal-scroll rules.
+~~**G5/G6/G7**~~ ✅ done Jul 4 (all 25 imgs have intrinsic dims; double-space fixed; footer `.closed` → `#BCC9D7`, `.copy` → `#D5CCB6`; `.event-tabs` added to mobile scroll rules + `.wc-fx` mobile de-cramp, the latter removed by G4). **Awaiting owner commit + deploy** (sandbox mount was stale — do not commit from Linux side). Still optional from G5: re-export the 103 KB `logo.png` at 2× (~188px tall).
 
 **Enhancements (owner picks):** G9 submit `sitemap.xml` in Google Search Console (owner action, biggest free SEO lever) · G10 newsletter signup via existing Web3Forms pattern (no new JS needed) · G11 private-events/large-parties callout · G12 lazy-loaded Google Map in Hours · G13 Instagram (@lucabistro84) — recommend a zero-script link tile, not an embed.
 
