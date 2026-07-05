@@ -28,10 +28,10 @@
   <meta name="twitter:description" content="A classic French bistro in historic Mount Adams — steak frites, moules marinière, brunch, and an all-French wine list." />
   <meta name="twitter:image" content="https://www.lucabistro.com/photos/back-patio.webp" />
 
-  <meta name="theme-color" content="#F7EFD0" />
+  <meta name="theme-color" content="#fcf9f3" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <!-- Structured data: helps Google show the restaurant with hours, location, cuisine -->
   <script type="application/ld+json">
@@ -75,401 +75,326 @@
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
-      --gold: #806240;
-      --gold-light: #c2a882;
-      --gold-deep: #6e5230;   /* darker gold — passes AA contrast on the warm-ochre sections */
-      --olive: #6f6f43;       /* muted Provençal olive accent */
-      --red: #9E1B32;
-      --frame: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><path d='M28 6 H72 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28 V72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94 H28 A14 14 0 0 0 17 83 A14 14 0 0 1 6 72 V28 A14 14 0 0 1 17 17 A14 14 0 0 0 28 6 Z' fill='%23E6D4A2'/><g fill='none' stroke='%239c6a1e' stroke-width='4' stroke-linecap='round'><path d='M28 6 A14 14 0 0 1 17 17 A14 14 0 0 0 6 28'/><path d='M72 6 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28'/><path d='M94 72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94'/><path d='M6 72 A14 14 0 0 0 17 83 A14 14 0 0 1 28 94'/><path d='M28 6 H72'/><path d='M28 94 H72'/><path d='M6 28 V72'/><path d='M94 28 V72'/></g></svg>");
-      --dark: #271a0e;
-      --darker: #1b120a;
-      --dark-mid: #2a1f10;
-      --cream: #f5ede0;
-      --serif: 'Cormorant Garamond', Georgia, serif;
-      --sans: 'Jost', system-ui, sans-serif;
-      --pad-x: 3rem;   /* shared horizontal padding for every section */
-      --pad-y: 5rem;   /* shared vertical padding for content sections */
+      /* Provençal Heritage — Option 2 design tokens (from Stitch DESIGN.md) */
+      --surface: #fcf9f3;          /* weathered stone */
+      --surface-low: #f6f3ed;      /* tonal band */
+      --surface-mid: #f0eee8;
+      --surface-high: #ebe8e2;
+      --ink: #1c1c18;              /* near-black iron */
+      --ink-soft: #524438;         /* warm variant for body copy */
+      --ochre: #8b500a;            /* primary — sun-baked earth */
+      --ochre-deep: #502a00;
+      --ochre-container: #d48c45;
+      --lavender: #63597b;         /* secondary */
+      --olive: #586247;            /* tertiary */
+      --outline: #857467;
+      --outline-soft: #d7c3b3;
+      --card-border: #e5e1d8;
+      --serif: 'Libre Caslon Text', 'Georgia', serif;
+      --sans: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
+      --shadow-warm: 0 10px 30px -10px rgba(139, 80, 10, 0.08);
     }
     html { scroll-behavior: smooth; }
-    body { font-family: var(--sans); color: #2c2018; background-color: #F7EFD0;
-      background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.035 0'/></filter><rect width='160' height='160' filter='url(%23n)'/></svg>"); }
-    a { text-decoration: none; color: inherit; }
-    .wc-card-banner { display: block; width: 100%; height: auto; margin: 0 0 1rem; }
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important; scroll-behavior: auto !important;
-      }
+      *, *::before, *::after { transition: none !important; animation: none !important; }
     }
+    body {
+      font-family: var(--sans); font-weight: 300; color: var(--ink);
+      background: var(--surface); line-height: 1.7; font-size: 16px;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; height: auto; display: block; }
+    a { color: var(--ochre); }
 
-    /* NAV */
+    /* ---------- Typography ---------- */
+    h1, h2, h3, h4 { font-family: var(--serif); font-weight: 400; line-height: 1.2; }
+    .kicker {
+      font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.2em;
+      text-transform: uppercase; color: var(--olive); margin-bottom: 1.2rem;
+    }
+    .section-head { display: flex; align-items: center; gap: 1.5rem; margin: 0 0 2.5rem; }
+    .section-head h2 { font-size: clamp(28px, 4vw, 36px); color: var(--ink); white-space: nowrap; }
+    .section-head::after { content: ''; height: 1px; flex: 1; background: rgba(215, 195, 179, 0.55); }
+    .leaf-divider { text-align: center; color: var(--outline-soft); font-size: 18px; letter-spacing: 0.6em; margin: 3rem 0; user-select: none; }
+
+    /* ---------- Layout ---------- */
+    .section { padding: 5rem 0; }
+    .inner { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
+    .band { background: var(--surface-low); border-top: 1px solid rgba(215,195,179,0.3); border-bottom: 1px solid rgba(215,195,179,0.3); }
+    @media (max-width: 768px) { .inner { padding: 0 16px; } .section { padding: 3.5rem 0; } }
+
+    /* ---------- Nav ---------- */
     nav {
-      position: sticky; top: 0; z-index: 100;
-      background: rgba(247,239,208,0.96); backdrop-filter: blur(8px);
-      border-bottom: 1px solid #e8e0d4;
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 0 var(--pad-x); height: 110px;
+      position: fixed; top: 0; left: 0; right: 0; z-index: 50;
+      background: rgba(252, 249, 243, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(215, 195, 179, 0.35);
     }
-    .logo { display: flex; align-items: center; }
-    .logo img { height: 94px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; gap: 2.5rem; }
-    nav ul a { font-size: 15px; letter-spacing: 0.09em; text-transform: uppercase; color: #2c2018; font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
-    nav ul a:hover { color: var(--gold); border-bottom-color: var(--gold); }
-    nav ul a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 64px; height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
+    .wordmark { font-family: var(--serif); font-size: 24px; color: var(--ochre); text-decoration: none; letter-spacing: 0.01em; display: flex; align-items: center; gap: 0.7rem; }
+    .wordmark img { height: 44px; width: auto; }
+    nav ul { list-style: none; display: flex; gap: 2.4rem; align-items: center; }
+    nav ul a {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft); text-decoration: none; position: relative; padding-bottom: 3px;
+    }
+    nav ul a::after { content: ''; position: absolute; left: 0; bottom: 0; height: 1px; width: 0; background: currentColor; transition: width 0.3s ease; }
+    nav ul a:hover { color: var(--ochre); }
+    nav ul a:hover::after, nav ul a.active::after { width: 100%; }
+    nav ul a.active { color: var(--ochre); }
+    .nav-call {
+      font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ochre); color: #fff !important; text-decoration: none;
+      padding: 0.65rem 1.4rem; border-radius: 4px; white-space: nowrap; transition: background 0.3s ease;
+    }
+    .nav-call:hover { background: var(--ochre-deep); }
+    @media (max-width: 900px) { nav ul { display: none; } .nav-inner { height: 64px; padding: 0 16px; } }
 
-    /* HERO */
-    .hero {
-      background: #1C4B70; color: var(--cream);
-      min-height: 380px;
-      display: grid; grid-template-columns: 1fr;
-      align-items: stretch;
-    }
-    .hero-text {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; padding: 3rem var(--pad-x); gap: 1.5rem; text-align: center;
-    }
-    .cigale { width: 170px; opacity: 0.9; }
-    .eyebrow { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); }
-    .hero .eyebrow { font-family: var(--serif); font-style: italic; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: clamp(26px, 6vw, 56px); line-height: 1.1; color: #F8C325; white-space: nowrap; }
-    .hero h1 { font-family: var(--serif); font-size: 45px; font-weight: 500; font-style: italic; color: var(--cream); line-height: 1.1; white-space: nowrap; }
-    .hero p { font-size: 18px; color: var(--cream); max-width: 460px; line-height: 1.8; font-weight: 400; }
+    /* ---------- Hero ---------- */
+    .hero { padding: 172px 0 5rem; }
+    .hero-grid { display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 4rem; align-items: center; }
+    .hero h1 { font-size: clamp(40px, 5.5vw, 56px); letter-spacing: -0.02em; color: var(--ochre); margin: 0 0 1.4rem; }
+    .hero p { font-size: 18px; color: var(--ink-soft); max-width: 34rem; margin-bottom: 2.2rem; }
+    .btn-row { display: flex; gap: 1rem; flex-wrap: wrap; }
     .btn {
-      display: inline-block; padding: 0.8rem 2.2rem;
-      border: 1px solid var(--gold); color: var(--cream);
-      font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: background 0.25s;
+      display: inline-block; font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 0.85rem 1.8rem; border-radius: 4px; text-decoration: none; transition: all 0.3s ease; border: 1px solid transparent;
     }
-    .btn:hover { background: var(--gold); }
-    .hero .btn { border: 2px solid #F8C325; color: #F8C325; font-weight: 500; }
-    .hero .btn:hover { background: #F8C325; color: #1C4B70; }
-    .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
-    .btn-call { border-color: var(--gold-light); color: var(--cream); }
-    .btn-call:hover { background: var(--gold-light); color: var(--dark); }
-    /* Editorial drop-cap on the opening About paragraph */
-    .about-text p.lead::first-letter {
-      float: left; font-family: var(--serif); font-style: italic;
-      font-size: 3.6rem; line-height: 0.78; padding: 0.15rem 0.5rem 0 0; color: var(--gold-deep);
+    .btn-primary { background: var(--ochre); color: #fff; }
+    .btn-primary:hover { background: var(--ochre-deep); }
+    .btn-ghost { border-color: var(--outline); color: var(--ink); }
+    .btn-ghost:hover { background: var(--surface-high); }
+    .framed { position: relative; }
+    .framed::before { content: ''; position: absolute; inset: 0; border: 1px solid var(--outline-soft); transform: translate(-14px, 14px); pointer-events: none; }
+    .framed img { position: relative; box-shadow: var(--shadow-warm); object-fit: cover; width: 100%; }
+    .hero .framed img { aspect-ratio: 16 / 11; }
+    .hero-note { margin-top: 1.6rem; font-size: 13px; color: var(--outline); letter-spacing: 0.05em; }
+    .cigale { height: 60px; width: auto; margin-bottom: 1.3rem; opacity: 0.92; }
+    .cigale-footer { height: 34px; width: auto; opacity: 0.75; margin-bottom: 0.8rem; }
+    @media (max-width: 900px) { .hero { padding-top: 120px; } .hero-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+    /* ---------- Tabs (underline style, shared) ---------- */
+    .about-tabs, .menu-tabs, .photo-tabs, .event-tabs {
+      display: flex; gap: 2.2rem; border-bottom: 1px solid rgba(215,195,179,0.45); margin-bottom: 2.6rem;
     }
-    /* Gentle reveal-on-scroll (added by JS so no-JS users always see content) */
-    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
-    .reveal.in { opacity: 1; transform: none; }
-    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1 !important; transform: none !important; } }
-
-    /* SECTIONS */
-    .section { padding: var(--pad-y) var(--pad-x); scroll-margin-top: 130px; }
-    #world-cup { scroll-margin-top: 130px; }
-    .inner { max-width: 1000px; margin: 0 auto; }
-    .eyebrow-dark { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
-    h2 { font-family: var(--serif); font-size: 46px; font-weight: 500; margin-bottom: 0.5rem; }
-    .event-panel > h3 { font-family: var(--serif); font-size: 46px; font-weight: 500; margin-bottom: 0.5rem; }
-    .rule { width: 72px; height: 12px; margin: 1.2rem 0 2rem;
-      background: no-repeat left center url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='12' viewBox='0 0 72 12'><line x1='0' y1='6' x2='44' y2='6' stroke='%239E1B32' stroke-width='1.4'/><path d='M53 6 l5 -5 l5 5 l-5 5 z' fill='%236f6f43'/><circle cx='68' cy='6' r='1.6' fill='%239E1B32'/></svg>"); }
-    .bg-warm { background: #EDDFB4; }
-
-    /* ABOUT */
-    .about-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
-    .about-tab-btn {
-      background: none; border: none; cursor: pointer; padding: 0.75rem 1.8rem;
-      font-family: var(--serif); font-size: 18px; font-weight: 600; color: #9a8470;
-      border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s;
+    .about-tab-btn, .menu-tab-btn, .tab-btn, .event-tab-btn {
+      background: none; border: none; cursor: pointer; padding: 0 0 0.8rem;
+      font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink-soft); border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.25s ease;
     }
-    .about-tab-btn:hover { color: var(--gold); }
-    .about-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .about-panel { display: none; }
-    .about-panel.active { display: block; }
+    .about-tab-btn:hover, .menu-tab-btn:hover, .tab-btn:hover, .event-tab-btn:hover { color: var(--ochre); }
+    .about-tab-btn.active, .menu-tab-btn.active, .tab-btn.active, .event-tab-btn.active { color: var(--ochre); border-bottom-color: var(--ochre); }
+    .about-panel, .menu-panel, .photo-panel, .event-panel { display: none; }
+    .about-panel.active, .menu-panel.active, .event-panel.active { display: block; }
+    .photo-panel.active { display: grid; }
 
-    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .about-text p { color: #463829; line-height: 1.9; margin-bottom: 1rem; font-weight: 400; }
-    .about-img img { width: 100%; height: 380px; object-fit: cover; filter: sepia(0.16) saturate(1.08) brightness(1.01); }
+    /* ---------- Cards ---------- */
+    .card {
+      border: 1px solid var(--card-border); background: var(--surface); border-radius: 8px;
+      padding: 1.8rem; transition: box-shadow 0.4s ease, border-color 0.4s ease;
+    }
+    .card:hover { box-shadow: var(--shadow-warm); border-color: var(--outline-soft); }
+    .chip {
+      display: inline-block; background: rgba(88, 98, 71, 0.1); color: var(--olive);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 0.25rem 0.75rem; border-radius: 999px;
+    }
 
-    /* HOURS */
-    .hours-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .hours-address { font-size: 15px; color: #463829; line-height: 1.9; margin-bottom: 1.5rem; }
-    .hours-address a { color: var(--gold); text-decoration: underline; }
+    /* ---------- About ---------- */
+    .story-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 4rem; align-items: center; }
+    .story-grid p { color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .story-grid .framed img { aspect-ratio: 3 / 4; max-height: 460px; }
+    @media (max-width: 900px) { .story-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+    .hours-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; align-items: start; }
+    @media (max-width: 900px) { .hours-grid { grid-template-columns: 1fr; } }
     .hours-table { width: 100%; border-collapse: collapse; }
-    .hours-table th { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding: 0.5rem 0.75rem 0.5rem 0; text-align: left; border-bottom: 1px solid #e0d8cc; }
-    .hours-table td { font-size: 15px; color: #4a3a28; padding: 0.65rem 0.75rem 0.65rem 0; border-bottom: 1px solid #ede8e0; }
-    .hours-table td:first-child { font-weight: 600; width: 36%; }
-    .hours-table td.closed { color: #b0a090; }
-    .hours-note { margin-top: 2rem; font-size: 14px; color: #463829; line-height: 1.8; }
-    .hours-note strong { color: var(--red); font-weight: 600; display: block; margin: 1rem 0 0.5rem; font-size: 15px; letter-spacing: 0.04em; }
+    .hours-table th, .hours-table td { text-align: left; padding: 0.7rem 0.5rem; border-bottom: 1px solid rgba(215,195,179,0.35); font-size: 15px; }
+    .hours-table th { font-family: var(--sans); font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ochre); }
+    .hours-table td:first-child { font-weight: 600; color: var(--ink); white-space: nowrap; }
+    .hours-table .closed { color: var(--outline); font-style: italic; }
+    .hours-note p { color: var(--ink-soft); margin-bottom: 0.9rem; }
+    .hours-note strong { color: var(--ochre); font-weight: 600; }
+    .address-line { font-size: 15px; color: var(--ink-soft); margin-bottom: 0.4rem; }
+    .address-line a { color: var(--ochre); text-decoration: none; }
+    .address-line a:hover { text-decoration: underline; }
 
-    /* CONTACT & JOBS FORMS */
-    .form-intro { font-size: 15px; color: #463829; line-height: 1.8; margin-bottom: 2rem; }
-    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
-    .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
+    /* ---------- Forms (stationery style) ---------- */
+    .form-intro { color: var(--ink-soft); margin-bottom: 2rem; max-width: 44rem; }
+    .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 2.5rem; margin-bottom: 2rem; }
     .form-field.full { grid-column: 1 / -1; }
-    .form-field label { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); }
-    .form-field label span { color: #b0a090; font-size: 11px; margin-left: 0.4rem; }
+    .form-field label { display: block; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-soft); margin-bottom: 0.4rem; }
+    .form-field label span { color: var(--outline); font-weight: 400; letter-spacing: 0.05em; text-transform: none; margin-left: 0.4rem; }
     .form-field input, .form-field textarea, .form-field select {
-      border: 1px solid #e0d8cc; background: #fff; padding: 0.75rem 1rem;
-      font-family: var(--sans); font-size: 15px; color: #2c2018;
-      outline: none; transition: border-color 0.2s; width: 100%;
+      width: 100%; font-family: var(--sans); font-size: 15px; color: var(--ink);
+      background: transparent; border: none; border-bottom: 1px solid var(--outline-soft);
+      padding: 0.55rem 0.1rem; border-radius: 0; transition: border-color 0.3s ease;
     }
-    .form-field input:focus, .form-field textarea:focus, .form-field select:focus { border-color: var(--gold); }
-    .form-field textarea { resize: vertical; min-height: 120px; }
-    .form-field input[type="file"] { border: none; padding: 0; font-size: 14px; color: #463829; }
+    .form-field textarea { min-height: 120px; resize: vertical; }
+    .form-field input:focus, .form-field textarea:focus, .form-field select:focus {
+      outline: none; border-bottom: 2px solid var(--lavender); margin-bottom: -1px;
+    }
+    .form-field ::placeholder { color: var(--outline); opacity: 0.8; }
     .form-submit {
-      margin-top: 1.5rem; background: none; border: 1px solid var(--gold);
-      color: var(--gold); padding: 0.8rem 2.5rem; cursor: pointer;
-      font-family: var(--sans); font-size: 14px; letter-spacing: 0.1em; text-transform: uppercase;
-      transition: background 0.2s, color 0.2s;
+      font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase;
+      background: var(--ochre); color: #fff; border: none; border-radius: 4px; cursor: pointer;
+      padding: 0.85rem 2rem; transition: background 0.3s ease;
     }
-    .form-submit:hover { background: var(--gold); color: #fff; }
-    .form-submit:disabled { opacity: 0.6; cursor: default; }
-    .form-status { margin-top: 1rem; font-size: 14px; line-height: 1.6; }
+    .form-submit:hover { background: var(--ochre-deep); }
+    .form-submit:disabled { opacity: 0.6; cursor: wait; }
+    .form-status { margin-top: 1rem; font-size: 14px; }
+    @media (max-width: 700px) { .form-grid { grid-template-columns: 1fr; } }
+    .job-listing { border: 1px solid var(--card-border); border-radius: 8px; background: var(--surface); padding: 1.6rem 1.8rem; margin-bottom: 1.4rem; transition: box-shadow 0.4s ease; }
+    .job-listing:hover { box-shadow: var(--shadow-warm); }
+    .job-listing h3 { font-size: 21px; color: var(--ochre); margin-bottom: 0.7rem; }
+    .job-listing p { color: var(--ink-soft); font-size: 15px; }
+    .job-meta { margin-top: 0.8rem; font-weight: 600; color: var(--olive) !important; font-size: 13px !important; letter-spacing: 0.06em; text-transform: uppercase; }
 
-    /* JOBS */
-    .job-listing { border-bottom: 1px solid #e0d8cc; padding: 1.5rem 0; }
-    .job-listing:last-of-type { border-bottom: none; margin-bottom: 2rem; }
-    .job-listing h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; }
-    .job-listing p { font-size: 14px; color: #463829; line-height: 1.8; font-weight: 400; }
-    .job-listing .job-meta { font-size: 13px; color: var(--gold); margin-top: 0.6rem; }
-
-    /* MENU */
+    /* ---------- Menu ---------- */
     .menu-section { margin-bottom: 3rem; }
-    .menu-section-title {
-      font-family: var(--serif); font-size: 14px; font-weight: 600;
-      letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
-      border-bottom: 1px solid #e0d8cc; padding-bottom: 0.6rem; margin-bottom: 1.25rem;
-    }
-    #menu-wine .menu-section-title {
-      font-size: 18px;
-    }
-    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
-    .menu-item {
-      display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
-      gap: 0.45rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid #ede8e0;
-    }
-    .menu-item:last-child { border-bottom: none; }
-    .menu-item-info { flex: 1; }
-    .menu-item-info h3 { font-family: var(--serif); font-size: 21px; font-weight: 500; color: #1a1209; margin-bottom: 0.25rem; }
-    .menu-item-info p { font-size: 15px; color: #5c4a39; line-height: 1.6; font-weight: 400; }
-    .menu-price { font-size: 15px; color: var(--gold); white-space: nowrap; flex-shrink: 0; }
-    .menu-note { font-size: 12px; color: #9a8470; margin-top: 2.5rem; text-align: center; letter-spacing: 0.04em; }
-    .wine-price-legend { display: flex; justify-content: flex-end; gap: 1.5rem; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: #9a8470; margin-bottom: 0.5rem; padding-right: 0.25rem; }
-    .wine-prices { display: flex; gap: 1.5rem; flex-shrink: 0; white-space: nowrap; }
-    .wine-prices span { font-size: 15px; color: var(--gold); min-width: 2.5rem; text-align: right; }
-    .wine-prices span.no-glass { color: transparent; }
-    /* WINE PAIRING HINT — quiet secondary line below the entry (no bar, no fill) */
-    .wine-pair {
-      flex-basis: 100%; width: 100%; margin: 0.2rem 0 0;
-      font-family: var(--serif); font-style: italic; font-size: 13.5px; line-height: 1.45;
-      color: #5c4a39;
-    }
-    .wine-pair .wine-pair-label {
-      display: inline-block;
-      font-family: var(--sans); font-style: normal; font-size: 10px;
-      letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-deep);
-      margin-right: 0.5rem;
-    }
-    .menu-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
-    .menu-tab-btn {
-      background: none; border: none; cursor: pointer; padding: 0.75rem 2rem;
-      font-family: var(--serif); font-size: 18px; font-weight: 600; color: #9a8470;
-      border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s;
-    }
-    .menu-tab-btn:hover { color: var(--gold); }
-    .menu-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .menu-panel { display: none; }
-    .menu-panel.active { display: block; }
+    .menu-section-title { display: flex; align-items: center; gap: 1.2rem; font-family: var(--serif); font-size: 24px; color: var(--ink); margin-bottom: 1.6rem; }
+    .menu-section-title::after { content: ''; height: 1px; flex: 1; background: rgba(215,195,179,0.4); }
+    .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 3.5rem; }
+    @media (max-width: 800px) { .menu-grid { grid-template-columns: 1fr; } }
+    .menu-item { display: flex; justify-content: space-between; align-items: baseline; gap: 1.2rem; padding: 0.9rem 0; border-bottom: 1px solid rgba(229,225,216,0.9); }
+    .menu-item-info h3 { font-size: 18px; color: var(--ochre); margin-bottom: 0.15rem; }
+    .menu-item-info p { font-size: 14px; color: var(--ink-soft); font-style: italic; }
+    .menu-price { font-family: var(--sans); font-size: 15px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+    .wine-pair { grid-column: 1 / -1; font-size: 13px; color: var(--olive); margin: -0.4rem 0 0.4rem; }
+    .menu-item .wine-pair { margin: 0; }
+    .menu-item-block { display: block; }
+    .wine-pair-label { font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; margin-right: 0.5rem; color: var(--outline); }
+    .menu-note { font-size: 13px; color: var(--outline); font-style: italic; margin-top: 1.5rem; }
+    .wine-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+    @media (max-width: 900px) { .wine-cards { grid-template-columns: 1fr; } }
+    .wine-card h3 { font-family: var(--sans); font-size: 13px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin-bottom: 1.2rem; }
+    .wine-card ul { list-style: none; }
+    .wine-card li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.7rem 0; border-bottom: 1px solid rgba(215,195,179,0.25); }
+    .wine-card li:last-child { border-bottom: none; }
+    .wine-name { font-weight: 600; font-size: 14.5px; color: var(--ink); }
+    .wine-region { font-size: 12px; color: var(--ink-soft); }
+    .wine-price { font-size: 13.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
+    .wine-legend { font-size: 12px; color: var(--outline); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; }
 
-    /* EVENTS */
-    .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-    .event-card { background-color: transparent; padding: 16px 20px; border: 16px solid transparent; border-image: var(--frame) 28 fill stretch; }
-    /* Darker gold on the warm-ochre sections so small text meets AA contrast */
-    .bg-warm .eyebrow-dark, .bg-warm .menu-section-title, .bg-warm .menu-price,
-    .bg-warm .wine-prices span:not(.no-glass),
-    .bg-warm .menu-tab-btn.active, .bg-warm .menu-tab-btn:hover,
-    .bg-warm .tab-btn.active, .bg-warm .tab-btn:hover { color: var(--gold-deep); }
-    .bg-warm .menu-tab-btn.active, .bg-warm .tab-btn.active { border-bottom-color: var(--gold-deep); }
-    .event-card h3, .event-card h4 { font-family: var(--sans); font-size: 20px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; letter-spacing: 0.02em; }
-    .event-card p { font-size: 17px; color: #4a3a28; line-height: 1.8; font-weight: 400; }
-    .event-sub { color: #5c4a39 !important; font-size: 16px !important; margin-top: 6px; }
-    .event-date { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
-    .event-tag { display: inline-block; margin-top: 1rem; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border: 1px solid var(--red); color: var(--red); }
-    .wc-fixtures { margin-top: 0.85rem; border-top: 1px solid rgba(158,27,50,0.3); padding-top: 0.7rem; }
-    .wc-fx-head { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--red); margin: 0 0 0.6rem; }
+    /* ---------- Apéro band ---------- */
+    .apero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .apero-grid h2 { font-size: clamp(26px, 3.5vw, 32px); color: var(--ochre); margin-bottom: 1.2rem; }
+    .apero-grid p { color: var(--ink-soft); font-size: 17px; margin-bottom: 2rem; }
+    .apero-grid .framed img { aspect-ratio: 4 / 3; }
+    @media (max-width: 900px) { .apero-grid { grid-template-columns: 1fr; gap: 2.5rem; } }
+
+    /* ---------- Events ---------- */
+    .events-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem; }
+    @media (max-width: 900px) { .events-grid { grid-template-columns: 1fr; } }
+    .event-card h3, .event-card h4 { color: var(--ochre); }
+    .event-card .date-line { font-size: 13px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--olive); margin-bottom: 0.5rem; }
+    .event-card h4 { font-size: 24px; margin-bottom: 0.7rem; }
+    .event-card p { color: var(--ink-soft); font-size: 15px; }
+    .event-card .chip { margin-top: 1rem; margin-right: 0.4rem; }
+    .wc-card-banner { border-radius: 4px; margin: 1rem 0; }
+    .live-badge { display: inline-flex; align-items: center; gap: 0.5rem; font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: #93000a; background: rgba(186, 26, 26, 0.08); padding: 0.3rem 0.9rem; border-radius: 999px; margin-bottom: 0.8rem; }
+    .live-badge::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: #ba1a1a; }
+    .wc-fixtures { border: 1px solid var(--card-border); border-radius: 8px; background: var(--surface-low); padding: 1.4rem 1.6rem; margin-top: 1.2rem; }
+    .wc-fx-head { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ochre); font-weight: 600; margin: 0 0 0.6rem; }
     .wc-fx { width: 100%; border-collapse: collapse; }
-    .wc-fx td { padding: 0.28rem 0.9rem 0.28rem 0; font-size: 14px; color: #3a2c1c; border-bottom: 1px solid rgba(60,40,20,0.12); }
-    .wc-fx td.d { color: var(--gold); white-space: nowrap; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; }
-    .wc-fx td.t { color: #6b5440; white-space: nowrap; }
-    .wc-fx td.r { color: var(--red); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 0.85rem 0 0.35rem; border-bottom: 1px solid rgba(158,27,50,0.3); }
+    .wc-fx td { padding: 0.32rem 0.9rem 0.32rem 0; font-size: 14px; color: var(--ink-soft); border-bottom: 1px solid rgba(215,195,179,0.3); }
+    .wc-fx td.d { color: var(--olive); white-space: nowrap; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; font-weight: 600; }
+    .wc-fx td.t { color: var(--outline); white-space: nowrap; }
+    .wc-fx td.r { color: var(--ochre); font-size: 11px; letter-spacing: 0.1em; text-transform: uppercase; font-weight: 600; padding: 0.85rem 0 0.35rem; border-bottom: 1px solid rgba(139,80,10,0.25); }
     .wc-fx tr:first-child td.r { padding-top: 0.2rem; }
-    .wc-fx-note { margin: 0.6rem 0 0; font-size: 12px; color: #6b5a47; font-style: italic; }
-    .wc-fx-results { margin: 0.8rem 0 0; font-size: 13px; color: #3a2c1c; }
-    .wc-fx-results strong { color: var(--red); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; margin-right: 0.4rem; }
-    /* EVENTS TABS + PAST EVENTS */
-    .event-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
-    .event-tab-btn { background: none; border: none; cursor: pointer; padding: 0.75rem 2rem; font-family: var(--serif); font-size: 18px; font-weight: 600; color: #9a8470; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s; }
-    .event-tab-btn:hover { color: var(--gold); }
-    .event-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .event-panel { display: none; }
-    .event-panel.active { display: block; }
-    .past-intro { font-size: 15px; color: #5c4a39; line-height: 1.7; margin-bottom: 1.5rem; font-style: italic; }
-    .past-event { border-bottom: 1px solid #e0d8cc; padding: 1rem 0; }
-    .past-event:last-child { border-bottom: none; }
-    .past-date { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.25rem; }
-    .past-event h3 { font-family: var(--serif); font-size: 20px; font-weight: 500; color: #1a1209; margin-bottom: 0.25rem; }
-    .past-event p { font-size: 14px; color: #5c4a39; line-height: 1.6; }
+    .wc-fx-results { margin: 0.9rem 0 0; font-size: 13px; color: var(--ink-soft); }
+    .wc-fx-results strong { color: var(--ochre); font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; font-size: 11px; margin-right: 0.4rem; }
+    .wc-fx-note { margin: 0.6rem 0 0; font-size: 12px; color: var(--outline); font-style: italic; }
+    .past-event { border-bottom: 1px solid rgba(215,195,179,0.35); padding: 1.3rem 0; }
+    .past-event .date-line { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--outline); margin-bottom: 0.3rem; }
+    .past-event h3 { font-size: 21px; color: var(--ochre); margin-bottom: 0.4rem; }
+    .past-event p { font-size: 14.5px; color: var(--ink-soft); }
 
-    /* NEWS */
-    .news-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem; margin-top: 2rem; }
-    .news-card {
-      display: block; text-decoration: none; color: inherit;
-      border: 16px solid transparent; border-image: var(--frame) 28 fill stretch;
-      background: transparent;
-      transition: transform 0.2s;
-    }
-    .news-card:hover { transform: translateY(-2px); }
-    .news-card-body { padding: 1.5rem; }
-    .news-source { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; }
-    .news-card h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; line-height: 1.3; margin-bottom: 0.75rem; color: #1a1209; }
-    .news-card p { font-size: 14px; color: #463a2d; line-height: 1.75; font-weight: 400; }
-    .news-card-footer { padding: 0.9rem 1.5rem; border-top: 1px solid #e8e0d4; display: flex; justify-content: space-between; align-items: center; }
-    .news-date { font-size: 12px; color: #6b5440; letter-spacing: 0.06em; }
-    .news-read-more { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
-
-    /* PHOTOS */
-    .photo-tabs { display: flex; gap: 0; border-bottom: 1px solid #e8e0d4; margin-bottom: 2rem; }
-    .tab-btn {
-      background: none; border: none; cursor: pointer;
-      font-family: var(--sans); font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase;
-      color: #9a8470; padding: 0.75rem 1.5rem;
-      border-bottom: 2px solid transparent; margin-bottom: -1px;
-      transition: color 0.2s, border-color 0.2s;
-    }
-    .tab-btn:hover { color: var(--gold); }
-    .tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .photo-panel { display: none; }
-    .photo-panel.active { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
-    .pm { position: relative; display: block; aspect-ratio: 1; overflow: hidden; }
-    .pm img { width: 100%; height: 100%; object-fit: cover; display: block; filter: sepia(0.16) saturate(1.08) brightness(1.01); transition: opacity 0.2s; }
-    .pm:hover img { opacity: 0.9; }
-    .pm::after { content: ""; position: absolute; inset: 0; pointer-events: none;
-      background-repeat: no-repeat; background-size: 26px 26px;
-      background-position: top left, top right, bottom left, bottom right;
-      filter: drop-shadow(0.5px 1px 1px rgba(0,0,0,0.5));
-      background-image:
-        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M0 0 L24 0 L0 24 Z' fill='%23080808'/><path d='M23 1 L1 23' fill='none' stroke='%23ECDFBE' stroke-width='1.5' stroke-linecap='round' opacity='0.55'/></svg>"),
-        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M24 0 L0 0 L24 24 Z' fill='%23080808'/><path d='M1 1 L23 23' fill='none' stroke='%23ECDFBE' stroke-width='1.5' stroke-linecap='round' opacity='0.55'/></svg>"),
-        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M0 24 L0 0 L24 24 Z' fill='%23080808'/><path d='M1 1 L23 23' fill='none' stroke='%23ECDFBE' stroke-width='1.5' stroke-linecap='round' opacity='0.55'/></svg>"),
-        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='24' height='24'><path d='M24 24 L24 0 L0 24 Z' fill='%23080808'/><path d='M23 1 L1 23' fill='none' stroke='%23ECDFBE' stroke-width='1.5' stroke-linecap='round' opacity='0.55'/></svg>");
-    }
+    /* ---------- Photos ---------- */
+    .photo-panel { grid-template-columns: repeat(3, 1fr); gap: 1.2rem; }
     .photo-panel .pm:first-child { grid-column: span 2; grid-row: span 2; }
-    #tab-exterior .pm { grid-column: 1 / -1; grid-row: auto; aspect-ratio: 12 / 5; }
-
-    /* FOOTER */
-    footer { background: #1C4B70; color: #E4DAC2; padding: 4rem var(--pad-x) 2rem; }
-    .footer-grid { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 3rem; margin-bottom: 3rem; }
-    footer h3 { font-family: var(--serif); font-size: 17px; font-weight: 500; color: #F8C325; margin-bottom: 1rem; }
-    footer p { font-size: 14px; line-height: 2.2; font-weight: 400; color: #E4DAC2; }
-    .footer-hours { border-collapse: collapse; font-size: 14px; font-weight: 400; }
-    .footer-hours td { padding: 0.18rem 0; vertical-align: top; line-height: 1.7; color: #E4DAC2; }
-    .footer-hours td:first-child { padding-right: 1.5rem; white-space: nowrap; color: #F8C325; }
-    .footer-hours .closed { color: #BCC9D7; }
-    footer a { color: #E4DAC2 !important; }
-    footer a:hover { color: #F8C325 !important; }
-    /* SOCIAL ICON BUTTONS */
-    .social-row { display: flex; gap: 0.65rem; margin: 0.4rem 0 0.25rem; }
-    .social-btn {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 40px; height: 40px; border-radius: 50%;
-      border: 1px solid rgba(248,195,37,0.5);
-      color: #F8C325 !important;
-      transition: background 0.2s, color 0.2s, border-color 0.2s;
-    }
-    .social-btn:hover { background: #F8C325; border-color: #F8C325; color: #1C4B70 !important; }
-    .social-btn svg { width: 19px; height: 19px; fill: currentColor; display: block; }
-    /* MT. ADAMS BUSINESS GUILD BADGE */
-    .guild-badge { display: inline-flex; align-items: center; gap: 0.6rem; border: 1px solid rgba(248,195,37,0.5); border-radius: 10px; padding: 0.65rem 0.95rem; margin: 0.7rem 0 0.35rem; color: #F8C325 !important; transition: background 0.2s, color 0.2s, border-color 0.2s; }
-    .guild-badge:hover { background: #F8C325; border-color: #F8C325; color: #1C4B70 !important; }
-    .guild-badge svg { width: 26px; height: 26px; fill: currentColor; flex-shrink: 0; }
-    .guild-badge .gb-sub { display: block; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; opacity: 0.85; }
-    .guild-badge .gb-main { display: block; font-size: 13.5px; font-weight: 500; letter-spacing: 0.02em; line-height: 1.3; }
-    .footer-logo { font-family: var(--serif); font-size: 26px; color: #F8C325; margin-bottom: 0.75rem; letter-spacing: 0.08em; }
-    .footer-logo span { color: #E4DAC2; }
-    .copy { max-width: 1000px; margin: 0 auto; font-size: 12px; border-top: 1px solid rgba(255,255,255,0.18); padding-top: 1.5rem; color: #D5CCB6; }
-
-    /* ===== MOBILE ===== */
-    @media (max-width: 768px) {
-      :root { --pad-x: 1.25rem; --pad-y: 3rem; }   /* uniform gutters shrink together on mobile */
-      /* NAV — stack logo over wrapped links */
-      nav { flex-direction: column; height: auto; padding: 0.6rem var(--pad-x) 0.75rem; gap: 0.5rem; }
-      .logo img { height: 73px; }
-      nav ul { gap: 1.1rem; flex-wrap: wrap; justify-content: center; }
-      nav ul a { font-size: 14px; }
-
-      /* HERO — single column, image on top */
-      .hero { grid-template-columns: 1fr; height: auto; min-height: 0; max-height: none; }
-      .hero-text { padding: 2.75rem var(--pad-x); }
-      .hero h1 { font-size: 32px; white-space: normal; }
-      .hero p { font-size: 17px; max-width: none; }
-      .cigale { width: 130px; }
-
-      /* SECTIONS */
-      .section { padding: var(--pad-y) var(--pad-x); }
-      h2, .event-panel > h3 { font-size: 34px; }
-
-      /* Stack all two/three-column grids */
-      .about-grid, .hours-layout, .form-grid, .menu-grid,
-      .events-grid, .news-grid, .footer-grid { grid-template-columns: 1fr; }
-      .about-grid { gap: 2rem; }
-      .about-img img { height: 260px; }
-      .footer-grid { gap: 2.25rem; }
-
-      /* Tab rows — scroll horizontally instead of overflowing */
-      .about-tabs, .menu-tabs, .photo-tabs, .event-tabs {
-        flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
-      }
-      .about-tabs::-webkit-scrollbar, .menu-tabs::-webkit-scrollbar, .photo-tabs::-webkit-scrollbar, .event-tabs::-webkit-scrollbar { display: none; }
-      .about-tab-btn, .menu-tab-btn, .tab-btn, .event-tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
-
-      /* World Cup fixtures — de-cramp on narrow phones (removed with G4 teardown) */
-      .wc-fx td { font-size: 13px; padding-right: 0.5rem; }
-      .wc-fx td.d { font-size: 11px; }
-
-      /* Photo grid — wide hero image then 2-up thumbnails */
-      .photo-panel.active { grid-template-columns: 1fr 1fr; }
+    .pm { border: 1px solid var(--card-border); background: var(--surface); border-radius: 8px; padding: 8px; aspect-ratio: 1; overflow: hidden; transition: box-shadow 0.4s ease; }
+    .pm:hover { box-shadow: var(--shadow-warm); }
+    .pm img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+    @media (max-width: 800px) {
+      .photo-panel { grid-template-columns: 1fr 1fr; }
       .photo-panel .pm:first-child { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 10; }
     }
+
+    /* ---------- News / press ---------- */
+    .news-card { display: block; text-decoration: none; border-bottom: 1px solid rgba(215,195,179,0.35); padding: 1.6rem 0; }
+    .news-card .source { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--olive); margin-bottom: 0.4rem; }
+    .news-card h3 { font-size: 23px; color: var(--ink); margin-bottom: 0.5rem; transition: color 0.25s ease; }
+    .news-card:hover h3 { color: var(--ochre); }
+    .news-card p { color: var(--ink-soft); font-size: 15px; max-width: 52rem; }
+    .news-card .news-meta { margin-top: 0.6rem; font-size: 13px; color: var(--outline); }
+    .news-card .news-meta em { color: var(--ochre); font-style: normal; font-weight: 600; }
+
+    /* ---------- Reveal on scroll ---------- */
+    .reveal { opacity: 0; transform: translateY(14px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
+
+    /* ---------- Footer ---------- */
+    footer { background: var(--surface-low); border-top: 1px solid rgba(215,195,179,0.5); padding: 4rem 0 0; }
+    .footer-grid { max-width: 1280px; margin: 0 auto; padding: 0 64px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; }
+    .footer-logo { font-family: var(--serif); font-size: 24px; color: var(--ochre); margin-bottom: 0.9rem; }
+    .footer-grid p { font-size: 14.5px; color: var(--ink-soft); }
+    .footer-head { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin-bottom: 1rem; }
+    .footer-hours { width: 100%; border-collapse: collapse; }
+    .footer-hours td { padding: 0.22rem 0; vertical-align: top; font-size: 14px; color: var(--ink-soft); }
+    .footer-hours td:first-child { padding-right: 1.4rem; white-space: nowrap; font-weight: 600; color: var(--ink); }
+    .footer-hours .closed { color: var(--outline); font-style: italic; }
+    footer a { color: var(--ochre); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+    .footer-contact p { margin-bottom: 0.5rem; }
+    .footer-note { font-size: 13px !important; font-style: italic; color: var(--outline) !important; margin-top: 1rem; }
+    .copy { max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 64px; border-top: 1px solid rgba(215,195,179,0.35); font-size: 12.5px; color: var(--outline); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; padding: 0 16px; } .copy { padding: 1.4rem 16px; } }
   </style>
 </head>
 <body>
 
-<nav>
-  <a href="#" class="logo" aria-label="Luca Bistro — Le Petit Français, Mt. Adams">
-    <img src="photos/logo.png" width="1893" height="969" alt="Luca Bistro — Le Petit Français | Mt. Adams" />
-  </a>
-  <ul>
-    <li><a href="#about">About</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#photos">Photos</a></li>
-    <li><a href="#news">News</a></li>
-  </ul>
+<nav aria-label="Main">
+  <div class="nav-inner">
+    <a class="wordmark" href="#top"><img src="photos/logo.png" width="1893" height="969" alt="Luca Bistro — Le Petit Français | Mt. Adams" style="height:44px;width:auto;" /></a>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#menu">Menu</a></li>
+      <li><a href="#events">Events</a></li>
+      <li><a href="#photos">Photos</a></li>
+      <li><a href="#news">News</a></li>
+    </ul>
+    <a class="nav-call" href="tel:+15136215822">Call (513) 621-5822</a>
+  </div>
 </nav>
 
-<div class="hero">
-  <div class="hero-text">
-    <img class="cigale" src="photos/cicada.png" width="1055" height="628" alt="Cicada emblem" />
-    <p class="eyebrow">Luca Bistro · Mt. Adams</p>
-    <h1 style="color:#F8C325;">South of France</h1>
-    <p>Experience old-world charm at Luca Bistro in historic Mount Adams, where Chef Frédéric brings the sunlit flavors of the south of France to the heart of Cincinnati. From leisurely weekend brunches to candlelit dinners, every plate — and every glass of rosé — is a little celebration of la joie de vivre. Pull up a chair on the patio and stay awhile.</p>
-    <div class="hero-cta">
-      <a href="#menu" class="btn">Explore our menu</a>
-      <a href="tel:+15136215822" class="btn btn-call">Call (513) 621-5822</a>
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="inner hero-grid">
+    <div>
+      <img class="cigale" src="photos/cicada.png" width="1055" height="628" alt="Cicada emblem — the mascot of Luca Bistro" />
+      <p class="kicker">Luca Bistro · Mt. Adams · Une Expérience Culinaire</p>
+      <h1>South of France</h1>
+      <p>Experience old-world charm at Luca Bistro in historic Mount Adams, where Chef Frédéric brings the sunlit flavors of the south of France to the heart of Cincinnati. From leisurely weekend brunches to candlelit dinners, every plate — and every glass of rosé — is a little celebration of la joie de vivre. Pull up a chair on the patio and stay awhile.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="#menu">Explore our menu</a>
+        <a class="btn btn-ghost" href="#about">Our story</a>
+      </div>
+      <p class="hero-note">Walk-ins welcome · We do not take reservations</p>
+    </div>
+    <div class="framed">
+      <img src="photos/back-patio.webp" width="1600" height="1067" alt="Sunny back patio with striped awning and umbrellas at Luca Bistro" fetchpriority="high" />
     </div>
   </div>
-</div>
+</header>
+
+<p class="leaf-divider" aria-hidden="true">❦</p>
 
 <!-- ABOUT -->
-<div id="about" class="section">
+<section id="about" class="section">
   <div class="inner">
-    <p class="eyebrow-dark">About us</p>
-    <h2>Our story</h2>
-    <div class="rule"></div>
+    <p class="kicker">About us</p>
+    <div class="section-head"><h2>Our story</h2></div>
 
     <div class="about-tabs">
       <button class="about-tab-btn active" data-about="story">Our Story</button>
@@ -478,50 +403,41 @@
       <button class="about-tab-btn" data-about="jobs">Jobs</button>
     </div>
 
-    <!-- OUR STORY -->
+    <!-- STORY -->
     <div id="about-story" class="about-panel active">
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="lead">Chef Frédéric Maniet grew up in the south of France, and Luca Bistro is his love letter to it — a small Mt. Adams bistro on a mission to make French cooking feel as warm and unhurried as a long Provençal lunch.</p>
+      <div class="story-grid">
+        <div>
+          <p>Chef Frédéric Maniet grew up in the south of France, and Luca Bistro is his love letter to it — a small Mt. Adams bistro on a mission to make French cooking feel as warm and unhurried as a long Provençal lunch.</p>
           <p>The kitchen cooks the classics with care and a southern accent: bouillabaisse and moules marinière, panisse marseillais and ratatouille, a proper salade niçoise, and an all-French wine list that turns proudly all-rosé through the summer.</p>
           <p>Everything is made from scratch, and every table is an invitation to slow down and savor — a little taste of la joie de vivre in the heart of Mt. Adams.</p>
         </div>
-        <div class="about-img">
-          <img src="photos/food/_MG_4486.webp" alt="Roasted goat cheese salad at Luca Bistro" width="1067" height="1600" loading="lazy" decoding="async" />
+        <div class="framed">
+          <img src="photos/food/_MG_4486.webp" width="1067" height="1600" alt="Roasted goat cheese salad at Luca Bistro" loading="lazy" decoding="async" />
         </div>
       </div>
     </div>
 
     <!-- HOURS & LOCATION -->
     <div id="about-hours" class="about-panel">
-      <div class="hours-layout">
-        <div>
-          <p class="hours-address">
-            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St,<br>Cincinnati, OH 45202</a><br>
-            <a href="tel:+15136215822">(513) 621-5822</a>
-          </p>
+      <div class="hours-grid">
+        <div class="card">
           <table class="hours-table">
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>Brunch</th>
-                <th>Dinner</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr><td>Sunday</td><td>10am – 2pm</td><td class="closed">Closed</td></tr>
-              <tr><td>Monday</td><td class="closed">Closed</td><td class="closed">Closed</td></tr>
-              <tr><td>Tuesday</td><td class="closed">Closed</td><td>5pm – 9pm</td></tr>
-              <tr><td>Wednesday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-              <tr><td>Thursday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-              <tr><td>Friday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-              <tr><td>Saturday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-            </tbody>
+            <tr><th>Day</th><th>Brunch</th><th>Dinner</th></tr>
+            <tr><td>Sunday</td><td>10am – 2pm</td><td class="closed">Closed</td></tr>
+            <tr><td>Monday</td><td class="closed">Closed</td><td class="closed">Closed</td></tr>
+            <tr><td>Tuesday</td><td class="closed">Closed</td><td>5pm – 9pm</td></tr>
+            <tr><td>Wednesday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
+            <tr><td>Thursday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
+            <tr><td>Friday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
+            <tr><td>Saturday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
           </table>
         </div>
         <div class="hours-note">
+          <p class="address-line"><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202">934 Hatch St, Cincinnati, OH 45202</a></p>
+          <p class="address-line"><a href="tel:+15136215822">(513) 621-5822</a></p>
+          <br />
           <p>Welcome to Luca Bistro, enjoy the food and atmosphere of Southern France.</p>
-          <strong>Sorry, we do not take reservations!</strong>
+          <p><strong>Sorry, we do not take reservations!</strong></p>
           <p>Please contact us if you are planning a special event of 10 persons or more.</p>
         </div>
       </div>
@@ -590,7 +506,7 @@
         <p class="job-meta">Tue–Sat &middot; 1–9pm &middot; $15/hr</p>
       </div>
 
-      <p class="form-intro" style="margin-bottom:1.5rem;">Please complete the form below or send your information (including resume) to <a href="mailto:lucabistro84@gmail.com" style="color:var(--gold);">lucabistro84@gmail.com</a>. Thank you.</p>
+      <p class="form-intro" style="margin-bottom:1.5rem;">Please complete the form below or send your information (including resume) to <a href="mailto:lucabistro84@gmail.com">lucabistro84@gmail.com</a>. Thank you.</p>
 
       <form class="web3form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
@@ -626,23 +542,35 @@
             <textarea id="job-cover" name="cover_letter" placeholder="Cover Letter" required></textarea>
           </div>
           <div class="form-field full">
-            <p style="font-size:13px; color:#5c4a39; line-height:1.7; margin:0;">Job seekers are encouraged to email their résumé, along with their contact information, to <a href="mailto:lucabistro84@gmail.com" style="color:var(--gold);">lucabistro84@gmail.com</a>.</p>
+            <p style="font-size:13px; color:var(--ink-soft); line-height:1.7; margin:0;">Job seekers are encouraged to email their résumé, along with their contact information, to <a href="mailto:lucabistro84@gmail.com">lucabistro84@gmail.com</a>.</p>
           </div>
         </div>
         <button type="submit" class="form-submit">Submit Application</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
     </div>
-
   </div>
-</div>
+</section>
+
+<!-- APÉRO BAND -->
+<section class="section band">
+  <div class="inner apero-grid">
+    <div>
+      <h2>The Art of the Apéro</h2>
+      <p>In Provence, the hour of the apéritif is sacred — the bridge between the day's labor and the evening's peace. Join us for a glass from our all-French list, a proper Kronenbourg, or a dry rosé alongside olives and tapenade.</p>
+      <a class="btn btn-ghost" href="#menu">View the wine list</a>
+    </div>
+    <div class="framed">
+      <img src="photos/drink/_MG_4564.webp?v=2" width="1067" height="1600" alt="Stella Artois bottle and glass at the Luca Bistro bar" loading="lazy" decoding="async" style="aspect-ratio:4/3;object-position:center 60%;" />
+    </div>
+  </div>
+</section>
 
 <!-- MENU -->
-<div id="menu" class="section bg-warm">
+<section id="menu" class="section">
   <div class="inner">
-    <p class="eyebrow-dark">What we serve</p>
-    <h2>Our menu</h2>
-    <div class="rule"></div>
+    <p class="kicker">What we serve</p>
+    <div class="section-head"><h2>Our menu</h2></div>
 
     <div class="menu-tabs">
       <button class="menu-tab-btn active" data-menu="dinner">Dinner</button>
@@ -652,795 +580,298 @@
       <button class="menu-tab-btn" data-menu="wine">Wine</button>
     </div>
 
-    <!-- DINNER MENU -->
+    <!-- DINNER -->
     <div id="menu-dinner" class="menu-panel active">
-
-    <!-- STARTERS -->
-    <div class="menu-section">
-      <p class="menu-section-title">Starters</p>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Tapenade Trio</h3>
-            <p>Black olive, carrots, &amp; green olive tapenade with toast</p>
-          </div>
-          <span class="menu-price">$12</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Pâté en Croûte</h3>
-          </div>
-          <span class="menu-price">$13</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Escargot à la Bourguignonne</h3>
-            <p>Garlic herb butter</p>
-          </div>
-          <span class="menu-price">$13</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Avocado Salmon Tartare</h3>
-            <p>Lemon, shallots, herbs, and avocado</p>
-          </div>
-          <span class="menu-price">$13</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Tarte Chèvre et Tomate</h3>
-            <p>Cherry tomatoes, goat cheese, and basil oil</p>
-          </div>
-          <span class="menu-price">$10</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Basil Boursin Crostini</h3>
-          </div>
-          <span class="menu-price">$11</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Merguez Lamb Meatballs</h3>
-            <p>With carrot salad and whipped cheese</p>
-          </div>
-          <span class="menu-price">$11</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Mixed Green Salad</h3>
-            <p>Goat cheese, grapes, walnuts, honey balsamic dressing</p>
-          </div>
-          <span class="menu-price">$9</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Panisse Marseillais</h3>
-            <p>Chickpea fritter with tomato pesto</p>
-          </div>
-          <span class="menu-price">$8</span>
+      <div class="menu-section">
+        <p class="menu-section-title">Starters</p>
+        <div class="menu-grid">
+          <div class="menu-item"><div class="menu-item-info"><h3>Tapenade Trio</h3><p>Black olive, carrots, &amp; green olive tapenade with toast</p></div><span class="menu-price">$12</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Pâté en Croûte</h3></div><span class="menu-price">$13</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Escargot à la Bourguignonne</h3><p>Garlic herb butter</p></div><span class="menu-price">$13</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Avocado Salmon Tartare</h3><p>Lemon, shallots, herbs, and avocado</p></div><span class="menu-price">$13</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Tarte Chèvre et Tomate</h3><p>Cherry tomatoes, goat cheese, and basil oil</p></div><span class="menu-price">$10</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Basil Boursin Crostini</h3></div><span class="menu-price">$11</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Merguez Lamb Meatballs</h3><p>With carrot salad and whipped cheese</p></div><span class="menu-price">$11</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Mixed Green Salad</h3><p>Goat cheese, grapes, walnuts, honey balsamic dressing</p></div><span class="menu-price">$9</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Panisse Marseillais</h3><p>Chickpea fritter with tomato pesto</p></div><span class="menu-price">$8</span></div>
         </div>
       </div>
-    </div>
 
-    <!-- SOUPS & SALADS -->
-    <div class="menu-section">
-      <p class="menu-section-title">Soups &amp; Salads</p>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Roasted Goat Cheese Salad</h3>
-            <p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p>
-          </div>
-          <span class="menu-price">$17</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Niçoise Salad</h3>
-            <p>Tuna, eggs, potatoes, tomatoes, green beans, olives, Dijon dressing</p>
-          </div>
-          <span class="menu-price">$19</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Avocado Shrimp Salad</h3>
-            <p>Shrimp, avocado, tomatoes, croutons, Dijon dressing</p>
-          </div>
-          <span class="menu-price">$20</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Tomato Gazpacho</h3>
-            <p>Chilled summer soup with cucumber, peppers, and herbs</p>
-          </div>
-          <span class="menu-price">$8</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Leek and Potato Gratin Soup</h3>
-            <p>Creamy leek and potato soup with a gratinéed finish</p>
-          </div>
-          <span class="menu-price">$7</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- PASTA -->
-    <div class="menu-section">
-      <p class="menu-section-title">Pasta</p>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Mushroom Tagliatelle</h3>
-            <p>With Duxelles cream sauce, Shiitake &amp; Paris Mushroom</p>
-          </div>
-          <span class="menu-price">$18</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Bolognaise Tagliatelle</h3>
-          </div>
-          <span class="menu-price">$22</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- ENTREES -->
-    <div class="menu-section">
-      <p class="menu-section-title">Entrées</p>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Short Rib Bœuf Bourguignon</h3>
-            <p>Over mashed potatoes with french baby carrots</p>
-          </div>
-          <span class="menu-price">$28</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Pinot Noir · glass $11</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Moules Marinière</h3>
-            <p>Celery, shallot &amp; white wine broth, with frites</p>
-          </div>
-          <span class="menu-price">$22</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Half Roasted Chicken</h3>
-            <p>With aioli and fingerling potatoes</p>
-          </div>
-          <span class="menu-price">$24</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Steak Frites</h3>
-            <p>Au poivre add $2</p>
-          </div>
-          <span class="menu-price">$26</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Bouillabaisse</h3>
-            <p>Prawn, scallops, mussels, catch of the day, in seafood broth</p>
-          </div>
-          <span class="menu-price">$34</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>84 Burger</h3>
-            <p>Harissa sauce, lettuce, tomato, gruyère</p>
-          </div>
-          <span class="menu-price">$16</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Port d'Orange Côtes du Rhône · glass $12</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Roasted Salmon</h3>
-            <p>Roasted salmon over cauliflower purée with herb sauce</p>
-          </div>
-          <span class="menu-price">$23</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Chicken Ballotine</h3>
-            <p>With Dauphinoise potatoes and Provençal salsa verde</p>
-          </div>
-          <span class="menu-price">$21</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Réserve de Marande Rosé · glass $12</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Pan-Seared Scallops</h3>
-            <p>With creamy leek &amp; pea rice and roasted pancetta</p>
-          </div>
-          <span class="menu-price">$37</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Chardonnay · glass $12</p>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>Sole Meunière</h3>
-            <p>In lemon butter herb sauce with fondant potatoes &amp; green beans</p>
-          </div>
-          <span class="menu-price">$23</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Château Valmer Vouvray · glass $11</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SIDES -->
-    <div class="menu-section">
-      <p class="menu-section-title">Sides</p>
-      <div class="menu-grid">
-        <div class="menu-item">
-          <div class="menu-item-info"><h3>Ratatouille</h3></div>
-          <span class="menu-price">$5</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info"><h3>Frites</h3></div>
-          <span class="menu-price">$5</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info"><h3>Baguette</h3></div>
-          <span class="menu-price">$5</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info"><h3>Green Beans</h3></div>
-          <span class="menu-price">$5</span>
-        </div>
-        <div class="menu-item">
-          <div class="menu-item-info"><h3>Oven-Roasted Tomato Provençale</h3></div>
-          <span class="menu-price">$5</span>
-        </div>
-      </div>
-    </div>
-
-    <p class="menu-note">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
-
-    </div><!-- end menu-dinner -->
-
-    <!-- LUNCH MENU -->
-    <div id="menu-lunch" class="menu-panel">
-
-      <!-- SOUPS & SALADS -->
       <div class="menu-section">
         <p class="menu-section-title">Soups &amp; Salads</p>
         <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Roasted Chicken Salad</h3></div>
-            <span class="menu-price">$17</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Roasted Goat Cheese Salad</h3>
-              <p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p>
-            </div>
-            <span class="menu-price">$17</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Niçoise Salad</h3>
-              <p>Tuna, eggs, potatoes, tomatoes, green beans, olives, Dijon dressing</p>
-            </div>
-            <span class="menu-price">$19</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Avocado Shrimp Salad</h3>
-              <p>Grilled shrimp, avocado, tomatoes, croutons, Dijon dressing</p>
-            </div>
-            <span class="menu-price">$20</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Tomato Gazpacho</h3><p>Chilled summer soup with cucumber, peppers, and herbs</p></div>
-            <span class="menu-price">$8</span>
-          </div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Roasted Goat Cheese Salad</h3><p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p></div><span class="menu-price">$17</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Niçoise Salad</h3><p>Tuna, eggs, potatoes, tomatoes, green beans, olives, Dijon dressing</p></div><span class="menu-price">$19</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Avocado Shrimp Salad</h3><p>Shrimp, avocado, tomatoes, croutons, Dijon dressing</p></div><span class="menu-price">$20</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Tomato Gazpacho</h3><p>Chilled summer soup with cucumber, peppers, and herbs</p></div><span class="menu-price">$8</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Leek and Potato Gratin Soup</h3><p>Creamy leek and potato soup with a gratinéed finish</p></div><span class="menu-price">$7</span></div>
         </div>
       </div>
 
-      <!-- SANDWICHES -->
       <div class="menu-section">
-        <p class="menu-section-title">Sandwiches</p>
+        <p class="menu-section-title">Pasta</p>
         <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Jambon Beurre</h3>
-              <p>Ham, butter, cornichon, Dijon mustard</p>
-            </div>
-            <span class="menu-price">$14</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Merguez Sandwich</h3>
-              <p>Salad, cheese spread, tomatoes on a toasted baguette</p>
-            </div>
-            <span class="menu-price">$16</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Croque Monsieur</h3>
-              <p>Ham, gruyère, béchamel</p>
-            </div>
-            <span class="menu-price">$15</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Croque Madame</h3>
-              <p>Ham, gruyère, béchamel, fried egg</p>
-            </div>
-            <span class="menu-price">$16</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Ratatouille Sandwich</h3>
-              <p>Open-faced with gruyère</p>
-            </div>
-            <span class="menu-price">$14</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>84 Burger</h3>
-              <p>Lettuce, tomato, gruyère, harissa sauce</p>
-            </div>
-            <span class="menu-price">$15</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Curry Chicken Salad Club</h3>
-              <p>With tomato pesto on toasted wheat</p>
-            </div>
-            <span class="menu-price">$14</span>
-          </div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Mushroom Tagliatelle</h3><p>With Duxelles cream sauce, Shiitake &amp; Paris Mushroom</p></div><span class="menu-price">$18</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Bolognaise Tagliatelle</h3></div><span class="menu-price">$22</span></div>
         </div>
       </div>
 
-      <!-- ENTREES -->
       <div class="menu-section">
         <p class="menu-section-title">Entrées</p>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Steak Frites</h3>
-              <p>With frites and salad</p>
-            </div>
-            <span class="menu-price">$26</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Moules Marinière</h3>
-              <p>Celery, shallot &amp; white wine broth with frites</p>
-            </div>
-            <span class="menu-price">$22</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Quiche Lorraine</h3>
-              <p>Ham and cheese quiche with salad</p>
-            </div>
-            <span class="menu-price">$14</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Spinach and Goat Cheese Quiche</h3>
-              <p>Served with salad</p>
-            </div>
-            <span class="menu-price">$14</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Dijon Crusted Chicken</h3>
-              <p>With salad</p>
-            </div>
-            <span class="menu-price">$17</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Cod à la Provençal</h3>
-              <p>Roasted cod with tomato compote</p>
-            </div>
-            <span class="menu-price">$20</span>
-          <p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p>
-          </div>
+        <div class="menu-grid" style="grid-template-columns:1fr;">
+          <div class="menu-item"><div class="menu-item-info"><h3>Short Rib Bœuf Bourguignon</h3><p>Over mashed potatoes with french baby carrots</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Pinot Noir · glass $11</p></div><span class="menu-price">$28</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Moules Marinière</h3><p>Celery, shallot &amp; white wine broth, with frites</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p></div><span class="menu-price">$22</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Half Roasted Chicken</h3><p>With aioli and fingerling potatoes</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p></div><span class="menu-price">$24</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Steak Frites</h3><p>Au poivre add $2</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p></div><span class="menu-price">$26</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Bouillabaisse</h3><p>Prawn, scallops, mussels, catch of the day, in seafood broth</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p></div><span class="menu-price">$34</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>84 Burger</h3><p>Harissa sauce, lettuce, tomato, gruyère</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Port d'Orange Côtes du Rhône · glass $12</p></div><span class="menu-price">$16</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Roasted Salmon</h3><p>Roasted salmon over cauliflower purée with herb sauce</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p></div><span class="menu-price">$23</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Chicken Ballotine</h3><p>With Dauphinoise potatoes and Provençal salsa verde</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Réserve de Marande Rosé · glass $12</p></div><span class="menu-price">$21</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Pan-Seared Scallops</h3><p>With creamy leek &amp; pea rice and roasted pancetta</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Foule Chardonnay · glass $12</p></div><span class="menu-price">$37</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Sole Meunière</h3><p>In lemon butter herb sauce with fondant potatoes &amp; green beans</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Château Valmer Vouvray · glass $11</p></div><span class="menu-price">$23</span></div>
         </div>
       </div>
 
-      <!-- SIDES -->
       <div class="menu-section">
         <p class="menu-section-title">Sides</p>
         <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Ratatouille</h3></div>
-            <span class="menu-price">$5</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Frites</h3></div>
-            <span class="menu-price">$5</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Baguette</h3></div>
-            <span class="menu-price">$5</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>French Green Beans</h3></div>
-            <span class="menu-price">$5</span>
-          </div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Ratatouille</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Frites</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Baguette</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Green Beans</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Oven-Roasted Tomato Provençale</h3></div><span class="menu-price">$5</span></div>
         </div>
       </div>
-
       <p class="menu-note">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
+    </div>
 
-    </div><!-- end menu-lunch -->
-
-    <!-- BRUNCH MENU -->
-    <div id="menu-brunch" class="menu-panel">
-
-      <!-- BREAKFAST -->
-      <div class="menu-section">
-        <p class="menu-section-title">Breakfast</p>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Croissant</h3>
-              <p>With butter and jam</p>
-            </div>
-            <span class="menu-price">$4</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Tartine with Jam</h3></div>
-            <span class="menu-price">$7</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Cheese Omelette</h3></div>
-            <span class="menu-price">$10</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Vegetable Omelette</h3></div>
-            <span class="menu-price">$12</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Meat &amp; Cheese Omelette</h3>
-              <p>Choice of sausage, bacon, or ham</p>
-            </div>
-            <span class="menu-price">$13</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Fried Eggs</h3></div>
-            <span class="menu-price">$9</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Bacon or Sausage</h3></div>
-            <span class="menu-price">$4</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Fruit</h3></div>
-            <span class="menu-price">$4</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Sautéed Golden Potatoes</h3></div>
-            <span class="menu-price">$4</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Toast</h3>
-              <p>With butter and jam</p>
-            </div>
-            <span class="menu-price">$3</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- SOUPS & SALADS -->
+    <!-- LUNCH -->
+    <div id="menu-lunch" class="menu-panel">
       <div class="menu-section">
         <p class="menu-section-title">Soups &amp; Salads</p>
         <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Roasted Chicken Salad</h3></div>
-            <span class="menu-price">$17</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Roasted Goat Cheese Salad</h3>
-              <p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p>
-            </div>
-            <span class="menu-price">$17</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Niçoise Salad</h3>
-              <p>Tuna, eggs, potatoes, tomatoes, green beans, olives, Dijon dressing</p>
-            </div>
-            <span class="menu-price">$19</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info">
-              <h3>Avocado Shrimp Salad</h3>
-              <p>Grilled shrimp, avocado, tomatoes, croutons, Dijon dressing</p>
-            </div>
-            <span class="menu-price">$20</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Tomato Gazpacho</h3><p>Chilled summer soup with cucumber, peppers, and herbs</p></div>
-            <span class="menu-price">$8</span>
-          </div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Roasted Chicken Salad</h3></div><span class="menu-price">$17</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Roasted Goat Cheese Salad</h3><p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p></div><span class="menu-price">$17</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Niçoise Salad</h3><p>Tuna, eggs, potatoes, tomatoes, green beans, olives, Dijon dressing</p></div><span class="menu-price">$19</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Avocado Shrimp Salad</h3><p>Grilled shrimp, avocado, tomatoes, croutons, Dijon dressing</p></div><span class="menu-price">$20</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Tomato Gazpacho</h3><p>Chilled summer soup with cucumber, peppers, and herbs</p></div><span class="menu-price">$8</span></div>
         </div>
       </div>
 
+      <div class="menu-section">
+        <p class="menu-section-title">Sandwiches</p>
+        <div class="menu-grid">
+          <div class="menu-item"><div class="menu-item-info"><h3>Jambon Beurre</h3><p>Ham, butter, cornichon, Dijon mustard</p></div><span class="menu-price">$14</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Merguez Sandwich</h3><p>Salad, cheese spread, tomatoes on a toasted baguette</p></div><span class="menu-price">$16</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Croque Monsieur</h3><p>Ham, gruyère, béchamel</p></div><span class="menu-price">$15</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Croque Madame</h3><p>Ham, gruyère, béchamel, fried egg</p></div><span class="menu-price">$16</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Ratatouille Sandwich</h3><p>Open-faced with gruyère</p></div><span class="menu-price">$14</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>84 Burger</h3><p>Lettuce, tomato, gruyère, harissa sauce</p></div><span class="menu-price">$15</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Curry Chicken Salad Club</h3><p>With tomato pesto on toasted wheat</p></div><span class="menu-price">$14</span></div>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <p class="menu-section-title">Entrées</p>
+        <div class="menu-grid" style="grid-template-columns:1fr;">
+          <div class="menu-item"><div class="menu-item-info"><h3>Steak Frites</h3><p>With frites and salad</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>La Boulangerie Cabernet Sauvignon · glass $11</p></div><span class="menu-price">$26</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Moules Marinière</h3><p>Celery, shallot &amp; white wine broth with frites</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p></div><span class="menu-price">$22</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Quiche Lorraine</h3><p>Ham and cheese quiche with salad</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Maison Saleya Rosé · glass $11</p></div><span class="menu-price">$14</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Spinach and Goat Cheese Quiche</h3><p>Served with salad</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>'O&amp;T' Touraine Sauvignon Blanc · glass $11</p></div><span class="menu-price">$14</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Dijon Crusted Chicken</h3><p>With salad</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>Saint Jean 'Lavender' Rosé · glass $11</p></div><span class="menu-price">$17</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Cod à la Provençal</h3><p>Roasted cod with tomato compote</p><p class="wine-pair"><span class="wine-pair-label">Pairs with</span>M. Chapoutier Rosé · glass $12</p></div><span class="menu-price">$20</span></div>
+        </div>
+      </div>
+
+      <div class="menu-section">
+        <p class="menu-section-title">Sides</p>
+        <div class="menu-grid">
+          <div class="menu-item"><div class="menu-item-info"><h3>Ratatouille</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Frites</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Baguette</h3></div><span class="menu-price">$5</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>French Green Beans</h3></div><span class="menu-price">$5</span></div>
+        </div>
+      </div>
       <p class="menu-note">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
+    </div>
 
-    </div><!-- end menu-brunch -->
+    <!-- BRUNCH -->
+    <div id="menu-brunch" class="menu-panel">
+      <div class="menu-section">
+        <p class="menu-section-title">Breakfast</p>
+        <div class="menu-grid">
+          <div class="menu-item"><div class="menu-item-info"><h3>Croissant</h3><p>With butter and jam</p></div><span class="menu-price">$4</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Tartine with Jam</h3></div><span class="menu-price">$7</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Cheese Omelette</h3></div><span class="menu-price">$10</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Vegetable Omelette</h3></div><span class="menu-price">$12</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Meat &amp; Cheese Omelette</h3><p>Choice of sausage, bacon, or ham</p></div><span class="menu-price">$13</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Fried Eggs</h3></div><span class="menu-price">$9</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Bacon or Sausage</h3></div><span class="menu-price">$4</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Fruit</h3></div><span class="menu-price">$4</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Sautéed Golden Potatoes</h3></div><span class="menu-price">$4</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Toast</h3><p>With butter and jam</p></div><span class="menu-price">$3</span></div>
+        </div>
+      </div>
 
-    <!-- CAFÉ MENU -->
+      <div class="menu-section">
+        <p class="menu-section-title">Soups &amp; Salads</p>
+        <div class="menu-grid">
+          <div class="menu-item"><div class="menu-item-info"><h3>Roasted Chicken Salad</h3></div><span class="menu-price">$17</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Roasted Goat Cheese Salad</h3><p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p></div><span class="menu-price">$17</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Niçoise Salad</h3><p>Tuna, eggs, potatoes, tomatoes, green beans, olives, Dijon dressing</p></div><span class="menu-price">$19</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Avocado Shrimp Salad</h3><p>Grilled shrimp, avocado, tomatoes, croutons, Dijon dressing</p></div><span class="menu-price">$20</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Tomato Gazpacho</h3><p>Chilled summer soup with cucumber, peppers, and herbs</p></div><span class="menu-price">$8</span></div>
+        </div>
+      </div>
+      <p class="menu-note">*Consuming raw or undercooked meats, poultry, seafood, shellfish, or eggs may increase your risk of foodborne illness.</p>
+    </div>
+
+    <!-- CAFÉ -->
     <div id="menu-cafe" class="menu-panel">
       <div class="menu-section">
         <p class="menu-section-title">Café</p>
         <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Café</h3></div>
-            <span class="menu-price">$2.50</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Double Café</h3></div>
-            <span class="menu-price">$3.50</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Café Viennois</h3></div>
-            <span class="menu-price">$5.25</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Americano</h3></div>
-            <span class="menu-price">$3.25</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Café au Lait</h3></div>
-            <span class="menu-price">$3.50</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Decaf</h3></div>
-            <span class="menu-price">$2.75</span>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Tea</h3></div>
-            <span class="menu-price">$2.00</span>
-          </div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Café</h3></div><span class="menu-price">$2.50</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Double Café</h3></div><span class="menu-price">$3.50</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Café Viennois</h3></div><span class="menu-price">$5.25</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Americano</h3></div><span class="menu-price">$3.25</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Café au Lait</h3></div><span class="menu-price">$3.50</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Decaf</h3></div><span class="menu-price">$2.75</span></div>
+          <div class="menu-item"><div class="menu-item-info"><h3>Tea</h3></div><span class="menu-price">$2.00</span></div>
         </div>
       </div>
-    </div><!-- end menu-cafe -->
+    </div>
 
-    <!-- WINE MENU -->
+    <!-- WINE -->
     <div id="menu-wine" class="menu-panel">
-
-      <!-- ROSÉ -->
-      <div class="menu-section">
-        <p class="menu-section-title">Rosé</p>
-        <div class="wine-price-legend"><span>Glass</span><span>Bottle</span></div>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Les Petites Jamelles Rosé</h3><p>Languedoc</p></div>
-            <div class="wine-prices"><span>$9</span><span>$32</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>'Note Bleue' Saint Tropez</h3><p>Provence</p></div>
-            <div class="wine-prices"><span>$13</span><span>$48</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Maison Saleya</h3><p>Provence</p></div>
-            <div class="wine-prices"><span>$11</span><span>$38</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Peyrassol La Croix</h3><p>Provence</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$44</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>M. Chapoutier</h3><p>Rhône</p></div>
-            <div class="wine-prices"><span>$12</span><span>$44</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>'Cep d'Or' Saint Tropez</h3><p>Provence</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$48</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Saint Jean 'Lavender'</h3><p>Provence</p></div>
-            <div class="wine-prices"><span>$11</span><span>$38</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Marie Copinet Brut</h3><p>Champagne</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$76</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Réserve de Marande</h3><p>Provence</p></div>
-            <div class="wine-prices"><span>$12</span><span>$44</span></div>
-          </div>
+      <p class="wine-legend">Glass / Bottle · all-French cellar · La Cave</p>
+      <div class="wine-cards">
+        <div class="card wine-card">
+          <h3>Rosé</h3>
+          <ul>
+            <li><div><p class="wine-name">Les Petites Jamelles Rosé</p><p class="wine-region">Languedoc</p></div><span class="wine-price">$9 / $32</span></li>
+            <li><div><p class="wine-name">'Note Bleue' Saint Tropez</p><p class="wine-region">Provence</p></div><span class="wine-price">$13 / $48</span></li>
+            <li><div><p class="wine-name">Maison Saleya</p><p class="wine-region">Provence</p></div><span class="wine-price">$11 / $38</span></li>
+            <li><div><p class="wine-name">Peyrassol La Croix</p><p class="wine-region">Provence</p></div><span class="wine-price">— / $44</span></li>
+            <li><div><p class="wine-name">M. Chapoutier</p><p class="wine-region">Rhône</p></div><span class="wine-price">$12 / $44</span></li>
+            <li><div><p class="wine-name">'Cep d'Or' Saint Tropez</p><p class="wine-region">Provence</p></div><span class="wine-price">— / $48</span></li>
+            <li><div><p class="wine-name">Saint Jean 'Lavender'</p><p class="wine-region">Provence</p></div><span class="wine-price">$11 / $38</span></li>
+            <li><div><p class="wine-name">Marie Copinet Brut</p><p class="wine-region">Champagne</p></div><span class="wine-price">— / $76</span></li>
+            <li><div><p class="wine-name">Réserve de Marande</p><p class="wine-region">Provence</p></div><span class="wine-price">$12 / $44</span></li>
+          </ul>
+        </div>
+        <div class="card wine-card">
+          <h3>Blanc</h3>
+          <ul>
+            <li><div><p class="wine-name">Les Petites Jamelles Blanc</p><p class="wine-region">Languedoc</p></div><span class="wine-price">$9 / $32</span></li>
+            <li><div><p class="wine-name">Château Moulin Ferrand Blanc</p><p class="wine-region">Bordeaux</p></div><span class="wine-price">— / $46</span></li>
+            <li><div><p class="wine-name">'O&amp;T' Touraine Sauvignon Blanc</p><p class="wine-region">Loire</p></div><span class="wine-price">$11 / $38</span></li>
+            <li><div><p class="wine-name">Fèvre Chablis Chardonnay</p><p class="wine-region">Burgundy</p></div><span class="wine-price">— / $58</span></li>
+            <li><div><p class="wine-name">La Foule Chardonnay</p><p class="wine-region">Languedoc</p></div><span class="wine-price">$12 / $44</span></li>
+            <li><div><p class="wine-name">Domaine Inès Sancerre</p><p class="wine-region">Loire</p></div><span class="wine-price">— / $68</span></li>
+            <li><div><p class="wine-name">Château Valmer Vouvray</p><p class="wine-region">Loire</p></div><span class="wine-price">$11 / $38</span></li>
+            <li><div><p class="wine-name">Marie Copinet Blanc de Blancs</p><p class="wine-region">Champagne</p></div><span class="wine-price">— / $76</span></li>
+            <li><div><p class="wine-name">Réserve de Mauny Crémant Brut</p><p class="wine-region">Loire</p></div><span class="wine-price">$15 / $56</span></li>
+          </ul>
+        </div>
+        <div class="card wine-card">
+          <h3>Rouge</h3>
+          <ul>
+            <li><div><p class="wine-name">Les Petites Jamelles Rouge</p><p class="wine-region">Languedoc</p></div><span class="wine-price">$9 / $32</span></li>
+            <li><div><p class="wine-name">Hautes Côtes de Nuits Pinot Noir</p><p class="wine-region">Burgundy</p></div><span class="wine-price">— / $58</span></li>
+            <li><div><p class="wine-name">La Foule Pinot Noir</p><p class="wine-region">Languedoc</p></div><span class="wine-price">$11 / $38</span></li>
+            <li><div><p class="wine-name">Crous Saint Martin Gigondas</p><p class="wine-region">Rhône</p></div><span class="wine-price">— / $68</span></li>
+            <li><div><p class="wine-name">La Boulangerie Cabernet Sauvignon</p><p class="wine-region">Languedoc</p></div><span class="wine-price">$11 / $40</span></li>
+            <li><div><p class="wine-name">Château St. Georges Saint-Émilion</p><p class="wine-region">Bordeaux</p></div><span class="wine-price">— / $74</span></li>
+            <li><div><p class="wine-name">Port d'Orange Côtes du Rhône</p><p class="wine-region">Rhône</p></div><span class="wine-price">$12 / $42</span></li>
+            <li><div><p class="wine-name">Comte de Lauze Châteauneuf-du-Pape</p><p class="wine-region">Rhône</p></div><span class="wine-price">— / $78</span></li>
+          </ul>
         </div>
       </div>
-
-      <!-- BLANC -->
-      <div class="menu-section">
-        <p class="menu-section-title">Blanc</p>
-        <div class="wine-price-legend"><span>Glass</span><span>Bottle</span></div>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Les Petites Jamelles Blanc</h3><p>Languedoc</p></div>
-            <div class="wine-prices"><span>$9</span><span>$32</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Château Moulin Ferrand Blanc</h3><p>Bordeaux</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$46</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>'O&amp;T' Touraine Sauvignon Blanc</h3><p>Loire</p></div>
-            <div class="wine-prices"><span>$11</span><span>$38</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Fèvre Chablis Chardonnay</h3><p>Burgundy</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$58</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>La Foule Chardonnay</h3><p>Languedoc</p></div>
-            <div class="wine-prices"><span>$12</span><span>$44</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Domaine Inès Sancerre</h3><p>Loire</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$68</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Château Valmer Vouvray</h3><p>Loire</p></div>
-            <div class="wine-prices"><span>$11</span><span>$38</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Marie Copinet Blanc de Blancs</h3><p>Champagne</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$76</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Réserve de Mauny Crémant Brut</h3><p>Loire</p></div>
-            <div class="wine-prices"><span>$15</span><span>$56</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- ROUGE -->
-      <div class="menu-section">
-        <p class="menu-section-title">Rouge</p>
-        <div class="wine-price-legend"><span>Glass</span><span>Bottle</span></div>
-        <div class="menu-grid">
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Les Petites Jamelles Rouge</h3><p>Languedoc</p></div>
-            <div class="wine-prices"><span>$9</span><span>$32</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Hautes Côtes de Nuits Pinot Noir</h3><p>Burgundy</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$58</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>La Foule Pinot Noir</h3><p>Languedoc</p></div>
-            <div class="wine-prices"><span>$11</span><span>$38</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Crous Saint Martin Gigondas</h3><p>Rhône</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$68</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>La Boulangerie Cabernet Sauvignon</h3><p>Languedoc</p></div>
-            <div class="wine-prices"><span>$11</span><span>$40</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Château St. Georges Saint-Émilion</h3><p>Bordeaux</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$74</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Port d'Orange Côtes du Rhône</h3><p>Rhône</p></div>
-            <div class="wine-prices"><span>$12</span><span>$42</span></div>
-          </div>
-          <div class="menu-item">
-            <div class="menu-item-info"><h3>Comte de Lauze Châteauneuf-du-Pape</h3><p>Rhône</p></div>
-            <div class="wine-prices"><span class="no-glass">—</span><span>$78</span></div>
-          </div>
-        </div>
-      </div>
-
-    </div><!-- end menu-wine -->
-
+    </div>
   </div>
-</div>
+</section>
 
 <!-- EVENTS -->
-<div id="events" class="section">
+<section id="events" class="section band">
   <div class="inner">
-    <p class="eyebrow-dark">What's on</p>
-    <h2>Events</h2>
+    <p class="kicker">What's on</p>
+    <div class="section-head"><h2>Events</h2></div>
 
     <div class="event-tabs">
       <button class="event-tab-btn active" data-event="current">Current Events</button>
       <button class="event-tab-btn" data-event="past">Past Events</button>
     </div>
 
+    <!-- CURRENT -->
     <div id="events-current" class="event-panel active">
-    <h3 id="world-cup">World Cup 2026</h3>
-    <div class="rule"></div>
-    <div style="margin-bottom:2.5rem;">
-      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Live Matches</span>
-    </div>
-    <div class="events-grid">
-      <div class="event-card" style="grid-column: 1 / -1;">
-        <img class="wc-card-banner" src="photos/world-cup-banner.webp" alt="World Cup 2026 — Allez les Bleus — Champion du Monde 1998–2018" width="3046" height="528" />
-        <p class="event-date">June 11th – July 19th</p>
-        <h4>Allez les Bleus!</h4>
-        <p>Cheer on France and catch the action at Luca Bistro — Champion du Monde 1998 &amp; 2018.</p>
-        <div class="wc-fixtures">
-          <p class="wc-fx-head">Next 10 days — shown during open hours</p>
-          <table class="wc-fx">
-            <tr><td class="r" colspan="3">Round of 16</td></tr>
-            <tr><td class="d">Sun Jul 5</td><td class="t">4:00 PM</td><td>Brazil v Norway</td></tr>
-            <tr><td class="d">Sun Jul 5</td><td class="t">8:00 PM</td><td>Mexico v England</td></tr>
-            <tr><td class="r" colspan="3">Quarter-finals</td></tr>
-            <tr><td class="d">Thu Jul 9</td><td class="t">4:00 PM</td><td>Morocco v France</td></tr>
-            <tr><td class="d">Fri Jul 10</td><td class="t">3:00 PM</td><td>TBD · Los Angeles</td></tr>
-            <tr><td class="d">Sat Jul 11</td><td class="t">5:00 PM</td><td>TBD · Miami</td></tr>
-            <tr><td class="d">Sat Jul 11</td><td class="t">9:00 PM</td><td>TBD · Kansas City</td></tr>
-          </table>
-          <p class="wc-fx-results"><strong>Results</strong> France 1–0 Paraguay · Morocco 3–0 Canada · Argentina 3–2 Cabo Verde · Egypt bt Australia on pens</p>
-          <p class="wc-fx-note">All times ET · shown during our open hours · matchups marked “Winner …” or “TBD” are set once earlier rounds finish · subject to change</p>
+      <h3 id="world-cup" style="font-size:26px; margin-bottom:0.8rem;">World Cup 2026</h3>
+      <div class="events-grid">
+        <div class="card event-card">
+          <span class="live-badge">Live Matches</span>
+          <p class="date-line">June 11th – July 19th</p>
+          <h4>Allez les Bleus!</h4>
+          <p>Cheer on France and catch the action at Luca Bistro — Champion du Monde 1998 &amp; 2018.</p>
+          <img class="wc-card-banner" src="photos/world-cup-banner.webp" alt="World Cup 2026 — Allez les Bleus — Champion du Monde 1998–2018" width="3046" height="528" loading="lazy" decoding="async" />
+          <div class="wc-fixtures">
+            <p class="wc-fx-head">Next 10 days — shown during open hours</p>
+            <table class="wc-fx">
+              <tr><td class="r" colspan="3">Round of 16</td></tr>
+              <tr><td class="d">Sun Jul 5</td><td class="t">4:00 PM</td><td>Brazil v Norway</td></tr>
+              <tr><td class="d">Sun Jul 5</td><td class="t">8:00 PM</td><td>Mexico v England</td></tr>
+              <tr><td class="r" colspan="3">Quarter-finals</td></tr>
+              <tr><td class="d">Thu Jul 9</td><td class="t">4:00 PM</td><td>Morocco v France</td></tr>
+              <tr><td class="d">Fri Jul 10</td><td class="t">3:00 PM</td><td>TBD · Los Angeles</td></tr>
+              <tr><td class="d">Sat Jul 11</td><td class="t">5:00 PM</td><td>TBD · Miami</td></tr>
+              <tr><td class="d">Sat Jul 11</td><td class="t">9:00 PM</td><td>TBD · Kansas City</td></tr>
+            </table>
+            <p class="wc-fx-results"><strong>Results</strong> France 1–0 Paraguay · Morocco 3–0 Canada · Argentina 3–2 Cabo Verde · Egypt bt Australia on pens</p>
+            <p class="wc-fx-note">All times ET · shown during our open hours · matchups marked “Winner …” or “TBD” are set once earlier rounds finish · subject to change</p>
+          </div>
+        </div>
+        <div>
+          <h3 style="font-size:26px; margin-bottom:0.8rem;">Rosé All Day 2026</h3>
+          <p style="color:var(--ink-soft); font-size:15px; margin-bottom:1.5rem;">All rosé by the glass · 10:00 AM – 9:00 PM · Luca Bistro, Mt. Adams. Live music and featured artists all season long.</p>
+          <div class="card event-card" style="margin-bottom:1.5rem;">
+            <p class="date-line">Summer Series 2026 · July 30th · 10:00 AM – 9:00 PM</p>
+            <h4>Rosé All Day — July</h4>
+            <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
+            <p>Live music by Nick Tuttle</p>
+            <span class="chip">Live music</span>
+          </div>
+          <div class="card event-card">
+            <p class="date-line">August 29th · 10:00 AM – 9:00 PM</p>
+            <h4>Rosé All Day — August</h4>
+            <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
+            <p>Live music by Nick Tuttle</p>
+            <span class="chip">Live music</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <h3 style="margin-top: 3.5rem;">Rosé All Day 2026</h3>
-    <div class="rule"></div>
-    <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
-      <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">All rosé by the glass · 10:00 AM – 9:00 PM · Luca Bistro, Mt. Adams. Live music and featured artists all season long.</p>
-      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Summer Series 2026</span>
-    </div>
-    <div class="events-grid">
-      <div class="event-card">
-        <p class="event-date">July 30th · 10:00 AM – 9:00 PM</p>
-        <h4>Rosé All Day — July</h4>
-        <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
-        <p class="event-sub">Live music by Nick Tuttle</p>
-        <span class="event-tag">Live music</span>
-      </div>
-      <div class="event-card">
-        <p class="event-date">August 29th · 10:00 AM – 9:00 PM</p>
-        <h4>Rosé All Day — August</h4>
-        <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry</p>
-        <p class="event-sub">Live music by Nick Tuttle</p>
-        <span class="event-tag">Live music</span>
-      </div>
-    </div>
-    </div><!-- end events-current -->
-
+    <!-- PAST -->
     <div id="events-past" class="event-panel">
-      <p class="past-intro">A look back at recent events at Luca Bistro — photos coming soon.</p>
-      <div class="past-events">
-        <div class="past-event">
-          <p class="past-date">June 27, 2026 · Rosé All Day</p>
-          <h3>Rosé All Day — June</h3>
-          <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry · Live music by Nick Tuttle</p>
-        </div>
-        <div class="past-event">
-          <p class="past-date">May 30, 2026 · Rosé All Day</p>
-          <h3>Rosé All Day — May</h3>
-          <p>Featured: Dahlia Baer · Perfect Pour Jewelry · Live music by Nick Tuttle</p>
-        </div>
+      <p style="color:var(--ink-soft); margin-bottom:1rem;">A look back at recent events at Luca Bistro — photos coming soon.</p>
+      <div class="past-event">
+        <p class="date-line">June 27, 2026 · Rosé All Day</p>
+        <h3>Rosé All Day — June</h3>
+        <p>Featured: Jim Conroy · Dahlia Baer · Perfect Pour Jewelry · Live music by Nick Tuttle</p>
+      </div>
+      <div class="past-event">
+        <p class="date-line">May 30, 2026 · Rosé All Day</p>
+        <h3>Rosé All Day — May</h3>
+        <p>Featured: Dahlia Baer · Perfect Pour Jewelry · Live music by Nick Tuttle</p>
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- PHOTOS -->
-<div id="photos" class="section bg-warm">
+<section id="photos" class="section">
   <div class="inner">
-    <p class="eyebrow-dark">The atmosphere</p>
-    <h2>A glimpse inside</h2>
-    <div class="rule"></div>
+    <p class="kicker">The atmosphere</p>
+    <div class="section-head"><h2>A glimpse inside</h2></div>
 
     <div class="photo-tabs">
       <button class="tab-btn active" data-tab="food">Food</button>
@@ -1485,125 +916,77 @@
     <div id="tab-exterior" class="photo-panel">
       <span class="pm"><img src="photos/exterior/_MG_5324.webp?v=4" alt="Full building corner view" width="1067" height="1600" loading="lazy" decoding="async" /></span>
     </div>
-
   </div>
-</div>
+</section>
 
-<!-- NEWS -->
-<div id="news" class="section">
+<!-- NEWS / PRESS -->
+<section id="news" class="section band">
   <div class="inner">
-    <p class="eyebrow-dark">Press</p>
-    <h2>In the news</h2>
-    <div class="rule"></div>
+    <p class="kicker">Press</p>
+    <div class="section-head"><h2>In the news</h2></div>
 
-    <div class="news-grid">
-
-      <a class="news-card" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener noreferrer">
-        <div class="news-card-body">
-          <p class="news-source">Cincinnati Enquirer</p>
-          <h3>Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</h3>
-          <p>Chef Frédéric Maniet helms a classic French bistro in Mt. Adams — Cincinnati's prettiest neighborhood — serving timeless dishes like steak frites and cod Provençal in a warm, unhurried atmosphere.</p>
-        </div>
-        <div class="news-card-footer">
-          <span class="news-date">May 20, 2024</span>
-          <span class="news-read-more">Read article →</span>
-        </div>
-      </a>
-
-      <a class="news-card" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer">
-        <div class="news-card-body">
-          <p class="news-source">Cincinnati Magazine</p>
-          <h3>Best New Restaurants No. 9: Luca Bistro</h3>
-          <p>Luca Bistro has seamlessly integrated into the Mt. Adams neighborhood — warm service, timeless French fare, and relaxed joie de vivre making it feel like a well-established gem rather than a relatively new restaurant.</p>
-        </div>
-        <div class="news-card-footer">
-          <span class="news-date">March 4, 2024</span>
-          <span class="news-read-more">Read article →</span>
-        </div>
-      </a>
-
-      <a class="news-card" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer">
-        <div class="news-card-body">
-          <p class="news-source">Whatever</p>
-          <h3>Close To Home: Luca Bistro</h3>
-          <p>A personal dispatch from Mt. Adams: behind the bright red façade is an easygoing room and a menu of French standards done well — grilled shrimp kabob, steak frites, and an orange crème brûlée that round out a thoroughly enjoyable evening.</p>
-        </div>
-        <div class="news-card-footer">
-          <span class="news-date">October 24, 2023</span>
-          <span class="news-read-more">Read article →</span>
-        </div>
-      </a>
-
-      <a class="news-card" href="https://www.citybeat.com/food-drink/newly-opened-luca-bistro-showcases-french-cuisine-in-a-new-light-14388198" target="_blank" rel="noopener noreferrer">
-        <div class="news-card-body">
-          <p class="news-source">Cincinnati CityBeat</p>
-          <h3>Newly Opened Luca Bistro Showcases French Cuisine in a New Light</h3>
-          <p>Simple and French cuisine make up the unlikely duo at the newly opened Luca Bistro in Mt. Adams. Chef Frédéric Maniet grew up in the south of France and is on a mission to make French cooking approachable in Cincinnati.</p>
-        </div>
-        <div class="news-card-footer">
-          <span class="news-date">December 14, 2022</span>
-          <span class="news-read-more">Read article →</span>
-        </div>
-      </a>
-
-      <a class="news-card" href="https://baublestobubbles.com/2022/11/05/luca-bistro-mt-adams/" target="_blank" rel="noopener noreferrer">
-        <div class="news-card-body">
-          <p class="news-source">Baubles to Bubbles</p>
-          <h3>Luca Bistro in Mt. Adams</h3>
-          <p>An early look at the Mt. Adams newcomer — a tightly focused menu of approachable French cooking, from shrimp kabob to lamb, plated with care in a warm, unpretentious setting.</p>
-        </div>
-        <div class="news-card-footer">
-          <span class="news-date">November 5, 2022</span>
-          <span class="news-read-more">Read article →</span>
-        </div>
-      </a>
-
-    </div>
+    <a class="news-card" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener">
+      <p class="source">Cincinnati Enquirer</p>
+      <h3>Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</h3>
+      <p>Chef Frédéric Maniet helms a classic French bistro in Mt. Adams — Cincinnati's prettiest neighborhood — serving timeless dishes like steak frites and cod Provençal in a warm, unhurried atmosphere.</p>
+      <p class="news-meta">May 20, 2024 · <em>Read article →</em></p>
+    </a>
+    <a class="news-card" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener">
+      <p class="source">Cincinnati Magazine</p>
+      <h3>Best New Restaurants No. 9: Luca Bistro</h3>
+      <p>Luca Bistro has seamlessly integrated into the Mt. Adams neighborhood — warm service, timeless French fare, and relaxed joie de vivre making it feel like a well-established gem rather than a relatively new restaurant.</p>
+      <p class="news-meta">March 4, 2024 · <em>Read article →</em></p>
+    </a>
+    <a class="news-card" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener">
+      <p class="source">Whatever</p>
+      <h3>Close To Home: Luca Bistro</h3>
+      <p>A personal dispatch from Mt. Adams: behind the bright red façade is an easygoing room and a menu of French standards done well — grilled shrimp kabob, steak frites, and an orange crème brûlée that round out a thoroughly enjoyable evening.</p>
+      <p class="news-meta">October 24, 2023 · <em>Read article →</em></p>
+    </a>
+    <a class="news-card" href="https://www.citybeat.com/food-drink/newly-opened-luca-bistro-showcases-french-cuisine-in-a-new-light-14388198" target="_blank" rel="noopener">
+      <p class="source">Cincinnati CityBeat</p>
+      <h3>Newly Opened Luca Bistro Showcases French Cuisine in a New Light</h3>
+      <p>Simple and French cuisine make up the unlikely duo at the newly opened Luca Bistro in Mt. Adams. Chef Frédéric Maniet grew up in the south of France and is on a mission to make French cooking approachable in Cincinnati.</p>
+      <p class="news-meta">December 14, 2022 · <em>Read article →</em></p>
+    </a>
+    <a class="news-card" href="https://baublestobubbles.com/2022/11/05/luca-bistro-mt-adams/" target="_blank" rel="noopener">
+      <p class="source">Baubles to Bubbles</p>
+      <h3>Luca Bistro in Mt. Adams</h3>
+      <p>An early look at the Mt. Adams newcomer — a tightly focused menu of approachable French cooking, from shrimp kabob to lamb, plated with care in a warm, unpretentious setting.</p>
+      <p class="news-meta">November 5, 2022 · <em>Read article →</em></p>
+    </a>
   </div>
-</div>
+</section>
 
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">LUCA <span>BISTRO</span></div>
-      <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St<br>Cincinnati, OH 45202</a></p>
+      <img class="cigale-footer" src="photos/cicada.png" width="1055" height="628" alt="" aria-hidden="true" loading="lazy" />
+      <p class="footer-logo">Luca Bistro</p>
+      <p>Rooted in Mt. Adams, inspired by Provence — bringing the soulful simplicity of the French south to your table.</p>
+      <br />
+      <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202">934 Hatch St, Cincinnati, OH 45202</a></p>
+      <p><a href="https://www.mtadamstoday.org/">Proud member · Mt. Adams Business Guild</a></p>
     </div>
     <div>
-      <h3>Hours</h3>
+      <p class="footer-head">Hours</p>
       <table class="footer-hours">
         <tr><td>Sunday</td><td>Brunch 10am – 2pm</td></tr>
         <tr><td>Monday</td><td class="closed">Closed</td></tr>
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
-        <tr><td>Wed – Sat</td><td>Brunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
+        <tr><td>Wed – Sat</td><td>Brunch 10am – 2pm · Dinner 5 – 9pm</td></tr>
       </table>
+      <p class="footer-note">We do not take reservations.<br />For events of 10+, please contact us.</p>
     </div>
-    <div>
-      <h3>Contact</h3>
+    <div class="footer-contact">
+      <p class="footer-head">Connect</p>
       <p><a href="tel:+15136215822">(513) 621-5822</a></p>
       <p><a href="mailto:lucabistro84@gmail.com">lucabistro84@gmail.com</a></p>
-      <div class="social-row">
-        <a class="social-btn" href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener noreferrer" aria-label="Luca Bistro on Instagram">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-10.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
-        </a>
-        <a class="social-btn" href="https://www.facebook.com/LucaBistroCincy" target="_blank" rel="noopener noreferrer" aria-label="Luca Bistro on Facebook">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M24 12.07C24 5.4 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.05V9.41c0-3.02 1.79-4.69 4.53-4.69 1.31 0 2.68.24 2.68.24v2.97h-1.51c-1.49 0-1.96.93-1.96 1.89v2.25h3.33l-.53 3.49h-2.8V24C19.61 23.1 24 18.1 24 12.07z"/></svg>
-        </a>
-        <a class="social-btn" href="mailto:lucabistro84@gmail.com" aria-label="Email Luca Bistro">
-          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 4H4a2 2 0 00-2 2v12a2 2 0 002 2h16a2 2 0 002-2V6a2 2 0 00-2-2zm0 4.24l-8 4.94-8-4.94V6l8 4.94L20 6v2.24z"/></svg>
-        </a>
-      </div>
-      <a class="guild-badge" href="https://www.mtadamstoday.org/" target="_blank" rel="noopener noreferrer" aria-label="Proud member of the Mt. Adams Business Guild — visit the Mt. Adams Today website">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.68 13.69L12 11.93l2.31 1.76-.88-2.85L15.75 9h-2.84L12 6.19 11.09 9H8.25l2.31 1.84-.88 2.85zM20 10c0-4.42-3.58-8-8-8s-8 3.58-8 8c0 2.03.76 3.87 2 5.28V23l6-2 6 2v-7.72c1.24-1.41 2-3.25 2-5.28zm-8-6c3.31 0 6 2.69 6 6s-2.69 6-6 6-6-2.69-6-6 2.69-6 6-6z"/></svg>
-        <span>
-          <span class="gb-sub">Proud member</span>
-          <span class="gb-main">Mt. Adams Business Guild</span>
-        </span>
-      </a>
-      <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">We do not take reservations.<br>For events of 10+, please contact us.</p>
+      <p><a href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener">Instagram</a> · <a href="https://www.facebook.com/LucaBistroCincy" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
-  <p class="copy">&copy; <span id="yr"></span> Luca Bistro. All rights reserved.</p>
+  <p class="copy"><span>&copy; <span id="yr"></span> Luca Bistro. All rights reserved.</span><span>Rooted in Mt. Adams · Inspired by Provence</span></p>
 </footer>
 
 <script>
@@ -1716,12 +1099,12 @@
         const data = await res.json().catch(() => ({}));
         if (res.ok && data.success) {
           form.reset();
-          if (status) { status.style.color = '#5a7d3a'; status.textContent = 'Thank you — your message has been sent.'; }
+          if (status) { status.style.color = '#3B6D11'; status.textContent = 'Thank you — your message has been sent.'; }
         } else {
-          if (status) { status.style.color = '#c0392b'; status.textContent = (data && data.message) || 'Something went wrong. Please email us at lucabistro84@gmail.com.'; }
+          if (status) { status.style.color = '#ba1a1a'; status.textContent = (data && data.message) || 'Something went wrong. Please email us at lucabistro84@gmail.com.'; }
         }
       } catch (err) {
-        if (status) { status.style.color = '#c0392b'; status.textContent = 'Network error. Please email us directly at lucabistro84@gmail.com.'; }
+        if (status) { status.style.color = '#ba1a1a'; status.textContent = 'Network error. Please email us directly at lucabistro84@gmail.com.'; }
       } finally {
         btn.disabled = false;
         btn.textContent = label;
