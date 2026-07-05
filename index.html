@@ -90,6 +90,13 @@
       --outline: #857467;
       --outline-soft: #d7c3b3;
       --card-border: #e5e1d8;
+      /* Dusk tones — the region after sunset */
+      --olive-deep: #2e3720;       /* dark garrigue green */
+      --iron-deep: #31312d;        /* charcoal-brown iron */
+      --apricot: #ffdcc0;          /* primary-fixed — glows on dark */
+      --apricot-dim: #ffb876;
+      --sage-light: #dce7c5;       /* tertiary-fixed */
+      --cream-soft: #f3f0ea;
       --serif: 'Libre Caslon Text', 'Georgia', serif;
       --sans: 'Plus Jakarta Sans', 'Segoe UI', sans-serif;
       --shadow-warm: 0 10px 30px -10px rgba(139, 80, 10, 0.08);
@@ -275,7 +282,13 @@
     .wine-price { font-size: 13.5px; font-weight: 600; color: var(--ink); white-space: nowrap; }
     .wine-legend { font-size: 12px; color: var(--outline); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 1.5rem; }
 
-    /* ---------- Apéro band ---------- */
+    /* ---------- Apéro band (dusk — dark garrigue olive) ---------- */
+    .band-dusk { background: var(--olive-deep); border-top: none; border-bottom: none; }
+    .band-dusk .apero-grid h2 { color: var(--apricot); }
+    .band-dusk .apero-grid p { color: var(--sage-light); }
+    .band-dusk .btn-ghost { border-color: rgba(220, 231, 197, 0.5); color: var(--sage-light); }
+    .band-dusk .btn-ghost:hover { background: rgba(220, 231, 197, 0.12); }
+    .band-dusk .framed::before { border-color: rgba(220, 231, 197, 0.35); }
     .apero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
     .apero-grid h2 { font-size: clamp(26px, 3.5vw, 32px); color: var(--ochre); margin-bottom: 1.2rem; }
     .apero-grid p { color: var(--ink-soft); font-size: 17px; margin-bottom: 2rem; }
@@ -334,21 +347,22 @@
     .reveal.in { opacity: 1; transform: none; }
     @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; } }
 
-    /* ---------- Footer ---------- */
-    footer { background: var(--surface-low); border-top: 1px solid rgba(215,195,179,0.5); padding: 4rem 0 0; }
+    /* ---------- Footer (dusk — deep iron) ---------- */
+    footer { background: var(--iron-deep); padding: 4rem 0 0; }
     .footer-grid { max-width: 1280px; margin: 0 auto; padding: 0 64px; display: grid; grid-template-columns: 1.2fr 1fr 1fr; gap: 3rem; }
-    .footer-logo { font-family: var(--serif); font-size: 24px; color: var(--ochre); margin-bottom: 0.9rem; }
-    .footer-grid p { font-size: 14.5px; color: var(--ink-soft); }
-    .footer-head { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin-bottom: 1rem; }
+    .footer-logo { font-family: var(--serif); font-size: 24px; color: var(--apricot); margin-bottom: 0.9rem; }
+    .footer-grid p { font-size: 14.5px; color: var(--cream-soft); }
+    .footer-head { font-size: 12px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: var(--apricot-dim); margin-bottom: 1rem; }
     .footer-hours { width: 100%; border-collapse: collapse; }
-    .footer-hours td { padding: 0.22rem 0; vertical-align: top; font-size: 14px; color: var(--ink-soft); }
-    .footer-hours td:first-child { padding-right: 1.4rem; white-space: nowrap; font-weight: 600; color: var(--ink); }
-    .footer-hours .closed { color: var(--outline); font-style: italic; }
-    footer a { color: var(--ochre); text-decoration: none; }
+    .footer-hours td { padding: 0.22rem 0; vertical-align: top; font-size: 14px; color: var(--cream-soft); }
+    .footer-hours td:first-child { padding-right: 1.4rem; white-space: nowrap; font-weight: 600; color: var(--apricot); }
+    .footer-hours .closed { color: #a5a29b; font-style: italic; }
+    footer a { color: var(--apricot-dim); text-decoration: none; }
     footer a:hover { text-decoration: underline; }
     .footer-contact p { margin-bottom: 0.5rem; }
-    .footer-note { font-size: 13px !important; font-style: italic; color: var(--outline) !important; margin-top: 1rem; }
-    .copy { max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 64px; border-top: 1px solid rgba(215,195,179,0.35); font-size: 12.5px; color: var(--outline); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
+    .footer-note { font-size: 13px !important; font-style: italic; color: #a5a29b !important; margin-top: 1rem; }
+    .cigale-footer { filter: invert(0.85) sepia(0.3); }
+    .copy { max-width: 1280px; margin: 3rem auto 0; padding: 1.4rem 64px; border-top: 1px solid rgba(243,240,234,0.15); font-size: 12.5px; color: #a5a29b; display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap; }
     @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr; padding: 0 16px; } .copy { padding: 1.4rem 16px; } }
   </style>
 </head>
@@ -553,7 +567,7 @@
 </section>
 
 <!-- APÉRO BAND -->
-<section class="section band">
+<section class="section band band-dusk">
   <div class="inner apero-grid">
     <div>
       <h2>The Art of the Apéro</h2>
@@ -920,7 +934,7 @@
 </section>
 
 <!-- NEWS / PRESS -->
-<section id="news" class="section band">
+<section id="news" class="section" style="background: var(--surface-high);">
   <div class="inner">
     <p class="kicker">Press</p>
     <div class="section-head"><h2>In the news</h2></div>
