@@ -28,7 +28,7 @@
   <meta name="twitter:description" content="A classic French bistro in historic Mount Adams — steak frites, moules marinière, brunch, and an all-French wine list." />
   <meta name="twitter:image" content="https://www.lucabistro.com/photos/back-patio.webp" />
 
-  <meta name="theme-color" content="#fcf9f3" />
+  <meta name="theme-color" content="#f7eedb" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:ital,wght@0,400;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -76,10 +76,10 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     :root {
       /* Provençal Heritage — Option 2 design tokens (from Stitch DESIGN.md) */
-      --surface: #fcf9f3;          /* weathered stone */
-      --surface-low: #f6f3ed;      /* tonal band */
-      --surface-mid: #f0eee8;
-      --surface-high: #ebe8e2;
+      --surface: #f7eedb;          /* warm parchment */
+      --surface-low: #eee0c3;      /* sun-baked page bg */
+      --surface-mid: #e9dbbb;
+      --surface-high: #e2d3af;
       --ink: #1c1c18;              /* near-black iron */
       --ink-soft: #524438;         /* warm variant for body copy */
       --ochre: #8b500a;            /* primary — sun-baked earth */
@@ -89,7 +89,7 @@
       --olive: #586247;            /* tertiary */
       --outline: #857467;
       --outline-soft: #d7c3b3;
-      --card-border: #e5e1d8;
+      --card-border: #d8c9a8;
       /* Dusk tones — the region after sunset */
       --olive-deep: #2e3720;       /* dark garrigue green */
       --iron-deep: #31312d;        /* charcoal-brown iron */
@@ -108,7 +108,7 @@
     }
     body {
       font-family: var(--sans); font-weight: 300; color: var(--ink);
-      background: var(--surface); line-height: 1.7; font-size: 16px;
+      background: var(--surface-low); line-height: 1.7; font-size: 16px;
       overflow-x: hidden;
     }
     img { max-width: 100%; height: auto; display: block; }
@@ -126,16 +126,34 @@
     .leaf-divider { text-align: center; color: var(--outline-soft); font-size: 18px; letter-spacing: 0.6em; margin: 3rem 0; user-select: none; }
 
     /* ---------- Layout ---------- */
-    .section { padding: 5rem 0; }
+    .section { padding: 4rem 0; }
     .inner { max-width: 1280px; margin: 0 auto; padding: 0 64px; }
-    .band { background: var(--surface-low); border-top: 1px solid rgba(215,195,179,0.3); border-bottom: 1px solid rgba(215,195,179,0.3); }
-    @media (max-width: 768px) { .inner { padding: 0 16px; } .section { padding: 3.5rem 0; } }
+    .band { background: var(--surface-mid); }
+    @media (max-width: 768px) { .inner { padding: 0 16px; } .section { padding: 2.5rem 0; } }
+
+    /* ---------- Ornamental section frames (scroll corners) ---------- */
+    .frame {
+      position: relative; max-width: 1280px; margin: 0 auto;
+      background: var(--surface); border: 1px solid var(--outline-soft); border-radius: 2px;
+      padding: 3.5rem 64px; box-shadow: var(--shadow-warm);
+    }
+    .frame::before, .frame::after, .frame .fc::before, .frame .fc::after {
+      content: ''; position: absolute; width: 30px; height: 30px;
+      border: 0 solid var(--ochre-container); pointer-events: none;
+    }
+    .frame::before { top: -2px; left: -2px; border-top-width: 3px; border-left-width: 3px; }
+    .frame::after { top: -2px; right: -2px; border-top-width: 3px; border-right-width: 3px; }
+    .frame .fc::before { bottom: -2px; left: -2px; border-bottom-width: 3px; border-left-width: 3px; }
+    .frame .fc::after { bottom: -2px; right: -2px; border-bottom-width: 3px; border-right-width: 3px; }
+    .section > .frame { margin-left: 2rem; margin-right: 2rem; }
+    @media (min-width: 1344px) { .section > .frame { margin-left: auto; margin-right: auto; } }
+    @media (max-width: 768px) { .frame { padding: 2rem 16px; } .section > .frame { margin-left: 0.75rem; margin-right: 0.75rem; } }
 
     /* ---------- Nav ---------- */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 50;
-      background: rgba(252, 249, 243, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(215, 195, 179, 0.35);
+      background: rgba(247, 238, 219, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(203, 179, 145, 0.45);
     }
     .nav-inner { max-width: 1280px; margin: 0 auto; padding: 0 64px; height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; }
     .wordmark { font-family: var(--serif); font-size: 24px; color: var(--ochre); text-decoration: none; letter-spacing: 0.01em; display: flex; align-items: center; gap: 0.7rem; }
@@ -406,7 +424,7 @@
 
 <!-- ABOUT -->
 <section id="about" class="section">
-  <div class="inner">
+  <div class="inner frame"><i class="fc" aria-hidden="true"></i>
     <p class="kicker">About us</p>
     <div class="section-head"><h2>Our story</h2></div>
 
@@ -582,7 +600,7 @@
 
 <!-- MENU -->
 <section id="menu" class="section">
-  <div class="inner">
+  <div class="inner frame"><i class="fc" aria-hidden="true"></i>
     <p class="kicker">What we serve</p>
     <div class="section-head"><h2>Our menu</h2></div>
 
@@ -808,7 +826,7 @@
 
 <!-- EVENTS -->
 <section id="events" class="section band">
-  <div class="inner">
+  <div class="inner frame"><i class="fc" aria-hidden="true"></i>
     <p class="kicker">What's on</p>
     <div class="section-head"><h2>Events</h2></div>
 
@@ -883,7 +901,7 @@
 
 <!-- PHOTOS -->
 <section id="photos" class="section">
-  <div class="inner">
+  <div class="inner frame"><i class="fc" aria-hidden="true"></i>
     <p class="kicker">The atmosphere</p>
     <div class="section-head"><h2>A glimpse inside</h2></div>
 
@@ -935,7 +953,7 @@
 
 <!-- NEWS / PRESS -->
 <section id="news" class="section" style="background: var(--surface-high);">
-  <div class="inner">
+  <div class="inner frame"><i class="fc" aria-hidden="true"></i>
     <p class="kicker">Press</p>
     <div class="section-head"><h2>In the news</h2></div>
 
