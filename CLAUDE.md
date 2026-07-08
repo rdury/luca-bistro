@@ -14,6 +14,7 @@ Live and healthy. Production = `e80574a`; all Jul-4 QC and improvement groups (G
 World Cup fixtures/results are maintained by the app-scheduled task `luca-worldcup-daily` (daily ~8:09 AM, pre-authorized to commit/push its own updates after the integrity ritual). The old stale Desktop task has been deleted.
 
 ## Open work
+Full working checklist — completed log, ongoing/recurring items, and the "Frédéric's Voice" track — lives in **`TODO.md`** (keep the two in sync; TODO.md is the detailed list, this section is the summary).
 - **G1 Menu consistency (owner input):** 84 Burger $16 dinner vs $15 lunch; Avocado Shrimp Salad dinner description → "Grilled shrimp".
 - **G2 follow-ups (owner checks bottle labels):** Réserve de Marande region (list says Provence, producer looks Languedoc/Pays d'Oc); Crémant producer "Château" vs "Réserve" de Mauny.
 - **⏰ After Jul 19 — G4 World Cup teardown:** remove banner, event card, fixtures table, results line + all orphaned `wc-` CSS (verify `grep -c "wc-"` = 0); keep "Rosé All Day 2026" heading (drop its inline margin-top); disable the scheduled task; optional Past Events memorial entry.
