@@ -71,6 +71,62 @@
     ]
   }
   </script>
+  <script type="application/ld+json">
+  [
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Rosé All Day — July",
+      "description": "All rosé by the glass from 10 AM to 9 PM on the garden patio at Luca Bistro in Mt. Adams — live music by Nick Tuttle, featuring Jim Conroy, Dahlia Baer, and Perfect Pour Jewelry.",
+      "startDate": "2026-07-30T10:00:00-04:00",
+      "endDate": "2026-07-30T21:00:00-04:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "isAccessibleForFree": true,
+      "image": "https://www.lucabistro.com/photos/back-patio.webp",
+      "performer": { "@type": "Person", "name": "Nick Tuttle" },
+      "organizer": { "@type": "Organization", "name": "Luca Bistro", "url": "https://www.lucabistro.com/" },
+      "location": {
+        "@type": "Place",
+        "name": "Luca Bistro",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "934 Hatch St",
+          "addressLocality": "Cincinnati",
+          "addressRegion": "OH",
+          "postalCode": "45202",
+          "addressCountry": "US"
+        }
+      }
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "Event",
+      "name": "Rosé All Day — August",
+      "description": "All rosé by the glass from 10 AM to 9 PM on the garden patio at Luca Bistro in Mt. Adams — live music by Nick Tuttle, featuring Jim Conroy, Dahlia Baer, and Perfect Pour Jewelry.",
+      "startDate": "2026-08-29T10:00:00-04:00",
+      "endDate": "2026-08-29T21:00:00-04:00",
+      "eventStatus": "https://schema.org/EventScheduled",
+      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
+      "isAccessibleForFree": true,
+      "image": "https://www.lucabistro.com/photos/back-patio.webp",
+      "performer": { "@type": "Person", "name": "Nick Tuttle" },
+      "organizer": { "@type": "Organization", "name": "Luca Bistro", "url": "https://www.lucabistro.com/" },
+      "location": {
+        "@type": "Place",
+        "name": "Luca Bistro",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "934 Hatch St",
+          "addressLocality": "Cincinnati",
+          "addressRegion": "OH",
+          "postalCode": "45202",
+          "addressCountry": "US"
+        }
+      }
+    }
+  ]
+  </script>
 
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -330,6 +386,9 @@
     .news-read-more { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
     /* PHOTOS */
+    .patio-intro { max-width: 680px; margin-bottom: 2.5rem; scroll-margin-top: 130px; }
+    .patio-intro h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; }
+    .patio-intro p { font-size: 15px; color: #463829; line-height: 1.8; font-weight: 400; }
     .photo-tabs { display: flex; gap: 0; border-bottom: 1px solid #e8e0d4; margin-bottom: 2rem; }
     .tab-btn {
       background: none; border: none; cursor: pointer;
@@ -1445,6 +1504,11 @@
     <h2>A glimpse inside</h2>
     <div class="rule"></div>
 
+    <div id="patio" class="patio-intro">
+      <h3>The garden patio — outdoor dining in Mt. Adams</h3>
+      <p>Tucked behind the bistro, our tree-shaded back patio is a leafy pocket of the south of France in the heart of Cincinnati — green, unhurried, and open for brunch and dinner in season. Pull up a chair under the canopy with a glass of rosé; at Luca, there's always room for one more at the table.</p>
+    </div>
+
     <div class="photo-tabs">
       <button class="tab-btn active" data-tab="food">Food</button>
       <button class="tab-btn" data-tab="drink">Beers</button>
@@ -1478,11 +1542,11 @@
     </div>
 
     <div id="tab-patio" class="photo-panel">
-      <span class="pm"><img src="photos/back-patio.webp" alt="Sunny back patio with striped awning and umbrellas" width="1600" height="1067" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_4920.webp?v=4" alt="Sunny patio courtyard" width="1067" height="1600" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_5275.webp?v=4" alt="Guests under tree canopy" width="1067" height="1600" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_5339.webp?v=4" alt="Server on busy patio" width="1600" height="1067" loading="lazy" decoding="async" /></span>
-      <span class="pm"><img src="photos/patio/_MG_5358.webp?v=4" alt="Guests dining outdoors" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/back-patio.webp" alt="Sunny back patio with striped awning and umbrellas at Luca Bistro in Mt. Adams, Cincinnati" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_4920.webp?v=4" alt="Green garden patio courtyard at Luca Bistro, Mt. Adams" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_5275.webp?v=4" alt="Guests dining under the tree canopy on Luca Bistro's garden patio" width="1067" height="1600" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_5339.webp?v=4" alt="Server on the busy outdoor dining patio at Luca Bistro, Cincinnati" width="1600" height="1067" loading="lazy" decoding="async" /></span>
+      <span class="pm"><img src="photos/patio/_MG_5358.webp?v=4" alt="Guests enjoying outdoor dining on the back patio at Luca Bistro in Mt. Adams" width="1067" height="1600" loading="lazy" decoding="async" /></span>
     </div>
 
     <div id="tab-exterior" class="photo-panel">
@@ -1665,6 +1729,15 @@
       });
     });
   });
+
+  // Arriving at #patio (link or shared URL) auto-selects the patio photo tab
+  const showPatioTab = () => {
+    if (location.hash !== '#patio') return;
+    const btn = document.getElementById('tab-btn-patio');
+    if (btn && btn.getAttribute('aria-selected') !== 'true') btn.click();
+  };
+  showPatioTab();
+  window.addEventListener('hashchange', showPatioTab);
 
   // Gentle reveal-on-scroll for cards (respects reduced-motion via CSS; no-JS shows all)
   (function () {
