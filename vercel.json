@@ -1,0 +1,20 @@
+{
+  "redirects": [
+    { "source": "/menus", "destination": "/#menu", "permanent": true },
+    { "source": "/menus/", "destination": "/#menu", "permanent": true },
+    { "source": "/menu", "destination": "/#menu", "permanent": true },
+    { "source": "/menu/", "destination": "/#menu", "permanent": true },
+    { "source": "/events", "destination": "/#events", "permanent": true },
+    { "source": "/events/", "destination": "/#events", "permanent": true },
+    { "source": "/about", "destination": "/#about", "permanent": true },
+    { "source": "/about/", "destination": "/#about", "permanent": true },
+    { "source": "/contact", "destination": "/#about", "permanent": true },
+    { "source": "/contact/", "destination": "/#about", "permanent": true },
+    { "source": "/hours", "destination": "/#about", "permanent": true },
+    { "source": "/hours/", "destination": "/#about", "permanent": true },
+    { "source": "/gallery", "destination": "/#photos", "permanent": true },
+    { "source": "/gallery/", "destination": "/#photos", "permanent": true },
+    { "source": "/photos", "destination": "/#photos", "permanent": true },
+    { "source": "/photos/", "destination": "/#photos", "permanent": true }
+  ]
+}

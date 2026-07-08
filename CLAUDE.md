@@ -22,4 +22,4 @@ World Cup fixtures/results are maintained by the app-scheduled task `luca-worldc
 
 ## Reference
 Design tokens: Provençal blue `#1C4B70` · yellow `#F8C325` · red `#9E1B32` · cream `#E4DAC2` · gold vars (`--gold #806240`, `--gold-light #c2a882`). Fonts: Cormorant Garamond + Jost. Contact: (513) 621-5822 · lucabistro84@gmail.com · 934 Hatch St.
-`.vercelignore` keeps `*.md`, `*.bak`, `serve.js`, `.env.example`, `.claude/` off the live site. Web3Forms `access_key` in the HTML is public by design. Deep history: `archive/`.
+`.vercelignore` keeps `*.md`, `*.bak`, `serve.js`, `.env.example`, `.claude/` off the live site. `vercel.json` 301-redirects legacy old-site paths (`/menus/`, `/contact/`, etc.) to section anchors — exact-match only, doesn't touch real asset paths under `/photos/`. Web3Forms `access_key` in the HTML is public by design. Deep history: `archive/`.
