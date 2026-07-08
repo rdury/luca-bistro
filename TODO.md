@@ -23,7 +23,7 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 ## 🔲 Open — one-time
 
 ### Quick (this week)
-- [ ] 🧑🤖 Rosé All Day GBP post — IN PROGRESS (Jul 8): correct flyer received (`photos/rose-all-day-2026-gbp.jpg`); NOTE the flyer date is **July 25**, not July 30 (site corrected Jul 8).
+- [x] Rosé All Day GBP post — posted Jul 8 with the 2026 flyer (July 25 + Aug 29 series; flyer date July 25 corrected on site same day). FFD GBP post published Jul 8.
 - [ ] 🧑 Instagram FFD post — either allow instagram.com in the Claude Chrome extension (Claude drives it) or post manually; image `photos/french-fry-day-2026-large.jpg`, caption drafted in chat Jul 8
 - [ ] 🧑 GSC: inspect `https://www.lucabistro.com/` and `/menus/` → "Request indexing" (pulls new content + redirect discovery forward)
 - [ ] 🧑 GSC: confirm the sitemap "Temporary processing error" cleared (24–48 h; resubmit if not)
