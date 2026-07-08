@@ -13,6 +13,9 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 - [x] `sitemap.xml` lastmod refreshed
 - [x] **G9** Google Search Console — domain verified, sitemap submitted 🧑
 - [x] Legacy old-site URLs (`/menus/`, `/contact/`, `/gallery/`, etc.) 301-redirect to section anchors instead of 404ing (`vercel.json`)
+- [x] "Un mot de Frédéric" chef's letter in Our Story (approved by Raymond Jul 8) — refresh seasonally (~Oct: autumn edition)
+- [x] `Person` schema for Chef Frédéric Maniet (`founder` in Restaurant JSON-LD)
+- [x] National French Fry Day event (Jul 10) — flyer, card with free-fries offer, hero burst, Event schema with Offer
 
 ### Earlier (Jul 4 QC groups — see `archive/STATUS-HISTORY-2026-07.md`)
 - [x] G2/G3/G5–G8 deployed
@@ -26,6 +29,7 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 - [ ] 🧑 Google Business Profile setup pass: secondary categories (Brunch restaurant, Bistro, Wine bar), attributes (outdoor seating, walk-ins, dog-friendly?), upload patio/food photos
 
 ### Dated
+- [ ] ⏰ **Sat Jul 11 — French Fry Day teardown** 🤖 (reminder scheduled): move card to Past Events, remove hero burst (`hero-burst` element + CSS), remove its Event JSON-LD entry
 - [ ] ⏰ **Jul 19 — G4 World Cup teardown** 🤖: banner, event card, fixtures, results, orphaned `wc-` CSS (`grep -c "wc-"` = 0); keep "Rosé All Day 2026" heading; disable scheduled task; optional Past Events memorial entry
 - [ ] ⏰ **Jul 30 / Aug 29** 🤖: after each Rosé All Day passes, move card to Past Events **and** remove its entry from the Event JSON-LD block
 
@@ -52,11 +56,11 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 The differentiator is that Luca feels like Frédéric's home. Search engines can't rank a feeling — but they rank the *artifacts* of it: owner replies, fresh first-person content, named people, repeat engagement. Each item below turns the voice into something crawlable.
 
 - [ ] 🧑 **Review replies signed by Frédéric** — short, personal, occasionally a French phrase ("Merci mille fois, à bientôt"). The single highest-leverage recurring item; owner responses are a ranking signal AND read by every future guest.
-- [ ] 🤖+🧑 **"Un mot de Frédéric" site section** — a short seasonal chef's letter on the homepage (3–4 sentences: what's on the stove, what's pouring, what the patio smells like). Fresh, first-person, keyword-rich content that updates a few times a year. Claude drafts, Frédéric edits, Raymond approves.
+- [x] 🤖+🧑 **"Un mot de Frédéric" site section** — DONE Jul 8 (summer edition live). Recurring: refresh the letter seasonally — autumn (~Oct), winter (~Dec), spring (~Mar), summer (~Jun).
 - [ ] 🤖+🧑 **G10 newsletter as a letter, not a blast** — frame the signup as "Letters from Frédéric" and write each send in his voice. Higher open rates, and the signup framing itself reinforces the brand.
 - [ ] 🧑 **GBP event posts in his voice** — "We're pouring rosé all day Saturday — come find me on the patio. — F." beats a generic announcement.
 - [ ] 🤖+🧑 **Past Events memorials with a personal recap** — one warm sentence from Frédéric per past event ("June's Rosé All Day — merci to Nick for the music and to everyone who stayed for one more glass"). Builds a growing, dated, first-person event history on the page.
 - [ ] 🧑 **Faces in Our Story** — a photo of Frédéric (and team, if willing) with names in the About section; people search "chef Luca Bistro," and named humans strengthen the Google entity.
-- [ ] 🤖 **Person schema for Chef Frédéric Maniet** — add `founder`/`employee` Person markup to the Restaurant JSON-LD linking his name to the bistro.
+- [x] 🤖 **Person schema for Chef Frédéric Maniet** — DONE Jul 8 (`founder` Person markup in Restaurant JSON-LD).
 - [ ] 🧑 **Instagram captions first-person** — same voice on @lucabistro84; consistency across surfaces is what makes the entity credible.
 - [ ] 🧑 **Press angle = his story** — pitches lead with "chef who grew up in the south of France," not "French restaurant"; journalists write about people.
