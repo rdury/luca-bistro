@@ -23,14 +23,16 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 ## 🔲 Open — one-time
 
 ### Quick (this week)
+- [ ] 🧑 Rosé All Day GBP post — ON HOLD (Jul 8): drafted but cancelled before posting; Raymond is checking the correct Rosé flyer/artwork and details. When ready: 🤖 re-drive the post (title/description/dates/times were all correct; only the image was wrong).
+- [ ] 🧑 Instagram FFD post — either allow instagram.com in the Claude Chrome extension (Claude drives it) or post manually; image `photos/french-fry-day-2026-large.jpg`, caption drafted in chat Jul 8
 - [ ] 🧑 GSC: inspect `https://www.lucabistro.com/` and `/menus/` → "Request indexing" (pulls new content + redirect discovery forward)
 - [ ] 🧑 GSC: confirm the sitemap "Temporary processing error" cleared (24–48 h; resubmit if not)
 - [ ] 🧑 Run homepage through [Rich Results Test](https://search.google.com/test/rich-results) — expect Restaurant + 2 Events
 - [ ] 🧑 Google Business Profile setup pass: secondary categories (Brunch restaurant, Bistro, Wine bar), attributes (outdoor seating, walk-ins, dog-friendly?), upload patio/food photos
 
 ### Dated
-- [ ] ⏰ **Sat Jul 11 — French Fry Day teardown** 🤖 (reminder scheduled): move card to Past Events, remove hero burst (`hero-burst` element + CSS), remove its Event JSON-LD entry
-- [ ] ⏰ **Jul 19 — G4 World Cup teardown** 🤖: banner, event card, fixtures, results, orphaned `wc-` CSS (`grep -c "wc-"` = 0); keep "Rosé All Day 2026" heading; disable scheduled task; optional Past Events memorial entry
+- [ ] ⏰ **Sat Jul 11 — French Fry Day teardown** 🤖 (reminder scheduled): move card to Past Events, remove the FFD `<a class="hero-burst">` anchor ONLY (keep `.hero-bursts` container, `.hero-burst*` CSS, and the blue Allez les Bleus burst until Jul 19), remove its Event JSON-LD entry
+- [ ] ⏰ **Jul 19 — G4 World Cup teardown** 🤖: banner, event card, fixtures, results, orphaned `wc-` CSS (`grep -c "wc-"` = 0); ALSO remove the blue `hero-burst-bleus` anchor, the `.hero-bursts` container, and all `.hero-burst*` CSS (added Jul 8); keep "Rosé All Day 2026" heading; disable scheduled task; optional Missed Events memorial entry
 - [ ] ⏰ **Jul 30 / Aug 29** 🤖: after each Rosé All Day passes, move card to Past Events **and** remove its entry from the Event JSON-LD block
 
 ### Owner input needed (carried from CLAUDE.md)

@@ -224,8 +224,11 @@
     .eyebrow { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); }
     .hero .eyebrow { font-family: var(--serif); font-style: italic; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: clamp(26px, 6vw, 56px); line-height: 1.1; color: #F8C325; white-space: nowrap; }
     .hero h1 { font-family: var(--serif); font-size: 45px; font-weight: 500; font-style: italic; color: var(--cream); line-height: 1.1; white-space: nowrap; }
-    .hero-burst { display: inline-block; margin-top: 1.75rem; padding: 8px 20px; background: var(--red); color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
+    .hero-bursts { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; margin-top: 1.75rem; }
+    .hero-burst { display: inline-block; padding: 8px 20px; background: var(--red); color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
     .hero-burst:hover { background: #b52440; }
+    .hero-burst-bleus { background: #1C4B70; color: #F8C325; border: 1px solid #F8C325; }
+    .hero-burst-bleus:hover { background: #26618f; }
     .ffd-flyer { display: block; width: 100%; max-width: 340px; height: auto; margin-bottom: 1.25rem; }
     .hero p { font-size: 18px; color: var(--cream); max-width: 460px; line-height: 1.8; font-weight: 400; }
     .btn {
@@ -560,7 +563,10 @@
       <a href="#menu" class="btn">Explore our menu</a>
       <a href="tel:+15136215822" class="btn btn-call">Call (513) 621-5822</a>
     </div>
-    <a class="hero-burst" href="#events">Join us for National French Fry Day this Friday · July 10</a>
+    <div class="hero-bursts">
+      <a class="hero-burst" href="#events">Join us for National French Fry Day this Friday · July 10</a>
+      <a class="hero-burst hero-burst-bleus" href="#world-cup">Allez les Bleus · World Cup live through July 19</a>
+    </div>
   </div>
 </div>
 
