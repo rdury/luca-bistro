@@ -1549,11 +1549,64 @@
     <h2>Private events</h2>
     <div class="rule"></div>
 
-    <p class="form-intro">While everyday dining at Luca is walk-in only, we love hosting celebrations of 10 or more — birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Email us at <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> or call <a href="tel:+15136215822" style="color:var(--gold);">(513) 621-5822</a>, and we'll be in touch to plan the details.</p>
+    <p class="form-intro">While everyday dining at Luca is walk-in only, we love hosting celebrations of 10 or more — birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Tell us about your event below — the form opens an email to <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> ready to send — or call <a href="tel:+15136215822" style="color:var(--gold);">(513) 621-5822</a>.</p>
 
-    <p style="font-size:15px;color:#5c4a39;line-height:1.8;max-width:680px;margin-bottom:0.5rem;">To help us plan, please include: your name and phone number, the occasion, number of guests (10 or more), preferred date and time, and whether you'd like the regular menu or a prix fixe for the table.</p>
-
-    <a class="form-submit" style="display:inline-block;text-decoration:none;" href="mailto:events@lucabistro.com?subject=Private%20event%20request%20%E2%80%94%20Luca%20Bistro&body=Name%3A%0D%0APhone%3A%0D%0AOccasion%3A%0D%0ANumber%20of%20guests%20(10%2B)%3A%0D%0APreferred%20date%3A%0D%0APreferred%20time%3A%0D%0AMenu%20preference%20(regular%20%2F%20prix%20fixe%20%2F%20not%20sure%20yet)%3A%0D%0AAbout%20your%20event%3A%0D%0A">Email Your Event Request</a>
+    <form id="pe-form">
+      <div class="form-grid">
+        <div class="form-field">
+          <label for="pe-name">Name <span>Required</span></label>
+          <input id="pe-name" type="text" name="name" placeholder="Name" required />
+        </div>
+        <div class="form-field">
+          <label for="pe-email">Email <span>Required</span></label>
+          <input id="pe-email" type="email" name="email" placeholder="Email" required />
+        </div>
+        <div class="form-field">
+          <label for="pe-phone">Phone Number <span>Required</span></label>
+          <input id="pe-phone" type="tel" name="phone" placeholder="Phone Number" required />
+        </div>
+        <div class="form-field">
+          <label for="pe-type">Event Type <span>Required</span></label>
+          <select id="pe-type" name="event_type" required>
+            <option value="">Event Type</option>
+            <option>Birthday</option>
+            <option>Baby Shower</option>
+            <option>Bridal Shower</option>
+            <option>Rehearsal Dinner</option>
+            <option>Family Gathering</option>
+            <option>Holiday Party</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="pe-guests">Number of Guests <span>Required</span></label>
+          <input id="pe-guests" type="number" name="number_of_guests" min="10" placeholder="10 or more" required />
+        </div>
+        <div class="form-field">
+          <label for="pe-menu">Menu Preference <span>Required</span></label>
+          <select id="pe-menu" name="menu_preference" required>
+            <option value="">Menu Preference</option>
+            <option>Order from the regular menu</option>
+            <option>Prix fixe — set menu for the group</option>
+            <option>Not sure yet — let's discuss</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="pe-date">Preferred Date <span>Required</span></label>
+          <input id="pe-date" type="date" name="preferred_date" required />
+        </div>
+        <div class="form-field">
+          <label for="pe-time">Preferred Time <span>Required</span></label>
+          <input id="pe-time" type="time" name="preferred_time" required />
+        </div>
+        <div class="form-field full">
+          <label for="pe-comments">Tell Us About Your Event <span>Optional</span></label>
+          <textarea id="pe-comments" name="comments" placeholder="Anything else we should know — occasion, timing, special requests"></textarea>
+        </div>
+      </div>
+      <button type="submit" class="form-submit">Email Your Event Request</button>
+      <p class="form-status" role="status" aria-live="polite"></p>
+    </form>
   </div>
 </div>
 
@@ -1865,6 +1918,35 @@
       }
     });
   });
+
+  // Private events — the form composes an email to events@lucabistro.com
+  // (interim until the admin-site backend takes real submissions)
+  (function () {
+    var peForm = document.getElementById('pe-form');
+    if (!peForm) return;
+    peForm.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var v = function (n) { return (peForm.elements[n].value || '').trim(); };
+      var body =
+        'Name: ' + v('name') + '\r\n' +
+        'Email: ' + v('email') + '\r\n' +
+        'Phone: ' + v('phone') + '\r\n' +
+        'Event type: ' + v('event_type') + '\r\n' +
+        'Number of guests: ' + v('number_of_guests') + '\r\n' +
+        'Preferred date: ' + v('preferred_date') + '\r\n' +
+        'Preferred time: ' + v('preferred_time') + '\r\n' +
+        'Menu preference: ' + v('menu_preference') + '\r\n' +
+        'About the event: ' + v('comments');
+      var status = peForm.querySelector('.form-status');
+      if (status) {
+        status.style.color = '#5a7d3a';
+        status.textContent = 'Your email app should open with your request ready — just press Send. If it does not, email us at events@lucabistro.com.';
+      }
+      window.location.href = 'mailto:events@lucabistro.com?subject=' +
+        encodeURIComponent('Private event request — Luca Bistro') +
+        '&body=' + encodeURIComponent(body);
+    });
+  })();
 </script>
 
 <!-- Vercel Web Analytics (enable "Web Analytics" in the Vercel dashboard for this to collect data) -->

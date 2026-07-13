@@ -44,7 +44,7 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 ### Enhancements backlog (owner picks, Claude builds)
 - [x] **Parchment menu ("Cadre Bistro")** — DEPLOYED Jul 12 (owner-approved): CSS-only, all menu tabs on aged parchment + grain in the gilt event-card frame with faint cicada watermark. Raymond picked variant C of A–D (4-look mockup kept in untracked `menu-parchment-preview.html`)
 - [ ] G10 Newsletter signup (existing Web3Forms pattern) — *see Frédéric's Voice below*
-- [x] **G11 Private events — DEPLOYED Jul 12** (owner-approved, INTERIM EMAIL VERSION): `#private-events` section + nav link + footer/Hours links + `/private-events` redirect; inquiries via mailto to events@lucabistro.com (prefilled subject/body template) until the dury.net admin site's request form replaces it. Photos for the section still to come (owner picks). The Jul 8 Web3Forms-form version stays in `archive/private-events-G11.patch` for reference until deleted
+- [x] **G11 Private events — DEPLOYED Jul 12** (owner-approved, INTERIM EMAIL VERSION): `#private-events` section + nav link + footer/Hours links + `/private-events` redirect; full request form (name, email, phone, event type, guests ≥10, date, time, menu preference, comments) whose submit composes a prefilled mailto email to events@lucabistro.com — no backend — until the dury.net admin site takes real submissions (then swap the `#pe-form` handler for a POST). Photos for the section still to come (owner picks). (The Jul 8 Web3Forms-form draft was deleted with Raymond's OK — if a form is ever wanted before the admin site, rebuild from the Contact form pattern)
 - [ ] G12 Lazy-loaded map
 - [ ] G13 Instagram link tile (@lucabistro84, no embed)
 - [ ] Re-export 103 KB `logo.png` at 2×
