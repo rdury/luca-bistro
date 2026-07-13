@@ -71,7 +71,11 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
     ],
     "specialOpeningHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "validFrom": "2026-07-14", "validThrough": "2026-07-14", "opens": "00:00", "closes": "00:00" }
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "validFrom": "2026-07-14", "validThrough": "2026-07-14", "opens": "15:00", "closes": "17:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "validFrom": "2026-07-15", "validThrough": "2026-07-15", "opens": "10:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "validFrom": "2026-07-15", "validThrough": "2026-07-15", "opens": "15:00", "closes": "21:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "validFrom": "2026-07-19", "validThrough": "2026-07-19", "opens": "10:00", "closes": "14:00" },
+      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "validFrom": "2026-07-19", "validThrough": "2026-07-19", "opens": "15:00", "closes": "17:00" }
     ]
   }
   </script>
@@ -202,7 +206,7 @@
     .hero-bursts { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; margin-top: 1.75rem; }
     .hero-burst { display: inline-block; padding: 8px 20px; background: var(--red); color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
     .hero-burst:hover { background: #b52440; }
-    .hero-banner-link { display: block; width: 100%; max-width: 600px; }
+    .hero-banner-link { display: block; width: 100%; max-width: 780px; }
     .hero-banner-link img { display: block; width: 100%; height: auto; }
     .event-flyer { display: block; width: 100%; max-width: 340px; height: auto; margin-bottom: 1.25rem; }
     .hero p { font-size: 18px; color: var(--cream); max-width: 460px; line-height: 1.8; font-weight: 400; }
@@ -379,14 +383,22 @@
     .event-sub { color: #5c4a39 !important; font-size: 16px !important; margin-top: 6px; }
     .event-date { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
     .event-tag { display: inline-block; margin-top: 1rem; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border: 1px solid var(--red); color: var(--red); }
-    /* World Cup knockout bracket (lives in Missed Events; hero banner + bracket cleanup after the final) */
-    .wc-bracket { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; align-items: center; margin-top: 0.9rem; }
-    .wc-round { display: flex; flex-direction: column; gap: 1.25rem; }
-    .wc-match { background: rgba(255,255,255,0.65); border: 1px solid rgba(60,40,20,0.15); border-left: 3px solid var(--gold-light); padding: 0.8rem 1rem; }
-    .wc-match.wc-final-match { border-left-color: var(--red); }
-    .wc-team { font-size: 15px; color: #3a2c1c; padding: 0.18rem 0; }
-    .wc-team strong { color: #1C4B70; }
-    .wc-meta { margin-top: 0.45rem; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--gold); border-top: 1px solid rgba(60,40,20,0.12); padding-top: 0.45rem; }
+    /* Watch Parties — same parchment-in-gilt-frame treatment as the menus (banner + this block retire after the final) */
+    .parchment-panel { position: relative; padding: 2.25rem 2.5rem; border: 24px solid transparent; border-image: var(--frame) 28 fill stretch; }
+    .parchment-panel::before {
+      content: ""; position: absolute; inset: -6px; z-index: 0;
+      background:
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='q'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0'/></filter><rect width='160' height='160' filter='url(%23q)'/></svg>"),
+        radial-gradient(ellipse at 50% 40%, #f2e6c6 0%, #e9d8ae 65%, #e0cc9b 100%);
+      box-shadow: inset 0 0 70px rgba(130,95,50,0.18);
+    }
+    .parchment-panel::after {
+      content: ""; position: absolute; inset: 0; z-index: 0;
+      background: url("photos/cicada.png") center 45% / min(55%, 380px) no-repeat;
+      opacity: 0.055; filter: sepia(1) saturate(0.6); pointer-events: none;
+    }
+    .parchment-panel > * { position: relative; z-index: 1; }
+    .wc-allez { font-family: var(--serif); font-size: 40px; font-weight: 700; color: #1C4B70; letter-spacing: 0.02em; margin-bottom: 1.25rem; }
     .wc-fx-note { margin: 0.6rem 0 0; font-size: 12px; color: #6b5a47; font-style: italic; }
     /* EVENTS TABS + PAST EVENTS */
     .event-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
@@ -518,11 +530,8 @@
       .about-tabs::-webkit-scrollbar, .menu-tabs::-webkit-scrollbar, .photo-tabs::-webkit-scrollbar, .event-tabs::-webkit-scrollbar { display: none; }
       .about-tab-btn, .menu-tab-btn, .tab-btn, .event-tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
 
-      /* World Cup bracket — single column on narrow phones */
-      .wc-bracket { grid-template-columns: 1fr; }
-
-      /* Parchment menu — slimmer frame and padding on phones */
-      .menu-panel { padding: 1.4rem 1.1rem; border-width: 18px; }
+      /* Parchment menu + Watch Parties — slimmer frame and padding on phones */
+      .menu-panel, .parchment-panel { padding: 1.4rem 1.1rem; border-width: 18px; }
 
       /* Photo grid — wide hero image then 2-up thumbnails */
       .photo-panel.active { grid-template-columns: 1fr 1fr; }
@@ -628,7 +637,7 @@
           <strong>Sorry, we do not take reservations!</strong>
           <p>Please <a href="#private-events" style="color:var(--gold);text-decoration:underline;">contact us</a> if you are planning a special event of 10 persons or more.</p>
           <p>Kitchen closes 30 minutes before close.</p>
-          <p><em>This week only: closed Tuesday, July 14.</em></p>
+          <p><em>This week only: Tuesday, July 14 — bar &amp; snacks 3–5 PM, no dinner service.</em></p>
         </div>
       </div>
     </div>
@@ -1465,12 +1474,36 @@
     <h2>What's On</h2>
 
     <div class="event-tabs">
-      <button class="event-tab-btn active" data-event="current">Current Events</button>
+      <button class="event-tab-btn active" data-event="current">What's On Now</button>
       <button class="event-tab-btn" data-event="past">Missed Events</button>
     </div>
 
     <div id="events-current" class="event-panel active">
-    <h3>Rosé All Day 2026</h3>
+    <h3>Watch Parties</h3>
+    <div class="rule"></div>
+    <div class="parchment-panel" style="margin-bottom:1rem;">
+      <p class="wc-allez">Allez les Bleus!</p>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h3>France v Spain</h3>
+          <p>Tuesday — bar &amp; snacks only, 3–5 PM · no dinner service · Luca Bistro closes at 5 PM</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h3>England v Argentina</h3>
+          <p>Wednesday — bar &amp; snacks 3–5 PM · dinner service starts at 5 PM</p>
+        </div>
+      </div>
+      <div class="menu-item">
+        <div class="menu-item-info">
+          <h3>The Final</h3>
+          <p>Sunday — bar &amp; snacks 3–5 PM · Luca Bistro closes at 5 PM</p>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 3.5rem;">Rosé All Day 2026</h3>
     <div class="rule"></div>
     <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
       <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">All rosé by the glass · 10:00 AM – 9:00 PM · Luca Bistro, Mt. Adams. Live music and featured artists all season long.</p>
@@ -1498,38 +1531,6 @@
     <div id="events-past" class="event-panel">
       <p class="past-intro">A look back at recent events at Luca Bistro — photos coming soon.</p>
       <div class="past-events">
-        <div class="past-event">
-          <p class="past-date">June 11 – July 19, 2026 · World Cup 2026</p>
-          <h3>Allez les Bleus!</h3>
-          <p>A month of World Cup matches on the screens at the bistro — merci to everyone who cheered France, Champion du Monde 1998 &amp; 2018, with us on the road to the semi-finals. The bracket plays out below.</p>
-          <div class="wc-bracket">
-            <div class="wc-round">
-              <div class="wc-match">
-                <p class="wc-team"><strong>France</strong></p>
-                <p class="wc-team">Spain</p>
-                <p class="wc-meta">Semi-final · Tue Jul 14 · 3:00 PM</p>
-              </div>
-              <div class="wc-match">
-                <p class="wc-team">England</p>
-                <p class="wc-team">Argentina</p>
-                <p class="wc-meta">Semi-final · Wed Jul 15 · 3:00 PM</p>
-              </div>
-            </div>
-            <div class="wc-round">
-              <div class="wc-match wc-final-match">
-                <p class="wc-team">Winner, France–Spain</p>
-                <p class="wc-team">Winner, England–Argentina</p>
-                <p class="wc-meta">Final · Sun Jul 19 · 3:00 PM · East Rutherford, NJ</p>
-              </div>
-              <div class="wc-match">
-                <p class="wc-team">Runner-up, France–Spain</p>
-                <p class="wc-team">Runner-up, England–Argentina</p>
-                <p class="wc-meta">3rd-place match · Sat Jul 18 · 5:00 PM · Miami Gardens, FL</p>
-              </div>
-            </div>
-          </div>
-          <p class="wc-fx-note">All times ET · subject to change</p>
-        </div>
         <div class="past-event">
           <p class="past-date">July 10, 2026 · National French Fry Day</p>
           <h3>Vive la Frite!</h3>
@@ -1765,7 +1766,7 @@
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
         <tr><td>Wed – Sat</td><td>Brunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
-      <p style="font-size:13px;margin-top:0.4rem;"><em>This week: closed Tuesday, July 14</em></p>
+      <p style="font-size:13px;margin-top:0.4rem;"><em>This week: Tue Jul 14 — bar &amp; snacks 3–5 PM only</em></p>
     </div>
     <div>
       <h3>Contact</h3>
