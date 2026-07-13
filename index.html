@@ -398,7 +398,9 @@
       opacity: 0.055; filter: sepia(1) saturate(0.6); pointer-events: none;
     }
     .parchment-panel > * { position: relative; z-index: 1; }
-    .wc-allez { font-family: var(--serif); font-size: 40px; font-weight: 700; color: #1C4B70; letter-spacing: 0.02em; margin-bottom: 1.25rem; }
+    .wc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1rem; }
+    .wc-cards .parchment-panel { padding: 1.5rem 1.4rem; }
+    .wc-allez { font-family: var(--serif); font-size: 28px; font-weight: 700; color: #1C4B70; letter-spacing: 0.02em; margin-bottom: 0.75rem; }
     .wc-fx-note { margin: 0.6rem 0 0; font-size: 12px; color: #6b5a47; font-style: italic; }
     /* EVENTS TABS + PAST EVENTS */
     .event-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
@@ -532,6 +534,7 @@
 
       /* Parchment menu + Watch Parties — slimmer frame and padding on phones */
       .menu-panel, .parchment-panel { padding: 1.4rem 1.1rem; border-width: 18px; }
+      .wc-cards { grid-template-columns: 1fr; }
 
       /* Photo grid — wide hero image then 2-up thumbnails */
       .photo-panel.active { grid-template-columns: 1fr 1fr; }
@@ -1481,24 +1484,32 @@
     <div id="events-current" class="event-panel active">
     <h3>Watch Parties</h3>
     <div class="rule"></div>
-    <div class="parchment-panel" style="margin-bottom:1rem;">
-      <p class="wc-allez">Allez les Bleus!</p>
-      <div class="menu-item">
-        <div class="menu-item-info">
-          <h3>France v Spain</h3>
-          <p>Tuesday — bar &amp; snacks only, 3–5 PM · no dinner service · Luca Bistro closes at 5 PM</p>
+    <div class="wc-cards">
+      <div class="parchment-panel">
+        <p class="wc-allez">Allez les Bleus!</p>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>France v Spain</h3>
+            <p>Tuesday — bar &amp; snacks only, 3–5 PM · no dinner service · Luca Bistro closes at 5 PM</p>
+          </div>
         </div>
       </div>
-      <div class="menu-item">
-        <div class="menu-item-info">
-          <h3>England v Argentina</h3>
-          <p>Wednesday — bar &amp; snacks 3–5 PM · dinner service starts at 5 PM</p>
+      <div class="parchment-panel">
+        <p class="wc-allez">Allez les Bleus!</p>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>England v Argentina</h3>
+            <p>Wednesday — bar &amp; snacks 3–5 PM · dinner service starts at 5 PM</p>
+          </div>
         </div>
       </div>
-      <div class="menu-item">
-        <div class="menu-item-info">
-          <h3>The Final</h3>
-          <p>Sunday — bar &amp; snacks 3–5 PM · Luca Bistro closes at 5 PM</p>
+      <div class="parchment-panel">
+        <p class="wc-allez">Allez les Bleus!</p>
+        <div class="menu-item">
+          <div class="menu-item-info">
+            <h3>The Final</h3>
+            <p>Sunday — bar &amp; snacks 3–5 PM · Luca Bistro closes at 5 PM</p>
+          </div>
         </div>
       </div>
     </div>
