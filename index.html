@@ -176,6 +176,13 @@
     nav ul a { font-size: 15px; letter-spacing: 0.09em; text-transform: uppercase; color: #2c2018; font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
     nav ul a:hover { color: var(--gold); border-bottom-color: var(--gold); }
     nav ul a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    /* Private dining — quiet second line under the main nav (a side offering, not a department) */
+    .nav-private {
+      position: absolute; right: var(--pad-x); bottom: 6px;
+      font-family: var(--serif); font-style: italic; font-size: 13.5px;
+      letter-spacing: 0.12em; color: var(--gold-deep); transition: color 0.2s;
+    }
+    .nav-private:hover { color: var(--gold); }
 
     /* HERO */
     .hero {
@@ -484,6 +491,7 @@
       .logo img { height: 73px; }
       nav ul { gap: 1.1rem; flex-wrap: wrap; justify-content: center; }
       nav ul a { font-size: 14px; }
+      .nav-private { position: static; text-align: center; font-size: 13px; }
 
       /* HERO — single column, image on top */
       .hero { grid-template-columns: 1fr; height: auto; min-height: 0; max-height: none; }
@@ -531,11 +539,11 @@
   <ul>
     <li><a href="#about">About</a></li>
     <li><a href="#menu">Menu</a></li>
-    <li><a href="#events">Events</a></li>
-    <li><a href="#private-events">Private Events</a></li>
+    <li><a href="#events">What's On</a></li>
     <li><a href="#photos">Photos</a></li>
     <li><a href="#news">News</a></li>
   </ul>
+  <a class="nav-private" href="#private-events">Private Dining &amp; Celebrations</a>
 </nav>
 
 <div class="hero">
@@ -1453,8 +1461,8 @@
 <!-- EVENTS -->
 <div id="events" class="section">
   <div class="inner">
-    <p class="eyebrow-dark">What's on</p>
-    <h2>Events</h2>
+    <p class="eyebrow-dark">At the bistro</p>
+    <h2>What's On</h2>
 
     <div class="event-tabs">
       <button class="event-tab-btn active" data-event="current">Current Events</button>
@@ -1546,7 +1554,7 @@
 <div id="private-events" class="section">
   <div class="inner">
     <p class="eyebrow-dark">Celebrate with us</p>
-    <h2>Private events</h2>
+    <h2>Private dining &amp; celebrations</h2>
     <div class="rule"></div>
 
     <p class="form-intro">While everyday dining at Luca is walk-in only, we love hosting celebrations of 10 or more — birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Tell us about your event below — the form opens an email to <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> ready to send — or call <a href="tel:+15136215822" style="color:var(--gold);">(513) 621-5822</a>.</p>
@@ -1781,7 +1789,7 @@
           <span class="gb-main">Mt. Adams Business Guild</span>
         </span>
       </a>
-      <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">We do not take reservations.<br>For events of 10+, please <a href="#private-events">send us an event request</a>.</p>
+      <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">We do not take reservations.<br>For private dining &amp; celebrations of 10+, please <a href="#private-events">send us a request</a>.</p>
     </div>
   </div>
   <p class="copy">&copy; <span id="yr"></span> Luca Bistro. All rights reserved.</p>

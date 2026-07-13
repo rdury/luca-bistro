@@ -8,6 +8,8 @@
     { "source": "/events/", "destination": "/#events", "permanent": true },
     { "source": "/private-events", "destination": "/#private-events", "permanent": true },
     { "source": "/private-events/", "destination": "/#private-events", "permanent": true },
+    { "source": "/private-dining", "destination": "/#private-events", "permanent": true },
+    { "source": "/private-dining/", "destination": "/#private-events", "permanent": true },
     { "source": "/about", "destination": "/#about", "permanent": true },
     { "source": "/about/", "destination": "/#about", "permanent": true },
     { "source": "/contact", "destination": "/#about", "permanent": true },
