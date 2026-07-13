@@ -301,7 +301,7 @@
     .menu-section-title {
       font-family: var(--serif); font-size: 14px; font-weight: 600;
       letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold);
-      border-bottom: 1px solid #e0d8cc; padding-bottom: 0.6rem; margin-bottom: 1.25rem;
+      border-bottom: 1px solid rgba(110,82,48,0.35); padding-bottom: 0.6rem; margin-bottom: 1.25rem;
     }
     #menu-wine .menu-section-title {
       font-size: 18px;
@@ -309,7 +309,7 @@
     .menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 2.5rem; }
     .menu-item {
       display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline;
-      gap: 0.45rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid #ede8e0;
+      gap: 0.45rem 1rem; padding: 0.7rem 0; border-bottom: 1px solid rgba(110,82,48,0.18);
     }
     .menu-item:last-child { border-bottom: none; }
     .menu-item-info { flex: 1; }
@@ -341,8 +341,22 @@
     }
     .menu-tab-btn:hover { color: var(--gold); }
     .menu-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .menu-panel { display: none; }
+    /* Parchment "old menu" treatment — each menu page sits on aged paper inside the gilt frame */
+    .menu-panel { display: none; position: relative; padding: 2.25rem 2.5rem; border: 24px solid transparent; border-image: var(--frame) 28 fill stretch; }
     .menu-panel.active { display: block; }
+    .menu-panel::before { /* the paper: parchment gradient + grain (same feTurbulence trick as the body, stronger) */
+      content: ""; position: absolute; inset: -6px; z-index: 0;
+      background:
+        url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='p'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.07 0'/></filter><rect width='160' height='160' filter='url(%23p)'/></svg>"),
+        radial-gradient(ellipse at 50% 40%, #f2e6c6 0%, #e9d8ae 65%, #e0cc9b 100%);
+      box-shadow: inset 0 0 70px rgba(130,95,50,0.18);
+    }
+    .menu-panel::after { /* faint cicada watermark behind the dishes */
+      content: ""; position: absolute; inset: 0; z-index: 0;
+      background: url("photos/cicada.png") center 45% / min(55%, 380px) no-repeat;
+      opacity: 0.055; filter: sepia(1) saturate(0.6); pointer-events: none;
+    }
+    .menu-panel > * { position: relative; z-index: 1; }
 
     /* EVENTS */
     .events-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
@@ -499,6 +513,9 @@
       /* World Cup bracket — single column on narrow phones */
       .wc-bracket { grid-template-columns: 1fr; }
 
+      /* Parchment menu — slimmer frame and padding on phones */
+      .menu-panel { padding: 1.4rem 1.1rem; border-width: 18px; }
+
       /* Photo grid — wide hero image then 2-up thumbnails */
       .photo-panel.active { grid-template-columns: 1fr 1fr; }
       .photo-panel .pm:first-child { grid-column: span 2; grid-row: auto; aspect-ratio: 16 / 10; }
@@ -515,6 +532,7 @@
     <li><a href="#about">About</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#events">Events</a></li>
+    <li><a href="#private-events">Private Events</a></li>
     <li><a href="#photos">Photos</a></li>
     <li><a href="#news">News</a></li>
   </ul>
@@ -600,7 +618,7 @@
         <div class="hours-note">
           <p>Welcome to Luca Bistro, enjoy the food and atmosphere of Southern France.</p>
           <strong>Sorry, we do not take reservations!</strong>
-          <p>Please contact us if you are planning a special event of 10 persons or more.</p>
+          <p>Please <a href="#private-events" style="color:var(--gold);text-decoration:underline;">contact us</a> if you are planning a special event of 10 persons or more.</p>
           <p>Kitchen closes 30 minutes before close.</p>
           <p><em>This week only: closed Tuesday, July 14.</em></p>
         </div>
@@ -1524,6 +1542,21 @@
   </div>
 </div>
 
+<!-- PRIVATE EVENTS (interim: inquiries by email until the admin-site request form is ready) -->
+<div id="private-events" class="section">
+  <div class="inner">
+    <p class="eyebrow-dark">Celebrate with us</p>
+    <h2>Private events</h2>
+    <div class="rule"></div>
+
+    <p class="form-intro">While everyday dining at Luca is walk-in only, we love hosting celebrations of 10 or more — birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Email us at <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> or call <a href="tel:+15136215822" style="color:var(--gold);">(513) 621-5822</a>, and we'll be in touch to plan the details.</p>
+
+    <p style="font-size:15px;color:#5c4a39;line-height:1.8;max-width:680px;margin-bottom:0.5rem;">To help us plan, please include: your name and phone number, the occasion, number of guests (10 or more), preferred date and time, and whether you'd like the regular menu or a prix fixe for the table.</p>
+
+    <a class="form-submit" style="display:inline-block;text-decoration:none;" href="mailto:events@lucabistro.com?subject=Private%20event%20request%20%E2%80%94%20Luca%20Bistro&body=Name%3A%0D%0APhone%3A%0D%0AOccasion%3A%0D%0ANumber%20of%20guests%20(10%2B)%3A%0D%0APreferred%20date%3A%0D%0APreferred%20time%3A%0D%0AMenu%20preference%20(regular%20%2F%20prix%20fixe%20%2F%20not%20sure%20yet)%3A%0D%0AAbout%20your%20event%3A%0D%0A">Email Your Event Request</a>
+  </div>
+</div>
+
 <!-- PHOTOS -->
 <div id="photos" class="section bg-warm">
   <div class="inner">
@@ -1695,7 +1728,7 @@
           <span class="gb-main">Mt. Adams Business Guild</span>
         </span>
       </a>
-      <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">We do not take reservations.<br>For events of 10+, please contact us.</p>
+      <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">We do not take reservations.<br>For events of 10+, please <a href="#private-events">send us an event request</a>.</p>
     </div>
   </div>
   <p class="copy">&copy; <span id="yr"></span> Luca Bistro. All rights reserved.</p>

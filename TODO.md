@@ -31,8 +31,10 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 - [ ] 🧑 Google Business Profile setup pass: secondary categories (Brunch restaurant, Bistro, Wine bar), attributes (outdoor seating, walk-ins, dog-friendly?), upload patio/food photos
 
 ### Dated
-- [ ] ⏰ **Sat Jul 11 — French Fry Day teardown** 🤖 (reminder scheduled): move card to Past Events, remove the FFD `<a class="hero-burst">` anchor ONLY (keep `.hero-bursts` container, `.hero-burst*` CSS, and the blue Allez les Bleus burst until Jul 19), remove its Event JSON-LD entry
-- [ ] ⏰ **Jul 19 — G4 World Cup teardown** 🤖: banner, event card, fixtures, results, orphaned `wc-` CSS (`grep -c "wc-"` = 0); ALSO remove the hero banner link (`.hero-banner-link` anchor + CSS), the `.hero-bursts` container, and all `.hero-burst*` CSS (added Jul 8); keep "Rosé All Day 2026" heading; disable scheduled task; optional Missed Events memorial entry
+- [x] ⏰ **French Fry Day teardown** 🤖 — DONE Jul 12 (deployed `491963b`): card → Missed Events, hero burst anchor removed (container + CSS kept per plan), Event JSON-LD entry removed
+- [x] 🤖 **Jul 12 hours updates** (deployed `12c0c1c`): "Kitchen closes 30 minutes before close" (permanent, low-key) + "closed Tuesday, July 14" notice (hours panel, footer, schema specialOpeningHoursSpecification) + GBP special hours Jul 14 Closed (auto-expires). Scheduled task `luca-tuesday-closure-reversal` removes the temporary notices Wed Jul 15 9 AM. World Cup daily task DISABLED (Raymond: manual updates from now on). Bracket redesign pending Frédéric: `archive/wc-bracket-jul12.patch`
+- [x] 🤖 **Review replies round 2** — DONE Jul 12: posted Frédéric-voice replies to Savannah Hongell 1★, Dan Healey 1★, Chris Warner 4★, Danielle Ptacek 5★, Julia Belliveau 5★ + Ryan Knight 5★ (new). Unreplied backlog now 39 (older; mostly service/hours complaints 7mo+) — decide with Raymond whether to work through in batches
+- [x] ⏰ **G4 World Cup teardown — done EARLY Jul 12** (`485aaa4`, Raymond: "event is over for us" — closed for the semis): event card/fixtures/results removed from Current Events; memorial entry + knockout `.wc-bracket` added to Missed Events (bracket CSS stays permanently); Rosé now leads Current Events. REMAINING → scheduled task `luca-worldcup-banner-timeout` (Mon Jul 20 9 AM, pre-authorized): remove hero banner anchor + `.hero-bursts`/`.hero-burst*`/`.hero-banner-link` CSS, fill final scores into the bracket, deploy
 - [ ] ⏰ **Jul 25 / Aug 29** 🤖: after each Rosé All Day passes, move card to Missed Events **and** remove its entry from the Event JSON-LD block (Jul 25 card carries the series flyer — move the flyer img to the Aug 29 card when Jul passes)
 
 ### Owner input needed (carried from CLAUDE.md)
@@ -40,8 +42,9 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 - [ ] 🧑 **G2 follow-ups** (check bottle labels): Réserve de Marande region; Crémant "Château" vs "Réserve" de Mauny
 
 ### Enhancements backlog (owner picks, Claude builds)
+- [x] **Parchment menu ("Cadre Bistro")** — DEPLOYED Jul 12 (owner-approved): CSS-only, all menu tabs on aged parchment + grain in the gilt event-card frame with faint cicada watermark. Raymond picked variant C of A–D (4-look mockup kept in untracked `menu-parchment-preview.html`)
 - [ ] G10 Newsletter signup (existing Web3Forms pattern) — *see Frédéric's Voice below*
-- [ ] G11 Private-events callout ("For events of 10+" already in footer — give it a proper section)
+- [x] **G11 Private events — DEPLOYED Jul 12** (owner-approved, INTERIM EMAIL VERSION): `#private-events` section + nav link + footer/Hours links + `/private-events` redirect; inquiries via mailto to events@lucabistro.com (prefilled subject/body template) until the dury.net admin site's request form replaces it. Photos for the section still to come (owner picks). The Jul 8 Web3Forms-form version stays in `archive/private-events-G11.patch` for reference until deleted
 - [ ] G12 Lazy-loaded map
 - [ ] G13 Instagram link tile (@lucabistro84, no embed)
 - [ ] Re-export 103 KB `logo.png` at 2×
@@ -52,6 +55,7 @@ Owner: Raymond · Site: lucabistro.com · Items marked 🧑 need Raymond; 🤖 C
 - [ ] 🧑 **Monthly** — GSC Performance tab: which queries are moving ("patio," "brunch," "french restaurant cincinnati") → feeds next on-page tweaks
 - [ ] 🧑 **Seasonal (spring/early summer)** — pitch Cincinnati food media for "best patio" / "best brunch" roundups (CityBeat, Cincinnati Magazine); lead with patio photos + Enquirer coverage
 - [ ] 🤖 **With every event edit** — keep event cards and Event JSON-LD in sync (rule recorded in `CLAUDE.md`)
+- [ ] 🤖+🧑 **Each visit (standing, Raymond Jul 12)** — reply to 5 more of the old unreplied Google reviews in Frédéric's voice (draft → Raymond approves → post via the owner reply wizard, newest-first). Backlog at 39 after the Jul 12 batch; many old 1★s are hours/service complaints — acknowledge, no excuses, point to the fix, invite back
 
 ## 🎙️ Frédéric's Voice — making "part of the family" a strategy
 
