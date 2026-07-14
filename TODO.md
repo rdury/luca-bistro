@@ -25,7 +25,7 @@ Companion to `CLAUDE.md` (rules + current-state brief live there; this is the ta
 - [ ] (Future, with the dury.net admin project) swap `#pe-form` mailto handler → POST; repoint Contact + Jobs forms off Web3Forms
 
 ## 🔁 Ongoing / recurring
-- [ ] 🤖+🧑 **Each visit** — reply to 5 more old unreplied Google reviews in Frédéric's voice (draft → Raymond approves → post via GBP owner reply wizard, newest-first). **Backlog: 39** (as of Jul 12; mostly 7mo+ hours/service complaints — acknowledge, no excuses, point to the fix, invite back)
+- [ ] 🤖+🧑 **Each visit** — reply to 5 more old unreplied Google reviews in Frédéric's voice (draft → Raymond approves → post via GBP owner reply wizard, newest-first). **Backlog: 34** (as of Jul 14 — batch 2 done: Eric Isaacs 5★, Angelo Constantine 1★, Val 5★, Mike Wiery 5★, Mike Kearns 5★; next up: Janice Gerda. Rule from Raymond: never encourage "ask for [person]" in replies. Older 1★s are mostly hours/service — acknowledge, no excuses, point to the fix, invite back)
 - [ ] 🧑 **Weekly** — GBP: post each event (link `/#events` or `/#patio`), reply to every new review within days
 - [ ] 🧑 **Monthly** — GSC Performance tab: which queries move ("patio," "brunch," "french restaurant cincinnati") → feeds next on-page tweaks
 - [ ] 🧑 **Seasonal** — pitch Cincinnati food media for "best patio"/"best brunch" roundups (CityBeat, Cincinnati Magazine); ~Oct: autumn edition of "Un mot de Frédéric"
