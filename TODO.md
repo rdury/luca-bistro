@@ -15,7 +15,7 @@ Companion to `CLAUDE.md` (rules + current-state brief live there; this is the ta
 ### Dated / automated (tasks are pre-authorized to deploy; prompts describe current markup — keep in sync)
 - [ ] ⏰ Wed Jul 15, 9 AM — task `luca-tuesday-closure-reversal`: removes Tue Jul 14 notices + its schema entry
 - [ ] ⏰ Mon Jul 20, 9 AM — task `luca-worldcup-banner-timeout`: retires hero banner + Watch Parties cards/CSS, posts Missed Events memorial with results, strips leftover special hours
-- [ ] ⏰ **Jul 25 / Aug 29** 🤖: after each Rosé All Day passes, move card to Missed Events **and** remove its Event JSON-LD entry (Jul 25 card carries the series flyer — move the flyer img to the Aug 29 card when Jul passes)
+- [ ] ⏰ **Jul 25 / Aug 29** 🤖: after each Rosé All Day passes, move card to Missed Events **and** remove its Event JSON-LD entry (both cards carry the series flyer as of Jul 14, so no flyer hand-off needed — just retire each card whole)
 
 ### Enhancements backlog (owner picks, Claude builds)
 - [ ] G10 Newsletter signup — as "Letters from Frédéric" (see Frédéric's Voice)
