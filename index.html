@@ -182,11 +182,12 @@
     nav ul a.active { color: var(--gold); border-bottom-color: var(--gold); }
     /* Private dining — quiet second line under the main nav (a side offering, not a department) */
     .nav-private {
-      position: absolute; right: var(--pad-x); bottom: 6px;
-      font-family: var(--serif); font-style: italic; font-size: 13.5px;
+      position: absolute; right: var(--pad-x); bottom: 5px;
+      font-family: var(--serif); font-style: italic; font-size: 16px; font-weight: 600;
       letter-spacing: 0.12em; color: var(--gold-deep); transition: color 0.2s;
+      border-bottom: 1px solid rgba(128,98,64,0.45); padding-bottom: 1px;
     }
-    .nav-private:hover { color: var(--gold); }
+    .nav-private:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
     /* HERO */
     .hero {
@@ -505,7 +506,7 @@
       .logo img { height: 73px; }
       nav ul { gap: 1.1rem; flex-wrap: wrap; justify-content: center; }
       nav ul a { font-size: 14px; }
-      .nav-private { position: static; text-align: center; font-size: 13px; }
+      .nav-private { position: static; text-align: center; font-size: 15px; }
 
       /* HERO — single column, image on top */
       .hero { grid-template-columns: 1fr; height: auto; min-height: 0; max-height: none; }
@@ -647,6 +648,7 @@
     <!-- CONTACT -->
     <div id="about-contact" class="about-panel">
       <p class="form-intro">Send us a message and we'll get back to you as soon as possible.<br>Looking forward to hearing from you!</p>
+      <p style="font-size:14px;color:#5c4a39;font-style:italic;margin:-1rem 0 1.75rem;">A gentle note: we don't take reservations — tables are first come, first seated. For celebrations of 10 or more, see <a href="#private-events" style="color:var(--gold);text-decoration:underline;">private dining</a>.</p>
       <form class="web3form" action="https://api.web3forms.com/submit" method="POST">
         <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
         <input type="hidden" name="subject" value="New message from Luca Bistro website" />
