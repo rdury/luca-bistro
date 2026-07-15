@@ -1605,13 +1605,14 @@
           <input id="pe-guests" type="number" name="number_of_guests" min="10" placeholder="10 or more" required />
         </div>
         <div class="form-field">
-          <label for="pe-menu">Menu Preference <span>Required</span></label>
-          <select id="pe-menu" name="menu_preference" required>
-            <option value="">Menu Preference</option>
+          <label for="pe-menu">Menu Suggestions <span>Required</span></label>
+          <select id="pe-menu" name="menu_suggestion" required>
+            <option value="">Menu Suggestions</option>
             <option>Order from the regular menu</option>
             <option>Prix fixe — set menu for the group</option>
             <option>Not sure yet — let's discuss</option>
           </select>
+          <p id="pe-menu-note" style="display:none;font-size:13.5px;color:#5c4a39;font-style:italic;line-height:1.6;margin-top:0.5rem;">A note: prix fixe menus are planned together — Chef Frédéric will be in touch to discuss the menu with you.</p>
         </div>
         <div class="form-field">
           <label for="pe-date">Preferred Date <span>Required</span></label>
@@ -1946,6 +1947,29 @@
   (function () {
     var peForm = document.getElementById('pe-form');
     if (!peForm) return;
+
+    // Menu Suggestions defaults: <=22 guests -> regular menu, >=23 -> prix fixe.
+    // The chef note shows whenever the suggestion is anything but the regular menu.
+    var guests = peForm.elements['number_of_guests'];
+    var menuSel = peForm.elements['menu_suggestion'];
+    var menuNote = document.getElementById('pe-menu-note');
+    var userChoseMenu = false;
+    function updateMenuNote() {
+      if (!menuNote) return;
+      var show = menuSel.value !== '' && menuSel.value !== 'Order from the regular menu';
+      menuNote.style.display = show ? 'block' : 'none';
+    }
+    if (guests && menuSel) {
+      menuSel.addEventListener('change', function () { userChoseMenu = true; updateMenuNote(); });
+      guests.addEventListener('input', function () {
+        var n = parseInt(guests.value, 10);
+        if (!isNaN(n) && !userChoseMenu) {
+          menuSel.value = (n >= 23) ? 'Prix fixe — set menu for the group' : 'Order from the regular menu';
+        }
+        updateMenuNote();
+      });
+    }
+
     peForm.addEventListener('submit', function (e) {
       e.preventDefault();
       var v = function (n) { return (peForm.elements[n].value || '').trim(); };
@@ -1957,7 +1981,7 @@
         'Number of guests: ' + v('number_of_guests') + '\r\n' +
         'Preferred date: ' + v('preferred_date') + '\r\n' +
         'Preferred time: ' + v('preferred_time') + '\r\n' +
-        'Menu preference: ' + v('menu_preference') + '\r\n' +
+        'Menu suggestion: ' + v('menu_suggestion') + '\r\n' +
         'About the event: ' + v('comments');
       var status = peForm.querySelector('.form-status');
       if (status) {
