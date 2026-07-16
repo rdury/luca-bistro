@@ -1856,10 +1856,10 @@
       <h3>Hours</h3>
       <p id="footer-status" style="font-size:13px;letter-spacing:0.06em;color:#F8C325;margin-bottom:0.5rem;"></p>
       <table class="footer-hours" id="footer-hours">
-        <tr><td>Sunday</td><td>Brunch 10am – 2pm</td></tr>
+        <tr><td>Sunday</td><td>Lunch 10am – 2pm</td></tr>
         <tr><td>Monday</td><td class="closed">Closed</td></tr>
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
-        <tr><td>Wed – Sat</td><td>Brunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
+        <tr><td>Wed – Sat</td><td>Lunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
     </div>
     <div class="footer-card">
@@ -1897,9 +1897,7 @@
   // One-off exceptions (affect the open-now status only; keep JSON-LD + GBP in step).
   // 'YYYY-MM-DD': list of [open, close, label]; an empty list means closed that day.
   var LUCA_SPECIAL = {
-    '2026-07-14': [['15:00','17:00','Bar & snacks']],
-    '2026-07-15': [['10:00','14:00','Brunch'], ['15:00','21:00','Bar & dinner']],
-    '2026-07-19': [['10:00','14:00','Brunch'], ['15:00','17:00','Bar & snacks']]
+    '2026-07-19': [['10:00','14:00','Lunch'], ['15:00','17:00','Bar & snacks']]
   };
   function lucaFmt(t) {
     var p = t.split(':'), h = +p[0], m = p[1], ap = h >= 12 ? 'pm' : 'am';
@@ -1922,7 +1920,7 @@
       groups.forEach(function (g) {
         var label = g.start === g.end ? names[g.start] : shortNames[g.start] + ' – ' + shortNames[g.end];
         var day = LUCA_HOURS[g.start], cells = [];
-        if (day.brunch) cells.push('Brunch ' + lucaFmt(day.brunch[0]) + ' – ' + lucaFmt(day.brunch[1]));
+        if (day.brunch) cells.push('Lunch ' + lucaFmt(day.brunch[0]) + ' – ' + lucaFmt(day.brunch[1]));
         if (day.dinner) cells.push('Dinner ' + lucaFmt(day.dinner[0]) + ' – ' + lucaFmt(day.dinner[1]));
         out += '<tr><td>' + label + '</td><td' + (cells.length ? '>' + cells.join('<br>') : ' class="closed">Closed') + '</td></tr>';
       });
@@ -1937,7 +1935,7 @@
       LUCA_SPECIAL[key].forEach(function (p) { periods.push({ o: p[0], c: p[1], label: p[2] }); });
     } else {
       var today = LUCA_HOURS[now.getDay()];
-      if (today.brunch) periods.push({ o: today.brunch[0], c: today.brunch[1], label: 'Brunch' });
+      if (today.brunch) periods.push({ o: today.brunch[0], c: today.brunch[1], label: 'Lunch' });
       if (today.dinner) periods.push({ o: today.dinner[0], c: today.dinner[1], label: 'Dinner' });
     }
     var toMin = function (t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; };
