@@ -29,6 +29,7 @@
   <meta name="twitter:image" content="https://www.lucabistro.com/photos/back-patio.webp" />
 
   <meta name="theme-color" content="#F7EFD0" />
+  <link rel="preload" as="image" href="photos/patio/_MG_5339.webp?v=4" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
@@ -71,9 +72,6 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
     ],
     "specialOpeningHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "validFrom": "2026-07-14", "validThrough": "2026-07-14", "opens": "15:00", "closes": "17:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "validFrom": "2026-07-15", "validThrough": "2026-07-15", "opens": "10:00", "closes": "14:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Wednesday", "validFrom": "2026-07-15", "validThrough": "2026-07-15", "opens": "15:00", "closes": "21:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "validFrom": "2026-07-19", "validThrough": "2026-07-19", "opens": "10:00", "closes": "14:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "validFrom": "2026-07-19", "validThrough": "2026-07-19", "opens": "15:00", "closes": "17:00" }
     ]
@@ -174,43 +172,41 @@
       display: flex; align-items: center; justify-content: space-between;
       padding: 0 var(--pad-x); height: 110px;
     }
-    .logo { display: flex; align-items: center; }
-    .logo img { height: 94px; width: auto; display: block; }
-    nav ul { list-style: none; display: flex; gap: 2.5rem; }
-    nav ul a { font-size: 15px; letter-spacing: 0.09em; text-transform: uppercase; color: #2c2018; font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
+    .logo { display: flex; align-items: center; gap: 0.9rem; }
+    .logo-cicada { height: 54px; width: auto; display: block; }
+    .logo-word {
+      display: flex; flex-direction: column; line-height: 1.15;
+      font-family: var(--serif); font-size: 27px; font-weight: 500;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #2c2018; white-space: nowrap;
+    }
+    .logo-sub { font-family: var(--sans); font-size: 11.5px; font-weight: 400; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold-deep); }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul a { font-size: 14px; letter-spacing: 0.09em; text-transform: uppercase; color: #2c2018; font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
     nav ul a:hover { color: var(--gold); border-bottom-color: var(--gold); }
     nav ul a.active { color: var(--gold); border-bottom-color: var(--gold); }
-    /* Private dining — quiet second line under the main nav (a side offering, not a department) */
-    .nav-private {
-      position: absolute; right: var(--pad-x); bottom: 5px;
-      font-family: var(--serif); font-style: italic; font-size: 16px; font-weight: 600;
-      letter-spacing: 0.12em; color: var(--gold-deep); transition: color 0.2s;
-      border-bottom: 1px solid rgba(128,98,64,0.45); padding-bottom: 1px;
-    }
-    .nav-private:hover { color: var(--gold); border-bottom-color: var(--gold); }
 
-    /* HERO */
+    /* HERO — full-bleed patio photo, text over a navy gradient (v2) */
     .hero {
-      background: #1C4B70; color: var(--cream);
-      min-height: 380px;
-      display: grid; grid-template-columns: 1fr;
-      align-items: stretch;
+      position: relative; color: var(--cream);
+      min-height: 540px;
+      display: flex; align-items: center;
+      background:
+        linear-gradient(90deg, rgba(16,40,61,0.82) 0%, rgba(16,40,61,0.62) 42%, rgba(16,40,61,0.18) 100%),
+        #1C4B70 url("photos/patio/_MG_5339.webp?v=4") center 62% / cover no-repeat;
     }
     .hero-text {
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; padding: 3rem var(--pad-x); gap: 1.5rem; text-align: center;
+      max-width: 1000px; width: 100%; margin: 0 auto;
+      display: flex; flex-direction: column; align-items: flex-start;
+      justify-content: center; padding: 4rem var(--pad-x); gap: 1.5rem; text-align: left;
     }
-    .cigale { width: 170px; height: auto; opacity: 0.9; }
-    .eyebrow { font-size: 13px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-light); }
-    .hero .eyebrow { font-family: var(--serif); font-style: italic; font-weight: 500; text-transform: none; letter-spacing: 0; font-size: clamp(26px, 6vw, 56px); line-height: 1.1; color: #F8C325; white-space: nowrap; }
-    .hero h1 { font-family: var(--serif); font-size: 45px; font-weight: 500; font-style: italic; color: var(--cream); line-height: 1.1; white-space: nowrap; }
-    .hero-bursts { display: flex; flex-direction: column; align-items: center; gap: 0.6rem; margin-top: 1.75rem; }
+    .hero h1 { font-family: var(--serif); font-size: clamp(44px, 6vw, 68px); font-weight: 500; font-style: italic; color: #F8C325; line-height: 1.08; text-shadow: 0 2px 14px rgba(10,25,40,0.55); }
+    .hero-bursts { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; margin-top: 1.25rem; }
     .hero-burst { display: inline-block; padding: 8px 20px; background: var(--red); color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
     .hero-burst:hover { background: #b52440; }
     .hero-banner-link { display: block; width: 100%; max-width: 780px; }
     .hero-banner-link img { display: block; width: 100%; height: auto; }
     .event-flyer { display: block; width: 100%; max-width: 340px; height: auto; margin-bottom: 1.25rem; }
-    .hero p { font-size: 18px; color: var(--cream); max-width: 460px; line-height: 1.8; font-weight: 400; }
+    .hero p { font-size: 17.5px; color: #F3EAD8; max-width: 520px; line-height: 1.8; font-weight: 400; text-shadow: 0 1px 10px rgba(10,25,40,0.6); }
     .btn {
       display: inline-block; padding: 0.8rem 2.2rem;
       border: 1px solid var(--gold); color: var(--cream);
@@ -218,11 +214,11 @@
       transition: background 0.25s;
     }
     .btn:hover { background: var(--gold); }
-    .hero .btn { border: 2px solid #F8C325; color: #F8C325; font-weight: 500; }
+    .hero .btn { background: rgba(18,42,64,0.85); border: 2px solid #F8C325; color: #F8C325; font-weight: 500; }
     .hero .btn:hover { background: #F8C325; color: #1C4B70; }
-    .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
-    .btn-call { border-color: var(--gold-light); color: var(--cream); }
-    .btn-call:hover { background: var(--gold-light); color: var(--dark); }
+    .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: flex-start; }
+    .hero .btn-call { background: #F3EAD8; border-color: #F3EAD8; color: #1C4B70; }
+    .hero .btn-call:hover { background: #F8C325; border-color: #F8C325; color: #1C4B70; }
     /* Editorial drop-cap on the opening About paragraph */
     .about-text p.lead::first-letter {
       float: left; font-family: var(--serif); font-style: italic;
@@ -244,37 +240,11 @@
       background: no-repeat left center url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='72' height='12' viewBox='0 0 72 12'><line x1='0' y1='6' x2='44' y2='6' stroke='%239E1B32' stroke-width='1.4'/><path d='M53 6 l5 -5 l5 5 l-5 5 z' fill='%236f6f43'/><circle cx='68' cy='6' r='1.6' fill='%239E1B32'/></svg>"); }
     .bg-warm { background: #EDDFB4; }
 
-    /* ABOUT */
-    .about-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
-    .about-tab-btn {
-      background: none; border: none; cursor: pointer; padding: 0.75rem 1.8rem;
-      font-family: var(--serif); font-size: 18px; font-weight: 600; color: #9a8470;
-      border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s;
-    }
-    .about-tab-btn:hover { color: var(--gold); }
-    .about-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
-    .about-panel { display: none; }
-    .about-panel.active { display: block; }
-
+    /* OUR STORY (v2 — standalone section, was the About tabs) */
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-    .chef-note { margin-top: 3rem; max-width: 720px; padding: 2rem 2.25rem; background: #EDDFB4; border-left: 3px solid var(--gold); }
-    .chef-note-title { font-family: var(--serif); font-style: italic; font-size: 26px; font-weight: 500; color: #1a1209; margin-bottom: 0.75rem; }
-    .chef-note-body { font-size: 15px; color: #463829; line-height: 1.9; font-weight: 400; margin-bottom: 1rem; }
-    .chef-note-sig { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--gold-deep); }
     .about-text p { color: #463829; line-height: 1.9; margin-bottom: 1rem; font-weight: 400; }
-    .about-img img { width: 100%; height: 380px; object-fit: cover; filter: sepia(0.16) saturate(1.08) brightness(1.01); }
-
-    /* HOURS */
-    .hours-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; }
-    .hours-address { font-size: 15px; color: #463829; line-height: 1.9; margin-bottom: 1.5rem; }
-    .hours-address a { color: var(--gold); text-decoration: underline; }
-    .hours-table { width: 100%; border-collapse: collapse; }
-    .hours-table th { font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); padding: 0.5rem 0.75rem 0.5rem 0; text-align: left; border-bottom: 1px solid #e0d8cc; }
-    .hours-table td { font-size: 15px; color: #4a3a28; padding: 0.65rem 0.75rem 0.65rem 0; border-bottom: 1px solid #ede8e0; }
-    .hours-table td:first-child { font-weight: 600; width: 36%; }
-    .hours-table td.closed { color: #b0a090; }
-    .hours-note { margin-top: 2rem; font-size: 14px; color: #463829; line-height: 1.8; }
-    .hours-note strong { color: var(--red); font-weight: 600; display: block; margin: 1rem 0 0.5rem; font-size: 15px; letter-spacing: 0.04em; }
+    .about-img img { width: 100%; height: 460px; object-fit: cover; filter: sepia(0.16) saturate(1.08) brightness(1.01); }
+    .story-cicada { display: block; width: 96px; height: auto; margin-top: 1.5rem; opacity: 0.85; }
 
     /* CONTACT & JOBS FORMS */
     .form-intro { font-size: 15px; color: #463829; line-height: 1.8; margin-bottom: 2rem; }
@@ -435,9 +405,6 @@
     .news-read-more { font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
     /* PHOTOS */
-    .patio-intro { max-width: 680px; margin-bottom: 2.5rem; scroll-margin-top: 130px; }
-    .patio-intro h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; }
-    .patio-intro p { font-size: 15px; color: #463829; line-height: 1.8; font-weight: 400; }
     .photo-tabs { display: flex; gap: 0; border-bottom: 1px solid #e8e0d4; margin-bottom: 2rem; }
     .tab-btn {
       background: none; border: none; cursor: pointer;
@@ -508,12 +475,42 @@
     .press-strip { background: #163C5A; color: #E4DAC2; text-align: center; padding: 0.85rem var(--pad-x); font-size: 13.5px; letter-spacing: 0.08em; }
     .press-strip strong { color: #F8C325; font-weight: 500; }
     .press-strip a { color: #F8C325; text-decoration: underline; }
-    /* House signatures — three dishes ahead of the menus */
-    .signatures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.75rem; margin: 0 0 1rem; }
-    .sig-card img { width: 100%; height: 230px; object-fit: cover; object-position: center; display: block; margin-bottom: 0.8rem; }
-    .sig-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 500; color: #1a1209; margin-bottom: 0.25rem; }
-    .sig-card p { font-size: 14.5px; color: #5c4a39; line-height: 1.6; }
-    .sig-note { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-deep); margin: 0.25rem 0 2.5rem; }
+    /* Signature dishes — three framed cards in their own band (v2) */
+    .sig-heading { text-align: center; margin-bottom: 2.5rem; }
+    .signatures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 0 0 2.5rem; }
+    .sig-card { border: 16px solid transparent; border-image: var(--frame) 28 fill stretch; padding: 0.6rem 0.9rem 1.1rem; text-align: center; }
+    .sig-card img { width: 100%; height: 220px; object-fit: cover; object-position: center; display: block; margin-bottom: 0.9rem; }
+    .sig-card h3 { font-family: var(--serif); font-size: 21px; font-weight: 500; color: #1a1209; margin-bottom: 0.3rem; }
+    .sig-card p { font-size: 14px; color: #5c4a39; line-height: 1.6; font-style: italic; }
+    .sig-price { font-family: var(--serif); font-style: normal !important; font-size: 19px; font-weight: 600; color: var(--gold-deep); margin-top: 0.5rem; }
+    .sig-more { text-align: center; }
+    .btn-navy { display: inline-block; padding: 0.85rem 2.4rem; background: #1C4B70; border: 1px solid #1C4B70; color: #F8C325 !important; font-size: 13.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.25s, color 0.25s; }
+    .btn-navy:hover { background: #163C5A; }
+    .btn-outline { display: inline-block; padding: 0.85rem 2.4rem; background: transparent; border: 1px solid #F8C325; color: #F8C325 !important; font-size: 13.5px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.25s, color 0.25s; }
+    .btn-outline:hover { background: #F8C325; color: #1C4B70 !important; }
+    /* "Un mot de Frédéric" — navy quote band (v2) */
+    .unmot { background: #14304A; color: #F3EAD8; }
+    .unmot-grid { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: 3fr 2fr; align-items: stretch; }
+    .unmot-text { padding: 4.5rem var(--pad-x) 4.5rem calc(var(--pad-x) + 1rem); display: flex; flex-direction: column; justify-content: center; }
+    .unmot-title { font-family: var(--serif); font-style: italic; font-size: 40px; font-weight: 500; color: var(--gold-light); margin-bottom: 1.5rem; }
+    .unmot-quote { font-size: 16.5px; line-height: 2; font-weight: 400; max-width: 560px; margin-bottom: 1.5rem; }
+    .unmot-attrib { font-family: var(--serif); font-style: italic; font-size: 18px; color: var(--gold-light); }
+    .unmot-photo { min-height: 420px; }
+    .unmot-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    /* Patio feature — photo + copy (v2) */
+    .patio-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+    .patio-photo img { width: 100%; height: 420px; object-fit: cover; display: block; filter: sepia(0.1) saturate(1.06); }
+    .patio-text p { color: #463829; line-height: 1.9; margin-bottom: 1rem; font-weight: 400; }
+    .patio-link a { color: var(--gold-deep); font-size: 13.5px; letter-spacing: 0.1em; text-transform: uppercase; border-bottom: 1px solid var(--gold-light); padding-bottom: 2px; }
+    .patio-link a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+    /* Footer visit card (v2) */
+    .footer-card { border: 16px solid transparent; border-image: var(--frame) 28 fill stretch; padding: 1.1rem 1.2rem; text-align: center; }
+    .footer-card img { width: 74px; height: auto; margin: 0 auto 0.6rem; display: block; }
+    .footer-card p { color: #463829 !important; font-size: 13.5px; line-height: 1.8; margin-bottom: 0.9rem; }
+    .footer-card .btn-navy, .footer-card .btn-outline { padding: 0.6rem 1.1rem; font-size: 12px; margin: 0.15rem; }
+    .footer-card .btn-navy { color: #F8C325 !important; }
+    .footer-card .btn-outline { border-color: #1C4B70; color: #1C4B70 !important; }
+    .footer-card .btn-outline:hover { background: #1C4B70; color: #F8C325 !important; }
     /* Add-to-calendar link on event cards */
     .event-cal { display: inline-block; margin-top: 1rem; margin-left: 0.9rem; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold-deep); border-bottom: 1px solid var(--gold-light); padding-bottom: 2px; }
     .event-cal:hover { color: var(--gold); border-bottom-color: var(--gold); }
@@ -525,34 +522,43 @@
       :root { --pad-x: 1.25rem; --pad-y: 3rem; }   /* uniform gutters shrink together on mobile */
       /* NAV — stack logo over wrapped links */
       nav { flex-direction: column; height: auto; padding: 0.6rem var(--pad-x) 0.75rem; gap: 0.5rem; }
-      .logo img { height: 73px; }
+      .logo-cicada { height: 42px; }
+      .logo-word { font-size: 21px; }
       nav ul { gap: 1.1rem; flex-wrap: wrap; justify-content: center; }
-      nav ul a { font-size: 14px; }
-      .nav-private { position: static; text-align: center; font-size: 15px; }
+      nav ul a { font-size: 13.5px; }
 
-      /* HERO — single column, image on top */
-      .hero { grid-template-columns: 1fr; height: auto; min-height: 0; max-height: none; }
+      /* HERO — darker overlay for legibility on phones */
+      .hero {
+        min-height: 480px;
+        background:
+          linear-gradient(180deg, rgba(16,40,61,0.78) 0%, rgba(16,40,61,0.6) 100%),
+          #1C4B70 url("photos/patio/_MG_5339.webp?v=4") center 62% / cover no-repeat;
+      }
       .hero-text { padding: 2.75rem var(--pad-x); }
-      .hero h1 { font-size: 32px; white-space: normal; }
-      .hero p { font-size: 17px; max-width: none; }
-      .cigale { width: 130px; }
+      .hero h1 { font-size: 38px; }
+      .hero p { font-size: 16.5px; max-width: none; }
 
       /* SECTIONS */
       .section { padding: var(--pad-y) var(--pad-x); }
       h2, .event-panel > h3 { font-size: 34px; }
 
       /* Stack all two/three-column grids */
-      .about-grid, .hours-layout, .form-grid, .menu-grid,
+      .about-grid, .patio-grid, .unmot-grid, .hours-layout, .form-grid, .menu-grid,
       .events-grid, .news-grid, .footer-grid { grid-template-columns: 1fr; }
-      .about-grid { gap: 2rem; }
-      .about-img img { height: 260px; }
+      .about-grid, .patio-grid { gap: 2rem; }
+      .about-img img { height: 280px; }
+      .patio-photo img { height: 280px; }
+      .unmot-text { padding: 3rem var(--pad-x); }
+      .unmot-title { font-size: 32px; }
+      .unmot-photo { min-height: 0; }
+      .unmot-photo img { height: 320px; }
       .footer-grid { gap: 2.25rem; }
 
       /* Tab rows — scroll horizontally instead of overflowing */
-      .about-tabs, .menu-tabs, .photo-tabs, .event-tabs {
+      .menu-tabs, .photo-tabs, .event-tabs {
         flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch;
       }
-      .about-tabs::-webkit-scrollbar, .menu-tabs::-webkit-scrollbar, .photo-tabs::-webkit-scrollbar, .event-tabs::-webkit-scrollbar { display: none; }
+      .menu-tabs::-webkit-scrollbar, .photo-tabs::-webkit-scrollbar, .event-tabs::-webkit-scrollbar { display: none; }
 
       /* Phase A: signatures stack; sticky action bar */
       .signatures { grid-template-columns: 1fr; }
@@ -567,7 +573,7 @@
         color: #F8C325; font-size: 13px; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase;
       }
       .mobile-bar a + a { border-left: 1px solid rgba(248,195,37,0.25); }
-      .about-tab-btn, .menu-tab-btn, .tab-btn, .event-tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
+      .menu-tab-btn, .tab-btn, .event-tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
 
       /* Parchment menu + Watch Parties — slimmer frame and padding on phones */
       .menu-panel, .parchment-panel { padding: 1.4rem 1.1rem; border-width: 18px; }
@@ -582,29 +588,27 @@
 <body>
 
 <nav>
-  <a href="#" class="logo" aria-label="Luca Bistro — Le Petit Français, Mt. Adams">
-    <img src="photos/logo.png" width="1893" height="969" alt="Luca Bistro — Le Petit Français | Mt. Adams" />
+  <a href="#" class="logo" aria-label="Luca Bistro — Mt. Adams, Cincinnati">
+    <img class="logo-cicada" src="photos/cicada.png" width="1055" height="628" alt="" />
+    <span class="logo-word">Luca Bistro<span class="logo-sub">Mt. Adams, Cincinnati</span></span>
   </a>
   <ul>
-    <li><a href="#about">About</a></li>
+    <li><a href="#story">About</a></li>
     <li><a href="#menu">Menu</a></li>
     <li><a href="#events">What's On</a></li>
     <li><a href="#photos">Photos</a></li>
-    <li><a href="#news">News</a></li>
+    <li><a href="#private-events">Private Dining</a></li>
+    <li><a href="#contact">Contact</a></li>
   </ul>
-  <a class="nav-private" href="#private-events">Private Dining &amp; Celebrations</a>
 </nav>
 
 <div class="hero">
   <div class="hero-text">
-    <img class="cigale" src="photos/cicada.png" width="1055" height="628" alt="Cicada emblem" />
-    <p class="eyebrow">Luca Bistro · Mt. Adams</p>
-    <h1 style="color:#F8C325;">South of France</h1>
-    <p>A warm neighborhood bistro from Chef Frédéric — classic French cooking, weekend brunch, an all-French wine list, and unhurried dining on the garden patio. Pull up a chair and stay awhile.</p>
+    <h1>South of France</h1>
+    <p>Experience old-world charm at Luca Bistro in historic Mt. Adams, where Chef Frédéric brings the sunlit flavors of the south of France to the heart of Cincinnati. From leisurely weekend brunches to candlelit dinners, every plate — and every glass of rosé — is a celebration of la joie de vivre. Pull up a chair on the patio and stay awhile.</p>
     <div class="hero-cta">
       <a href="#menu" class="btn">Explore our menu</a>
       <a href="tel:+15136215822" class="btn btn-call">Call (513) 621-5822</a>
-      <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer" class="btn">Get directions</a>
     </div>
     <p class="hero-walkin">Walk-ins are always welcome — first come, first seated.<span id="hero-status"></span></p>
     <div class="hero-bursts">
@@ -618,185 +622,84 @@
   <p>&ldquo;Best New Restaurants No. 9&rdquo; &mdash; <strong>Cincinnati Magazine</strong> &nbsp;&middot;&nbsp; as seen in the <strong>Cincinnati Enquirer</strong> &amp; <strong>CityBeat</strong> &nbsp;&middot;&nbsp; <a href="#news">read the press</a></p>
 </div>
 
-<!-- ABOUT -->
-<div id="about" class="section">
+<!-- OUR STORY -->
+<div id="story" class="section">
   <div class="inner">
-    <p class="eyebrow-dark">About us</p>
-    <h2>Our story</h2>
-    <div class="rule"></div>
-
-    <div class="about-tabs">
-      <button class="about-tab-btn active" data-about="story">Our Story</button>
-      <button class="about-tab-btn" data-about="hours">Hours &amp; Location</button>
-      <button class="about-tab-btn" data-about="contact">Contact</button>
-      <button class="about-tab-btn" data-about="jobs">Jobs</button>
-    </div>
-
-    <!-- OUR STORY -->
-    <div id="about-story" class="about-panel active">
-      <div class="about-grid">
-        <div class="about-text">
-          <p class="lead">Chef Frédéric Maniet grew up in the south of France, and Luca Bistro is his love letter to it — a small Mt. Adams bistro on a mission to make French cooking feel as warm and unhurried as a long Provençal lunch.</p>
-          <p>The kitchen cooks the classics with care and a southern accent: bouillabaisse and moules marinière, panisse marseillais and ratatouille, a proper salade niçoise, and an all-French wine list that turns proudly all-rosé through the summer.</p>
-          <p>Every table is an invitation to slow down and savor — a little taste of la joie de vivre in the heart of Mt. Adams.</p>
-        </div>
-        <div class="about-img">
-          <img src="photos/food/_MG_4486.webp" alt="Roasted goat cheese salad at Luca Bistro" width="1067" height="1600" loading="lazy" decoding="async" />
-        </div>
+    <div class="about-grid">
+      <div class="about-text">
+        <p class="eyebrow-dark">Our story</p>
+        <h2>A love letter to the south of France.</h2>
+        <div class="rule"></div>
+        <p class="lead">Chef Frédéric Maniet grew up in the south of France, and Luca Bistro is his love letter to it — a small Mt. Adams bistro on a mission to make French cooking feel as warm and unhurried as a long Provençal lunch.</p>
+        <p>The kitchen cooks the classics with care and a southern accent: bouillabaisse and moules marinière, panisse marseillais and ratatouille, a proper salade niçoise, and an all-French wine list that turns proudly all-rosé through the summer.</p>
+        <p>Every table is an invitation to slow down and savor — a little taste of la joie de vivre in the heart of Mt. Adams.</p>
+        <img class="story-cicada" src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
       </div>
-
-      <div class="chef-note">
-        <p class="chef-note-title">Un mot de Frédéric</p>
-        <p class="chef-note-body">Summer is when Luca feels most like home to me. The patio is green and shaded, the rosé is cold, and the ratatouille tastes the way it should — like ripe tomatoes and long afternoons. Back home in the south of France, nobody rushes a summer meal, and we don't either. Come for brunch, stay through the afternoon, let us pour you one more glass. Here, you are not a customer — you are family. À bientôt.</p>
-        <p class="chef-note-sig">— Frédéric Maniet, chef &amp; propriétaire</p>
+      <div class="about-img">
+        <img src="photos/food/_MG_4494.webp?v=5" alt="Roasted goat cheese salad at Luca Bistro" width="1600" height="1067" loading="lazy" decoding="async" />
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- HOURS & LOCATION -->
-    <div id="about-hours" class="about-panel">
-      <div class="hours-layout">
-        <div>
-          <p class="hours-address">
-            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St,<br>Cincinnati, OH 45202</a><br>
-            <a href="tel:+15136215822">(513) 621-5822</a>
-          </p>
-          <p id="hours-status" style="font-size:14px;color:var(--red);letter-spacing:0.06em;margin-bottom:0.75rem;"></p>
-          <table class="hours-table">
-            <thead>
-              <tr>
-                <th>Day</th>
-                <th>Brunch</th>
-                <th>Dinner</th>
-              </tr>
-            </thead>
-            <tbody id="hours-tbody">
-              <tr><td>Sunday</td><td>10am – 2pm</td><td class="closed">Closed</td></tr>
-              <tr><td>Monday</td><td class="closed">Closed</td><td class="closed">Closed</td></tr>
-              <tr><td>Tuesday</td><td class="closed">Closed</td><td>5pm – 9pm</td></tr>
-              <tr><td>Wednesday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-              <tr><td>Thursday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-              <tr><td>Friday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-              <tr><td>Saturday</td><td>10am – 2pm</td><td>5pm – 9pm</td></tr>
-            </tbody>
-          </table>
-        </div>
-        <div class="hours-note">
-          <p>Welcome to Luca Bistro, enjoy the food and atmosphere of Southern France.</p>
-          <strong>Walk-ins are always welcome — first come, first seated.</strong>
-          <p>Please <a href="#private-events" style="color:var(--gold);text-decoration:underline;">contact us</a> if you are planning a special event of 10 persons or more.</p>
-          <p><em>This week only: Tuesday, July 14 — bar &amp; snacks 3–5 PM, no dinner service.</em></p>
-        </div>
+<!-- SIGNATURE DISHES -->
+<div id="signatures" class="section bg-warm">
+  <div class="inner">
+    <div class="sig-heading">
+      <p class="eyebrow-dark" style="margin-bottom:0.4rem;">From the kitchen</p>
+      <h2>Signature Dishes</h2>
+    </div>
+    <div class="signatures">
+      <div class="sig-card">
+        <img src="photos/food/_MG_4494.webp?v=5" alt="Roasted Goat Cheese Salad at Luca Bistro" width="1600" height="1067" loading="lazy" decoding="async" />
+        <h3>Roasted Goat Cheese Salad</h3>
+        <p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p>
+        <p class="sig-price">$17</p>
+      </div>
+      <div class="sig-card">
+        <img src="photos/food/_MG_5166.webp?v=5" alt="Moules Marinière with frites at Luca Bistro" width="1099" height="1600" loading="lazy" decoding="async" />
+        <h3>Moules Marinière</h3>
+        <p>Celery, shallot &amp; white-wine broth, with frites</p>
+        <p class="sig-price">$22</p>
+      </div>
+      <div class="sig-card">
+        <img src="photos/food/_MG_4428.webp?v=5" alt="Escargot à la Bourguignonne at Luca Bistro" width="1067" height="1600" loading="lazy" decoding="async" />
+        <h3>Escargot à la Bourguignonne</h3>
+        <p>Garlic herb butter, on crostini</p>
+        <p class="sig-price">$13</p>
       </div>
     </div>
+    <p class="sig-more"><a class="btn-navy" href="#menu">View the full menu</a></p>
+  </div>
+</div>
 
-    <!-- CONTACT -->
-    <div id="about-contact" class="about-panel">
-      <p class="form-intro">Send us a message and we'll get back to you as soon as possible.<br>Looking forward to hearing from you!</p>
-      <p style="font-size:14px;color:#5c4a39;font-style:italic;margin:-1rem 0 1.75rem;">Walk-ins are always welcome — first come, first seated. For celebrations of 10 or more, see <a href="#private-events" style="color:var(--gold);text-decoration:underline;">private dining</a>.</p>
-      <form class="web3form" action="https://api.web3forms.com/submit" method="POST">
-        <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
-        <input type="hidden" name="subject" value="New message from Luca Bistro website" />
-        <input type="hidden" name="from_name" value="Luca Bistro Website" />
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" />
-        <div class="form-grid">
-          <div class="form-field">
-            <label for="contact-name">Name <span>Required</span></label>
-            <input id="contact-name" type="text" name="name" placeholder="Name" required />
-          </div>
-          <div class="form-field">
-            <label for="contact-email">Email <span>Required</span></label>
-            <input id="contact-email" type="email" name="email" placeholder="Email" required />
-          </div>
-          <div class="form-field">
-            <label for="contact-phone">Phone Number <span>Required</span></label>
-            <input id="contact-phone" type="tel" name="phone" placeholder="Phone Number" required />
-          </div>
-          <div class="form-field">
-            <label for="contact-topic">What are you getting in touch about? <span>Optional</span></label>
-            <input id="contact-topic" type="text" name="topic" placeholder="What are you getting in touch about?" />
-          </div>
-          <div class="form-field full">
-            <label for="contact-message">Your Message <span>Required</span></label>
-            <textarea id="contact-message" name="message" placeholder="Your Message" required></textarea>
-          </div>
-        </div>
-        <button type="submit" class="form-submit">Send Message</button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
+<!-- UN MOT DE FRÉDÉRIC -->
+<div id="chef" class="unmot">
+  <div class="unmot-grid">
+    <div class="unmot-text">
+      <p class="unmot-title">Un mot de Frédéric</p>
+      <p class="unmot-quote">&ldquo;Summer is when Luca feels most like home to me. The patio is green and shaded, the rosé is cold, and the ratatouille tastes the way it should — like ripe tomatoes and long afternoons. Back home in the south of France, nobody rushes a summer meal, and we don't either. Come for brunch, stay through the afternoon, let us pour you one more glass. Here, you are not a customer — you are family. À bientôt.&rdquo;</p>
+      <p class="unmot-attrib">— Frédéric Maniet, chef &amp; propriétaire</p>
     </div>
-
-    <!-- JOBS -->
-    <div id="about-jobs" class="about-panel">
-      <p class="form-intro">We'd love to have you join our team! Please use the form below to apply. Feel free to send in your resume even if you don't see the position you're looking for listed.</p>
-
-      <div class="job-listing">
-        <h3>Busser</h3>
-        <p>As a busser, you're the quiet engine behind a smooth service — clearing, sanitizing, and resetting tables so every guest feels welcome, and keeping the dining room stocked with silverware, glassware, napkins, and water. You'll work shoulder to shoulder with our servers and kitchen to keep the room turning cleanly and calmly all evening. It's a great fit for someone dependable, quick on their feet, and glad to be part of a close, fast‑moving team. No prior experience necessary.</p>
-        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm &middot; $13/hr + tips</p>
-      </div>
-
-      <div class="job-listing">
-        <h3>Host Position</h3>
-        <p>As host, you're the first and last impression at Luca Bistro. You'll warmly greet every guest, manage the flow of the dining room and bar, give honest wait times, and seat parties so service runs smoothly from open to close. Because we don't take reservations, you'll be the calm, friendly face who keeps a busy walk‑in room organized and welcoming. We're looking for someone with strong people and organizational skills who genuinely enjoys taking care of guests from the moment they arrive until they head home.</p>
-        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm &middot; $15/hr</p>
-      </div>
-
-      <div class="job-listing">
-        <h3>Kitchen Help — Breakfast &amp; Lunch</h3>
-        <p>Join our kitchen for breakfast and lunch service as a line and prep cook. You'll prep fresh ingredients each morning, cook our brunch and lunch classics — omelettes, quiches, croques, salads, and sandwiches — and help keep the line clean, stocked, and moving. These are daytime hours at a steady, friendly pace — ideal for someone who takes pride in their work and wants to sharpen their skills in a from‑scratch French kitchen. Prior line or prep experience is preferred.</p>
-        <p class="job-meta">Mon–Fri &middot; 7am–2pm &middot; $15/hr</p>
-      </div>
-
-      <div class="job-listing">
-        <h3>Pantry / Line &amp; Prep Cook</h3>
-        <p>This role runs our pantry station — building the salads, starters, and desserts that open and close every meal — along with line and prep work through dinner service. You'll plate with care, keep your station clean and organized, and prep ahead for the days to come. It's a great spot for a detail‑oriented cook who loves the finishing touches and wants hands‑on time in a busy, from‑scratch bistro kitchen. Pantry, line, or prep experience is preferred; a strong work ethic is a must.</p>
-        <p class="job-meta">Tue–Sat &middot; 1–9pm &middot; $15/hr</p>
-      </div>
-
-      <p class="form-intro" style="margin-bottom:1.5rem;">Please complete the form below or send your information (including resume) to <a href="mailto:lucabistro84@gmail.com" style="color:var(--gold);">lucabistro84@gmail.com</a>. Thank you.</p>
-
-      <form class="web3form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
-        <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
-        <input type="hidden" name="subject" value="New job application — Luca Bistro" />
-        <input type="hidden" name="from_name" value="Luca Bistro Careers" />
-        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" />
-        <div class="form-grid">
-          <div class="form-field">
-            <label for="job-name">Name <span>Required</span></label>
-            <input id="job-name" type="text" name="name" placeholder="Name" required />
-          </div>
-          <div class="form-field">
-            <label for="job-email">Email <span>Required</span></label>
-            <input id="job-email" type="email" name="email" placeholder="Email" required />
-          </div>
-          <div class="form-field">
-            <label for="job-phone">Phone Number <span>Required</span></label>
-            <input id="job-phone" type="tel" name="phone" placeholder="Phone Number" required />
-          </div>
-          <div class="form-field">
-            <label for="job-position">Position <span>Optional</span></label>
-            <select id="job-position" name="position">
-              <option value="">Position</option>
-              <option>Busser</option>
-              <option>Host Position</option>
-              <option>Kitchen Help — Breakfast &amp; Lunch</option>
-              <option>Pantry / Line &amp; Prep Cook</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-field full">
-            <label for="job-cover">Cover Letter <span>Required</span></label>
-            <textarea id="job-cover" name="cover_letter" placeholder="Cover Letter" required></textarea>
-          </div>
-          <div class="form-field full">
-            <p style="font-size:13px; color:#5c4a39; line-height:1.7; margin:0;">Job seekers are encouraged to email their résumé, along with their contact information, to <a href="mailto:lucabistro84@gmail.com" style="color:var(--gold);">lucabistro84@gmail.com</a>.</p>
-          </div>
-        </div>
-        <button type="submit" class="form-submit">Submit Application</button>
-        <p class="form-status" role="status" aria-live="polite"></p>
-      </form>
+    <div class="unmot-photo">
+      <img src="photos/interior/_MG_5246.webp?v=2" alt="Evening ambience in the Luca Bistro dining room" width="1067" height="1600" loading="lazy" decoding="async" />
     </div>
+  </div>
+</div>
 
+<!-- THE GARDEN PATIO -->
+<div id="patio" class="section">
+  <div class="inner patio-grid">
+    <div class="patio-photo">
+      <img src="photos/back-patio.webp" alt="Brunch under the umbrellas on Luca Bistro's garden patio" width="1600" height="1067" loading="lazy" decoding="async" />
+    </div>
+    <div class="patio-text">
+      <p class="eyebrow-dark">Outdoor dining</p>
+      <h2>The garden patio</h2>
+      <div class="rule"></div>
+      <p>Tucked behind the bistro, our tree-shaded back patio is a leafy pocket of the south of France in the heart of Cincinnati — green, unhurried, and open for brunch and dinner in season. Pull up a chair under the canopy with a glass of rosé; at Luca, there's always room for one more at the table.</p>
+      <p class="patio-link"><a href="#photos">See the patio gallery</a></p>
+    </div>
   </div>
 </div>
 
@@ -806,25 +709,6 @@
     <p class="eyebrow-dark">What we serve</p>
     <h2>Our menu</h2>
     <div class="rule"></div>
-
-    <div class="signatures">
-      <div class="sig-card">
-        <img src="photos/food/_MG_5166.webp?v=5" alt="Moules Marinière with frites at Luca Bistro" width="1099" height="1600" loading="lazy" decoding="async" />
-        <h3>Moules Marinière</h3>
-        <p>Celery, shallot &amp; white-wine broth, with frites</p>
-      </div>
-      <div class="sig-card">
-        <img src="photos/food/_MG_4494.webp?v=5" alt="Roasted Goat Cheese Salad at Luca Bistro" width="1600" height="1067" loading="lazy" decoding="async" />
-        <h3>Roasted Goat Cheese Salad</h3>
-        <p>Walnuts, grapes, bacon, honey balsamic vinaigrette</p>
-      </div>
-      <div class="sig-card">
-        <img src="photos/food/_MG_4428.webp?v=5" alt="Escargot à la Bourguignonne at Luca Bistro" width="1067" height="1600" loading="lazy" decoding="async" />
-        <h3>Escargot à la Bourguignonne</h3>
-        <p>Garlic herb butter, on crostini</p>
-      </div>
-    </div>
-    <p class="sig-note">House signatures · find them all in the menus below</p>
 
     <div class="menu-tabs">
       <button class="menu-tab-btn active" data-menu="dinner">Dinner</button>
@@ -1703,11 +1587,6 @@
     <h2>A glimpse inside</h2>
     <div class="rule"></div>
 
-    <div id="patio" class="patio-intro">
-      <h3>The garden patio — outdoor dining in Mt. Adams</h3>
-      <p>Tucked behind the bistro, our tree-shaded back patio is a leafy pocket of the south of France in the heart of Cincinnati — green, unhurried, and open for brunch and dinner in season. Pull up a chair under the canopy with a glass of rosé; at Luca, there's always room for one more at the table.</p>
-    </div>
-
     <div class="photo-tabs">
       <button class="tab-btn active" data-tab="food">Food</button>
       <button class="tab-btn" data-tab="drink">Beers</button>
@@ -1828,25 +1707,130 @@
   </div>
 </div>
 
+<!-- CONTACT -->
+<div id="contact" class="section bg-warm">
+  <div class="inner">
+    <p class="eyebrow-dark">Say bonjour</p>
+    <h2>Contact</h2>
+    <div class="rule"></div>
+      <p class="form-intro">Send us a message and we'll get back to you as soon as possible.<br>Looking forward to hearing from you!</p>
+      <p style="font-size:14px;color:#5c4a39;font-style:italic;margin:-1rem 0 1.75rem;">Walk-ins are always welcome — first come, first seated. For celebrations of 10 or more, see <a href="#private-events" style="color:var(--gold);text-decoration:underline;">private dining</a>.</p>
+      <form class="web3form" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
+        <input type="hidden" name="subject" value="New message from Luca Bistro website" />
+        <input type="hidden" name="from_name" value="Luca Bistro Website" />
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" />
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="contact-name">Name <span>Required</span></label>
+            <input id="contact-name" type="text" name="name" placeholder="Name" required />
+          </div>
+          <div class="form-field">
+            <label for="contact-email">Email <span>Required</span></label>
+            <input id="contact-email" type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="form-field">
+            <label for="contact-phone">Phone Number <span>Required</span></label>
+            <input id="contact-phone" type="tel" name="phone" placeholder="Phone Number" required />
+          </div>
+          <div class="form-field">
+            <label for="contact-topic">What are you getting in touch about? <span>Optional</span></label>
+            <input id="contact-topic" type="text" name="topic" placeholder="What are you getting in touch about?" />
+          </div>
+          <div class="form-field full">
+            <label for="contact-message">Your Message <span>Required</span></label>
+            <textarea id="contact-message" name="message" placeholder="Your Message" required></textarea>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Send Message</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+  </div>
+</div>
+
+<!-- JOBS -->
+<div id="jobs" class="section">
+  <div class="inner">
+    <p class="eyebrow-dark">Join the team</p>
+    <h2>Jobs</h2>
+    <div class="rule"></div>
+      <p class="form-intro">We'd love to have you join our team! Please use the form below to apply. Feel free to send in your resume even if you don't see the position you're looking for listed.</p>
+
+      <div class="job-listing">
+        <h3>Busser</h3>
+        <p>As a busser, you're the quiet engine behind a smooth service — clearing, sanitizing, and resetting tables so every guest feels welcome, and keeping the dining room stocked with silverware, glassware, napkins, and water. You'll work shoulder to shoulder with our servers and kitchen to keep the room turning cleanly and calmly all evening. It's a great fit for someone dependable, quick on their feet, and glad to be part of a close, fast‑moving team. No prior experience necessary.</p>
+        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm &middot; $13/hr + tips</p>
+      </div>
+
+      <div class="job-listing">
+        <h3>Host Position</h3>
+        <p>As host, you're the first and last impression at Luca Bistro. You'll warmly greet every guest, manage the flow of the dining room and bar, give honest wait times, and seat parties so service runs smoothly from open to close. Because we don't take reservations, you'll be the calm, friendly face who keeps a busy walk‑in room organized and welcoming. We're looking for someone with strong people and organizational skills who genuinely enjoys taking care of guests from the moment they arrive until they head home.</p>
+        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm &middot; $15/hr</p>
+      </div>
+
+      <div class="job-listing">
+        <h3>Kitchen Help — Breakfast &amp; Lunch</h3>
+        <p>Join our kitchen for breakfast and lunch service as a line and prep cook. You'll prep fresh ingredients each morning, cook our brunch and lunch classics — omelettes, quiches, croques, salads, and sandwiches — and help keep the line clean, stocked, and moving. These are daytime hours at a steady, friendly pace — ideal for someone who takes pride in their work and wants to sharpen their skills in a from‑scratch French kitchen. Prior line or prep experience is preferred.</p>
+        <p class="job-meta">Mon–Fri &middot; 7am–2pm &middot; $15/hr</p>
+      </div>
+
+      <div class="job-listing">
+        <h3>Pantry / Line &amp; Prep Cook</h3>
+        <p>This role runs our pantry station — building the salads, starters, and desserts that open and close every meal — along with line and prep work through dinner service. You'll plate with care, keep your station clean and organized, and prep ahead for the days to come. It's a great spot for a detail‑oriented cook who loves the finishing touches and wants hands‑on time in a busy, from‑scratch bistro kitchen. Pantry, line, or prep experience is preferred; a strong work ethic is a must.</p>
+        <p class="job-meta">Tue–Sat &middot; 1–9pm &middot; $15/hr</p>
+      </div>
+
+      <p class="form-intro" style="margin-bottom:1.5rem;">Please complete the form below or send your information (including resume) to <a href="mailto:lucabistro84@gmail.com" style="color:var(--gold);">lucabistro84@gmail.com</a>. Thank you.</p>
+
+      <form class="web3form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
+        <input type="hidden" name="subject" value="New job application — Luca Bistro" />
+        <input type="hidden" name="from_name" value="Luca Bistro Careers" />
+        <input type="checkbox" name="botcheck" tabindex="-1" autocomplete="off" style="display:none !important;" />
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="job-name">Name <span>Required</span></label>
+            <input id="job-name" type="text" name="name" placeholder="Name" required />
+          </div>
+          <div class="form-field">
+            <label for="job-email">Email <span>Required</span></label>
+            <input id="job-email" type="email" name="email" placeholder="Email" required />
+          </div>
+          <div class="form-field">
+            <label for="job-phone">Phone Number <span>Required</span></label>
+            <input id="job-phone" type="tel" name="phone" placeholder="Phone Number" required />
+          </div>
+          <div class="form-field">
+            <label for="job-position">Position <span>Optional</span></label>
+            <select id="job-position" name="position">
+              <option value="">Position</option>
+              <option>Busser</option>
+              <option>Host Position</option>
+              <option>Kitchen Help — Breakfast &amp; Lunch</option>
+              <option>Pantry / Line &amp; Prep Cook</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-field full">
+            <label for="job-cover">Cover Letter <span>Required</span></label>
+            <textarea id="job-cover" name="cover_letter" placeholder="Cover Letter" required></textarea>
+          </div>
+          <div class="form-field full">
+            <p style="font-size:13px; color:#5c4a39; line-height:1.7; margin:0;">Job seekers are encouraged to email their résumé, along with their contact information, to <a href="mailto:lucabistro84@gmail.com" style="color:var(--gold);">lucabistro84@gmail.com</a>.</p>
+          </div>
+        </div>
+        <button type="submit" class="form-submit">Submit Application</button>
+        <p class="form-status" role="status" aria-live="polite"></p>
+      </form>
+  </div>
+</div>
+
 <!-- FOOTER -->
-<footer>
+<footer id="visit">
   <div class="footer-grid">
     <div>
-      <div class="footer-logo">LUCA <span>BISTRO</span></div>
+      <div class="footer-logo">VISIT <span>LUCA BISTRO</span></div>
       <p><a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St<br>Cincinnati, OH 45202</a></p>
-    </div>
-    <div>
-      <h3>Hours</h3>
-      <table class="footer-hours" id="footer-hours">
-        <tr><td>Sunday</td><td>Brunch 10am – 2pm</td></tr>
-        <tr><td>Monday</td><td class="closed">Closed</td></tr>
-        <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
-        <tr><td>Wed – Sat</td><td>Brunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
-      </table>
-      <p style="font-size:13px;margin-top:0.4rem;"><em>This week: Tue Jul 14 — bar &amp; snacks 3–5 PM only</em></p>
-    </div>
-    <div>
-      <h3>Contact</h3>
       <p><a href="tel:+15136215822">(513) 621-5822</a></p>
       <p><a href="mailto:lucabistro84@gmail.com">lucabistro84@gmail.com</a></p>
       <div class="social-row">
@@ -1867,10 +1851,24 @@
           <span class="gb-main">Mt. Adams Business Guild</span>
         </span>
       </a>
-      <p style="margin-top:0.75rem;font-size:13px;font-style:italic;">Walk-ins are always welcome — first come, first seated.<br>For private dining &amp; celebrations of 10+, please <a href="#private-events">send us a request</a>.</p>
+    </div>
+    <div>
+      <h3>Hours</h3>
+      <p id="footer-status" style="font-size:13px;letter-spacing:0.06em;color:#F8C325;margin-bottom:0.5rem;"></p>
+      <table class="footer-hours" id="footer-hours">
+        <tr><td>Sunday</td><td>Brunch 10am – 2pm</td></tr>
+        <tr><td>Monday</td><td class="closed">Closed</td></tr>
+        <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
+        <tr><td>Wed – Sat</td><td>Brunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
+      </table>
+    </div>
+    <div class="footer-card">
+      <img src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
+      <p>Walk-ins are always welcome — first come, first seated.<br>For private dining &amp; celebrations of 10 or more, please send us a request.</p>
+      <p style="margin-bottom:0;"><a class="btn-navy" href="#private-events">Private Dining</a> <a class="btn-outline" href="#contact">Get in Touch</a></p>
     </div>
   </div>
-  <p class="copy">&copy; <span id="yr"></span> Luca Bistro. All rights reserved.</p>
+  <p class="copy">&copy; <span id="yr"></span> Luca Bistro. All rights reserved. &nbsp;·&nbsp; <a href="#jobs">Careers</a> &nbsp;·&nbsp; <a href="#news">Press</a></p>
 </footer>
 
 <!-- Sticky mobile action bar -->
@@ -1884,7 +1882,7 @@
   document.getElementById('yr').textContent = new Date().getFullYear();
 
   // ---- Hours: single source of truth ----
-  // Renders the Hours & Location table, the footer hours, and the open-now status lines.
+  // Renders the footer hours and the open-now status lines (hero + footer).
   // 0=Sunday .. 6=Saturday, times are 24h ET. When hours change, edit ONLY this data
   // (plus the head JSON-LD openingHoursSpecification and Google Business Profile).
   var LUCA_HOURS = [
@@ -1910,18 +1908,6 @@
   }
   (function () {
     var names = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-    // Hours & Location table
-    var tbody = document.getElementById('hours-tbody');
-    if (tbody) {
-      var rows = '';
-      for (var d = 0; d < 7; d++) {
-        var day = LUCA_HOURS[d];
-        rows += '<tr><td>' + names[d] + '</td>' +
-          (day.brunch ? '<td>' + lucaFmt(day.brunch[0]) + ' – ' + lucaFmt(day.brunch[1]) + '</td>' : '<td class="closed">Closed</td>') +
-          (day.dinner ? '<td>' + lucaFmt(day.dinner[0]) + ' – ' + lucaFmt(day.dinner[1]) + '</td>' : '<td class="closed">Closed</td>') + '</tr>';
-      }
-      tbody.innerHTML = rows;
-    }
     // Footer hours (consecutive identical days grouped, e.g. "Wed – Sat")
     var foot = document.getElementById('footer-hours');
     if (foot) {
@@ -1963,7 +1949,7 @@
       if (mins < o) { text = 'Opens today at ' + lucaFmt(periods[j].o) + ' for ' + periods[j].label.toLowerCase(); break; }
     }
     if (periods.length && mins >= toMin(periods[periods.length - 1].c)) text = 'Closed for today';
-    var hs = document.getElementById('hours-status');
+    var hs = document.getElementById('footer-status');
     if (hs) hs.textContent = text;
     var hero = document.getElementById('hero-status');
     if (hero) hero.textContent = ' · ' + text;
@@ -1982,7 +1968,6 @@
   // Accessible tabs — ARIA roles, aria-selected, roving tabindex, arrow-key nav
   [
     { list: '.photo-tabs', btn: '.tab-btn',       panel: '.photo-panel', key: 'tab',   prefix: 'tab-'   },
-    { list: '.about-tabs', btn: '.about-tab-btn', panel: '.about-panel', key: 'about', prefix: 'about-' },
     { list: '.menu-tabs',  btn: '.menu-tab-btn',  panel: '.menu-panel',  key: 'menu',  prefix: 'menu-'  },
     { list: '.event-tabs', btn: '.event-tab-btn', panel: '.event-panel', key: 'event', prefix: 'events-' }
   ].forEach(cfg => {
