@@ -12,10 +12,9 @@ Companion to `CLAUDE.md` (rules + current-state brief live there; this is the ta
 - [ ] 🧑 Run homepage through [Rich Results Test](https://search.google.com/test/rich-results) — expect Restaurant + Events
 - [ ] 🧑 GBP setup pass: secondary categories (Brunch restaurant, Bistro, Wine bar), attributes (outdoor seating, walk-ins, dog-friendly?), upload patio/food photos
 
-### Dated / automated (tasks are pre-authorized to deploy; prompts describe current markup — keep in sync)
-- [ ] ⏰ Wed Jul 15, 9 AM — task `luca-tuesday-closure-reversal`: removes Tue Jul 14 notices + its schema entry
-- [ ] ⏰ Mon Jul 20, 9 AM — task `luca-worldcup-banner-timeout`: retires hero banner + Watch Parties cards/CSS, posts Missed Events memorial with results, strips leftover special hours
+### Dated / automated
 - [ ] ⏰ **Jul 25 / Aug 29** 🤖: after each Rosé All Day passes, move card to Missed Events **and** remove its Event JSON-LD entry (both cards carry the series flyer as of Jul 14, so no flyer hand-off needed — just retire each card whole)
+- (World Cup tasks all closed: Tuesday reversal done manually Jul 15; watch parties cancelled Jul 19 → banner/cards/special hours removed from production, v2, and GBP same day; `luca-worldcup-banner-timeout` disabled)
 
 ### Enhancements backlog (owner picks, Claude builds)
 - [ ] G10 Newsletter signup — as "Letters from Frédéric" (see Frédéric's Voice)
@@ -41,6 +40,7 @@ Search engines can't rank a feeling, but they rank its artifacts: owner replies,
 - [ ] 🧑 Press angle = his story ("chef who grew up in the south of France"), not "a French restaurant"
 
 ## ✅ Completed (detail in `archive/STATUS-HISTORY-2026-07.md`)
+- **Jul 16–19** — LucaBistro-v2 mockup redesign built (Phase A + full homepage rebuild, hero/chef-band photo picks); Brunch→Lunch hour labels on production + v2 (menu tabs unchanged, prose unchanged); watch parties cancelled Jul 19 — removed from production (`c9ea4ef`), v2 (`22d0064`), GBP special hours + post
 - **Jul 12–13** — watch-parties weekend: hours changes + GBP special hours & post, French Fry Day teardown, World Cup → Watch Parties (3 parchment cards), What's On / Private Dining naming, private-dining section (interim mailto form to events@), Cadre Bistro parchment menus, 6 review replies, sitemap resubmitted (Success) + lastmod bump
 - **Jul 8** — SEO push: patio section + alt text, Rosé Event JSON-LD, `#patio` deep link, legacy-URL redirects, chef letter + Person schema, GSC verified, FFD event build, GBP/Instagram posts
 - **Jul 4–7** — QC groups G2/G3/G5–G8, move to Code-Home, luca-deploy skill created

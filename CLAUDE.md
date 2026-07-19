@@ -14,14 +14,12 @@ Repo `C:\dev\Projects\Code-Home\luca-bistro` · GitHub `rdury/luca-bistro` · Ve
 ## Site map (current)
 Nav: About · Menu · **What's On** (`#events`) · Photos · News, plus a small italic second line "**Private Dining & Celebrations**" (`.nav-private` → `#private-events`).
 - **Menu** — 5 tabs, each on aged parchment in a gilt frame with faint cicada watermark ("Cadre Bistro", CSS-only via `.menu-panel`; 4-look mockup kept as untracked `menu-parchment-preview.html`).
-- **What's On** — tabs "What's On Now" / "Missed Events". Now: **Watch Parties** (3 `.parchment-panel` cards in `.wc-cards`, each titled `.wc-allez` "Allez les Bleus!" — France v Spain Tue 3–5 bar & snacks only, England v Argentina Wed 3–5 + dinner from 5, The Final Sun 3–5) then Rosé All Day (Jul 25, Aug 29).
+- **What's On** — tabs "What's On Now" / "Missed Events". Now: Rosé All Day (Jul 25, Aug 29). (World Cup watch parties were cancelled Jul 19 and removed everywhere — site, schema, GBP special hours + post; `.parchment-panel` treatment kept in CSS for future event cards.)
 - **Private dining** (`#private-events`) — request form `#pe-form` whose submit composes a prefilled **mailto to events@lucabistro.com** (separate mailbox, confirmed working; INTERIM until the dury.net admin project's backend replaces the handler with a POST). "Menu Suggestions" auto-defaults from guest count (≤22 → regular menu, ≥23 → prix fixe) with a "plan it with Chef Frédéric" note whenever the choice isn't the regular menu; a manual pick is never overwritten. `/private-events` and `/private-dining` redirect here. Photos for the section still owed by Raymond.
 - **Contact + Jobs forms** → Web3Forms (`access_key` in HTML is public by design) → lucabistro84@gmail.com. Will also move to the dury.net admin backend eventually.
 
 ## Automation (app-scheduled tasks — prompts describe current markup; keep them in sync with any edit they touch)
-- `luca-tuesday-closure-reversal` — Wed Jul 15 9 AM: removes the temporary "Tue Jul 14 bar & snacks 3–5" notices + its JSON-LD entry, deploys (pre-authorized).
-- `luca-worldcup-banner-timeout` — Mon Jul 20 9 AM: retires the hero Allez les Bleus banner (max-width 780px) + Watch Parties cards + their CSS + leftover special hours, posts a Missed Events memorial with real results, deploys (pre-authorized).
-- `luca-worldcup-daily` — DISABLED (manual World Cup updates per Raymond, Jul 12).
+- All World Cup tasks are DONE or DISABLED: `luca-tuesday-closure-reversal` (done manually Jul 15), `luca-worldcup-banner-timeout` (obsolete — watch parties cancelled Jul 19, teardown done manually same day), `luca-worldcup-daily` (disabled Jul 12). No active scheduled tasks.
 
 ## Open items (details + completed log in `TODO.md` — keep the two in sync)
 - 🧑 **G1** menu consistency (84 Burger $16 vs $15; Avocado Shrimp Salad → "Grilled shrimp") · 🧑 **G2** wine-label checks (Réserve de Marande region; Crémant "Château" vs "Réserve" de Mauny) · 🧑 photos for private dining.
