@@ -70,10 +70,6 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "17:00", "closes": "21:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "10:00", "closes": "14:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
-    ],
-    "specialOpeningHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "validFrom": "2026-07-19", "validThrough": "2026-07-19", "opens": "10:00", "closes": "14:00" },
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": "Sunday", "validFrom": "2026-07-19", "validThrough": "2026-07-19", "opens": "15:00", "closes": "17:00" }
     ]
   }
   </script>
@@ -200,11 +196,6 @@
       justify-content: center; padding: 4rem var(--pad-x); gap: 1.5rem; text-align: left;
     }
     .hero h1 { font-family: var(--serif); font-size: clamp(44px, 6vw, 68px); font-weight: 500; font-style: italic; color: #F8C325; line-height: 1.08; text-shadow: 0 2px 14px rgba(10,25,40,0.55); }
-    .hero-bursts { display: flex; flex-direction: column; align-items: flex-start; gap: 0.6rem; margin-top: 1.25rem; }
-    .hero-burst { display: inline-block; padding: 8px 20px; background: var(--red); color: #fff; font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; text-decoration: none; }
-    .hero-burst:hover { background: #b52440; }
-    .hero-banner-link { display: block; width: 100%; max-width: 780px; }
-    .hero-banner-link img { display: block; width: 100%; height: auto; }
     .event-flyer { display: block; width: 100%; max-width: 340px; height: auto; margin-bottom: 1.25rem; }
     .hero p { font-size: 17.5px; color: #F3EAD8; max-width: 520px; line-height: 1.8; font-weight: 400; text-shadow: 0 1px 10px rgba(10,25,40,0.6); }
     .btn {
@@ -231,7 +222,6 @@
 
     /* SECTIONS */
     .section { padding: var(--pad-y) var(--pad-x); scroll-margin-top: 130px; }
-    #world-cup { scroll-margin-top: 130px; }
     .inner { max-width: 1000px; margin: 0 auto; }
     .eyebrow-dark { font-size: 12px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
     h2 { font-family: var(--serif); font-size: 46px; font-weight: 500; margin-bottom: 0.5rem; }
@@ -354,7 +344,7 @@
     .event-sub { color: #5c4a39 !important; font-size: 16px !important; margin-top: 6px; }
     .event-date { font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
     .event-tag { display: inline-block; margin-top: 1rem; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; padding: 4px 12px; border: 1px solid var(--red); color: var(--red); }
-    /* Watch Parties — same parchment-in-gilt-frame treatment as the menus (banner + this block retire after the final) */
+    /* Parchment-in-gilt-frame treatment (same family as the menus) — reusable for event cards */
     .parchment-panel { position: relative; padding: 2.25rem 2.5rem; border: 24px solid transparent; border-image: var(--frame) 28 fill stretch; }
     .parchment-panel::before {
       content: ""; position: absolute; inset: -6px; z-index: 0;
@@ -369,10 +359,6 @@
       opacity: 0.055; filter: sepia(1) saturate(0.6); pointer-events: none;
     }
     .parchment-panel > * { position: relative; z-index: 1; }
-    .wc-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1rem; }
-    .wc-cards .parchment-panel { padding: 1.5rem 1.4rem; }
-    .wc-allez { font-family: var(--serif); font-size: 28px; font-weight: 700; color: #1C4B70; letter-spacing: 0.02em; margin-bottom: 0.75rem; }
-    .wc-fx-note { margin: 0.6rem 0 0; font-size: 12px; color: #6b5a47; font-style: italic; }
     /* EVENTS TABS + PAST EVENTS */
     .event-tabs { display: flex; gap: 0; border-bottom: 1px solid #e0d8cc; margin-bottom: 2.5rem; }
     .event-tab-btn { background: none; border: none; cursor: pointer; padding: 0.75rem 2rem; font-family: var(--serif); font-size: 18px; font-weight: 600; color: #9a8470; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s; }
@@ -575,9 +561,8 @@
       .mobile-bar a + a { border-left: 1px solid rgba(248,195,37,0.25); }
       .menu-tab-btn, .tab-btn, .event-tab-btn { padding-left: 1rem; padding-right: 1rem; white-space: nowrap; flex: 0 0 auto; }
 
-      /* Parchment menu + Watch Parties — slimmer frame and padding on phones */
+      /* Parchment panels — slimmer frame and padding on phones */
       .menu-panel, .parchment-panel { padding: 1.4rem 1.1rem; border-width: 18px; }
-      .wc-cards { grid-template-columns: 1fr; }
 
       /* Photo grid — wide hero image then 2-up thumbnails */
       .photo-panel.active { grid-template-columns: 1fr 1fr; }
@@ -611,9 +596,6 @@
       <a href="tel:+15136215822" class="btn btn-call">Call (513) 621-5822</a>
     </div>
     <p class="hero-walkin">Walk-ins are always welcome — first come, first seated.<span id="hero-status"></span></p>
-    <div class="hero-bursts">
-      <a class="hero-banner-link" href="#events" aria-label="World Cup 2026 — Allez les Bleus — see Events"><img src="photos/world-cup-banner.webp" alt="World Cup 2026 — Allez les Bleus — Champion du Monde 1998–2018" width="3046" height="528" decoding="async" /></a>
-    </div>
   </div>
 </div>
 
@@ -1430,39 +1412,7 @@
     </div>
 
     <div id="events-current" class="event-panel active">
-    <h3>Watch Parties</h3>
-    <div class="rule"></div>
-    <div class="wc-cards">
-      <div class="parchment-panel">
-        <p class="wc-allez">Allez les Bleus!</p>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>France v Spain</h3>
-            <p>Tuesday — bar &amp; snacks only, 3–5 PM · no dinner service · Luca Bistro closes at 5 PM</p>
-          </div>
-        </div>
-      </div>
-      <div class="parchment-panel">
-        <p class="wc-allez">Allez les Bleus!</p>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>England v Argentina</h3>
-            <p>Wednesday — bar &amp; snacks 3–5 PM · dinner service starts at 5 PM</p>
-          </div>
-        </div>
-      </div>
-      <div class="parchment-panel">
-        <p class="wc-allez">Allez les Bleus!</p>
-        <div class="menu-item">
-          <div class="menu-item-info">
-            <h3>The Final</h3>
-            <p>Sunday — bar &amp; snacks 3–5 PM · Luca Bistro closes at 5 PM</p>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <h3 style="margin-top: 3.5rem;">Rosé All Day 2026</h3>
+    <h3>Rosé All Day 2026</h3>
     <div class="rule"></div>
     <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
       <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">All rosé by the glass · 10:00 AM – 9:00 PM · Luca Bistro, Mt. Adams. Live music and featured artists all season long.</p>
@@ -1896,9 +1846,7 @@
   ];
   // One-off exceptions (affect the open-now status only; keep JSON-LD + GBP in step).
   // 'YYYY-MM-DD': list of [open, close, label]; an empty list means closed that day.
-  var LUCA_SPECIAL = {
-    '2026-07-19': [['10:00','14:00','Lunch'], ['15:00','17:00','Bar & snacks']]
-  };
+  var LUCA_SPECIAL = {};
   function lucaFmt(t) {
     var p = t.split(':'), h = +p[0], m = p[1], ap = h >= 12 ? 'pm' : 'am';
     h = h % 12; if (h === 0) h = 12;
