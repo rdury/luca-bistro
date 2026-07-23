@@ -5,6 +5,7 @@ Companion to `CLAUDE.md` (rules + current-state brief live there; this is the ta
 ## 🔲 Open — one-time
 
 ### Owner input needed
+- [ ] 🧑 **Web3Forms access keys for the new mailboxes** — register `clients@lucabistro.com` and `jobs@lucabistro.com` at web3forms.com (free, ~2 min each; the key is emailed to that inbox), then hand both keys to Claude. Until then Contact + Jobs **still deliver to lucabistro84@gmail.com** even though the page shows clients@/jobs@ — Web3Forms fixes the destination by key, it can't be set in the page. Swap `access_key` on each `form.web3form` in `index.html` (both branches). Superseded later by the dury.net admin backend.
 - [ ] 🧑 **G1** Menu consistency: 84 Burger $16 dinner vs $15 lunch; Avocado Shrimp Salad dinner description → "Grilled shrimp"
 - [ ] 🧑 **G2** Wine-label checks: Réserve de Marande region (list says Provence, producer looks Languedoc/Pays d'Oc); Crémant "Château" vs "Réserve" de Mauny
 - [ ] 🧑 **Photos for the Private Dining section** (`#private-events`)
