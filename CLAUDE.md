@@ -24,7 +24,7 @@ Nav: About · Menu · **What's On** (`#events`) · Photos · News, plus a small 
 
 ## Open items (details + completed log in `TODO.md` — keep the two in sync)
 - 🧑 **G1** menu consistency (84 Burger $16 vs $15; Avocado Shrimp Salad → "Grilled shrimp") · 🧑 **G2** wine-label checks (Réserve de Marande region; Crémant "Château" vs "Réserve" de Mauny) · 🧑 photos for private dining.
-- 🤖+🧑 **Each visit:** reply to more old unreplied Google reviews in Frédéric's voice (draft → Raymond approves → post via the GBP **"Reply to reviews" wizard**; the list's inline Reply links don't work and its scrolling is unreliable). **~79 unreplied as of Jul 23 2026** — see `TODO.md` for the posted/drafted/outstanding breakdown and the unanswered-1★ hit list.
+- 🤖+🧑 **Each visit:** reply to more old unreplied Google reviews in Frédéric's voice (draft → Raymond approves → post via the GBP **"Reply to reviews" wizard**; the list's inline Reply links don't work and its scrolling is unreliable). **78 unreplied as of Jul 23 2026** (7 posted that day) — see `TODO.md` for the posted list, the 8 approved-and-ready drafts, the 2★ held for Frédéric, and the unanswered-1★ hit list. Work in batches of ~6 and reload between them; the wizard freezes after that.
 - ⚠️ **GBP attributes drift on their own** — Google silently set "Accepts reservations" on this profile (fixed Jul 23; More → Planning). Recheck periodically, especially after any booking/hours complaint. GBP description is capped at 750 chars and truncates mid-sentence without warning.
 - Backlog (owner picks): G10 newsletter signup · G12 lazy-loaded map · G13 Instagram tile (@lucabistro84) · re-export `logo.png` at 2×.
 
