@@ -211,6 +211,8 @@
     .hero-cta { display: flex; gap: 0.9rem; flex-wrap: wrap; justify-content: center; }
     .btn-call { border-color: var(--gold-light); color: var(--cream); }
     .btn-call:hover { background: var(--gold-light); color: var(--dark); }
+    .hero-walkin { font-size: 14px; letter-spacing: 0.05em; color: var(--cream); }
+    .hero-walkin strong { color: #F8C325; font-weight: 500; }
     /* Editorial drop-cap on the opening About paragraph */
     .about-text p.lead::first-letter {
       float: left; font-family: var(--serif); font-style: italic;
@@ -261,7 +263,15 @@
     .hours-table td:first-child { font-weight: 600; width: 36%; }
     .hours-table td.closed { color: #b0a090; }
     .hours-note { margin-top: 2rem; font-size: 14px; color: #463829; line-height: 1.8; }
-    .hours-note strong { color: var(--red); font-weight: 600; display: block; margin: 1rem 0 0.5rem; font-size: 15px; letter-spacing: 0.04em; }
+    .hours-note > strong { color: var(--red); font-weight: 600; display: block; margin: 1rem 0 0.5rem; font-size: 15px; letter-spacing: 0.04em; }
+    /* Booking policy callout — guests keep assuming we take reservations, so say it plainly */
+    .policy-note { max-width: 640px; margin: 0 0 2rem; padding: 1.25rem 1.5rem; background: #EDDFB4; border-left: 4px solid var(--red); }
+    .policy-note > strong { display: block; font-family: var(--serif); font-size: 23px; font-weight: 600; color: var(--red); margin-bottom: 0.5rem; }
+    .policy-note p { font-size: 14.5px; color: #463829; line-height: 1.8; margin-bottom: 0.6rem; }
+    .policy-note p:last-child { margin-bottom: 0; }
+    .policy-note a { color: var(--gold-deep); text-decoration: underline; font-weight: 500; }
+    /* Party-minimum badge — private dining starts at 10 guests */
+    .pe-minimum { display: inline-block; padding: 6px 16px; margin-bottom: 1.5rem; background: var(--red); color: #fff; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
 
     /* CONTACT & JOBS FORMS */
     .form-intro { font-size: 15px; color: #463829; line-height: 1.8; margin-bottom: 2rem; }
@@ -549,8 +559,9 @@
     <p>Experience old-world charm at Luca Bistro in historic Mount Adams, where Chef Frédéric brings the sunlit flavors of the south of France to the heart of Cincinnati. From leisurely weekend brunches to candlelit dinners, every plate — and every glass of rosé — is a little celebration of la joie de vivre. Pull up a chair on the patio and stay awhile.</p>
     <div class="hero-cta">
       <a href="#menu" class="btn">Explore our menu</a>
-      <a href="tel:+15136215822" class="btn btn-call">Call (513) 621-5822</a>
+      <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer" class="btn">Get directions</a>
     </div>
+    <p class="hero-walkin"><strong>Walk-ins only — we don't take reservations.</strong> First come, first seated.</p>
   </div>
 </div>
 
@@ -593,8 +604,7 @@
       <div class="hours-layout">
         <div>
           <p class="hours-address">
-            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St,<br>Cincinnati, OH 45202</a><br>
-            <a href="tel:+15136215822">(513) 621-5822</a>
+            <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer">934 Hatch St,<br>Cincinnati, OH 45202</a>
           </p>
           <table class="hours-table">
             <thead>
@@ -618,15 +628,20 @@
         <div class="hours-note">
           <p>Welcome to Luca Bistro, enjoy the food and atmosphere of Southern France.</p>
           <strong>Sorry, we do not take reservations!</strong>
-          <p>Please <a href="#private-events" style="color:var(--gold);text-decoration:underline;">contact us</a> if you are planning a special event of 10 persons or more.</p>
+          <p>Every table is walk-in — first come, first seated. There's no list to join and no booking to make; just come by.</p>
+          <p>Planning a celebration of <strong>10 or more</strong>? That's our one exception — see <a href="#private-events" style="color:var(--gold);text-decoration:underline;">private dining &amp; celebrations</a>.</p>
         </div>
       </div>
     </div>
 
     <!-- CONTACT -->
     <div id="about-contact" class="about-panel">
-      <p class="form-intro">Send us a message and we'll get back to you as soon as possible.<br>Looking forward to hearing from you!</p>
-      <p style="font-size:14px;color:#5c4a39;font-style:italic;margin:-1rem 0 1.75rem;">A gentle note: we don't take reservations — tables are first come, first seated. For celebrations of 10 or more, see <a href="#private-events" style="color:var(--gold);text-decoration:underline;">private dining</a>.</p>
+      <div class="policy-note">
+        <strong>We do not take reservations</strong>
+        <p>Every table at Luca is walk-in — first come, first seated, every day we're open. There's no list to join and no table to book; just come by and we'll take care of you.</p>
+        <p>Planning a celebration of <strong>10 or more</strong>? That's our one exception — see <a href="#private-events">private dining &amp; celebrations</a>.</p>
+      </div>
+      <p class="form-intro">For anything else — questions, feedback, or a note for the kitchen — send us a message below and we'll get back to you as soon as possible.</p>
       <form class="web3form" action="https://api.web3forms.com/submit" method="POST" data-fallback-email="clients@lucabistro.com">
         <input type="hidden" name="access_key" value="4d2a547c-eac1-41b5-ad04-8009ec5a1b7d" />
         <input type="hidden" name="subject" value="New message from Luca Bistro website" />
@@ -1517,7 +1532,9 @@
     <h2>Private dining &amp; celebrations</h2>
     <div class="rule"></div>
 
-    <p class="form-intro">While everyday dining at Luca is walk-in only, we love hosting celebrations of 10 or more — birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Tell us about your event below — the form opens an email to <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> ready to send — or call <a href="tel:+15136215822" style="color:var(--gold);">(513) 621-5822</a>.</p>
+    <p class="pe-minimum">Parties of 10 or more</p>
+
+    <p class="form-intro">Everyday dining at Luca is walk-in only — we don't take reservations. Private dining is our one exception, and it begins at <strong>10 guests</strong>: birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Tell us about your event below — the form opens an email to <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> ready to send.</p>
 
     <form id="pe-form">
       <div class="form-grid">
@@ -1729,8 +1746,8 @@
     </div>
     <div>
       <h3>Contact</h3>
-      <p><a href="tel:+15136215822">(513) 621-5822</a></p>
       <p><a href="mailto:clients@lucabistro.com">clients@lucabistro.com</a></p>
+      <p style="font-size:13px;line-height:1.7;"><a href="tel:+15136215822">(513) 621-5822</a><br><span style="opacity:0.75;font-style:italic;">General enquiries — we don't take reservations</span></p>
       <div class="social-row">
         <a class="social-btn" href="https://www.instagram.com/lucabistro84" target="_blank" rel="noopener noreferrer" aria-label="Luca Bistro on Instagram">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.16c3.2 0 3.58.01 4.85.07 1.17.05 1.8.25 2.23.41.56.22.96.48 1.38.9.42.42.68.82.9 1.38.16.43.36 1.06.41 2.23.06 1.27.07 1.65.07 4.85s-.01 3.58-.07 4.85c-.05 1.17-.25 1.8-.41 2.23-.22.56-.48.96-.9 1.38-.42.42-.82.68-1.38.9-.43.16-1.06.36-2.23.41-1.27.06-1.65.07-4.85.07s-3.58-.01-4.85-.07c-1.17-.05-1.8-.25-2.23-.41-.56-.22-.96-.48-1.38-.9-.42-.42-.68-.82-.9-1.38-.16-.43-.36-1.06-.41-2.23-.06-1.27-.07-1.65-.07-4.85s.01-3.58.07-4.85c.05-1.17.25-1.8.41-2.23.22-.56.48-.96.9-1.38.42-.42.82-.68 1.38-.9.43-.16 1.06-.36 2.23-.41 1.27-.06 1.65-.07 4.85-.07M12 0C8.74 0 8.33.01 7.05.07 5.78.13 4.9.33 4.14.63c-.79.31-1.46.72-2.13 1.38C1.35 2.68.94 3.35.63 4.14.33 4.9.13 5.78.07 7.05.01 8.33 0 8.74 0 12s.01 3.67.07 4.95c.06 1.27.26 2.15.56 2.91.31.79.72 1.46 1.38 2.13.67.66 1.34 1.07 2.13 1.38.76.3 1.64.5 2.91.56C8.33 23.99 8.74 24 12 24s3.67-.01 4.95-.07c1.27-.06 2.15-.26 2.91-.56.79-.31 1.46-.72 2.13-1.38.66-.67 1.07-1.34 1.38-2.13.3-.76.5-1.64.56-2.91.06-1.28.07-1.69.07-4.95s-.01-3.67-.07-4.95c-.06-1.27-.26-2.15-.56-2.91-.31-.79-.72-1.46-1.38-2.13-.67-.66-1.34-1.07-2.13-1.38-.76-.3-1.64-.5-2.91-.56C15.67.01 15.26 0 12 0zm0 5.84a6.16 6.16 0 100 12.32 6.16 6.16 0 000-12.32zM12 16a4 4 0 110-8 4 4 0 010 8zm6.41-10.85a1.44 1.44 0 100 2.88 1.44 1.44 0 000-2.88z"/></svg>
