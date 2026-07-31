@@ -27,9 +27,11 @@ Repo `C:\dev\Projects\Code-Home\lb-web\site` · GitHub `rdury/luca-bistro` · Ve
 
 ## Branches
 
-`master` (production) · `preview` (preview deploys) · `LucaBistro-v2` (the v2 redesign — diverged
-from `origin/master`, **rebase owed before any merge**) · `option-2` (earlier design exploration).
-Full v2 status in `../CLAUDE.md`.
+`master` = production — **now the v2 redesign, LAUNCHED Jul 31 2026** (`21edfc7`). `preview` = staging,
+kept in sync with `master` (deploy flow is edit → `preview` → `push origin preview:master`).
+`LucaBistro-v2` = the redesign branch; its content is now in production, so it is **redundant** (retire
+or fast-forward — branch tidy pending). `option-2` = an old design exploration, unused. Full history in
+`../CLAUDE.md`.
 
 ## Build & preview
 
