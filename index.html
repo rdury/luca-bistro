@@ -439,9 +439,25 @@
     /* Party-minimum badge — private dining starts at 10 guests */
     .pe-minimum { display: inline-block; padding: 6px 16px; margin-bottom: 1.5rem; background: var(--red); color: #fff; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; }
     /* Press credibility strip under the hero */
-    .press-strip { background: #163C5A; color: #E4DAC2; text-align: center; padding: 0.85rem var(--pad-x); font-size: 13.5px; letter-spacing: 0.08em; }
-    .press-strip strong { color: #F8C325; font-weight: 500; }
-    .press-strip a { color: #F8C325; text-decoration: underline; }
+    /* Press ticker — a slow stock-ticker crawl of dated press mentions under the hero */
+    .press-strip { background: #163C5A; color: #E4DAC2; font-size: 13.5px; letter-spacing: 0.06em; }
+    .ticker { position: relative; overflow: hidden; }
+    .ticker::before, .ticker::after { content: ""; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
+    .ticker::before { left: 0; background: linear-gradient(to right, #163C5A, rgba(22,60,90,0)); }
+    .ticker::after { right: 0; background: linear-gradient(to left, #163C5A, rgba(22,60,90,0)); }
+    .ticker-track { display: flex; width: max-content; align-items: center; will-change: transform; animation: ticker-scroll 155s linear infinite; }
+    .ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
+    .tick { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.8rem 0; color: #E4DAC2; white-space: nowrap; }
+    .tick::after { content: ""; flex: 0 0 auto; width: 26px; height: 15px; margin: 0 1.4rem; background: url("photos/cicada.png") center / contain no-repeat; opacity: 0.7; }
+    .tick-src, .tick-date { color: #F8C325; font-weight: 500; }
+    .tick-head { color: #E4DAC2; }
+    .tick:hover .tick-head { text-decoration: underline; text-underline-offset: 3px; }
+    @keyframes ticker-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    @media (prefers-reduced-motion: reduce) {
+      .ticker { overflow-x: auto; }
+      .ticker-track { animation: none; }
+      .tick-dup { display: none; }
+    }
     /* Signature dishes — three framed cards in their own band (v2) */
     .sig-heading { text-align: center; margin-bottom: 2.5rem; }
     .signatures { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 0 0 2.5rem; }
@@ -580,9 +596,30 @@
   </div>
 </div>
 
-<!-- PRESS STRIP -->
+<!-- PRESS & EVENTS TICKER -->
 <div class="press-strip">
-  <p>&ldquo;Best New Restaurants No. 9&rdquo; &mdash; <strong>Cincinnati Magazine</strong> &nbsp;&middot;&nbsp; as seen in the <strong>Cincinnati Enquirer</strong> &amp; <strong>CityBeat</strong> &nbsp;&middot;&nbsp; <a href="#news">read the press</a></p>
+  <div class="ticker" aria-label="Luca Bistro in the press, and upcoming events">
+    <div class="ticker-track">
+      <a class="tick" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener noreferrer"><span class="tick-src">Cincinnati Enquirer</span><span class="tick-head">Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</span></a>
+      <a class="tick" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
+      <a class="tick" href="#events"><span class="tick-date">August 29, 2026</span><span class="tick-head">Rosé All Day — August</span></a>
+      <a class="tick" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer"><span class="tick-src">Whatever</span><span class="tick-head">Close To Home: Luca Bistro</span></a>
+      <a class="tick" href="https://www.citybeat.com/food-drink/newly-opened-luca-bistro-showcases-french-cuisine-in-a-new-light-14388198" target="_blank" rel="noopener noreferrer"><span class="tick-src">Cincinnati CityBeat</span><span class="tick-head">Newly Opened Luca Bistro Showcases French Cuisine in a New Light</span></a>
+      <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">August 29, 2026</span><span class="tick-head">Rosé All Day — August</span></a>
+      <a class="tick" href="https://baublestobubbles.com/2022/11/05/luca-bistro-mt-adams/" target="_blank" rel="noopener noreferrer"><span class="tick-src">Baubles to Bubbles</span><span class="tick-head">Luca Bistro in Mt. Adams</span></a>
+      <a class="tick tick-dup" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Enquirer</span><span class="tick-head">Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</span></a>
+      <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">August 29, 2026</span><span class="tick-head">Rosé All Day — August</span></a>
+      <a class="tick tick-dup" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Enquirer</span><span class="tick-head">Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</span></a>
+      <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
+      <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">August 29, 2026</span><span class="tick-head">Rosé All Day — August</span></a>
+      <a class="tick tick-dup" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Whatever</span><span class="tick-head">Close To Home: Luca Bistro</span></a>
+      <a class="tick tick-dup" href="https://www.citybeat.com/food-drink/newly-opened-luca-bistro-showcases-french-cuisine-in-a-new-light-14388198" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati CityBeat</span><span class="tick-head">Newly Opened Luca Bistro Showcases French Cuisine in a New Light</span></a>
+      <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">August 29, 2026</span><span class="tick-head">Rosé All Day — August</span></a>
+      <a class="tick tick-dup" href="https://baublestobubbles.com/2022/11/05/luca-bistro-mt-adams/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Baubles to Bubbles</span><span class="tick-head">Luca Bistro in Mt. Adams</span></a>
+      <a class="tick tick-dup" href="https://www.cincinnati.com/story/entertainment/dining/2024/05/20/luca-bistro-mount-adams-lunch-highly-recommended/73717752007/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Enquirer</span><span class="tick-head">Rediscover French Bistro Dining in Cincinnati's Most Memorable Neighborhood</span></a>
+      <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">August 29, 2026</span><span class="tick-head">Rosé All Day — August</span></a>
+    </div>
+  </div>
 </div>
 
 <!-- OUR STORY -->
