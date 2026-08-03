@@ -112,7 +112,7 @@
       --gold-deep: #6e5230;   /* darker gold — passes AA contrast on the warm-ochre sections */
       --olive: #6f6f43;       /* muted Provençal olive accent */
       --red: #9E1B32;
-      --frame: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><path d='M28 6 H72 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28 V72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94 H28 A14 14 0 0 0 17 83 A14 14 0 0 1 6 72 V28 A14 14 0 0 1 17 17 A14 14 0 0 0 28 6 Z' fill='%23E6D4A2'/><g fill='none' stroke='%239c6a1e' stroke-width='4' stroke-linecap='round'><path d='M28 6 A14 14 0 0 1 17 17 A14 14 0 0 0 6 28'/><path d='M72 6 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28'/><path d='M94 72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94'/><path d='M6 72 A14 14 0 0 0 17 83 A14 14 0 0 1 28 94'/><path d='M28 6 H72'/><path d='M28 94 H72'/><path d='M6 28 V72'/><path d='M94 28 V72'/></g></svg>");
+      --frame: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><path d='M28 6 H72 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28 V72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94 H28 A14 14 0 0 0 17 83 A14 14 0 0 1 6 72 V28 A14 14 0 0 1 17 17 A14 14 0 0 0 28 6 Z' fill='%23E6D4A2'/><g fill='none' stroke='%239c6a1e' stroke-width='4' stroke-linecap='round'><path d='M28 6 A14 14 0 0 1 17 17 A14 14 0 0 0 6 28'/><path d='M72 6 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28'/><path d='M94 72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94'/><path d='M6 72 A14 14 0 0 0 17 83 A14 14 0 0 1 28 94'/><path d='M28 6 H72'/><path d='M28 94 H72'/><path d='M6 28 V72'/><path d='M94 28 V72'/></g></svg>"); --frame-menu: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><path d='M28 6 H72 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28 V72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94 H28 A14 14 0 0 0 17 83 A14 14 0 0 1 6 72 V28 A14 14 0 0 1 17 17 A14 14 0 0 0 28 6 Z' fill='%23D0BA86'/><g fill='none' stroke='%239c6a1e' stroke-width='4' stroke-linecap='round'><path d='M28 6 A14 14 0 0 1 17 17 A14 14 0 0 0 6 28'/><path d='M72 6 A14 14 0 0 0 83 17 A14 14 0 0 1 94 28'/><path d='M94 72 A14 14 0 0 1 83 83 A14 14 0 0 0 72 94'/><path d='M6 72 A14 14 0 0 0 17 83 A14 14 0 0 1 28 94'/><path d='M28 6 H72'/><path d='M28 94 H72'/><path d='M6 28 V72'/><path d='M94 28 V72'/></g></svg>");
       --dark: #271a0e;
       --darker: #1b120a;
       --dark-mid: #2a1f10;
@@ -286,7 +286,7 @@
     .menu-tab-btn:hover { color: var(--gold); }
     .menu-tab-btn.active { color: var(--gold); border-bottom-color: var(--gold); }
     /* Parchment "old menu" treatment — each menu page sits on aged paper inside the gilt frame */
-    .menu-panel { display: none; position: relative; padding: 2.25rem 2.5rem; border: 24px solid transparent; border-image: var(--frame) 28 fill stretch; }
+    .menu-panel { display: none; position: relative; padding: 2.25rem 2.5rem; border: 24px solid transparent; border-image: var(--frame-menu) 28 fill stretch; }
     .menu-panel.active { display: block; }
     .menu-panel::before { /* the paper: parchment gradient + grain (same feTurbulence trick as the body, stronger) */
       content: ""; position: absolute; inset: -6px; z-index: 0;
@@ -592,7 +592,7 @@
       <a href="#menu" class="btn">Explore our menu</a>
       <a href="https://maps.google.com/?q=934+Hatch+St,+Cincinnati,+OH+45202" target="_blank" rel="noopener noreferrer" class="btn">Get directions</a>
     </div>
-    <p class="hero-walkin"><strong>Walk-ins only — we don't take reservations.</strong><br>First come, first seated.<span id="hero-status"></span></p>
+    <p class="hero-walkin"><span id="hero-status"></span></p>
   </div>
 </div>
 
@@ -1485,7 +1485,7 @@
 
     <p class="pe-minimum">Parties of 10 or more</p>
 
-    <p class="form-intro">Everyday dining at Luca is walk-in only — we don't take reservations. Private dining is our one exception, and it begins at <strong>10 guests</strong>: birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Tell us about your event below — the form opens an email to <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> ready to send.</p>
+    <p class="form-intro">For parties under 10, there's no need to reserve — everyday dining at Luca is walk-in. Private dining is our one exception, and it begins at <strong>10 guests</strong>: birthdays, showers, rehearsal dinners, family gatherings, holiday parties, and more. Your group can order from <a href="#menu" style="color:var(--gold);">our regular menu</a>, or ask us about a prix fixe menu for the table.<br>Tell us about your event below — the form opens an email to <a href="mailto:events@lucabistro.com" style="color:var(--gold);text-decoration:underline;">events@lucabistro.com</a> ready to send.</p>
 
     <form id="pe-form">
       <div class="form-grid">
@@ -1730,25 +1730,25 @@
       <div class="job-listing">
         <h3>Busser</h3>
         <p>As a busser, you're the quiet engine behind a smooth service — clearing, sanitizing, and resetting tables so every guest feels welcome, and keeping the dining room stocked with silverware, glassware, napkins, and water. You'll work shoulder to shoulder with our servers and kitchen to keep the room turning cleanly and calmly all evening. It's a great fit for someone dependable, quick on their feet, and glad to be part of a close, fast‑moving team. No prior experience necessary.</p>
-        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm &middot; $13/hr + tips</p>
+        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm</p>
       </div>
 
       <div class="job-listing">
         <h3>Host Position</h3>
         <p>As host, you're the first and last impression at Luca Bistro. You'll warmly greet every guest, manage the flow of the dining room and bar, give honest wait times, and seat parties so service runs smoothly from open to close. Because we don't take reservations, you'll be the calm, friendly face who keeps a busy walk‑in room organized and welcoming. We're looking for someone with strong people and organizational skills who genuinely enjoys taking care of guests from the moment they arrive until they head home.</p>
-        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm &middot; $15/hr</p>
+        <p class="job-meta">Thu, Fri, Sat &middot; 4–9pm</p>
       </div>
 
       <div class="job-listing">
         <h3>Kitchen Help — Breakfast &amp; Lunch</h3>
         <p>Join our kitchen for breakfast and lunch service as a line and prep cook. You'll prep fresh ingredients each morning, cook our brunch and lunch classics — omelettes, quiches, croques, salads, and sandwiches — and help keep the line clean, stocked, and moving. These are daytime hours at a steady, friendly pace — ideal for someone who takes pride in their work and wants to sharpen their skills in a from‑scratch French kitchen. Prior line or prep experience is preferred.</p>
-        <p class="job-meta">Mon–Fri &middot; 7am–2pm &middot; $15/hr</p>
+        <p class="job-meta">Mon–Fri &middot; 7am–2pm</p>
       </div>
 
       <div class="job-listing">
         <h3>Pantry / Line &amp; Prep Cook</h3>
         <p>This role runs our pantry station — building the salads, starters, and desserts that open and close every meal — along with line and prep work through dinner service. You'll plate with care, keep your station clean and organized, and prep ahead for the days to come. It's a great spot for a detail‑oriented cook who loves the finishing touches and wants hands‑on time in a busy, from‑scratch bistro kitchen. Pantry, line, or prep experience is preferred; a strong work ethic is a must.</p>
-        <p class="job-meta">Tue–Sat &middot; 1–9pm &middot; $15/hr</p>
+        <p class="job-meta">Tue–Sat &middot; 1–9pm</p>
       </div>
 
       <p class="form-intro" style="margin-bottom:1.5rem;">Please complete the form below or send your information (including resume) to <a href="mailto:jobs@lucabistro.com" style="color:var(--gold);">jobs@lucabistro.com</a>. Thank you.</p>
@@ -1919,7 +1919,7 @@
     var hs = document.getElementById('footer-status');
     if (hs) hs.textContent = text;
     var hero = document.getElementById('hero-status');
-    if (hero) hero.textContent = ' · ' + text;
+    if (hero) hero.textContent = text;
   })();
 
   // Wine list — label glass/bottle prices for screen readers and text extraction
