@@ -70,6 +70,9 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": "Tuesday", "opens": "17:00", "closes": "21:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "10:00", "closes": "14:00" },
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
+    ],
+    "specialOpeningHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" }
     ]
   }
   </script>
@@ -1446,6 +1449,21 @@
         <span class="event-tag">Live music</span><a class="event-cal" target="_blank" rel="noopener noreferrer" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=Ros%C3%A9%20All%20Day%20at%20Luca%20Bistro&amp;dates=20260829T140000Z/20260830T010000Z&amp;details=All%20ros%C3%A9%20by%20the%20glass%2C%2010%20AM%E2%80%939%20PM%2C%20live%20music%20by%20Nick%20Tuttle.&amp;location=Luca%20Bistro%2C%20934%20Hatch%20St%2C%20Cincinnati%2C%20OH%2045202">Add to calendar</a>
       </div>
     </div>
+    <h3 style="margin-top:3.5rem;">Holiday Parties</h3>
+    <div class="rule"></div>
+    <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
+      <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">Office gatherings, family celebrations, association dinners and end-of-year parties — the season fills quickly in Mt. Adams.</p>
+      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Now booking · Nov &amp; Dec</span>
+    </div>
+    <div class="events-grid">
+      <div class="event-card">
+        <h4>Holiday Parties at Luca</h4>
+        <p class="event-date">November &amp; December 2026</p>
+        <p>Parties of <strong>10 or more</strong> can have a room of their own — offices, families, associations and clubs. Order from <a href="#menu" style="color:var(--gold-deep);">our regular menu</a>, or ask about a prix fixe arranged with Chef Frédéric.</p>
+        <p class="event-sub">Send us your date and guest count to get started.</p>
+        <span class="event-tag">Private dining</span><a class="event-cal" href="#private-events">Plan your party</a>
+      </div>
+    </div>
     </div><!-- end events-current -->
 
     <div id="events-past" class="event-panel">
@@ -1832,6 +1850,7 @@
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
         <tr><td>Wed – Sat</td><td>Lunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
+      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">Closed Saturday, October 31</p>
     </div>
     <div class="footer-card">
       <img src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
@@ -1867,7 +1886,13 @@
   ];
   // One-off exceptions (affect the open-now status only; keep JSON-LD + GBP in step).
   // 'YYYY-MM-DD': list of [open, close, label]; an empty list means closed that day.
-  var LUCA_SPECIAL = {};
+  var LUCA_SPECIAL = {
+    // Saturday Oct 31 2026 - CLOSED all day (owner, Aug 10 2026). An empty list = closed.
+    // Mirrored in the head JSON-LD specialOpeningHoursSpecification AND on Google Business
+    // Profile - all three must agree. The footer note below renders itself from this data,
+    // so it expires on its own once the date passes.
+    '2026-10-31': []
+  };
   function lucaFmt(t) {
     var p = t.split(':'), h = +p[0], m = p[1], ap = h >= 12 ? 'pm' : 'am';
     h = h % 12; if (h === 0) h = 12;
@@ -1899,6 +1924,20 @@
     var now = new Date();
     var pad = function (n) { return (n < 10 ? '0' : '') + n; };
     var key = now.getFullYear() + '-' + pad(now.getMonth() + 1) + '-' + pad(now.getDate());
+    // Upcoming one-off closures, rendered FROM LUCA_SPECIAL so this note cannot drift out of
+    // step with the hours data the way a hand-typed line would. The HTML carries the current
+    // closure as a no-JS fallback; this clears it automatically once the date has passed.
+    var noteEl = document.getElementById('hours-special');
+    if (noteEl) {
+      var mn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
+      var shut = Object.keys(LUCA_SPECIAL).filter(function (d) {
+        return d >= key && LUCA_SPECIAL[d].length === 0;
+      }).sort().map(function (d) {
+        var a = d.split('-'), dt = new Date(+a[0], +a[1] - 1, +a[2]);
+        return names[dt.getDay()] + ', ' + mn[dt.getMonth()] + ' ' + dt.getDate();
+      });
+      noteEl.textContent = shut.length ? 'Closed ' + shut.join(' · ') : '';
+    }
     var periods = [];
     if (LUCA_SPECIAL[key]) {
       LUCA_SPECIAL[key].forEach(function (p) { periods.push({ o: p[0], c: p[1], label: p[2] }); });
