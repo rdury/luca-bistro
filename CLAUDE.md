@@ -3,14 +3,14 @@
 > **Project context lives one level up: [`../CLAUDE.md`](../CLAUDE.md).**
 > That file is the entry point - site map, email routing, v2 status, SEO/GBP/review rules, mailbox
 > work. Open items are in `../TODO.md`. **This file covers repo mechanics only.**
-> Workspace orientation: `../../AGENTS.md`. Status owner: `../../MASTER-TODO.md` §1.
+> Workspace orientation: `../../../AGENTS.md`. Status owner: `../../../MASTER-TODO.md` §1.
 
 Marketing site for **Luca Bistro**, French bistro in Mt. Adams, Cincinnati (Chef Frédéric Maniet).
 One self-contained **`index.html`** (inline style/script, no framework, no build, **CRLF line
 endings**). Assets: `photos/`, favicons, `sitemap.xml`, `robots.txt`. Priorities: fast load,
 Provençal design.
 
-Repo `C:\dev\Projects\Code-Home\lb-web\site` · GitHub `rdury/luca-bistro` · Vercel auto-deploy ·
+Repo `C:\dev\Projects\Code-Home\luca\website\site` · GitHub `rdury/luca-bistro` · Vercel auto-deploy ·
 **lucabistro.com** · `master` = production, `preview` = preview branch.
 
 ## Rules (non-negotiable)
