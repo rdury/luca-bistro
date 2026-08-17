@@ -28,7 +28,7 @@ Repo `C:\dev\Projects\Code-Home\lb-web\site` · GitHub `rdury/luca-bistro` · Ve
 
 ## Branches
 
-`master` = production - **the v2 redesign, LAUNCHED Jul 31 2026** (currently `2a652ab`). `preview` =
+`master` = production - **the v2 redesign, LAUNCHED Jul 31 2026** (read the head with `git rev-parse --short origin/master`; do not pin a hash in this file - it goes stale). `preview` =
 staging, kept in sync with `master` (deploy flow is edit → `preview` → `push origin preview:master`).
 **Only these two branches remain.** Branch tidy done Jul 31 2026: the redundant `LucaBistro-v2` and the
 unused `option-2` were deleted (local + remote) after verifying redundancy against `origin/master`;
