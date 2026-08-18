@@ -1,9 +1,10 @@
 # luca-bistro - the deployed site repo
 
 > **Project context lives one level up: [`../CLAUDE.md`](../CLAUDE.md).**
-> That file is the entry point - site map, email routing, v2 status, SEO/GBP/review rules, mailbox
-> work. Open items are in `../TODO.md`. **This file covers repo mechanics only.**
-> Workspace orientation: `../../../AGENTS.md`. Status owner: `../../../MASTER-TODO.md` §1.
+> That file is the entry point - site map, email routing, v2 status. Open items are in `../TODO.md`.
+> **This file covers repo mechanics only.** (SEO/GBP, review replies and the chef@ mailbox moved to
+> `../../marketing/` in the Aug 17 2026 split — they are no longer covered by `../CLAUDE.md`.)
+> Workspace orientation: `../../../AGENTS.md`. Status owner: `../../../MASTER-TODO.md` → the **Luca - Website** section (refer by name — the numbering re-sorts).
 
 Marketing site for **Luca Bistro**, French bistro in Mt. Adams, Cincinnati (Chef Frédéric Maniet).
 One self-contained **`index.html`** (inline style/script, no framework, no build, **CRLF line
@@ -13,18 +14,9 @@ Provençal design.
 Repo `C:\dev\Projects\Code-Home\luca\website\site` · GitHub `rdury/luca-bistro` · Vercel auto-deploy ·
 **lucabistro.com** · `master` = production, `preview` = preview branch.
 
-## Rules (non-negotiable)
+## Rules — owned by `../CLAUDE.md` + the `luca-deploy` skill
 
-- **Any commit/deploy → the `luca-deploy` skill** (integrity ritual after every `index.html` edit —
-  the site was once truncated mid-edit; the ritual is the guard).
-- **Never `git add -A`** - stage named files only. No line-ending changes (`core.autocrlf` false;
-  `index.html` must stay 100% CRLF). Markdown in this repo is LF - don't convert it either.
-- **Ask Raymond before commit/push** (files + message + branch). New content/design → package as a
-  git patch for **Frédéric's sign-off** first, unless Raymond deploys as owner. Ask before deleting.
-- **Keep event cards and the head Event JSON-LD in sync** on every event add/change/expiry; move
-  expired events to the Missed Events tab.
-- **Hours accuracy is a sore point** - any closure or odd hours goes to the site (hours note + footer
-  + `specialOpeningHoursSpecification` JSON-LD) **AND** Google Business Profile, same day.
+The non-negotiable rules of engagement (deploy via `luca-deploy` every time · never `git add -A` · `index.html` stays 100% CRLF · event cards ↔ Event JSON-LD in sync · any hours/closure hits the site AND Google the same day · new content → patch for Frédéric · ask before commit/push/delete) are stated once in [`../CLAUDE.md`](../CLAUDE.md) and enforced by the **`luca-deploy`** skill — read them before touching anything here. One repo-only addition: **markdown in this repo is LF — don't convert it.**
 
 ## Branches
 

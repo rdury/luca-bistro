@@ -1,8 +1,11 @@
-# Moved — see `../TODO.md`
+# Open items → `../TODO.md` (website only)
 
-The Luca Bistro task list is now consolidated one level up at **[`../TODO.md`](../TODO.md)**, covering
-the site (v1 + v2), SEO/Google Business Profile, review replies, events and the chef@ mailbox in a
-single list. Project context is in [`../CLAUDE.md`](../CLAUDE.md); repo mechanics stay in `CLAUDE.md`
-beside this file.
+Site work is tracked one level up in **[`../TODO.md`](../TODO.md)** — the **Luca - Website** annex:
+the site itself (`index.html`, v2), photos owed, deploy backlog. Repo mechanics: `CLAUDE.md` beside
+this file. Project context: [`../CLAUDE.md`](../CLAUDE.md).
 
-Consolidated Jul 29, 2026. Completed-work detail remains in `archive/STATUS-HISTORY-2026-07.md`.
+**Not here (moved out Aug 17, 2026 in the website/marketing split):** SEO / Google Business Profile,
+review replies, events, and the chef@ mailbox now live in **`../../marketing/`** (its own `CLAUDE.md`
++ `TODO.md`). The old single consolidated list was dismantled by that split.
+
+Completed-work detail remains in `archive/STATUS-HISTORY-2026-07.md`.
