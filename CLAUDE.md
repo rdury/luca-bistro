@@ -4,7 +4,7 @@
 > That file is the entry point - site map, email routing, v2 status. Open items are in `../TODO.md`.
 > **This file covers repo mechanics only.** (SEO/GBP, review replies and the chef@ mailbox moved to
 > `../../marketing/` in the Aug 17 2026 split — they are no longer covered by `../CLAUDE.md`.)
-> Workspace orientation: `../../../AGENTS.md`. Status owner: `../../../MASTER-TODO.md` → the **Luca - Website** section (refer by name — the numbering re-sorts).
+> Workspace orientation: `../../../AGENTS.md`. Status owner: `../../../MASTER-TODO.md` → the **Luca - Website** section (refer by name — the numbering re-sorts) — view the live list with the **`/todo`** skill.
 
 Marketing site for **Luca Bistro**, French bistro in Mt. Adams, Cincinnati (Chef Frédéric Maniet).
 One self-contained **`index.html`** (inline style/script, no framework, no build, **CRLF line
