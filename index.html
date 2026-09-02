@@ -287,6 +287,8 @@
 
     /* CONTACT & JOBS FORMS */
     .form-intro { font-size: 15px; color: #463829; line-height: 1.8; margin-bottom: 2rem; }
+    .form-note { margin-top: 2rem; padding: 0.9rem 1.2rem; background: #F7EFD0; border-left: 3px solid var(--red); font-size: 14px; line-height: 1.65; color: #463829; }
+    .form-note strong { color: #2c2018; }
     .form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 2rem; }
     .form-field { display: flex; flex-direction: column; gap: 0.4rem; }
     .form-field.full { grid-column: 1 / -1; }
@@ -1657,6 +1659,7 @@
           <textarea id="pe-comments" name="comments" placeholder="Anything else we should know — occasion, timing, special requests"></textarea>
         </div>
       </div>
+      <p class="form-note"><strong>A note before you send &mdash;</strong> your tables are set aside inside our Event Room, but the room itself is shared: on a busy evening other guests may be seated at the remaining tables. We&rsquo;ll always tell you plainly what to expect before anything is settled.</p>
       <button type="submit" class="form-submit">Email Your Event Request</button>
       <p class="form-status" role="status" aria-live="polite"></p>
     </form>
