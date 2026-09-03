@@ -72,6 +72,7 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
     ],
     "specialOpeningHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-09-06", "validThrough": "2026-09-06" },
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" }
     ]
   }
@@ -1963,7 +1964,7 @@
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
         <tr><td>Wed – Sat</td><td>Lunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
-      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">Closed Saturday, October 31</p>
+      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">Closed Sunday, September 6 · Saturday, October 31</p>
     </div>
     <div class="footer-card">
       <img src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
@@ -2004,6 +2005,8 @@
     // Mirrored in the head JSON-LD specialOpeningHoursSpecification AND on Google Business
     // Profile - all three must agree. The footer note below renders itself from this data,
     // so it expires on its own once the date passes.
+    // Sunday Sep 6 2026 - CLOSED (Labor Day weekend; owner, Sep 3 2026); mirrored in JSON-LD + GBP.
+    '2026-09-06': [],
     '2026-10-31': []
   };
   function lucaFmt(t) {
