@@ -21,7 +21,11 @@ The non-negotiable rules of engagement (deploy via `luca-deploy` every time · n
 ## Branches
 
 `master` = production - **the v2 redesign, LAUNCHED Jul 31 2026** (read the head with `git rev-parse --short origin/master`; do not pin a hash in this file - it goes stale). `preview` =
-staging, kept in sync with `master` (deploy flow is edit → `preview` → `push origin preview:master`).
+staging, kept in sync with `master` **on the remote** (deploy flow is edit → `preview` → `push origin preview:master`).
+⚠️ **That promote moves only `origin/master` — it never updates the LOCAL `master` branch**, so local `master`
+silently lags (it was 4 commits behind after the Sep 3 2026 promotes). Read `origin/master`, never local `master`;
+any `git show master:index.html` check reads stale. Fast-forward the local ref when you need it with
+`git fetch origin master:master` (no push, no checkout).
 **Only these two branches remain.** Branch tidy done Jul 31 2026: the redundant `LucaBistro-v2` and the
 unused `option-2` were deleted (local + remote) after verifying redundancy against `origin/master`;
 their content is preserved on GitHub as tags `v2-launched-20260731` and `option-2-archive-20260731`.
