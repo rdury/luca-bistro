@@ -41,4 +41,4 @@ not change the deployed site. `vercel.json` = exact-match 301 redirects to secti
 
 Tokens: blue `#1C4B70` · yellow `#F8C325` · red `#9E1B32` · cream `#E4DAC2` · `--gold #806240` /
 `--gold-light #c2a882` · fonts Cormorant Garamond + Jost.
-Deep history: `archive/` (incl. `STATUS-HISTORY-2026-07.md`).
+Deep history: `archive/STATUS-HISTORY-2026-07.md` (the only file left there since the Sep 7 2026 prune).
