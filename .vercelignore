@@ -8,6 +8,7 @@ serve.js
 *.md
 .env.example
 .claude/
+.Codex/
 
 # Stray backups
 *.bak

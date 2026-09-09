@@ -34,7 +34,7 @@ Full history in `../CLAUDE.md`.
 ## Build & preview
 
 No build step. **Local preview: `node serve.js` → localhost:3000 (never `file://`).**
-`.vercelignore` keeps `*.md`, `*.bak`, `serve.js`, `.claude/` off the live site - md-only commits do
+`.vercelignore` keeps `*.md`, `*.bak`, `serve.js`, `.claude/` and `.Codex/` off the live site - md-only commits do
 not change the deployed site. `vercel.json` = exact-match 301 redirects to section anchors.
 
 ## Reference
