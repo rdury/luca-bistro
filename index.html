@@ -72,7 +72,9 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
     ],
     "specialOpeningHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" }
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" },
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-11-26", "validThrough": "2026-11-26" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-11-27", "validThrough": "2026-11-27" }
     ]
   }
   </script>
@@ -2019,7 +2021,7 @@
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
         <tr><td>Wed – Sat</td><td>Lunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
-      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">Closed Saturday, October 31</p>
+      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">Closed Saturday, October 31 · Closed Thursday, November 26 · Friday, November 27: dinner only, from 5pm</p>
     </div>
     <div class="footer-card">
       <img src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
@@ -2060,7 +2062,11 @@
     // Mirrored in the head JSON-LD specialOpeningHoursSpecification AND on Google Business
     // Profile - all three must agree. The footer note below renders itself from this data,
     // so it expires on its own once the date passes.
-    '2026-10-31': []
+    '2026-10-31': [],
+    // Thursday Nov 26 2026 (Thanksgiving Day) - CLOSED all day (owner via Marketing, Sep 18 2026).
+    '2026-11-26': [],
+    // Friday Nov 27 2026 - CLOSED for lunch; dinner only from 5pm (owner via Marketing, Sep 18 2026).
+    '2026-11-27': [['17:00', '21:00', 'Dinner']]
   };
   function lucaFmt(t) {
     var p = t.split(':'), h = +p[0], m = p[1], ap = h >= 12 ? 'pm' : 'am';
@@ -2099,13 +2105,16 @@
     var noteEl = document.getElementById('hours-special');
     if (noteEl) {
       var mn = ['January','February','March','April','May','June','July','August','September','October','November','December'];
-      var shut = Object.keys(LUCA_SPECIAL).filter(function (d) {
-        return d >= key && LUCA_SPECIAL[d].length === 0;
+      var parts = Object.keys(LUCA_SPECIAL).filter(function (d) {
+        return d >= key;
       }).sort().map(function (d) {
         var a = d.split('-'), dt = new Date(+a[0], +a[1] - 1, +a[2]);
-        return names[dt.getDay()] + ', ' + mn[dt.getMonth()] + ' ' + dt.getDate();
+        var when = names[dt.getDay()] + ', ' + mn[dt.getMonth()] + ' ' + dt.getDate();
+        if (LUCA_SPECIAL[d].length === 0) return 'Closed ' + when;
+        var labs = LUCA_SPECIAL[d].map(function (p) { return p[2].toLowerCase(); });
+        return when + ': ' + labs.join(' & ') + ' only, from ' + lucaFmt(LUCA_SPECIAL[d][0][0]);
       });
-      noteEl.textContent = shut.length ? 'Closed ' + shut.join(' · ') : '';
+      noteEl.textContent = parts.join(' · ');
     }
     var periods = [];
     if (LUCA_SPECIAL[key]) {
