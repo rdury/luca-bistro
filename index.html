@@ -179,31 +179,6 @@
           "addressCountry": "US"
         }
       }
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "Event",
-      "name": "Burger Day at Luca — National Cheeseburger Day",
-      "description": "One day, four burgers, the Luca Bistro way — the 84 Burger ($15), the Onion Burger ($16), the Bleu Burger ($17) and the Mushroom Burger ($17), each hand-formed, cooked to order and served with our frites. Dine in, on the patio or in the bar; walk-ins welcome.",
-      "startDate": "2026-09-18T17:00:00-04:00",
-      "endDate": "2026-09-18T21:00:00-04:00",
-      "eventStatus": "https://schema.org/EventScheduled",
-      "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
-      "isAccessibleForFree": true,
-      "image": "https://www.lucabistro.com/photos/food/_MG_4360.webp",
-      "organizer": { "@type": "Organization", "name": "Luca Bistro", "url": "https://www.lucabistro.com/" },
-      "location": {
-        "@type": "Place",
-        "name": "Luca Bistro",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "934 Hatch St",
-          "addressLocality": "Cincinnati",
-          "addressRegion": "OH",
-          "postalCode": "45202",
-          "addressCountry": "US"
-        }
-      }
     }
   ]
   </script>
@@ -551,7 +526,7 @@
     .ticker::before, .ticker::after { content: ""; position: absolute; top: 0; bottom: 0; width: 60px; z-index: 2; pointer-events: none; }
     .ticker::before { left: 0; background: linear-gradient(to right, #163C5A, rgba(22,60,90,0)); }
     .ticker::after { right: 0; background: linear-gradient(to left, #163C5A, rgba(22,60,90,0)); }
-    .ticker-track { display: flex; width: max-content; align-items: center; will-change: transform; animation: ticker-scroll 207s linear infinite; }
+    .ticker-track { display: flex; width: max-content; align-items: center; will-change: transform; animation: ticker-scroll 190s linear infinite; }
     .ticker:hover .ticker-track, .ticker:focus-within .ticker-track { animation-play-state: paused; }
     .tick { display: inline-flex; align-items: center; gap: 0.55rem; padding: 0.8rem 0; color: #E4DAC2; white-space: nowrap; }
     /* Cicada separator. Painted with a MASK so it is the exact hero yellow (#F8C325,
@@ -721,16 +696,6 @@
 <script>
   (function(){var b=document.getElementById("comfort-banner");if(!b)return;var n=new Date();if(n.getFullYear()===2026&&n.getMonth()===8&&n.getDay()===3){b.style.display="flex";}})();
 </script>
-  
-  <!-- BURGER DAY BANNER (day-gated: Fri Sep 18 only) -->
-  <a id="burger-banner" href="#events" style="display:none;justify-content:center;align-items:center;flex-wrap:wrap;gap:12px;padding:14px 22px;background:#F8EDD0;border-top:3px solid var(--red);border-bottom:3px solid var(--red);text-decoration:none;color:inherit;text-align:center;">
-    <svg width="26" height="19" viewBox="0 0 92 66" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none;"><path d="M10 24 a36 18 0 0 1 72 0 z" fill="#c9862f"/><circle cx="34" cy="13" r="1.7" fill="#F7EFD0"/><circle cx="47" cy="9" r="1.7" fill="#F7EFD0"/><circle cx="60" cy="13" r="1.7" fill="#F7EFD0"/><path d="M8 28 h76 l-7 7 l-9 -5 l-9 5 l-9 -5 l-9 5 l-9 -5 l-9 5 l-8 -4 z" fill="#e0a326"/><rect x="12" y="35" width="68" height="8" rx="4" fill="#6b4226"/><path d="M8 47 q10 -6 21 -3 q12 3 24 0 q12 -3 23 3" fill="none" stroke="#6f6f43" stroke-width="5" stroke-linecap="round"/><rect x="10" y="52" width="72" height="11" rx="5.5" fill="#c9862f"/></svg>
-    <span style="font-size:16px;color:#463829;line-height:1.45;"><strong style="font-family:var(--serif);font-weight:700;font-size:23px;color:#9E1B32;">It&rsquo;s Burger Day at Luca</strong> &mdash; four burgers, $15&ndash;$17, each with our frites. Tonight, 5&ndash;9 PM. Walk right in.</span>
-    <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:#9E1B32;font-weight:600;white-space:nowrap;">See what&rsquo;s on &rarr;</span>
-  </a>
-  <script>
-    (function(){var b=document.getElementById("burger-banner");if(!b)return;var n=new Date();if(n.getFullYear()===2026&&n.getMonth()===8&&n.getDate()===18){b.style.display="flex";}})();
-  </script>
 
 <!-- PRESS & EVENTS TICKER -->
 <div class="press-strip">
@@ -747,7 +712,6 @@
       <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">Wednesdays in September</span><span class="tick-head">Comfort Bowl Wednesdays &mdash; soup, salad &amp; bread $15</span></a>
       <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
       <a class="tick tick-dup" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Whatever</span><span class="tick-head">Close To Home: Luca Bistro</span></a>
-      <a class="tick" href="#events"><span class="tick-date">Friday, Sep 18</span><span class="tick-head">Burger Day at Luca &mdash; four burgers, 5&ndash;9 PM</span></a>
       <a class="tick tick-dup" href="https://www.cincinnati.com/story/entertainment/dining/2026/08/26/best-affordable-cincinnati-restaurants/91258878007/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Enquirer</span><span class="tick-head">10 Restaurants Where You Can Eat Top-Notch Food on a Budget</span></a>
       <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
       <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">Wednesdays in September</span><span class="tick-head">Comfort Bowl Wednesdays &mdash; soup, salad &amp; bread $15</span></a>
@@ -759,7 +723,6 @@
       <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">Wednesdays in September</span><span class="tick-head">Comfort Bowl Wednesdays &mdash; soup, salad &amp; bread $15</span></a>
       <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
       <a class="tick tick-dup" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Whatever</span><span class="tick-head">Close To Home: Luca Bistro</span></a>
-      <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">Friday, Sep 18</span><span class="tick-head">Burger Day at Luca &mdash; four burgers, 5&ndash;9 PM</span></a>
     </div>
   </div>
 </div>
@@ -1587,21 +1550,6 @@
         <span class="event-tag">$15 set</span>
       </div>
     </div>
-    <h3 style="margin-top:3.5rem;">Burger Day at Luca</h3>
-    <div class="rule"></div>
-    <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
-      <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">Experience the burger &mdash; the Luca Bistro way. One day. Four burgers. Our kitchen takes America&rsquo;s favorite and does it the way only a bistro can &mdash; hand-formed, cooked to order, and stacked with flavors you won&rsquo;t find at a drive-thru. Every one comes with our frites.</p>
-      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Friday, September 18</span>
-    </div>
-    <div class="events-grid">
-      <div class="event-card">
-        <h4>Burger Day at Luca</h4>
-        <p class="event-date">National Cheeseburger Day &middot; Friday, September 18 &middot; 5&ndash;9 PM</p>
-        <p><strong>The 84 Burger</strong> &middot; $15 &mdash; harissa sauce, melted gruyère, lettuce &amp; tomato<br><strong>The Onion Burger</strong> &middot; $16 &mdash; slow-caramelized onions, gruyère, balsamic mayonnaise on a toasted bun<br><strong>The Bleu Burger</strong> &middot; $17 &mdash; creamy blue cheese &amp; crisp bacon<br><strong>The Mushroom Burger</strong> &middot; $17 &mdash; mushroom duxelles, melted cheese, aïoli</p>
-        <p class="event-sub">Each served with our frites. Dine in, on the patio, or in the bar &mdash; walk-ins welcome.</p>
-        <span class="event-tag">Sep 18 &middot; 5&ndash;9 PM</span>
-      </div>
-    </div>
     <h3 style="margin-top:3.5rem;">Holiday Parties</h3>
     <div class="rule"></div>
     <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
@@ -1622,6 +1570,11 @@
     <div id="events-past" class="event-panel">
       <p class="past-intro">A look back at recent events at Luca Bistro.</p>
       <div class="past-events">
+        <div class="past-event">
+          <p class="past-date">September 18, 2026 · National Cheeseburger Day</p>
+          <h3>Burger Day at Luca</h3>
+          <p>Four bistro burgers for one day — the 84, the Onion, the Bleu and the Mushroom, $15–$17, each with our frites.</p>
+        </div>
         <div class="past-event">
           <p class="past-date">August 29, 2026 · Rosé All Day</p>
           <h3>Rosé All Day — August</h3>
