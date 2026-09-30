@@ -234,6 +234,11 @@
     nav ul a { font-size: 14px; letter-spacing: 0.09em; text-transform: uppercase; color: #2c2018; font-weight: 500; padding-bottom: 3px; border-bottom: 2px solid transparent; transition: color 0.2s, border-color 0.2s; }
     nav ul a:hover { color: var(--gold); border-bottom-color: var(--gold); }
     nav ul a.active { color: var(--gold); border-bottom-color: var(--gold); }
+    /* "We're Hiring" nav pill - set apart from the other links while Luca is hiring */
+    nav ul a { white-space: nowrap; }
+    @media (min-width: 769px) and (max-width: 1180px) { nav ul { gap: 1.1rem; } nav ul a { font-size: 12.5px; letter-spacing: 0.06em; } }
+    nav ul a.nav-hiring { color: var(--red); border: 1.5px solid var(--red); border-radius: 999px; padding: 4px 12px; }
+    nav ul a.nav-hiring:hover, nav ul a.nav-hiring.active { color: #fff; background: var(--red); border-color: var(--red); }
 
     /* HERO — full-bleed patio photo, text over a navy gradient (v2) */
     .hero {
@@ -321,6 +326,11 @@
     .job-listing h3 { font-family: var(--serif); font-size: 24px; font-weight: 500; color: #1a1209; margin-bottom: 0.5rem; }
     .job-listing p { font-size: 14px; color: #463829; line-height: 1.8; font-weight: 400; }
     .job-listing .job-meta { font-size: 13px; color: var(--gold); margin-top: 0.6rem; }
+    /* Featured opening: badge, gold frame and an Apply button that pre-selects the position */
+    .job-listing.job-featured { border: 2px solid var(--gold); border-radius: 6px; background: #FBF6EA; padding: 1.4rem 1.4rem 1.5rem; margin: 0.5rem 0 1rem; }
+    .job-badge { display: inline-block; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 500; color: #fff; background: var(--red); padding: 3px 9px; border-radius: 3px; margin-bottom: 0.6rem; }
+    .job-apply { display: inline-block; margin-top: 1rem; font-size: 13px; letter-spacing: 0.09em; text-transform: uppercase; font-weight: 500; color: #fff; background: var(--red); padding: 10px 18px; border-radius: 2px; }
+    .job-apply:hover { background: #7e1528; color: #fff; }
 
     /* MENU */
     .menu-section { margin-bottom: 3rem; }
@@ -673,6 +683,7 @@
     <li><a href="#photos">Photos</a></li>
     <li><a href="#private-events">Gatherings</a></li>
     <li><a href="#contact">Contact</a></li>
+    <li><a href="#jobs" class="nav-hiring">We&rsquo;re Hiring</a></li>
   </ul>
 </nav>
 
@@ -1910,10 +1921,12 @@
       </div>
       -->
 
-      <div class="job-listing">
+      <div class="job-listing job-featured">
+        <span class="job-badge">Now hiring</span>
         <h3>Morning Cook — Breakfast &amp; Lunch</h3>
         <p>Cook breakfast and lunch and still have your afternoons and evenings free. Our morning cook preps fresh each morning, then cooks our brunch and lunch menu — omelettes, quiches, croques, salads and sandwiches — made from scratch in our small bistro kitchen. It’s a steady, friendly daytime pace with a close team, and you’re done by 2pm. Line or prep experience preferred; if you’re reliable and take pride in every plate, we’d love to hear from you.</p>
         <p class="job-meta">Wed–Sun &middot; 8am–2pm &middot; $18/hour</p>
+        <a class="job-apply" href="#job-form" data-position="Morning Cook — Breakfast &amp; Lunch">Apply for this job &rarr;</a>
       </div>
 
       <div class="job-listing">
@@ -1924,7 +1937,7 @@
 
       <p class="form-intro" style="margin-bottom:1.5rem;">Please complete the form below or send your information (including resume) to <a href="mailto:jobs@lucabistro.com" style="color:var(--gold);">jobs@lucabistro.com</a>. Thank you.</p>
 
-      <form class="web3form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" data-fallback-email="jobs@lucabistro.com">
+      <form id="job-form" class="web3form" action="https://api.web3forms.com/submit" method="POST" enctype="multipart/form-data" data-fallback-email="jobs@lucabistro.com">
         <input type="hidden" name="access_key" value="21b0aa3c-fff7-4995-9e5b-b82e6c5efa08" />
         <input type="hidden" name="subject" value="New job application — Luca Bistro" />
         <input type="hidden" name="from_name" value="Luca Bistro Careers" />
@@ -1964,6 +1977,17 @@
         <button type="submit" class="form-submit">Submit Application</button>
         <p class="form-status" role="status" aria-live="polite"></p>
       </form>
+      <script>
+        // "Apply for this job" pre-selects the position in the jobs form.
+        document.querySelectorAll(".job-apply").forEach(function (b) {
+          b.addEventListener("click", function () {
+            var sel = document.getElementById("job-position"), want = b.getAttribute("data-position");
+            if (!sel) return;
+            for (var i = 0; i < sel.options.length; i++) { if (sel.options[i].text === want) { sel.selectedIndex = i; break; } }
+            setTimeout(function () { var n = document.getElementById("job-name"); if (n) n.focus({ preventScroll: true }); }, 400);
+          });
+        });
+      </script>
   </div>
 </div>
 
