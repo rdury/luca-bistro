@@ -72,6 +72,7 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
     ],
     "specialOpeningHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-09-30", "validThrough": "2026-09-30" },
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" },
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-11-26", "validThrough": "2026-11-26" },
       { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-11-27", "validThrough": "2026-11-27" }
@@ -159,8 +160,8 @@
       "@context": "https://schema.org",
       "@type": "Event",
       "name": "Comfort Bowl Wednesdays — September 30",
-      "description": "Onion soup under a bubbling cap of melted cheese, a crisp side salad and warm toasted bread — $15 for the set. Served lunch and dinner at Luca Bistro in Mt. Adams.",
-      "startDate": "2026-09-30T10:00:00-04:00",
+      "description": "Onion soup under a bubbling cap of melted cheese, a crisp side salad and warm toasted bread — $15 for the set. Served at dinner (from 5pm) at Luca Bistro in Mt. Adams.",
+      "startDate": "2026-09-30T17:00:00-04:00",
       "endDate": "2026-09-30T21:00:00-04:00",
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
@@ -700,7 +701,7 @@
 <!-- COMFORT BOWL BANNER (day-gated: Wednesdays in September) -->
 <a id="comfort-banner" href="#events" style="display:none;align-items:center;flex-wrap:wrap;gap:14px;padding:11px 20px;background:#F7EFD0;border-top:2px solid var(--red);border-bottom:1px solid #e6d5aa;text-decoration:none;color:inherit;">
   <svg width="26" height="20" viewBox="0 0 96 72" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="flex:none;"><g fill="none" stroke="#8a6a44" stroke-width="3" stroke-linecap="round" opacity=".7"><path d="M35 8 c7 6 -7 12 0 18"/><path d="M48 4 c7 6 -7 12 0 18"/><path d="M61 8 c7 6 -7 12 0 18"/></g><path d="M14 42 a34 22 0 0 0 68 0 z" fill="#9E1B32"/><ellipse cx="48" cy="42" rx="34" ry="8.5" fill="#efe4c8" stroke="#9E1B32" stroke-width="3"/></svg>
-  <span style="flex:1;min-width:200px;font-size:15px;color:#463829;line-height:1.4;"><strong style="font-family:var(--serif);font-weight:600;font-size:19px;color:#2c2018;">It&rsquo;s Comfort Bowl Wednesday</strong> &mdash; onion soup, side salad &amp; toasted bread, $15, lunch &amp; dinner. Walk right in.</span>
+  <span style="flex:1;min-width:200px;font-size:15px;color:#463829;line-height:1.4;"><strong style="font-family:var(--serif);font-weight:600;font-size:19px;color:#2c2018;">It&rsquo;s Comfort Bowl Wednesday</strong> &mdash; onion soup, side salad &amp; toasted bread, $15 &mdash; dinner tonight from 5pm (we&rsquo;re closed for lunch today). Walk right in.</span>
   <span style="font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#806240;white-space:nowrap;">See what&rsquo;s on &rarr;</span>
 </a>
 <script>
@@ -2043,6 +2044,8 @@
     // Mirrored in the head JSON-LD specialOpeningHoursSpecification AND on Google Business
     // Profile - all three must agree. The footer note below renders itself from this data,
     // so it expires on its own once the date passes.
+    // Wednesday Sep 30 2026 - CLOSED for lunch; dinner only from 5pm (owner, same day).
+    '2026-09-30': [['17:00', '21:00', 'Dinner']],
     '2026-10-31': [],
     // Thursday Nov 26 2026 (Thanksgiving Day) - CLOSED all day (owner via Marketing, Sep 18 2026).
     '2026-11-26': [],
