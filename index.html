@@ -72,6 +72,15 @@
       { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Wednesday","Thursday","Friday","Saturday"], "opens": "17:00", "closes": "21:00" }
     ],
     "specialOpeningHoursSpecification": [
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-06", "validThrough": "2026-10-06" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-10-07", "validThrough": "2026-10-07" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-10-08", "validThrough": "2026-10-08" },
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-13", "validThrough": "2026-10-13" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-10-14", "validThrough": "2026-10-14" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-10-15", "validThrough": "2026-10-15" },
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-20", "validThrough": "2026-10-20" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-10-21", "validThrough": "2026-10-21" },
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-10-22", "validThrough": "2026-10-22" },
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" },
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-11-26", "validThrough": "2026-11-26" },
       { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-11-27", "validThrough": "2026-11-27" }
@@ -2024,7 +2033,7 @@
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
         <tr><td>Wed – Sat</td><td>Lunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
-      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">Closed Saturday, October 31 · Closed Thursday, November 26 · Friday, November 27: dinner only, from 5pm</p>
+      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">A few changes to our hours in October: closed Tuesdays October 6, 13 and 20; dinner only from 5pm on October 7, 8, 14, 15, 21 and 22 &middot; Closed Saturday, October 31 &middot; Closed Thursday, November 26 &middot; Friday, November 27: dinner only, from 5pm</p>
     </div>
     <div class="footer-card">
       <img src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
@@ -2061,6 +2070,17 @@
   // One-off exceptions (affect the open-now status only; keep JSON-LD + GBP in step).
   // 'YYYY-MM-DD': list of [open, close, label]; an empty list means closed that day.
   var LUCA_SPECIAL = {
+    // October 2026 hours changes (owner, Oct 2 2026): Tuesdays Oct 6/13/20 closed;
+    // Wed/Thu Oct 7-8, 14-15, 21-22 dinner only from 5pm. Mirrored in JSON-LD and on Google.
+    '2026-10-06': [],
+    '2026-10-07': [['17:00', '21:00', 'Dinner']],
+    '2026-10-08': [['17:00', '21:00', 'Dinner']],
+    '2026-10-13': [],
+    '2026-10-14': [['17:00', '21:00', 'Dinner']],
+    '2026-10-15': [['17:00', '21:00', 'Dinner']],
+    '2026-10-20': [],
+    '2026-10-21': [['17:00', '21:00', 'Dinner']],
+    '2026-10-22': [['17:00', '21:00', 'Dinner']],
     // Saturday Oct 31 2026 - CLOSED all day (owner, Aug 10 2026). An empty list = closed.
     // Mirrored in the head JSON-LD specialOpeningHoursSpecification AND on Google Business
     // Profile - all three must agree. The footer note below renders itself from this data,
@@ -2117,7 +2137,14 @@
         var labs = LUCA_SPECIAL[d].map(function (p) { return p[2].toLowerCase(); });
         return when + ': ' + labs.join(' & ') + ' only, from ' + lucaFmt(LUCA_SPECIAL[d][0][0]);
       });
-      noteEl.textContent = parts.join(' · ');
+      noteEl.textContent = '';
+      if (parts.length) {
+        var hd = document.createElement('strong');
+        hd.textContent = 'A few changes to our hours';
+        hd.style.display = 'block';
+        noteEl.appendChild(hd);
+        parts.forEach(function (t) { var ln = document.createElement('span'); ln.textContent = t; ln.style.display = 'block'; noteEl.appendChild(ln); });
+      }
     }
     var periods = [];
     if (LUCA_SPECIAL[key]) {
