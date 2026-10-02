@@ -244,6 +244,7 @@
     /* "We're Hiring" nav pill - set apart from the other links while Luca is hiring */
     nav ul a { white-space: nowrap; }
     @media (min-width: 769px) and (max-width: 1180px) { nav ul { gap: 1.1rem; } nav ul a { font-size: 12.5px; letter-spacing: 0.06em; } }
+    @media (min-width: 769px) and (max-width: 900px) { nav ul { gap: 0.8rem; } }
     nav ul a.nav-hiring { color: #fff; background: var(--red); border: 1.5px solid var(--red); border-radius: 999px; padding: 6px 15px; font-size: 15px; font-weight: 600; }
     nav ul a.nav-hiring:hover, nav ul a.nav-hiring.active { color: #fff; background: #7e1528; border-color: #7e1528; }
     @media (min-width: 769px) and (max-width: 1180px) { nav ul a.nav-hiring { font-size: 13.5px; padding: 5px 13px; } }
@@ -528,6 +529,30 @@
     .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
     /* Hero walk-in line + open-now status */
     .hero-walkin { margin-top: 1rem; font-size: 13.5px; letter-spacing: 0.06em; color: #E4DAC2; }
+    /* Scary Wednesdays hero link (October only): floating ghost + peeking pumpkin */
+    .scary-link { display: none; align-items: center; gap: 0.4rem; margin: 0; text-decoration: none; width: max-content; max-width: 100%; }
+    .scary-link .scary-text { font-family: var(--serif); font-style: italic; font-size: 17px; color: #F8C325; line-height: 1.15; text-shadow: 0 1px 10px rgba(10,25,40,0.6); }
+    .scary-link .scary-text small { display: block; font-family: var(--sans, inherit); font-style: normal; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: #F3EAD8; }
+    .scary-link:hover .scary-text { text-decoration: underline; text-underline-offset: 4px; }
+    .scary-ghost { animation: scary-bob 3s ease-in-out infinite; flex: none; }
+    .scary-pumpkin { flex: none; overflow: hidden; }
+    .scary-pumpkin .pk { animation: scary-peek 4s ease-in-out infinite; }
+    .scary-pumpkin .pk-glow, .scary-ghost .gh-eye { animation: scary-glow 1.4s ease-in-out infinite; }
+    @keyframes scary-bob { 0%,100% { transform: translate(0,0); } 50% { transform: translate(6px,-9px); } }
+    @keyframes scary-peek { 0%,25% { transform: translateY(26px); } 40%,85% { transform: translateY(0); } 100% { transform: translateY(26px); } }
+    @keyframes scary-glow { 0%,100% { opacity: 0.45; } 50% { opacity: 1; } }
+    @media (prefers-reduced-motion: reduce) { .scary-ghost, .scary-pumpkin .pk, .scary-pumpkin .pk-glow, .scary-ghost .gh-eye { animation: none; } }
+    /* Promo strip between the nav and the hero: Scary Wednesdays left (October only), We're Hiring right */
+    .promo-strip { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.45rem var(--pad-x); background: #F7EFD0; border-bottom: 1px solid #e8e0d4; min-height: 46px; }
+    .promo-strip .scary-link .scary-text { color: var(--red); text-shadow: none; font-size: 18px; }
+    .promo-strip .scary-link .scary-text small { color: var(--gold-deep); }
+    .promo-strip .nav-hiring { margin-left: auto; white-space: nowrap; color: #fff; background: var(--red); border: 1.5px solid var(--red); border-radius: 999px; padding: 6px 16px; font-size: 14px; font-weight: 600; letter-spacing: 0.09em; text-transform: uppercase; }
+    .promo-strip .nav-hiring:hover { background: #7e1528; border-color: #7e1528; color: #fff; }
+    @media (max-width: 768px) { .promo-strip { padding: 0.4rem 12px; } .promo-strip .scary-link .scary-text { font-size: 16px; } .promo-strip .scary-link .scary-text small { display: none; } .promo-strip .nav-hiring { font-size: 12.5px; padding: 5px 12px; } }
+    .flyer-wrap { max-width: 520px; margin: 0 auto 2.5rem; text-align: center; }
+    .flyer-card { display: block; border-radius: 6px; overflow: hidden; border: 2px solid var(--gold); background: #0d1f2e; }
+    .flyer-card img { display: block; width: 100%; height: auto; }
+    .flyer-dl { display: inline-block; margin-top: 0.7rem; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
     .hero-walkin #hero-status { color: #F8C325; }
     .hero-walkin strong { color: #F8C325; font-weight: 500; }
     /* Booking policy callout — guests keep assuming we take reservations, so say it plainly */
@@ -692,9 +717,19 @@
     <li><a href="#photos">Photos</a></li>
     <li><a href="#private-events">Gatherings</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#jobs" class="nav-hiring">We&rsquo;re Hiring</a></li>
   </ul>
 </nav>
+
+<!-- PROMO STRIP: Scary Wednesdays (left, October only) and We're Hiring (right) -->
+<div class="promo-strip">
+  <!-- SCARY WEDNESDAYS link (shows Oct 1-28 2026; sound plays only on click) -->
+  <a id="scary-link" class="scary-link" href="#events" aria-label="Scary Wednesdays: every Wednesday in October. See the flyer.">
+    <svg class="scary-ghost" width="28" height="32" viewBox="0 0 60 70" aria-hidden="true"><path d="M8 66 V30 a22 22 0 0 1 44 0 V66 l-7.3-6-7.3 6-7.4-6-7.3 6-7.4-6z" fill="#ffffff" stroke="#463829" stroke-width="2.5"/><circle class="gh-eye" cx="23" cy="30" r="4" fill="#163C5A"/><circle class="gh-eye" cx="37" cy="30" r="4" fill="#163C5A"/><ellipse cx="30" cy="43" rx="4.5" ry="6" fill="#163C5A"/></svg>
+    <span class="scary-text">Scary Wednesdays<small>Every Wednesday in October &rarr;</small></span>
+    <svg class="scary-pumpkin" width="32" height="30" viewBox="0 0 80 74" aria-hidden="true"><g class="pk"><rect x="36" y="4" width="8" height="12" rx="2" fill="#4a6b2a"/><ellipse cx="40" cy="44" rx="36" ry="28" fill="#D85A30"/><path d="M20 24 q-6 20 0 40 M60 24 q6 20 0 40 M40 18 v52" stroke="#993C1D" stroke-width="2" fill="none"/><g class="pk-glow"><path d="M22 38l8-8 8 8z M42 38l8-8 8 8z" fill="#FAC775"/><path d="M22 52 q18 14 36 0 l-6 2 -4-4 -4 4 -4-4 -4 4 -4-4 -4 4z" fill="#FAC775"/></g></g></svg>
+  </a>
+  <a href="#jobs" class="nav-hiring">We&rsquo;re Hiring</a>
+</div>
 
 <div class="hero">
   <div class="hero-text">
@@ -707,6 +742,27 @@
     <p class="hero-walkin"><span id="hero-status"></span></p>
   </div>
 </div>
+
+<script>
+  (function () {
+    var a = document.getElementById("scary-link"); if (!a) return;
+    var n = new Date();
+    if (n.getFullYear() === 2026 && n.getMonth() === 9 && n.getDate() <= 28) { a.style.display = "flex"; if (a.parentNode.classList) a.parentNode.classList.add("has-scary"); }
+    a.addEventListener("click", function () {
+      try {
+        var C = window.AudioContext || window.webkitAudioContext; if (!C) return;
+        var c = new C(), t = c.currentTime;
+        function tone(type, f0, f1, t0, d, v) { var o = c.createOscillator(), g = c.createGain(); o.type = type;
+          o.frequency.setValueAtTime(f0, t + t0); o.frequency.exponentialRampToValueAtTime(f1, t + t0 + d);
+          g.gain.setValueAtTime(0.0001, t + t0); g.gain.exponentialRampToValueAtTime(v, t + t0 + 0.03); g.gain.exponentialRampToValueAtTime(0.0001, t + t0 + d);
+          o.connect(g).connect(c.destination); o.start(t + t0); o.stop(t + t0 + d + 0.05); return o; }
+        var gh = tone("sine", 320, 520, 0, 1.4, 0.18), l = c.createOscillator(), lg = c.createGain();
+        l.frequency.value = 6; lg.gain.value = 18; l.connect(lg).connect(gh.frequency); l.start(t); l.stop(t + 1.5);
+        [1.3, 1.5, 1.7, 1.9].forEach(function (s, i) { tone("triangle", 260 - i * 30, 180 - i * 25, s, 0.17, 0.22); });
+      } catch (e) {}
+    });
+  })();
+</script>
 
 <!-- IN MEMORIAM: Sandra "Sandy" Zimmerman (added 2026-09-29, owner; shows through Tue Oct 6 2026, then hides itself - remove this block after) -->
 <div id="memorial" style="background:#F3EBDB;border-top:1px solid #d9ccb0;border-bottom:1px solid #d9ccb0;padding:18px 20px;text-align:center;">
@@ -1560,6 +1616,12 @@
     <div id="events-current" class="event-panel active">
     <h3>Scary Wednesdays</h3>
     <div class="rule"></div>
+    <div class="flyer-wrap">
+      <a class="flyer-card" href="photos/scary-wednesdays-flyer-2026.png" target="_blank" rel="noopener" aria-label="Open the Scary Wednesdays flyer full size">
+        <img src="photos/scary-wednesdays-flyer-2026.png" width="1275" height="1650" alt="Scary Wednesdays flyer: Les Mercredis Macabres, every Wednesday in October, 5 to 9 PM. Kissed by a Vampire $12, Witches’ Brew $14, roasted bone marrow $19, La Planche d’Os $19." loading="lazy" decoding="async" />
+      </a>
+      <a class="flyer-dl" href="flyers/scary-wednesdays-2026.pdf" target="_blank" rel="noopener">Download the flyer (PDF)</a>
+    </div>
     <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
       <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">All October, Wednesday nights at Luca descend into <em>Les Catacombes</em> &mdash; candlelight, a little French dark, a little Halloween fun. Come as you are, or come as something wicked.</p>
       <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Wednesdays in October</span>
@@ -1568,8 +1630,8 @@
       <div class="event-card">
         <h4>Les Mercredis Macabres</h4>
         <p class="event-date">Every Wednesday in October &middot; Dinner, 5&ndash;9pm</p>
-        <p><strong>The pours:</strong> Kissed by a Vampire &mdash; tequila, pomegranate and orange bitters, topped with sparkling water. Witches&rsquo; Brew &mdash; Empress gin, sparkling lemonade and blackberry syrup.</p>
-        <p><strong>The bites:</strong> Os &agrave; Moelle &mdash; roasted bone marrow with herbs and grilled bread. La Planche d&rsquo;Os &mdash; a bone-yard board of saucisson, cornichons, grainy mustard and baguette, made for the whole table.</p>
+        <p><strong>The pours:</strong> Kissed by a Vampire, <strong>$12</strong> &mdash; tequila, pomegranate and orange bitters, topped with sparkling water. Witches&rsquo; Brew, <strong>$14</strong> &mdash; Empress gin, sparkling lemonade and blackberry syrup.</p>
+        <p><strong>The bites:</strong> Os &agrave; Moelle, <strong>$19</strong> &mdash; roasted bone marrow with herbs and grilled bread. La Planche d&rsquo;Os, <strong>$19</strong> &mdash; a bone-yard board of saucisson, cornichons, grainy mustard and baguette, made for the whole table.</p>
         <p class="event-sub">Dine in, on the patio or in the bar. Walk-ins welcome &mdash; no reservations needed.</p>
         <span class="event-tag">Halloween</span>
       </div>
