@@ -8,10 +8,10 @@ One self-contained `index.html` (inline style/script, no framework, no build, CR
 Repo `C:\dev\Projects\Code-Home\luca\website\site` · GitHub `rdury/luca-bistro` · Vercel auto-deploy · lucabistro.com · `master` = production, `preview` = staging.
 
 ## Rules (owned by ../CLAUDE.md + the luca-deploy skill)
-Deploy via `luca-deploy` every time; never `git add -A`; `index.html` stays 100% CRLF; event cards and the head Event JSON-LD stay in sync; any hours or closure hits the site AND Google the same day; new content goes to Frédéric as a patch; ask before commit, push or delete. Repo-only: markdown here is LF, do not convert it.
+Deploy via `luca-deploy` every time; never `git add -A`; `index.html` stays 100% CRLF; event cards and the head Event JSON-LD stay in sync; any hours or closure hits the site AND Google the same day; new content goes to Frédéric as a patch (ask-first rules: root `CLAUDE.md`). Repo-only: markdown here is LF, do not convert it.
 
 ## Branches
-`master` = production (v2, launched Jul 31 2026); read `origin/master` with `git rev-parse --short origin/master`, never pin a hash here. `preview` = staging, kept in sync with `master` on the remote; deploy flow is edit -> `preview` -> `push origin preview:master`.
+`master` = production (v2, launched Jul 31 2026); read `origin/master` with `git rev-parse --short origin/master` (never-pin rule: `../CLAUDE.md`). `preview` = staging, kept in sync with `master` on the remote; deploy flow is edit -> `preview` -> `push origin preview:master`.
 That promote moves only `origin/master`, never the LOCAL `master` (it silently lags), so read `origin/master` and fast-forward the local ref with `git fetch origin master:master` when needed.
 Only these two branches remain; the deleted `LucaBistro-v2` and `option-2` are preserved as tags `v2-launched-20260731` and `option-2-archive-20260731`. Deep history: `../PROJECT.md`.
 

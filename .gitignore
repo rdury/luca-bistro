@@ -7,8 +7,5 @@ dist/
 
 .claude/
 
-# Local deploy helper scripts (kept off the live site)
-deploy-preview.bat
-deploy-production.bat
 # Graphify knowledge-graph output (regenerable; added Sep 2 2026)
 graphify-out/
