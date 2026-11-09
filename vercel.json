@@ -24,13 +24,13 @@
     { "source": "/gallery/", "destination": "/#photos", "permanent": true },
     { "source": "/photos", "destination": "/#photos", "permanent": true },
     { "source": "/photos/", "destination": "/#photos", "permanent": true },
-    { "source": "/menu/:path*", "destination": "/#menu", "permanent": true },
-    { "source": "/gallery/:path*", "destination": "/#photos", "permanent": true },
+    { "source": "/menu/(.*)", "destination": "/#menu", "permanent": true },
+    { "source": "/gallery/(.*)", "destination": "/#photos", "permanent": true },
     { "source": "/location", "destination": "/#visit", "permanent": true },
-    { "source": "/location/:path*", "destination": "/#visit", "permanent": true },
+    { "source": "/location/(.*)", "destination": "/#visit", "permanent": true },
     { "source": "/event", "destination": "/#events", "permanent": true },
-    { "source": "/event/:path*", "destination": "/#events", "permanent": true },
+    { "source": "/event/(.*)", "destination": "/#events", "permanent": true },
     { "source": "/news-about-luca-bistro", "destination": "/", "permanent": true },
-    { "source": "/news-about-luca-bistro/:path*", "destination": "/", "permanent": true }
+    { "source": "/news-about-luca-bistro/(.*)", "destination": "/", "permanent": true }
   ]
 }
