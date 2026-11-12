@@ -560,22 +560,18 @@
     .flyer-card { display: block; border-radius: 6px; overflow: hidden; border: 2px solid var(--gold); background: #0d1f2e; }
     .flyer-card img { display: block; width: 100%; height: auto; }
     .flyer-dl { display: inline-block; margin-top: 0.7rem; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
-    /* WINE TASTING hero banner (Dec 2 2026) - live HTML above the hero, hidden by its gate after Dec 2; retire after the event */
-    .wine-banner { position: relative; color: #F3EAD8; background: radial-gradient(ellipse 70% 120% at 78% 50%, #6e1730 0%, #4f0f20 62%, #3a0a17 100%); }
-    .wine-banner::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(248,195,37,0.55); pointer-events: none; }
-    .wb-inner { position: relative; max-width: 1000px; margin: 0 auto; padding: 3rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-    .wb-eyebrow { font-size: 12.5px; letter-spacing: 0.24em; text-transform: uppercase; color: #e4d3ae; font-weight: 500; }
-    .wb-title { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(46px, 7vw, 84px); line-height: 1; color: #F8C325; margin-top: 0.5rem; text-shadow: 0 2px 14px rgba(20,0,6,0.5); }
-    .wb-date { font-family: var(--serif); font-size: clamp(24px, 3.2vw, 34px); color: #F3EAD8; margin-top: 0.4rem; }
-    .wb-facts { font-size: 16px; line-height: 1.75; margin-top: 1rem; max-width: 560px; color: #F3EAD8; }
-    .wb-facts b { color: #F8C325; font-weight: 500; }
-    .wb-cta { display: flex; flex-wrap: wrap; align-items: center; gap: 0.7rem 1.4rem; margin-top: 1.4rem; }
-    .wb-btn { display: inline-block; padding: 0.8rem 2rem; border: 2px solid #F8C325; color: #F8C325; background: rgba(30,4,12,0.35); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; text-decoration: none; transition: background 0.25s, color 0.25s; }
-    .wb-btn:hover { background: #F8C325; color: #4f0f20; }
-    .wb-link { color: #F3EAD8; font-size: 15px; letter-spacing: 0.04em; text-decoration: none; border-bottom: 1px solid rgba(248,195,37,0.5); }
-    .wb-more { margin-top: 1rem; font-family: var(--serif); font-style: italic; font-size: 17px; color: #e4d3ae; }
-    .wb-art { flex: 0 0 auto; width: min(300px, 30vw); height: auto; }
-    @media (max-width: 768px) { .wb-inner { padding: 2.25rem 22px; } .wb-art { display: none; } }
+    /* WINE TASTING hero banner (Dec 2 2026) - a slim clickable strip above the hero, hidden by its gate after Dec 2; retire after the event */
+    .wine-banner { position: relative; background: radial-gradient(ellipse 60% 160% at 50% 50%, #6e1730 0%, #4f0f20 60%, #3a0a17 100%); border-bottom: 3px solid #F8C325; }
+    .wb-inner { position: relative; max-width: 1100px; margin: 0 auto; padding: 1.6rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: 2rem; color: #F3EAD8; text-decoration: none; }
+    .wb-art { flex: 0 0 auto; width: 190px; height: auto; }
+    .wb-text { flex: 1 1 auto; text-align: center; }
+    .wb-eyebrow { font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #e4d3ae; font-weight: 500; }
+    .wb-title { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(44px, 6.4vw, 76px); line-height: 1; color: #F8C325; margin: 0.25rem 0 0.35rem; text-shadow: 0 2px 14px rgba(20,0,6,0.5); }
+    .wb-date { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); color: #F3EAD8; letter-spacing: 0.02em; }
+    .wb-btn { flex: 0 0 auto; display: inline-block; padding: 0.85rem 1.8rem; border: 2px solid #F8C325; color: #F8C325; background: rgba(30,4,12,0.35); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; transition: background 0.25s, color 0.25s; white-space: nowrap; }
+    .wb-inner:hover .wb-btn, .wb-inner:focus-visible .wb-btn { background: #F8C325; color: #4f0f20; }
+    .wb-eyebrow, .wb-title, .wb-date { display: block; }
+    @media (max-width: 900px) { .wb-inner { flex-direction: column; gap: 0.9rem; padding: 1.6rem 20px 1.8rem; } .wb-art { width: 150px; } }
     .hero-walkin #hero-status { color: #F8C325; }
     .hero-walkin strong { color: #F8C325; font-weight: 500; }
     /* Booking policy callout — guests keep assuming we take reservations, so say it plainly */
@@ -754,32 +750,27 @@
 
 <!-- WINE TASTING hero banner (Wed Dec 2 2026; its gate hides it after Dec 2; retire with the event) -->
 <section id="wine-banner" class="wine-banner" aria-label="Wine Tasting, Wednesday, December 2">
-  <div class="wb-inner">
-    <div class="wb-text">
-      <p class="wb-eyebrow">Luca Bistro &middot; One evening only</p>
-      <h2 class="wb-title">Wine Tasting</h2>
-      <p class="wb-date">Wednesday, December 2</p>
-      <p class="wb-facts"><b>Five wines</b>, four red and one white, each poured with a dish Chef Frédéric has made to match.<br><b>$150 per person</b> plus gratuity &middot; <b>Seats limited</b></p>
-      <div class="wb-cta">
-        <a href="wine-tasting.html" class="wb-btn">Details &amp; sign-up</a>
-        <a href="tel:+15136215822" class="wb-link">(513) 621-5822</a>
-      </div>
-      <p class="wb-more">Sign-up required &middot; further details to follow</p>
-    </div>
-    <svg class="wb-art" viewBox="0 0 230 176" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
+  <a class="wb-inner" href="wine-tasting.html">
+    <svg class="wb-art" viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <defs>
         <g id="wb-glass">
           <path d="M-15 4 Q-17 32 0 39 Q17 32 15 4 Z" fill="none" stroke="#F8C325" stroke-width="2.2" stroke-linejoin="round"/>
           <path d="M0 39 V64 M-11 67 H11" stroke="#F8C325" stroke-width="2.2" stroke-linecap="round"/>
         </g>
       </defs>
-      <g transform="translate(40,20)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
-      <g transform="translate(115,20)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
-      <g transform="translate(190,20)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
-      <g transform="translate(77,100)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#e8cf78"/><use href="#wb-glass"/></g>
-      <g transform="translate(152,100)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
+      <g transform="translate(30,6)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
+      <g transform="translate(110,6)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
+      <g transform="translate(190,6)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#e8cf78"/><use href="#wb-glass"/></g>
+      <g transform="translate(270,6)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
+      <g transform="translate(350,6)"><path d="M-14.4 16 Q-14 31 0 37 Q14 31 14.4 16 Z" fill="#b3223f"/><use href="#wb-glass"/></g>
     </svg>
-  </div>
+    <span class="wb-text">
+      <span class="wb-eyebrow">One evening only</span>
+      <span class="wb-title">Wine Tasting</span>
+      <span class="wb-date">Wednesday, December 2</span>
+    </span>
+    <span class="wb-btn">Details &amp; sign-up</span>
+  </a>
 </section>
 <script>
   (function () {
