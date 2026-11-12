@@ -1,5 +1,7 @@
 {
   "redirects": [
+    { "source": "/wine-tasting", "destination": "/wine-tasting.html", "permanent": false },
+    { "source": "/wine-tasting/", "destination": "/wine-tasting.html", "permanent": false },
     { "source": "/menus", "destination": "/#menu", "permanent": true },
     { "source": "/menus/", "destination": "/#menu", "permanent": true },
     { "source": "/menu", "destination": "/#menu", "permanent": true },
