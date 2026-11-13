@@ -74,7 +74,11 @@
     "specialOpeningHoursSpecification": [
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-10-31", "validThrough": "2026-10-31" },
       { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-11-26", "validThrough": "2026-11-26" },
-      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-11-27", "validThrough": "2026-11-27" }
+      { "@type": "OpeningHoursSpecification", "opens": "17:00", "closes": "21:00", "validFrom": "2026-11-27", "validThrough": "2026-11-27" },
+      { "@type": "OpeningHoursSpecification", "opens": "10:00", "closes": "14:00", "validFrom": "2026-12-24", "validThrough": "2026-12-24" },
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2026-12-25", "validThrough": "2026-12-25" },
+      { "@type": "OpeningHoursSpecification", "opens": "10:00", "closes": "14:00", "validFrom": "2026-12-31", "validThrough": "2026-12-31" },
+      { "@type": "OpeningHoursSpecification", "opens": "00:00", "closes": "00:00", "validFrom": "2027-01-01", "validThrough": "2027-01-01" }
     ]
   }
   </script>
@@ -2160,7 +2164,7 @@
         <tr><td>Tuesday</td><td>Dinner 5 – 9pm</td></tr>
         <tr><td>Wed – Sat</td><td>Lunch 10am – 2pm<br>Dinner 5 – 9pm</td></tr>
       </table>
-      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">A few changes to our hours: Closed Saturday, October 31 &middot; Closed Thursday, November 26 &middot; Friday, November 27: dinner only, from 5pm</p>
+      <p id="hours-special" style="font-size:13px;line-height:1.6;color:#F8C325;margin-top:0.7rem;">A few changes to our hours: Closed Thursday, November 26 &middot; Friday, November 27: dinner only, from 5pm &middot; Thursday, December 24: lunch only, from 10am &middot; Closed Friday, December 25 &middot; Thursday, December 31: lunch only, from 10am &middot; Closed Friday, January 1</p>
     </div>
     <div class="footer-card">
       <img src="photos/cicada.png" width="1055" height="628" alt="" loading="lazy" decoding="async" />
@@ -2205,7 +2209,15 @@
     // Thursday Nov 26 2026 (Thanksgiving Day) - CLOSED all day (owner via Marketing, Sep 18 2026).
     '2026-11-26': [],
     // Friday Nov 27 2026 - CLOSED for lunch; dinner only from 5pm (owner via Marketing, Sep 18 2026).
-    '2026-11-27': [['17:00', '21:00', 'Dinner']]
+    '2026-11-27': [['17:00', '21:00', 'Dinner']],
+    // Thursday Dec 24 2026 - lunch only 10am-2pm, CLOSED for dinner (owner via Marketing, Nov 13 2026).
+    '2026-12-24': [['10:00', '14:00', 'Lunch']],
+    // Friday Dec 25 2026 - CLOSED all day (owner via Marketing, Nov 13 2026).
+    '2026-12-25': [],
+    // Thursday Dec 31 2026 - lunch only 10am-2pm, CLOSED for dinner (owner via Marketing, Nov 13 2026).
+    '2026-12-31': [['10:00', '14:00', 'Lunch']],
+    // Friday Jan 1 2027 - CLOSED all day (owner via Marketing, Nov 13 2026).
+    '2027-01-01': []
   };
   function lucaFmt(t) {
     var p = t.split(':'), h = +p[0], m = p[1], ap = h >= 12 ? 'pm' : 'am';
