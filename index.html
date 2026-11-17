@@ -187,9 +187,9 @@
     {
       "@context": "https://schema.org",
       "@type": "Event",
-      "name": "Wine Tasting at Luca Bistro — December 2",
+      "name": "Bordeaux Wine Tasting at Luca Bistro — December 1",
       "description": "One evening only: five wines, four red and one white, each poured with a dish Chef Frédéric has made to match. $150 per person, plus gratuity. Seats limited; sign-up required at the bistro, by phone at (513) 621-5822 or by email to events@lucabistro.com. Bottles are available to purchase after the tasting.",
-      "startDate": "2026-12-02",
+      "startDate": "2026-12-01",
       "eventStatus": "https://schema.org/EventScheduled",
       "eventAttendanceMode": "https://schema.org/OfflineEventAttendanceMode",
       "isAccessibleForFree": false,
@@ -564,13 +564,13 @@
     .flyer-card { display: block; border-radius: 6px; overflow: hidden; border: 2px solid var(--gold); background: #0d1f2e; }
     .flyer-card img { display: block; width: 100%; height: auto; }
     .flyer-dl { display: inline-block; margin-top: 0.7rem; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); }
-    /* WINE TASTING hero banner (Dec 2 2026) - a slim clickable strip above the hero, hidden by its gate after Dec 2; retire after the event */
+    /* WINE TASTING hero banner (Dec 1 2026) - a slim clickable strip above the hero, hidden by its gate after Dec 1; retire after the event */
     .wine-banner { position: relative; background: radial-gradient(ellipse 60% 160% at 50% 50%, #6e1730 0%, #4f0f20 60%, #3a0a17 100%); border-bottom: 3px solid #F8C325; }
     .wb-inner { position: relative; max-width: 1100px; margin: 0 auto; padding: 1.6rem var(--pad-x); display: flex; align-items: center; justify-content: space-between; gap: 2rem; color: #F3EAD8; text-decoration: none; }
     .wb-art { flex: 0 0 auto; width: 190px; height: auto; }
     .wb-text { flex: 1 1 auto; text-align: center; }
     .wb-eyebrow { font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase; color: #e4d3ae; font-weight: 500; }
-    .wb-title { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(44px, 6.4vw, 76px); line-height: 1; color: #F8C325; margin: 0.25rem 0 0.35rem; text-shadow: 0 2px 14px rgba(20,0,6,0.5); }
+    .wb-title { font-family: var(--serif); font-style: italic; font-weight: 500; font-size: clamp(36px, 4.4vw, 60px); line-height: 1.05; color: #F8C325; margin: 0.25rem 0 0.35rem; text-shadow: 0 2px 14px rgba(20,0,6,0.5); }
     .wb-date { font-family: var(--serif); font-size: clamp(20px, 2.4vw, 28px); color: #F3EAD8; letter-spacing: 0.02em; }
     .wb-btn { flex: 0 0 auto; display: inline-block; padding: 0.85rem 1.8rem; border: 2px solid #F8C325; color: #F8C325; background: rgba(30,4,12,0.35); font-size: 14px; letter-spacing: 0.12em; text-transform: uppercase; font-weight: 500; transition: background 0.25s, color 0.25s; white-space: nowrap; }
     .wb-inner:hover .wb-btn, .wb-inner:focus-visible .wb-btn { background: #F8C325; color: #4f0f20; }
@@ -752,8 +752,8 @@
   <a href="#jobs" class="nav-hiring">We&rsquo;re Hiring</a>
 </div>
 
-<!-- WINE TASTING hero banner (Wed Dec 2 2026; its gate hides it after Dec 2; retire with the event) -->
-<section id="wine-banner" class="wine-banner" aria-label="Wine Tasting, Wednesday, December 2">
+<!-- WINE TASTING hero banner (Tue Dec 1 2026; its gate hides it after Dec 1; retire with the event) -->
+<section id="wine-banner" class="wine-banner" aria-label="Bordeaux Wine Tasting, Tuesday, December 1">
   <a class="wb-inner" href="wine-tasting.html">
     <svg class="wb-art" viewBox="0 0 380 80" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false">
       <defs>
@@ -770,8 +770,8 @@
     </svg>
     <span class="wb-text">
       <span class="wb-eyebrow">One evening only</span>
-      <span class="wb-title">Wine Tasting</span>
-      <span class="wb-date">Wednesday, December 2</span>
+      <span class="wb-title">Bordeaux Wine Tasting</span>
+      <span class="wb-date">Tuesday, December 1</span>
     </span>
     <span class="wb-btn">Details &amp; sign-up</span>
   </a>
@@ -779,7 +779,7 @@
 <script>
   (function () {
     var b = document.getElementById("wine-banner"); if (!b) return;
-    if (new Date() > new Date(2026, 11, 2, 23, 59, 59)) b.style.display = "none";
+    if (new Date() > new Date(2026, 11, 1, 23, 59, 59)) b.style.display = "none";
   })();
 </script>
 
@@ -820,7 +820,7 @@
       <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">Wednesdays in November</span><span class="tick-head">La Chasse &mdash; rabbit &amp; duck</span></a>
       <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
       <a class="tick tick-dup" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Whatever</span><span class="tick-head">Close To Home: Luca Bistro</span></a>
-      <a class="tick" href="wine-tasting.html"><span class="tick-date">Wednesday, December 2</span><span class="tick-head">Wine Tasting &mdash; five wines, five dishes</span></a>
+      <a class="tick" href="wine-tasting.html"><span class="tick-date">Tuesday, December 1</span><span class="tick-head">Bordeaux Wine Tasting &mdash; five wines, five dishes</span></a>
       <a class="tick tick-dup" href="https://www.cincinnati.com/story/entertainment/dining/2026/08/26/best-affordable-cincinnati-restaurants/91258878007/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Enquirer</span><span class="tick-head">10 Restaurants Where You Can Eat Top-Notch Food on a Budget</span></a>
       <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
       <a class="tick tick-dup" href="https://issuu.com/pattyyoukilis/docs/key_magazine_cincinnati_fall_2026" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Key Magazine</span><span class="tick-head">Mt. Adams is ALIVE! &mdash; Fall 2026 cover story</span></a>
@@ -833,7 +833,7 @@
       <a class="tick tick-dup" href="#events" aria-hidden="true" tabindex="-1"><span class="tick-date">Wednesdays in November</span><span class="tick-head">La Chasse &mdash; rabbit &amp; duck</span></a>
       <a class="tick tick-dup" href="https://www.cincinnatimagazine.com/best-new-restaurants-2024/best-new-restaurants-no-9-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Cincinnati Magazine</span><span class="tick-head">Best New Restaurants No. 9: Luca Bistro</span></a>
       <a class="tick tick-dup" href="https://whatever.scalzi.com/2023/10/24/close-to-home-luca-bistro/" target="_blank" rel="noopener noreferrer" aria-hidden="true" tabindex="-1"><span class="tick-src">Whatever</span><span class="tick-head">Close To Home: Luca Bistro</span></a>
-      <a class="tick tick-dup" href="wine-tasting.html" aria-hidden="true" tabindex="-1"><span class="tick-date">Wednesday, December 2</span><span class="tick-head">Wine Tasting &mdash; five wines, five dishes</span></a>
+      <a class="tick tick-dup" href="wine-tasting.html" aria-hidden="true" tabindex="-1"><span class="tick-date">Tuesday, December 1</span><span class="tick-head">Bordeaux Wine Tasting &mdash; five wines, five dishes</span></a>
     </div>
   </div>
 </div>
@@ -1679,22 +1679,22 @@
         <span class="event-tag">Autumn</span>
       </div>
     </div>
-    <h3 id="wine-tasting" style="margin-top:3.5rem;">Wine Tasting</h3>
+    <h3 id="wine-tasting" style="margin-top:3.5rem;">Bordeaux Wine Tasting</h3>
     <div class="rule"></div>
     <div class="flyer-wrap">
-      <a class="flyer-card" href="photos/wine-tasting-flyer-2026.png" target="_blank" rel="noopener" aria-label="Open the Wine Tasting flyer full size">
-        <img src="photos/wine-tasting-flyer-2026.png" width="1275" height="1650" alt="Wine Tasting flyer: Wednesday, December 2. Five wines, four red and one white, each poured with a dish to match. $150 per person plus gratuity. Seats limited, sign-up required at the bistro, by phone at (513) 621-5822 or by email to events@lucabistro.com." loading="lazy" decoding="async" />
+      <a class="flyer-card" href="photos/wine-tasting-flyer-2026.png" target="_blank" rel="noopener" aria-label="Open the Bordeaux Wine Tasting flyer full size">
+        <img src="photos/wine-tasting-flyer-2026.png" width="1275" height="1650" alt="Bordeaux Wine Tasting flyer: Tuesday, December 1. Five wines, four red and one white, each poured with a dish to match. $150 per person plus gratuity. Seats limited, sign-up required at the bistro, by phone at (513) 621-5822 or by email to events@lucabistro.com." loading="lazy" decoding="async" />
       </a>
       <a class="flyer-dl" href="flyers/wine-tasting-2026.pdf" target="_blank" rel="noopener">Download the flyer (PDF)</a>
     </div>
     <div style="display:flex;align-items:center;gap:2rem;margin-bottom:2.5rem;flex-wrap:wrap;">
       <p style="color:#463829;font-size:16px;font-weight:400;line-height:1.7;max-width:500px;">Chef Frédéric opens a short list of remarkable bottles for one evening: four reds and a white, poured one at a time, each beside a plate he has made to go with it. Wines you won&rsquo;t see on our everyday list &mdash; and if one wins you over, bottles are available to purchase after the tasting.</p>
-      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Wednesday, December 2</span>
+      <span style="display:inline-block;padding:6px 18px;border:1px solid var(--red);background:var(--red);color:#fff;font-size:12px;letter-spacing:0.12em;text-transform:uppercase;white-space:nowrap;">Tuesday, December 1</span>
     </div>
     <div class="events-grid">
       <div class="event-card">
-        <h4>Wine Tasting &mdash; Five Wines, Each with a Dish</h4>
-        <p class="event-date">Wednesday, December 2 &middot; One evening only</p>
+        <h4>Bordeaux Wine Tasting &mdash; Five Wines, Each with a Dish</h4>
+        <p class="event-date">Tuesday, December 1 &middot; One evening only</p>
         <p><strong>Five wines</strong>, four red and one white, each poured with a dish to match. <strong>$150 per person</strong>, plus gratuity.</p>
         <p><strong>Seats limited &mdash; sign-up required.</strong> Add your name to the list at the bistro, by phone at <a href="tel:+15136215822" style="color:var(--gold-deep);">(513) 621-5822</a>, or by email to <a href="mailto:events@lucabistro.com?subject=Wine%20Tasting%20sign-up%2C%20December%202" style="color:var(--gold-deep);">events@lucabistro.com</a> with your name and the number of guests in your party.</p>
         <p class="event-sub">Further details to follow.</p>
