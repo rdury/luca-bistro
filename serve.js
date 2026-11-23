@@ -22,8 +22,18 @@ const mime = {
   '.pdf': 'application/pdf',
 };
 
+// Local stand-in for the schedule functions in api/ (dev only: this file is never deployed).
+// Memory store and TEST passcodes only - the real ones live in Vercel's settings, never here.
+process.env.SCHEDULE_DEV_MEMORY = '1';
+process.env.SCHEDULE_CODE_FOH = process.env.SCHEDULE_CODE_FOH || 'test-foh';
+process.env.SCHEDULE_CODE_OWNER = process.env.SCHEDULE_CODE_OWNER || 'test-owner';
+process.env.SCHEDULE_SECRET = process.env.SCHEDULE_SECRET || 'local-test-secret-not-for-production';
+const apiHandlers = { '/api/login': './api/login.js', '/api/week': './api/week.js' };
+
 http.createServer((req, res) => {
   const urlPath = req.url.split('?')[0];
+  if (apiHandlers[urlPath]) { require(apiHandlers[urlPath])(req, res); return; }
+  if (urlPath === '/schedule' || urlPath === '/schedule/') { res.writeHead(307, { Location: '/schedule.html' }); res.end(); return; }
   let filePath = path.join(ROOT, urlPath === '/' ? 'index.html' : urlPath);
   const ext = path.extname(filePath).toLowerCase();
   fs.readFile(filePath, (err, data) => {

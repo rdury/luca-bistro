@@ -1,5 +1,11 @@
 {
+  "headers": [
+    { "source": "/schedule.html", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" }, { "key": "Cache-Control", "value": "no-store" } ] },
+    { "source": "/api/(.*)", "headers": [ { "key": "X-Robots-Tag", "value": "noindex, nofollow" } ] }
+  ],
   "redirects": [
+    { "source": "/schedule", "destination": "/schedule.html", "permanent": false },
+    { "source": "/schedule/", "destination": "/schedule.html", "permanent": false },
     { "source": "/wine-tasting", "destination": "/wine-tasting.html", "permanent": false },
     { "source": "/wine-tasting/", "destination": "/wine-tasting.html", "permanent": false },
     { "source": "/menus", "destination": "/#menu", "permanent": true },

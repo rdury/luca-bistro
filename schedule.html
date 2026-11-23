@@ -1,0 +1,576 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Staff Schedule — Luca Bistro</title>
+  <link rel="icon" href="favicon.ico?v=4" sizes="any" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
+  <!-- Private staff schedule page (plan: luca\website\schedule-plan.md). Not linked from the site, noindex, blocked in robots.txt.
+       No staff names live in this file: they are typed in on the page and kept in the schedule store. -->
+  <style>
+    :root {
+      --gold: #806240; --gold-light: #c2a882; --gold-deep: #6e5230; --red: #9E1B32; --blue: #1C4B70;
+      --yellow: #F8C325; --cream: #F7EFD0; --paper: #fffaf0; --ink: #2c2018; --line: #d9c9a3; --grey: #e7e1d3;
+      --serif: 'Cormorant Garamond', Georgia, serif; --sans: 'Jost', system-ui, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    [hidden] { display: none !important; }
+    body { margin: 0; font-family: var(--sans); color: var(--ink); background: var(--cream); font-size: 15px; }
+    button, select, input { font: inherit; color: inherit; }
+    header.top { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding: 0.9rem 16px; background: var(--blue); color: #fff; }
+    .brand { font-family: var(--serif); font-size: 24px; font-weight: 600; }
+    .brand small { font-family: var(--sans); font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--yellow); margin-left: 0.6rem; }
+    .who { font-size: 13px; display: flex; gap: 0.6rem; align-items: center; }
+    .who button { background: transparent; border: 1px solid rgba(255,255,255,0.6); color: #fff; padding: 4px 10px; border-radius: 3px; cursor: pointer; }
+    main { padding: 1rem 16px 3rem; max-width: 1400px; margin: 0 auto; }
+    .btn { background: var(--paper); border: 1px solid var(--gold-light); padding: 7px 14px; border-radius: 3px; cursor: pointer; }
+    .btn:hover { border-color: var(--gold); }
+    .btn.primary { background: var(--red); border-color: var(--red); color: #fff; font-weight: 500; }
+    .btn.share { background: var(--blue); border-color: var(--blue); color: #fff; font-weight: 500; }
+    .btn:disabled { opacity: 0.45; cursor: default; }
+    /* sign-in */
+    #signin { max-width: 360px; margin: 12vh auto; background: var(--paper); border: 1px solid var(--line); padding: 2rem; border-radius: 4px; text-align: center; }
+    #signin h1 { font-family: var(--serif); font-weight: 500; font-size: 30px; margin: 0 0 0.4rem; }
+    #signin p { margin: 0 0 1.2rem; color: var(--gold-deep); font-size: 14px; }
+    #signin input { width: 100%; padding: 10px 12px; border: 1px solid var(--gold-light); border-radius: 3px; margin-bottom: 0.8rem; font-size: 17px; }
+    #signin .err { color: var(--red); min-height: 1.2em; font-size: 14px; margin-top: 0.6rem; }
+    /* toolbar */
+    .bar { display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center; margin-bottom: 0.8rem; }
+    .weekpick { display: flex; align-items: center; gap: 0.4rem; }
+    .weeklabel { font-family: var(--serif); font-size: 22px; font-weight: 600; min-width: 15ch; }
+    .tabs { display: flex; gap: 0; border-bottom: 2px solid var(--gold-light); margin: 0.4rem 0 0.9rem; }
+    .tabs button { background: none; border: none; padding: 8px 18px; cursor: pointer; font-weight: 500; color: var(--gold-deep); border-bottom: 3px solid transparent; margin-bottom: -2px; }
+    .tabs button.on { color: var(--red); border-bottom-color: var(--red); }
+    .tabs .ro { font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); margin-left: 0.4rem; }
+    .status { font-size: 13px; color: var(--gold-deep); margin-left: auto; }
+    .status.dirty { color: var(--red); font-weight: 500; }
+    .hint { background: #fff3cf; border: 1px solid #e9cf7a; padding: 8px 12px; border-radius: 3px; font-size: 14px; margin-bottom: 0.8rem; }
+    .hint:empty { display: none; }
+    /* grid */
+    .gridwrap { overflow-x: auto; background: var(--paper); border: 1px solid var(--line); border-radius: 4px; }
+    table.grid { border-collapse: collapse; width: 100%; min-width: 1080px; }
+    .grid th, .grid td { border: 1px solid var(--line); padding: 5px; vertical-align: top; }
+    .grid thead th { background: #f1e6c8; font-weight: 600; font-size: 13px; text-align: center; }
+    .grid thead th.day { cursor: default; }
+    .grid thead th.day.tap { cursor: pointer; }
+    .grid thead th .dnote { display: block; font-weight: 400; font-size: 11px; color: var(--red); }
+    .grid thead th.closed { background: var(--grey); color: #8a8273; }
+    .grid td.closed { background: var(--grey); color: #8a8273; text-align: center; font-size: 12px; vertical-align: middle; }
+    .grid td.person { min-width: 170px; }
+    .grid td.person input { width: 100%; padding: 4px 6px; border: 1px solid var(--line); border-radius: 3px; font-weight: 500; }
+    .grid td.person .usual { display: flex; gap: 4px; margin-top: 4px; align-items: center; font-size: 12px; color: var(--gold-deep); }
+    .grid td.person .usual select { flex: 1; font-size: 12px; padding: 2px; }
+    .grid td.person .del { border: none; background: none; color: var(--red); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 2px; }
+    .grid td.cell { min-width: 118px; }
+    .grid td.cell select, .grid td.cell input { width: 100%; font-size: 13px; padding: 3px; border: 1px solid var(--line); border-radius: 3px; background: #fff; }
+    .grid td.cell select + select, .grid td.cell .times { margin-top: 3px; }
+    .grid td.cell .times { display: flex; gap: 3px; }
+    .grid td.cell.on { background: #fdf6e0; }
+    .grid td.cell.warn { outline: 2px solid #e0a23a; outline-offset: -2px; }
+    .grid td.total { text-align: center; font-weight: 600; vertical-align: middle; min-width: 64px; }
+    .grid td.total.warn { color: var(--red); }
+    .grid tr.dup td.person input { border-color: var(--red); }
+    .grid tfoot td { background: #f7efd9; font-size: 12px; text-align: center; color: var(--gold-deep); }
+    .grid select:disabled, .grid input:disabled { background: #f6f2e8; color: #6b6253; }
+    .warnings { margin-top: 0.8rem; font-size: 13px; color: var(--red); }
+    .warnings div { margin: 2px 0; }
+    .adds { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin-top: 0.8rem; }
+    .adds #addName { padding: 7px 10px; border: 1px solid var(--gold-light); border-radius: 3px; min-width: 200px; }
+    .lastweek { display: flex; gap: 0.35rem; align-items: center; font-size: 13px; }
+    /* dialogs */
+    dialog { border: 1px solid var(--line); border-radius: 4px; padding: 1.2rem; max-width: 640px; width: calc(100% - 32px); background: var(--paper); }
+    dialog::backdrop { background: rgba(30,20,10,0.45); }
+    dialog h2 { font-family: var(--serif); font-weight: 600; margin: 0 0 0.6rem; }
+    dialog textarea { width: 100%; height: 50vh; font-family: Consolas, monospace; font-size: 13px; padding: 8px; }
+    dialog .row { display: flex; gap: 0.5rem; justify-content: flex-end; margin-top: 0.8rem; flex-wrap: wrap; }
+    .vlist div { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; padding: 6px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+    #printout { display: none; }
+    .grid td.person, .grid th:first-child, .grid tfoot td:first-child { position: sticky; left: 0; z-index: 1; background: var(--paper); }
+    .grid thead th:first-child { background: #f1e6c8; }
+    .grid tfoot td:first-child { background: #f7efd9; }
+    @media (max-width: 700px) {
+      .brand small { display: none; }
+      .weekpick { flex-wrap: wrap; }
+      .weeklabel { font-size: 19px; min-width: 0; flex: 1; text-align: center; }
+      #jumpWeek { width: 100%; order: 3; }
+      .grid td.person { min-width: 140px; }
+      .status { margin-left: 0; width: 100%; }
+    }
+    @media print {
+      @page { size: landscape; margin: 9mm; }
+      body { background: #fff; font-size: 11px; }
+      header.top, main > *:not(#printout) { display: none !important; }
+      #printout { display: block; }
+      #printout h1 { font-family: var(--serif); font-size: 20px; margin: 0 0 6px; }
+      #printout table { border-collapse: collapse; width: 100%; }
+      #printout th, #printout td { border: 1px solid #999; padding: 3px 4px; text-align: center; }
+      #printout td:first-child, #printout th:first-child { text-align: left; font-weight: 600; }
+      #printout .closed { background: #ddd; color: #666; }
+      #printout tr { break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+<header class="top">
+  <div class="brand">Luca Bistro <small>Staff schedule</small></div>
+  <div class="who" id="who" hidden><span id="whoLabel"></span><button type="button" id="signOut">Sign out</button></div>
+</header>
+
+<main>
+  <section id="signin" hidden>
+    <h1>Staff schedule</h1>
+    <p>Enter your passcode.</p>
+    <form id="signinForm" autocomplete="off">
+      <input id="code" type="password" inputmode="text" autocomplete="current-password" aria-label="Passcode" required />
+      <button class="btn primary" type="submit" style="width:100%">Sign in</button>
+    </form>
+    <div class="err" id="signinErr" role="alert"></div>
+  </section>
+
+  <section id="app" hidden>
+    <div class="bar">
+      <div class="weekpick">
+        <button class="btn" type="button" id="prevWeek" aria-label="Previous week">&larr;</button>
+        <span class="weeklabel" id="weekLabel"></span>
+        <button class="btn" type="button" id="nextWeek" aria-label="Next week">&rarr;</button>
+        <input type="date" id="jumpWeek" aria-label="Go to the week of a date" />
+      </div>
+      <span class="status" id="status"></span>
+    </div>
+    <div class="tabs" role="tablist">
+      <button type="button" role="tab" data-tab="foh">Front of house</button>
+      <button type="button" role="tab" data-tab="kitchen">Kitchen</button>
+    </div>
+    <div class="hint" id="hint"></div>
+    <div class="gridwrap"><table class="grid" id="grid"></table></div>
+    <div class="warnings" id="warnings"></div>
+    <div class="adds" id="editTools">
+      <input id="addName" list="knownNames" placeholder="Add a person (type or pick)" aria-label="Add a person" />
+      <datalist id="knownNames"></datalist>
+      <button class="btn" type="button" id="addBtn">Add person</button>
+      <button class="btn" type="button" id="lastWeekBtn">Start from last week</button>
+      <label class="lastweek"><input type="checkbox" id="lastWeekShifts" /> with the shifts</label>
+    </div>
+    <div class="adds">
+      <button class="btn primary" type="button" id="saveBtn">Save</button>
+      <button class="btn" type="button" id="printBtn">Print</button>
+      <button class="btn share" type="button" id="shareBtn">Share to Luca84</button>
+      <button class="btn" type="button" id="pictureBtn">Download picture</button>
+      <button class="btn" type="button" id="historyBtn">Earlier versions</button>
+    </div>
+  </section>
+
+  <div id="printout"></div>
+</main>
+
+<dialog id="shareDlg">
+  <h2>Share to Luca84</h2>
+  <p id="shareMsg" style="margin:0 0 .5rem;font-size:14px"></p>
+  <p style="margin:0 0 .4rem;font-size:14px">The same schedule as text, if you would rather paste it:</p>
+  <textarea id="shareText" readonly></textarea>
+  <div class="row"><button class="btn" type="button" id="copyText">Copy text</button><button class="btn primary" type="button" data-close>Close</button></div>
+</dialog>
+<dialog id="historyDlg">
+  <h2>Earlier versions</h2>
+  <p style="margin:0 0 .5rem;font-size:14px">Every save is kept. Loading one puts it on the page; press Save to make it the current schedule.</p>
+  <div class="vlist" id="versions"></div>
+  <div class="row"><button class="btn primary" type="button" data-close>Close</button></div>
+</dialog>
+
+<script>
+(function () {
+  'use strict';
+  // ---------- fixed lists ----------
+  var SHIFTS = [
+    { v: '', label: '—' },
+    { v: 'off', label: 'Off' },
+    { v: '9-2', label: '9–2', start: '09:00', end: '14:00' },
+    { v: '10-2', label: '10–2', start: '10:00', end: '14:00' },
+    { v: '4-9', label: '4–9', start: '16:00', end: '21:00' },
+    { v: 'other', label: 'Other…' }
+  ];
+  var JOBS = { foh: ['Serve', 'Bar', 'Host', 'Bus', 'Train'], kitchen: ['Cook', 'Prep', 'Dish', 'Train'] };
+  var TAB_LABEL = { foh: 'Front of house', kitchen: 'Kitchen' };
+  var DAY = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  var MON = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
+  // ---------- state ----------
+  var S = { role: null, label: '', edits: [], tab: 'foh', week: null, data: null, names: {}, canEdit: false, dirty: false, hours: null, special: null, closuresOk: false, savedAt: null };
+
+  // ---------- helpers ----------
+  function $(id) { return document.getElementById(id); }
+  function el(tag, attrs, kids) {
+    var e = document.createElement(tag);
+    if (attrs) for (var k in attrs) {
+      if (k === 'text') e.textContent = attrs[k];
+      else if (k === 'cls') e.className = attrs[k];
+      else if (k.slice(0, 2) === 'on') e.addEventListener(k.slice(2), attrs[k]);
+      else if (attrs[k] === true) e.setAttribute(k, '');
+      else if (attrs[k] !== false && attrs[k] != null) e.setAttribute(k, attrs[k]);
+    }
+    (kids || []).forEach(function (c) { if (c != null) e.appendChild(typeof c === 'string' ? document.createTextNode(c) : c); });
+    return e;
+  }
+  function pad(n) { return (n < 10 ? '0' : '') + n; }
+  function iso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+  function parseIso(s) { var a = s.split('-'); return new Date(+a[0], +a[1] - 1, +a[2], 12); }
+  function addDays(s, n) { var d = parseIso(s); d.setDate(d.getDate() + n); return iso(d); }
+  function mondayOf(d) { var x = new Date(d.getFullYear(), d.getMonth(), d.getDate(), 12); var w = x.getDay(); x.setDate(x.getDate() - (w === 0 ? 6 : w - 1)); return iso(x); }
+  function days() { var out = []; for (var i = 0; i < 7; i++) out.push(addDays(S.week, i)); return out; }
+  function dayName(s) { var d = parseIso(s); return DAY[d.getDay()] + ' ' + MON[d.getMonth()] + ' ' + d.getDate(); }
+  function fmt12(t) { if (!t) return ''; var p = t.split(':'), h = +p[0], ap = h >= 12 ? 'pm' : 'am'; h = h % 12 || 12; return h + (p[1] !== '00' ? ':' + p[1] : '') + ap; }
+  function shiftDef(v) { for (var i = 0; i < SHIFTS.length; i++) if (SHIFTS[i].v === v) return SHIFTS[i]; return SHIFTS[0]; }
+  function times(c) {
+    if (!c || !c.shift || c.shift === 'off') return null;
+    if (c.shift === 'other') return c.start && c.end ? { start: c.start, end: c.end } : null;
+    var d = shiftDef(c.shift); return d.start ? { start: d.start, end: d.end } : null;
+  }
+  function mins(t) { var p = t.split(':'); return +p[0] * 60 + +p[1]; }
+  function hoursOf(c) { var t = times(c); if (!t) return 0; var m = mins(t.end) - mins(t.start); if (m < 0) m += 1440; return m / 60; }
+  function shiftText(c) {
+    if (!c || !c.shift) return '';
+    if (c.shift === 'off') return 'Off';
+    var t = times(c); if (!t) return c.shift === 'other' ? '?' : '';
+    return fmt12(t.start).replace(/am|pm/, '') + '–' + fmt12(t.end) + (c.job ? ' ' + c.job : '');
+  }
+  function api(method, url, body) {
+    return fetch(url, { method: method, headers: body ? { 'Content-Type': 'application/json' } : {}, body: body ? JSON.stringify(body) : undefined, credentials: 'same-origin', cache: 'no-store' })
+      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (b) { b.__status = r.status; return b; }); });
+  }
+  function setStatus(t, dirty) { var s = $('status'); s.textContent = t; s.classList.toggle('dirty', !!dirty); }
+  function markDirty() { S.dirty = true; setStatus('Not saved yet', true); }
+
+  // ---------- closures from the live home page (the single source) ----------
+  function loadClosures() {
+    return fetch('/', { cache: 'no-store' }).then(function (r) { return r.text(); }).then(function (html) {
+      var h = /var LUCA_HOURS = (\[[\s\S]*?\]);/.exec(html), s = /var LUCA_SPECIAL = (\{[\s\S]*?\});/.exec(html);
+      if (!h || !s) throw new Error('not found');
+      S.hours = (new Function('return ' + h[1]))();
+      S.special = (new Function('return ' + s[1]))();
+      S.closuresOk = true;
+    }).catch(function () {
+      S.hours = [{}, { brunch: null, dinner: null }, {}, {}, {}, {}, {}].map(function (x, i) { return i === 1 ? x : { brunch: ['10:00', '14:00'], dinner: ['17:00', '21:00'] }; });
+      S.special = {}; S.closuresOk = false;
+    });
+  }
+  // What the website says about a date: closed, a note, and whether lunch and dinner are served.
+  function siteDay(dateIso) {
+    var base = S.hours[parseIso(dateIso).getDay()] || {}, sp = S.special[dateIso];
+    if (sp) {
+      if (!sp.length) return { closed: true, note: 'Closed', lunch: false, dinner: false };
+      return { closed: false, note: sp.map(function (p) { return p[2]; }).join(' & ') + ' only',
+        lunch: sp.some(function (p) { return p[0] < '15:00'; }), dinner: sp.some(function (p) { return p[1] > '16:00'; }) };
+    }
+    var lunch = !!base.brunch, dinner = !!base.dinner;
+    return { closed: !lunch && !dinner, note: '', lunch: lunch, dinner: dinner };
+  }
+  function dayClosed(dateIso) {
+    var o = S.data && S.data.closed && S.data.closed[dateIso];
+    return o === undefined ? siteDay(dateIso).closed : !!o;
+  }
+
+  // ---------- sign in ----------
+  function showSignin() { $('signin').hidden = false; $('app').hidden = true; $('who').hidden = true; $('code').focus(); }
+  function signedIn(b) {
+    S.role = b.role; S.label = b.label; S.edits = b.edits || [];
+    $('whoLabel').textContent = b.label; $('who').hidden = false; $('signin').hidden = true; $('app').hidden = false;
+    S.week = mondayOf(new Date(Date.now() + 7 * 864e5)); // opens on next week
+    loadClosures().then(loadWeek);
+  }
+  $('signinForm').addEventListener('submit', function (e) {
+    e.preventDefault(); $('signinErr').textContent = '';
+    api('POST', '/api/login', { code: $('code').value }).then(function (b) {
+      if (b.__status === 200) { $('code').value = ''; signedIn(b); } else $('signinErr').textContent = b.error || 'Could not sign in.';
+    }).catch(function () { $('signinErr').textContent = 'Could not reach the site. Try again.'; });
+  });
+  $('signOut').addEventListener('click', function () {
+    if (S.dirty && !confirm('This week is not saved. Sign out anyway?')) return;
+    api('POST', '/api/login', { logout: true }).then(function () { S.dirty = false; location.reload(); });
+  });
+
+  // ---------- load and save ----------
+  function emptyData() { return { rows: [], closed: {}, note: '' }; }
+  function normRow(r) { var c = (r.cells || []).slice(0, 7); while (c.length < 7) c.push({ shift: '' }); return { name: r.name || '', job: r.job || '', cells: c.map(function (x) { return x || { shift: '' }; }) }; }
+  function loadWeek() {
+    setStatus('Loading…');
+    return api('GET', '/api/week?week=' + S.week + '&tab=' + S.tab).then(function (b) {
+      if (b.__status === 401) { showSignin(); return; }
+      if (b.__status !== 200) { setStatus(b.error || 'Could not load this week.', true); return; }
+      S.data = b.data ? { rows: (b.data.rows || []).map(normRow), closed: b.data.closed || {}, note: b.data.note || '' } : emptyData();
+      S.names = b.names || {}; S.canEdit = !!b.canEdit; S.dirty = false; S.savedAt = b.data ? b.data.savedAt : null;
+      setStatus(b.data ? 'Saved ' + new Date(b.data.savedAt).toLocaleString([], { weekday: 'short', hour: 'numeric', minute: '2-digit' }) + ' by ' + b.data.savedBy : 'Nothing saved for this week yet');
+      render();
+    }).catch(function () { setStatus('Could not reach the site.', true); });
+  }
+  function save() {
+    if (!S.canEdit) return;
+    var data = { rows: S.data.rows.filter(function (r) { return r.name.trim(); }), closed: S.data.closed, note: S.data.note };
+    $('saveBtn').disabled = true; setStatus('Saving…');
+    api('POST', '/api/week', { week: S.week, tab: S.tab, data: data }).then(function (b) {
+      $('saveBtn').disabled = false;
+      if (b.__status === 200) { S.dirty = false; loadWeek(); }
+      else if (b.__status === 401) { alert('You were signed out. Sign in again, then save.'); showSignin(); }
+      else setStatus(b.error || 'Not saved.', true);
+    }).catch(function () { $('saveBtn').disabled = false; setStatus('Not saved: could not reach the site.', true); });
+  }
+  function leaveOk() { return !S.dirty || confirm('This week is not saved. Leave it anyway?'); }
+  window.addEventListener('beforeunload', function (e) { if (S.dirty) { e.preventDefault(); e.returnValue = ''; } });
+
+  // ---------- render ----------
+  function weekTitle() { var d = days(); return 'Week of ' + dayName(d[0]) + ' – ' + dayName(d[6]); }
+  function render() {
+    var ds = days(), ed = S.canEdit, jobs = JOBS[S.tab];
+    $('weekLabel').textContent = weekTitle();
+    document.querySelectorAll('.tabs button').forEach(function (b) {
+      var t = b.getAttribute('data-tab'); b.classList.toggle('on', t === S.tab);
+      b.textContent = TAB_LABEL[t]; if (S.edits.indexOf(t) < 0) b.appendChild(el('span', { cls: 'ro', text: 'view only' }));
+    });
+    $('editTools').hidden = !ed; $('saveBtn').hidden = !ed;
+    var hint = [];
+    if (!S.closuresOk) hint.push('The closed days could not be read from the website: Mondays are greyed out, and other closures must be marked by tapping a day.');
+    if (!ed) hint.push('You can view this tab but not change it.');
+    else if (!S.data.rows.length) hint.push('Nothing on this week yet. Press "Start from last week" or add people one by one.');
+    $('hint').textContent = hint.join(' ');
+
+    var kl = $('knownNames'); kl.textContent = '';
+    Object.keys(S.names).sort().forEach(function (n) { kl.appendChild(el('option', { value: n })); });
+
+    var t = $('grid'); t.textContent = '';
+    var hr = el('tr', null, [el('th', { text: 'Person' })]);
+    ds.forEach(function (d) {
+      var sd = siteDay(d), closed = dayClosed(d), over = S.data.closed[d] !== undefined;
+      var th = el('th', { cls: 'day' + (closed ? ' closed' : '') + (ed ? ' tap' : ''), title: ed ? 'Tap to mark this day closed or open for this week' : '' }, [dayName(d)]);
+      var note = closed ? (over ? 'Closed (marked)' : 'Closed') : (over ? 'Open (marked)' : sd.note);
+      if (note) th.appendChild(el('span', { cls: 'dnote', text: note }));
+      if (ed) th.addEventListener('click', function () {
+        var now = dayClosed(d);
+        if (!confirm((now ? 'Open ' : 'Close ') + dayName(d) + ' for this week?')) return;
+        var siteClosed = siteDay(d).closed;
+        if (!now === siteClosed) delete S.data.closed[d]; else S.data.closed[d] = !now;
+        markDirty(); render();
+      });
+      hr.appendChild(th);
+    });
+    hr.appendChild(el('th', { text: 'Hours' }));
+    t.appendChild(el('thead', null, [hr]));
+
+    var names = {}, dups = {};
+    S.data.rows.forEach(function (r) { var k = r.name.trim().toLowerCase(); if (!k) return; if (names[k]) dups[k] = 1; names[k] = 1; });
+    var tb = el('tbody'), warns = [];
+    S.data.rows.forEach(function (r, ri) {
+      var tr = el('tr', { cls: dups[r.name.trim().toLowerCase()] ? 'dup' : '' });
+      var nameIn = el('input', { value: r.name, list: 'knownNames', 'aria-label': 'Name', disabled: !ed });
+      nameIn.addEventListener('change', function () { r.name = nameIn.value.trim(); if (!r.job && S.names[r.name]) r.job = S.names[r.name]; markDirty(); render(); });
+      var usual = el('select', { 'aria-label': 'Usual job', disabled: !ed }, [el('option', { value: '', text: '—' })].concat(jobs.map(function (j) { return el('option', { value: j, text: j }); })));
+      usual.value = r.job; usual.addEventListener('change', function () { r.job = usual.value; markDirty(); });
+      var del = ed ? el('button', { cls: 'del', type: 'button', title: 'Take off this week (they stay in the name list)', text: '×', onclick: function () { if (confirm('Take ' + (r.name || 'this row') + ' off this week?')) { S.data.rows.splice(ri, 1); markDirty(); render(); } } }) : null;
+      tr.appendChild(el('td', { cls: 'person' }, [nameIn, el('div', { cls: 'usual' }, ['usually', usual, del])]));
+      var total = 0;
+      ds.forEach(function (d, di) {
+        var c = r.cells[di];
+        if (dayClosed(d)) { tr.appendChild(el('td', { cls: 'cell closed', text: 'Closed' })); return; }
+        var td = el('td', { cls: 'cell' + (c.shift && c.shift !== 'off' ? ' on' : '') });
+        var sh = el('select', { 'aria-label': r.name + ' ' + dayName(d) + ' shift', disabled: !ed }, SHIFTS.map(function (s) { return el('option', { value: s.v, text: s.label }); }));
+        sh.value = c.shift || '';
+        sh.addEventListener('change', function () {
+          c.shift = sh.value;
+          if (c.shift && c.shift !== 'off' && !c.job) c.job = r.job || '';
+          if (c.shift !== 'other') { delete c.start; delete c.end; }
+          markDirty(); render();
+        });
+        td.appendChild(sh);
+        if (c.shift === 'other') {
+          var a = el('input', { type: 'time', value: c.start || '', 'aria-label': 'Start', disabled: !ed }), b = el('input', { type: 'time', value: c.end || '', 'aria-label': 'End', disabled: !ed });
+          a.addEventListener('change', function () { c.start = a.value; markDirty(); render(); });
+          b.addEventListener('change', function () { c.end = b.value; markDirty(); render(); });
+          td.appendChild(el('div', { cls: 'times' }, [a, b]));
+        }
+        if (c.shift && c.shift !== 'off') {
+          var jb = el('select', { 'aria-label': 'Job', disabled: !ed }, [el('option', { value: '', text: 'job…' })].concat(jobs.map(function (j) { return el('option', { value: j, text: j }); })));
+          jb.value = c.job || ''; jb.addEventListener('change', function () { c.job = jb.value; markDirty(); });
+          td.appendChild(jb);
+        }
+        var tm = times(c), sd = siteDay(d);
+        if (tm && S.data.closed[d] === undefined) {
+          var isLunch = tm.start < '15:00';
+          if (isLunch && !sd.lunch || !isLunch && !sd.dinner) {
+            td.classList.add('warn'); td.title = 'The restaurant is not open for ' + (isLunch ? 'lunch' : 'dinner') + ' on this day (' + (sd.note || 'regular hours') + ')';
+            warns.push((r.name || 'Someone') + ': ' + (isLunch ? 'a lunch' : 'a dinner') + ' shift on ' + dayName(d) + ', when the restaurant is not open for ' + (isLunch ? 'lunch' : 'dinner') + '.');
+          }
+        }
+        total += hoursOf(c);
+        tr.appendChild(td);
+      });
+      tr.appendChild(el('td', { cls: 'total' + (total > 40 ? ' warn' : ''), text: total ? String(Math.round(total * 10) / 10) : '' }));
+      if (total > 40) warns.push((r.name || 'Someone') + ' is over 40 hours (' + total + ').');
+      tb.appendChild(tr);
+    });
+    Object.keys(dups).forEach(function (k) { warns.push('"' + k + '" is on the list twice.'); });
+    t.appendChild(tb);
+
+    var fr = el('tr', null, [el('td', { text: 'On shift' })]);
+    ds.forEach(function (d, di) {
+      if (dayClosed(d)) { fr.appendChild(el('td', { text: '' })); return; }
+      var l = 0, n = 0;
+      S.data.rows.forEach(function (r) { var tm = times(r.cells[di]); if (tm) { if (tm.start < '15:00') l++; else n++; } });
+      fr.appendChild(el('td', { text: (l ? l + ' lunch' : '') + (l && n ? ' · ' : '') + (n ? n + ' dinner' : '') }));
+    });
+    fr.appendChild(el('td'));
+    t.appendChild(el('tfoot', null, [fr]));
+
+    var w = $('warnings'); w.textContent = '';
+    warns.forEach(function (x) { w.appendChild(el('div', { text: '⚠ ' + x })); });
+  }
+
+  // ---------- week and tab navigation ----------
+  function goWeek(w) { if (!leaveOk()) return; S.week = w; loadWeek(); }
+  $('prevWeek').addEventListener('click', function () { goWeek(addDays(S.week, -7)); });
+  $('nextWeek').addEventListener('click', function () { goWeek(addDays(S.week, 7)); });
+  $('jumpWeek').addEventListener('change', function () { if ($('jumpWeek').value) goWeek(mondayOf(parseIso($('jumpWeek').value))); });
+  document.querySelectorAll('.tabs button').forEach(function (b) {
+    b.addEventListener('click', function () { var t = b.getAttribute('data-tab'); if (t === S.tab || !leaveOk()) return; S.tab = t; loadWeek(); });
+  });
+
+  // ---------- add, last week, save ----------
+  $('addBtn').addEventListener('click', function () {
+    var n = $('addName').value.trim(); if (!n) return;
+    if (S.data.rows.some(function (r) { return r.name.trim().toLowerCase() === n.toLowerCase(); }) && !confirm(n + ' is already on this week. Add again?')) return;
+    S.data.rows.push(normRow({ name: n, job: S.names[n] || '' })); $('addName').value = ''; markDirty(); render();
+  });
+  $('addName').addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); $('addBtn').click(); } });
+  $('lastWeekBtn').addEventListener('click', function () {
+    var withShifts = $('lastWeekShifts').checked;
+    api('GET', '/api/week?week=' + addDays(S.week, -7) + '&tab=' + S.tab).then(function (b) {
+      if (b.__status !== 200) { alert(b.error || 'Could not load last week.'); return; }
+      if (!b.data || !b.data.rows.length) { alert('Nothing was saved for last week.'); return; }
+      if (S.data.rows.length && !confirm('Replace the people on this week with last week\'s?')) return;
+      S.data.rows = b.data.rows.map(function (r) {
+        var n = normRow(r);
+        if (!withShifts) n.cells = n.cells.map(function () { return { shift: '' }; });
+        return n;
+      });
+      markDirty(); render();
+    });
+  });
+  $('saveBtn').addEventListener('click', save);
+  document.addEventListener('keydown', function (e) { if ((e.ctrlKey || e.metaKey) && e.key === 's') { e.preventDefault(); save(); } });
+
+  // ---------- print ----------
+  function buildPrint() {
+    var p = $('printout'); p.textContent = '';
+    p.appendChild(el('h1', { text: 'Luca Bistro · ' + TAB_LABEL[S.tab] + ' · ' + weekTitle() }));
+    var ds = days(), t = el('table'), h = el('tr', null, [el('th', { text: '' })]);
+    ds.forEach(function (d) { h.appendChild(el('th', { text: dayName(d) + (dayClosed(d) ? ' (closed)' : siteDay(d).note ? ' (' + siteDay(d).note + ')' : '') })); });
+    h.appendChild(el('th', { text: 'Hrs' })); t.appendChild(h);
+    S.data.rows.filter(function (r) { return r.name.trim(); }).forEach(function (r) {
+      var tr = el('tr', null, [el('td', { text: r.name })]), tot = 0;
+      ds.forEach(function (d, i) { if (dayClosed(d)) tr.appendChild(el('td', { cls: 'closed', text: '' })); else { tr.appendChild(el('td', { text: shiftText(r.cells[i]) })); tot += hoursOf(r.cells[i]); } });
+      tr.appendChild(el('td', { text: tot ? String(tot) : '' })); t.appendChild(tr);
+    });
+    p.appendChild(t);
+  }
+  $('printBtn').addEventListener('click', function () { buildPrint(); window.print(); });
+  window.addEventListener('beforeprint', buildPrint);
+
+  // ---------- picture for the group text ----------
+  function makePicture() {
+    var rows = S.data.rows.filter(function (r) { return r.name.trim(); }), ds = days();
+    var nameW = 230, colW = 168, totW = 70, rowH = 46, top = 120, W = nameW + colW * 7 + totW + 40, H = top + rowH * (rows.length + 1) + 40;
+    var c = document.createElement('canvas'), k = 2; c.width = W * k; c.height = H * k;
+    var g = c.getContext('2d'); g.scale(k, k);
+    return (document.fonts ? document.fonts.ready : Promise.resolve()).then(function () {
+      g.fillStyle = '#F7EFD0'; g.fillRect(0, 0, W, H);
+      g.fillStyle = '#9E1B32'; g.font = '600 34px "Cormorant Garamond", Georgia, serif'; g.fillText('Luca Bistro · ' + TAB_LABEL[S.tab], 20, 50);
+      g.fillStyle = '#2c2018'; g.font = '500 22px Jost, sans-serif'; g.fillText(weekTitle(), 20, 86);
+      var x0 = 20, y = top;
+      function cellBox(x, w, fill) { g.fillStyle = fill; g.fillRect(x, y, w, rowH); g.strokeStyle = '#d9c9a3'; g.strokeRect(x, y, w, rowH); }
+      cellBox(x0, nameW, '#f1e6c8');
+      ds.forEach(function (d, i) {
+        var x = x0 + nameW + i * colW, cl = dayClosed(d); cellBox(x, colW, cl ? '#e7e1d3' : '#f1e6c8');
+        g.fillStyle = cl ? '#8a8273' : '#2c2018'; g.font = '600 17px Jost, sans-serif'; g.textAlign = 'center';
+        g.fillText(dayName(d), x + colW / 2, y + (cl || siteDay(d).note ? 21 : 29));
+        if (cl || siteDay(d).note) { g.font = '400 13px Jost, sans-serif'; g.fillStyle = '#9E1B32'; g.fillText(cl ? 'Closed' : siteDay(d).note, x + colW / 2, y + 38); }
+      });
+      cellBox(x0 + nameW + colW * 7, totW, '#f1e6c8'); g.fillStyle = '#2c2018'; g.font = '600 16px Jost, sans-serif'; g.fillText('Hrs', x0 + nameW + colW * 7 + totW / 2, y + 29);
+      rows.forEach(function (r, ri) {
+        y = top + rowH * (ri + 1); var tot = 0;
+        cellBox(x0, nameW, ri % 2 ? '#fffaf0' : '#fffdf7'); g.textAlign = 'left'; g.fillStyle = '#2c2018'; g.font = '600 19px Jost, sans-serif'; g.fillText(r.name, x0 + 12, y + 30);
+        ds.forEach(function (d, i) {
+          var x = x0 + nameW + i * colW, cl = dayClosed(d); cellBox(x, colW, cl ? '#e7e1d3' : (ri % 2 ? '#fffaf0' : '#fffdf7'));
+          if (cl) return; var tx = shiftText(r.cells[i]); tot += hoursOf(r.cells[i]);
+          g.textAlign = 'center'; g.fillStyle = tx === 'Off' ? '#8a8273' : '#2c2018'; g.font = (tx === 'Off' ? '400 ' : '500 ') + '17px Jost, sans-serif'; g.fillText(tx, x + colW / 2, y + 30);
+        });
+        cellBox(x0 + nameW + colW * 7, totW, ri % 2 ? '#fffaf0' : '#fffdf7'); g.textAlign = 'center'; g.fillStyle = '#2c2018'; g.font = '600 17px Jost, sans-serif';
+        g.fillText(tot ? String(tot) : '', x0 + nameW + colW * 7 + totW / 2, y + 30);
+      });
+      return new Promise(function (ok) { c.toBlob(ok, 'image/png'); });
+    });
+  }
+  function pictureName() { return 'Luca schedule - ' + TAB_LABEL[S.tab] + ' - week of ' + S.week + '.png'; }
+  function download(blob) {
+    var a = el('a', { href: URL.createObjectURL(blob), download: pictureName() });
+    document.body.appendChild(a); a.click(); setTimeout(function () { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+  }
+  $('pictureBtn').addEventListener('click', function () { makePicture().then(download); });
+
+  // ---------- Share to Luca84 (the staff group text) ----------
+  // On a phone the share menu opens with the picture attached: pick Messages, then the Luca84 group.
+  // Elsewhere the picture is downloaded and the text version is offered to paste.
+  function scheduleText() {
+    var ds = days(), out = ['Luca Bistro · ' + TAB_LABEL[S.tab] + ' · ' + weekTitle(), ''];
+    S.data.rows.filter(function (r) { return r.name.trim(); }).forEach(function (r) {
+      var lines = [];
+      ds.forEach(function (d, i) { if (dayClosed(d)) return; var c = r.cells[i], tm = times(c); if (tm) lines.push('  ' + dayName(d) + '  ' + fmt12(tm.start) + '-' + fmt12(tm.end) + (c.job ? '  ' + c.job : '')); });
+      if (lines.length) { out.push(r.name); out.push.apply(out, lines); out.push(''); }
+    });
+    var closed = ds.filter(dayClosed).map(dayName); if (closed.length) out.push('Closed: ' + closed.join(', '));
+    return out.join('\n').trim();
+  }
+  $('shareBtn').addEventListener('click', function () {
+    if (S.dirty || !S.savedAt) { alert('Save the week first, then share it to Luca84.'); return; }
+    var text = 'Schedule · ' + TAB_LABEL[S.tab] + ' · ' + weekTitle();
+    makePicture().then(function (blob) {
+      var file = new File([blob], pictureName(), { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        navigator.share({ files: [file], text: text }).catch(function () {});
+        return;
+      }
+      download(blob);
+      $('shareMsg').textContent = 'The picture is downloaded. Post it in the Luca84 group text. On a phone, this button opens the share menu with the picture attached: pick Messages, then Luca84.';
+      $('shareText').value = scheduleText(); $('shareDlg').showModal();
+    });
+  });
+  $('copyText').addEventListener('click', function () {
+    var t = $('shareText'); t.select();
+    (navigator.clipboard ? navigator.clipboard.writeText(t.value) : Promise.reject()).then(function () { $('copyText').textContent = 'Copied'; }, function () { document.execCommand('copy'); $('copyText').textContent = 'Copied'; });
+    setTimeout(function () { $('copyText').textContent = 'Copy text'; }, 1500);
+  });
+
+  // ---------- earlier versions ----------
+  $('historyBtn').addEventListener('click', function () {
+    var v = $('versions'); v.textContent = 'Loading…'; $('historyDlg').showModal();
+    api('GET', '/api/week?week=' + S.week + '&tab=' + S.tab + '&history=1').then(function (b) {
+      v.textContent = '';
+      if (!b.versions || !b.versions.length) { v.textContent = 'No saves for this week yet.'; return; }
+      b.versions.forEach(function (ver, i) {
+        var when = new Date(ver.savedAt).toLocaleString([], { weekday: 'short', month: 'short', day: 'numeric', hour: 'numeric', minute: '2-digit' });
+        var btn = S.canEdit ? el('button', { cls: 'btn', type: 'button', text: 'Load', onclick: function () {
+          if (!leaveOk()) return;
+          S.data = { rows: ver.rows.map(normRow), closed: ver.closed || {}, note: ver.note || '' }; $('historyDlg').close(); markDirty(); render();
+        } }) : null;
+        v.appendChild(el('div', null, [el('span', { text: (i === 0 ? 'Current · ' : '') + when + ' · ' + ver.savedBy + ' · ' + ver.rows.length + ' people' }), btn]));
+      });
+    });
+  });
+  document.querySelectorAll('dialog [data-close]').forEach(function (b) { b.addEventListener('click', function () { b.closest('dialog').close(); }); });
+
+  // ---------- start ----------
+  api('GET', '/api/login').then(function (b) { if (b.__status === 200) signedIn(b); else showSignin(); }).catch(showSignin);
+})();
+</script>
+</body>
+</html>

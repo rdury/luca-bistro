@@ -1,0 +1,8 @@
+{
+  "name": "luca-bistro-site",
+  "private": true,
+  "description": "lucabistro.com - static site plus the two schedule functions in api/ (no build step).",
+  "dependencies": {
+    "postgres": "3.4.5"
+  }
+}
