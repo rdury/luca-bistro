@@ -61,18 +61,19 @@
     .grid thead th.closed { background: var(--grey); color: #8a8273; }
     .grid td.closed { background: var(--grey); color: #8a8273; text-align: center; font-size: 12px; vertical-align: middle; }
     .grid td.person { min-width: 170px; }
-    .grid td.person input { width: 100%; padding: 4px 6px; border: 1px solid var(--line); border-radius: 3px; font-weight: 500; }
+    .grid td.person input { width: 100%; padding: 4px 6px; border: 1px solid #efe7d4; border-radius: 3px; font-weight: 600; }
     .grid td.person .usual { display: flex; gap: 4px; margin-top: 3px; align-items: center; font-size: 10.5px; color: var(--gold-deep); }
-    .grid td.person .usual select { flex: 1; font-size: 10.5px; padding: 0 2px; height: 20px; }
+    .grid td.person .usual select { flex: 1; font-size: 10.5px; padding: 0 2px; height: 20px; border: 1px solid #efe7d4; }
     .grid td.person .del { border: none; background: none; color: var(--red); cursor: pointer; font-size: 16px; line-height: 1; padding: 0 2px; }
     .grid td.cell { min-width: 118px; }
-    .grid td.cell select, .grid td.cell input { width: 100%; font-size: 13px; padding: 3px; border: 1px solid var(--line); border-radius: 3px; background: #fff; }
+    .grid td.cell select, .grid td.cell input { width: 100%; font-size: 13px; padding: 3px; border: 1px solid #efe7d4; border-radius: 3px; background: #fff; }
+    .grid td.cell > select:first-child { font-size: 14.5px; font-weight: 700; color: var(--ink); }
     .grid td.cell select + select, .grid td.cell .times { margin-top: 3px; }
     .grid td.cell select + select, .grid td.cell .times + select { font-size: 10.5px; padding: 0 3px; height: 20px; color: var(--gold-deep); background: #fbf6ea; }
     .grid td.cell .times { display: flex; gap: 3px; }
     .grid td.cell.on { background: #fdf6e0; }
     .grid td.cell.warn { outline: 2px solid #e0a23a; outline-offset: -2px; }
-    .grid td.total { text-align: center; font-weight: 600; vertical-align: middle; min-width: 64px; }
+    .grid td.total { text-align: center; font-weight: 700; font-size: 16px; vertical-align: middle; min-width: 64px; }
     .grid td.total.warn { color: var(--red); }
     .grid tr.dup td.person input { border-color: var(--red); }
     .grid tbody td { border-bottom: 3px solid #b89d6a; }
@@ -376,7 +377,7 @@
       var total = 0;
       ds.forEach(function (d, di) {
         var c = r.cells[di];
-        if (dayClosed(d)) { tr.appendChild(el('td', { cls: 'cell closed', text: 'Closed' })); return; }
+        if (dayClosed(d)) { tr.appendChild(el('td', { cls: 'cell closed', 'aria-label': 'Closed' })); return; }
         var td = el('td', { cls: 'cell' + (c.shift && c.shift !== 'off' ? ' on' : '') });
         var sh = el('select', { 'aria-label': r.name + ' ' + dayName(d) + ' shift', disabled: !ed }, SHIFTS.map(function (s) { return el('option', { value: s.v, text: s.label }); }));
         sh.value = c.shift || '';
